@@ -496,15 +496,13 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
   <div class="wrap">
     <div class="section-head">
       <h2 data-en="Publications">Yayınlar</h2>
-      <p data-en="Selected recent work. Full lists are on the researchers' AVESİS, ORCID and PubMed profiles.">
-        Seçilmiş güncel çalışmalar. Tam listeler araştırmacıların AVESİS, ORCID ve PubMed profillerinde bulunmaktadır.
+      <p data-en="The division's PubMed-indexed output, ranked by journal impact factor. The twelve highest-impact papers are listed here; the full, searchable list is on its own page.">
+        Bilim dalının PubMed'de dizinlenen yayınları, dergi etki faktörüne göre sıralı. En yüksek etkili on iki çalışma burada; aranabilir tam liste ayrı sayfada.
       </p>
     </div>
     <ul class="pubs" id="pubs"></ul>
     <div class="pub-links">
-      <a class="chip" href="https://avesis.istanbul.edu.tr/filiz.akyuz/yayinlar" target="_blank" rel="noopener">AVESİS: Filiz Akyüz</a>
-      <a class="chip" href="https://avesis.istanbul.edu.tr/kadirdr/yayinlar" target="_blank" rel="noopener">AVESİS: Kadir Demir</a>
-      <a class="chip" href="https://avesis.istanbul.edu.tr/bfagargun/yayinlar" target="_blank" rel="noopener">AVESİS: Besim Fazıl Ağargün</a>
+      <a class="btn solid" href="yayinlar.html" data-en="All publications, ranked by journal impact">Tüm yayınlar, dergi etkisine göre sıralı</a>
     </div>
   </div>
 </section>
@@ -600,6 +598,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
 </footer>
 <a class="btn totop" id="totop" href="#top" aria-label="Başa dön">↑</a>
 
+<script src="pubs.js"></script>
 <script>
 /* =====================================================================
    İÇERİK VERİLERİ. Siteyi güncellemek için yalnızca bu bölümü düzenleyin.
@@ -612,6 +611,7 @@ const FACTS = [
   { v: "",     tr: "Takipteki İBH hastası", en: "IBD patients under follow-up" },
   { v: "9",    tr: "Aktif araştırma projesi", en: "Active research projects" },
   { v: "25",   tr: "Çapa Gastroenterohepatoloji Günleri toplantısı", en: "Çapa Days meetings held" },
+  { v: String(PUBS_ALL.length), tr: "PubMed'de dizinli yayın", en: "PubMed-indexed publications" },
 ];
 
 /* Projeler. status: "on" (devam ediyor) | "pub" (yayınlandı) | "plan" (planlama) */
@@ -678,19 +678,7 @@ const TEAM = [
   ]},
 ];
 
-/* Yayınlar: dergi, başlık, yıl, DOI. AVESİS'ten alındı; ekleyip çıkarabilirsiniz. */
-const PUBS = [
-  { j: "J Hepatol", t: "Progress and remaining barriers in liver xenotransplantation", y: "2026", doi: "10.1016/j.jhep.2026.01.011" },
-  { j: "Gastroenterology", t: "Caution in generalizing the safety of isolated deep submucosal invasion in T1 colorectal cancer", y: "2026", doi: "10.1053/j.gastro.2025.12.036" },
-  { j: "Gut", t: "Lumen-apposing metal stents for pancreatic fluid collections: has advancing technology encouraged over-reach?", y: "2026", doi: "10.1136/gutjnl-2025-336668" },
-  { j: "Hepatol Res", t: "Liver fibrosis and steatosis in inflammatory bowel disease: a cross-sectional matched-control transient elastography study (ELASTIBD)", y: "2026", doi: "10.1111/hepr.70136" },
-  { j: "Pancreas", t: "Decisional control preferences in managing intraductal papillary mucinous neoplasms of the pancreas", y: "2026", doi: "10.1097/mpa.0000000000002546" },
-  { j: "J Crohns Colitis", t: "Deep learning model for Mayo score classification from colonoscopy images: validation with CRP, histological activity and endoscopist agreement (ECCO 2026)", y: "2026", doi: "10.1093/ecco-jcc/jjaf231.443" },
-  { j: "J Crohns Colitis", t: "Predictors of colectomy in ulcerative colitis: real-world evidence from a single tertiary centre (ECCO 2026)", y: "2026", doi: "10.1093/ecco-jcc/jjaf231.1182" },
-  { j: "Neurogastroenterol Motil", t: "Relationship between hemoglobin A1c and fecal incontinence", y: "2025", doi: "10.1111/nmo.70100" },
-  { j: "Sci Rep", t: "The role of GALAD score in the surveillance of hepatocellular carcinoma", y: "2025", doi: "10.1038/s41598-025-07765-1" },
-  { j: "Turk J Gastroenterol", t: "Maternal and fetal outcomes of pregnancies in Wilson's disease: a single-centre real-life experience", y: "2025", doi: "10.5152/tjg.2025.25448" },
-];
+/* Yayınlar pubs.js dosyasından gelir (PubMed'den derlenmiş, etki faktörüne göre sıralı). */
 
 /* ============================ RENDER ============================ */
 const STATUS = { on: ["Devam ediyor","Ongoing"], pub: ["Yayınlandı","Published"], plan: ["Planlama","Planning"] };
@@ -736,8 +724,8 @@ document.getElementById("team").innerHTML = TEAM.map(g => `
     </div>
   </div>`).join("");
 
-document.getElementById("pubs").innerHTML = PUBS.map(p => `
-  <li><span class="j">${p.j}</span><span>${p.doi ? `<a href="https://doi.org/${p.doi}" target="_blank" rel="noopener">${p.t}</a>` : p.t} <span class="y">(${p.y})</span></span></li>`).join("");
+document.getElementById("pubs").innerHTML = PUBS_ALL.slice(0, 12).map(p => `
+  <li><span class="j">${p.journal}</span><span>${p.doi ? `<a href="https://doi.org/${p.doi}" target="_blank" rel="noopener">${p.title}</a>` : p.title} <span class="y">(${p.year})</span></span></li>`).join("");
 
 document.getElementById("year").textContent = new Date().getFullYear();
 

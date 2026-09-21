@@ -5,7 +5,7 @@ Tek dosyalık, bağımlılıksız bir site: `index.html`. Sunucu, derleme veya p
 ## Yayınlama (GitHub Pages)
 
 1. GitHub'da yeni bir depo açın, örneğin `capagastro`.
-2. `index.html` ve `img/` klasörünü depo köküne yükleyin.
+2. `index.html`, `yayinlar.html`, `pubs.js` ve `.nojekyll` dosyalarını depo köküne yükleyin.
 3. Settings > Pages > Build and deployment: Source = "Deploy from a branch", Branch = `main`, klasör = `/ (root)`.
 4. Birkaç dakika sonra site `https://<kullanıcı>.github.io/capagastro/` adresinde yayında olur.
 
@@ -24,7 +24,7 @@ Tüm içerik `index.html` dosyasının sonundaki `<script>` bölümünde, "İÇE
 - `FACTS`: üst şerit sayıları (değeri boş bırakılan madde gizlenir)
 - `PROJECTS`: araştırma projeleri (`status`: `on`, `pub`, `plan`)
 - `TEAM`: ekip; `avesis` numarası varsa fotoğraf AVESİS'ten çekilir, yoksa `img/<user>.jpg` aranır
-- `PUBS`: yayınlar (dergi, başlık, yıl, DOI)
+- Yayınlar `pubs.js` dosyasındadır (PubMed'den derlenmiş; `jif` alanı yaklaşık dergi etki faktörü, sıralama için). `yayinlar.html` tam listeyi, ana sayfa ilk 12'yi gösterir.
 
 Metin bölümlerinde her öğe Türkçe içeriği gövdede, İngilizce karşılığını `data-en` özniteliğinde taşır. Yeni bir cümle eklerken ikisini de yazın.
 
