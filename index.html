@@ -186,19 +186,22 @@ section.alt{background:var(--paper-2)}
 @media (max-width:900px){section{padding:3.5rem 0}.section-head{grid-template-columns:1fr;gap:.5rem}}
 .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
 .cols-2{grid-template-columns:repeat(2,1fr)}
+.cols-4{grid-template-columns:repeat(4,1fr);gap:1.8rem}
+@media (max-width:1100px){.cols-4{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:900px){.cols,.cols-2{grid-template-columns:1fr}}
+@media (max-width:640px){.cols-4{grid-template-columns:1fr}}
 .block h3{margin-top:0}
 .block ul{padding-left:1.1rem;margin:0}
 .block li{margin-bottom:.35rem}
 
 /* Principal investigator */
-.pi-grid{display:grid;grid-template-columns:minmax(220px,300px) 1fr;gap:3.5rem;align-items:start}
+.pi-grid{display:grid;grid-template-columns:170px 1fr;gap:2.5rem;align-items:start}
 .pi-photo{margin:0;position:sticky;top:5.5rem}
 .pi-photo img,.pi-photo .ph{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;border-radius:10px;border:1px solid var(--line);background:var(--teal-soft);display:block}
-.pi-photo .ph{display:grid;place-items:center;font-family:var(--font-display);font-size:4rem;color:var(--teal-2)}
-.pi-photo figcaption{margin-top:.8rem;font-size:.9rem;color:var(--ink-2);line-height:1.5}
+.pi-photo .ph{display:grid;place-items:center;font-family:var(--font-display);font-size:2.4rem;color:var(--teal-2)}
+.pi-photo figcaption{margin-top:.7rem;font-size:.8rem;color:var(--ink-2);line-height:1.5}
 .pi-photo figcaption a{word-break:break-all}
-.pi h2{font-size:clamp(2.3rem,4.6vw,3.6rem);margin-bottom:.2em}
+.pi h2{font-size:clamp(1.9rem,3.6vw,2.8rem);margin-bottom:.2em}
 .pi-role{font-family:var(--font-display);font-style:italic;color:var(--claret);font-size:1.25rem;margin-bottom:1.5rem}
 .pi-bio{font-size:1.1rem;max-width:64ch}
 .pi-metrics{color:var(--ink-2);max-width:64ch;border-left:3px solid var(--teal);padding-left:1rem}
@@ -215,7 +218,7 @@ section.alt{background:var(--paper-2)}
 .pi-pubs .au b{color:var(--ink);font-weight:600}
 @media (max-width:900px){
   .pi-grid{grid-template-columns:1fr;gap:2rem}
-  .pi-photo{position:static;max-width:240px}
+  .pi-photo{position:static;max-width:150px}
   .pi-cols{grid-template-columns:1fr;gap:1.5rem}
   .pi-pubs li{grid-template-columns:1fr}
   .pi-pubs .j{grid-row:auto}
@@ -468,7 +471,9 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
         <h3 data-en="Clinical care">Klinik hizmet</h3>
         <ul>
           <li data-en="Inflammatory bowel disease clinic (Crohn's disease, ulcerative colitis)">İnflamatuvar bağırsak hastalıkları polikliniği (Crohn hastalığı, ülseratif kolit)</li>
-          <li data-en="Hepatology: viral hepatitis, MASLD, autoimmune and metabolic liver disease, cirrhosis, hepatocellular carcinoma, liver transplant follow-up">Hepatoloji: viral hepatit, MASLD, otoimmün ve metabolik karaciğer hastalıkları, siroz, hepatosellüler karsinom, karaciğer nakli izlemi</li>
+          <li data-en="Hepatology: viral hepatitis, MASLD, autoimmune and metabolic liver disease, cirrhosis, hepatocellular carcinoma">Hepatoloji: viral hepatit, MASLD, otoimmün ve metabolik karaciğer hastalıkları, siroz, hepatosellüler karsinom</li>
+          <li data-en="Liver transplant clinic: assessment before transplantation and follow-up afterwards">Karaciğer nakli polikliniği: nakil öncesi değerlendirme ve nakil sonrası izlem</li>
+          <li data-en="Wilson disease and rare diseases clinic">Wilson hastalığı ve nadir hastalıklar polikliniği</li>
           <li data-en="Pancreaticobiliary, luminal and motility disorders">Pankreatikobiliyer, lüminal ve motilite hastalıkları</li>
           <li data-en="Weekly multidisciplinary GI tumour board">Haftalık multidisipliner GİS tümör konseyi</li>
         </ul>
@@ -497,7 +502,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
       <div>
         <ul class="timeline">
           <li><b>1963</b><span data-en="A gastroenterology section is founded within the internal medicine clinic under Prof. Dr. Müfide Küley, with Rauf Sezer as its first chief resident. In the same year Assoc. Prof. İlhan Ulagay establishes a separate hepatology section.">İç hastalıkları kliniği bünyesinde Prof. Dr. Müfide Küley başkanlığında gastroenteroloji seksiyonu kurulur; seksiyonun ilk baş asistanı Rauf Sezer'dir. Aynı yıl Doç. Dr. İlhan Ulagay öncülüğünde ayrı bir hepatoloji seksiyonu oluşturulur.</span></li>
-          <li><b data-en="Today">Bugün</b><span data-en="Gastroenterology and hepatology work as one division under Prof. Dr. Filiz Akyüz, with an endoscopy unit, liver and IBD clinics and a research group. The annual Çapa Gastroenterohepatology Days meets for the 25th time in 2026.">Gastroenteroloji ve hepatoloji, Prof. Dr. Filiz Akyüz başkanlığında tek bir bilim dalı olarak endoskopi ünitesi, karaciğer ve İBH poliklinikleri ve araştırma grubuyla çalışıyor. Her yıl düzenlenen Çapa Gastroenterohepatoloji Günleri 2026'da 25. kez toplanıyor.</span></li>
+          <li><b data-en="Today">Bugün</b><span data-en="Gastroenterology and hepatology work as one division under Prof. Dr. Filiz Akyüz, with an endoscopy unit; liver, liver transplant, IBD, and Wilson and rare disease clinics; and a research group. The annual Çapa Gastroenterohepatology Days meets for the 25th time in 2026.">Gastroenteroloji ve hepatoloji, Prof. Dr. Filiz Akyüz başkanlığında tek bir bilim dalı olarak endoskopi ünitesi; karaciğer, karaciğer nakli, İBH, Wilson ve nadir hastalıklar poliklinikleri ve araştırma grubuyla çalışıyor. Her yıl düzenlenen Çapa Gastroenterohepatoloji Günleri 2026'da 25. kez toplanıyor.</span></li>
         </ul>
         <p class="source"><span data-en="Source:">Kaynak:</span> <a href="https://www.turkjgastroenterol.org/index.php/tjg/article/view/634/592" target="_blank" rel="noopener">Sezer R. İstanbul'da gastroenterolojinin kuruluşu ve gelişimi. Turk J Gastroenterol.</a></p>
       </div>
@@ -862,7 +867,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
         Endoskopi ünitesi, Fujifilm yüksek çözünürlüklü sistemlerle hafta içi her gün tanısal ve terapötik işlemler gerçekleştirir. Ünite hem bir klinik hizmet birimi hem de bilim dalının görüntü ve raporlama araştırmalarının ana veri kaynağıdır.
       </p>
     </div>
-    <div class="cols">
+    <div class="cols cols-4">
       <div class="block">
         <h3 data-en="Diagnostic">Tanısal</h3>
         <ul>
@@ -874,20 +879,35 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
         </ul>
       </div>
       <div class="block">
-        <h3 data-en="Therapeutic">Terapötik</h3>
+        <h3 data-en="Pancreaticobiliary and EUS">Pankreatikobiliyer ve EUS</h3>
         <ul>
-          <li data-en="ERCP and biliary stenting">ERCP ve biliyer stentleme</li>
-          <li data-en="Endoscopic ultrasound (EUS) and EUS-guided sampling">Endoskopik ultrasonografi (EUS) ve EUS eşliğinde örnekleme</li>
-          <li data-en="Polypectomy, EMR and ESD">Polipektomi, EMR ve ESD</li>
-          <li data-en="Variceal band ligation, dilatation, PEG">Varis bant ligasyonu, dilatasyon, PEG</li>
+          <li data-en="ERCP, stone extraction and biliary stenting">ERCP, taş çıkarma ve biliyer stentleme</li>
+          <li data-en="Single-operator cholangioscopy (SpyGlass) and lithotripsy">Tek operatörlü kolanjiyoskopi (SpyGlass) ve taş kırma</li>
+          <li data-en="Endoscopic ultrasound with fine-needle aspiration and biopsy (FNA, FNB)">Endoskopik ultrasonografi, ince iğne aspirasyonu ve biyopsisi (FNA, FNB)</li>
+          <li data-en="EUS-guided drainage of pseudocysts and walled-off necrosis (LAMS)">Psödokist ve duvarlı nekrozun EUS eşliğinde drenajı (LAMS)</li>
+          <li data-en="EUS-guided coeliac plexus block">EUS eşliğinde çölyak pleksus bloğu</li>
         </ul>
       </div>
       <div class="block">
-        <h3 data-en="Liver">Karaciğer</h3>
+        <h3 data-en="Luminal therapy">Lüminal tedavi</h3>
+        <ul>
+          <li data-en="Polypectomy, EMR and ESD">Polipektomi, EMR ve ESD</li>
+          <li data-en="POEM and pneumatic dilatation for achalasia">Akalazyada POEM ve pnömatik dilatasyon</li>
+          <li data-en="Radiofrequency ablation of Barrett's oesophagus">Barrett özofagusunda radyofrekans ablasyon</li>
+          <li data-en="Endoscopic haemostasis: clips, argon plasma coagulation, injection, haemostatic powder">Endoskopik hemostaz: klips, argon plazma koagülasyonu, enjeksiyon, hemostatik toz</li>
+          <li data-en="Variceal band ligation and cyanoacrylate injection for gastric varices">Varis bant ligasyonu, gastrik varislere siyanoakrilat enjeksiyonu</li>
+          <li data-en="Oesophageal, duodenal and colonic stents; dilatation; PEG; foreign body removal">Özofagus, duodenum ve kolon stentleri; dilatasyon; PEG; yabancı cisim çıkarma</li>
+        </ul>
+      </div>
+      <div class="block">
+        <h3 data-en="Liver and IBD">Karaciğer ve İBH</h3>
         <ul>
           <li data-en="Transient elastography (FibroScan) with CAP">Transient elastografi (FibroScan) ve CAP</li>
-          <li data-en="Liver biopsy">Karaciğer biyopsisi</li>
+          <li data-en="Shear-wave elastography of the liver and spleen">Karaciğer ve dalak shear-wave elastografisi</li>
+          <li data-en="Liver biopsy; diagnostic and therapeutic paracentesis">Karaciğer biyopsisi; tanısal ve terapötik parasentez</li>
           <li data-en="Hepatocellular carcinoma surveillance programme">Hepatosellüler karsinom tarama programı</li>
+          <li data-en="Intestinal ultrasound for IBD follow-up">İBH izleminde bağırsak ultrasonografisi</li>
+          <li data-en="Biologic therapy unit: infusions and drug-level monitoring for IBD">Biyolojik tedavi ünitesi: İBH infüzyonları ve ilaç düzeyi izlemi</li>
         </ul>
       </div>
     </div>
