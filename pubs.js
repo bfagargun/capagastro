@@ -1494,7 +1494,7 @@ const PUBS_ALL = [
 {
 "pmid": "41201977",
 "doi": "10.1159/000549412",
-"title": "Interaction Effect of <italic>Helicobacter pylori</italic> Infection and Family History of Gastric Cancer on the Detection Age of Significant Gastric Precancerous Conditions",
+"title": "Interaction Effect of <i>Helicobacter pylori</i> Infection and Family History of Gastric Cancer on the Detection Age of Significant Gastric Precancerous Conditions",
 "journal": "Dig Dis",
 "year": 2025,
 "jif": 2.4,

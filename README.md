@@ -1,33 +1,49 @@
 # Çapa Gastroenterohepatoloji web sitesi
 
-Tek dosyalık, bağımlılıksız bir site: `index.html`. Sunucu, derleme veya paket gerekmez.
+İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı'nın sitesi. Derleme veya paket gerektirmez; dosyalar olduğu gibi GitHub Pages'te yayınlanır.
 
-## Yayınlama (GitHub Pages)
+Canlı adres: https://besimagargun.com/capagastro/ (İngilizce için `?lang=en` ekleyin)
 
-1. GitHub'da yeni bir depo açın, örneğin `capagastro`.
-2. `index.html`, `yayinlar.html`, `pubs.js` ve `.nojekyll` dosyalarını depo köküne yükleyin.
-3. Settings > Pages > Build and deployment: Source = "Deploy from a branch", Branch = `main`, klasör = `/ (root)`.
-4. Birkaç dakika sonra site `https://<kullanıcı>.github.io/capagastro/` adresinde yayında olur.
+## Dosyalar
 
-## Özel alan adı (örn. capagastro.org)
-
-1. Depo köküne içinde yalnızca `capagastro.org` yazan `CNAME` adlı bir dosya koyun.
-2. Alan adı sağlayıcısında DNS kayıtları:
-   - `A` kayıtları (kök alan adı): 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153
-   - `CNAME` kaydı: `www` -> `<kullanıcı>.github.io`
-3. Settings > Pages > Custom domain alanına alan adını yazıp "Enforce HTTPS" kutusunu işaretleyin.
+| Dosya | İçerik |
+|---|---|
+| `index.html` | Ana sayfa (Türkçe ve İngilizce) |
+| `yayinlar.html` | Tüm yayınlar; kişiye, türe ve metne göre filtre |
+| `pubs.js` | PubMed'den derlenen yayın verisi (`PUBS_ALL`) |
+| `404.html` | Bulunamayan sayfalar için |
+| `og.png` | Bağlantı paylaşıldığında görünen görsel (1200x630) |
+| `apple-touch-icon.png` | Telefon ana ekranı simgesi |
+| `.nojekyll` | GitHub Pages'in dosyaları işlememesi için |
 
 ## İçerik güncelleme
 
-Tüm içerik `index.html` dosyasının sonundaki `<script>` bölümünde, "İÇERİK VERİLERİ" başlığı altındadır:
+Ana sayfadaki değişken içerik `index.html` dosyasının sonundaki `<script>` bölümünde, "İÇERİK VERİLERİ" başlığı altındadır. Her öğenin Türkçesi `tr`, İngilizcesi `en` alanındadır.
 
-- `FACTS`: üst şerit sayıları (değeri boş bırakılan madde gizlenir)
-- `PROJECTS`: araştırma projeleri (`status`: `on`, `pub`, `plan`)
-- `TEAM`: ekip; `avesis` numarası varsa fotoğraf AVESİS'ten çekilir, yoksa `img/<user>.jpg` aranır
-- Yayınlar `pubs.js` dosyasındadır (PubMed'den derlenmiş; `jif` alanı yaklaşık dergi etki faktörü, sıralama için). `yayinlar.html` tam listeyi, ana sayfa ilk 12'yi gösterir.
+- `PROJECTS`: araştırma projeleri. `status`: `on` (sürüyor), `pub` (yayımlandı), `plan` (planlama). `link`: yayın adresi.
+- `TEAM`: öğretim üyeleri ve yan dal asistanları. `photo`: fotoğraf adresi, `user`: profil.istanbul.edu.tr kullanıcı adı, `orcid`: ORCID numarası, `pi: true`: sorumlu araştırmacı etiketi.
+- `ALUMNI`: mezunlar. `years`: yan dal eğitim yılları (ör. `"2023-2026"`), `now` / `nowEn`: bugünkü kurum. Boş alanlar gösterilmez; liste en yeni mezundan başlar.
+- `COLLAB`: iş birliği yapılan kurumlar.
+- `PI_PUBS`: sorumlu araştırmacı bölümündeki seçilmiş yayınların DOI listesi (`pubs.js` içinden çekilir).
+- `FACTS`: üst şerit sayıları. Değeri boş (`""`) bırakılan madde gizlenir; ekip, proje ve yayın sayıları kendiliğinden hesaplanır.
 
-Metin bölümlerinde her öğe Türkçe içeriği gövdede, İngilizce karşılığını `data-en` özniteliğinde taşır. Yeni bir cümle eklerken ikisini de yazın.
+Sabit metinlerde (başlıklar, paragraflar, sorumlu araştırmacı özgeçmişi) Türkçe metin öğenin içinde, İngilizcesi `data-en` özniteliğindedir. Yeni bir cümle eklerken ikisini de yazın. Sitede uzun ve kısa tire karakterleri ile şapkalı a kullanılmaz; aralıklarda kısa çizgi (-) kullanılır.
 
-## Fotoğraflar
+## Yayınlar
 
-`img/` klasörüne `filiz.akyuz.jpg`, `kadirdr.jpg` gibi kullanıcı adıyla kaydedin (kare, en az 300x300 px). AVESİS numarası bilinen kişilerde dosya gerekmez.
+`pubs.js` PubMed'den ekip üyelerinin adı ve İstanbul adresiyle derlendi, adaş yazarlar ayıklandı. Her kayıtta `jif` yaklaşık dergi etki faktörüdür ve yalnızca sıralama içindir. Yeni yayın eklemek için aynı biçimde bir satır ekleyin; liste etki faktörüne göre kendiliğinden sıralanır.
+
+## Dil
+
+Sayfa, tarayıcı dili Türkçe ise Türkçe, değilse İngilizce açılır. `?lang=en` veya `?lang=tr` bu seçimi zorlar; ziyaretçinin düğmeyle yaptığı seçim tarayıcıda hatırlanır.
+
+## Yayınlama
+
+Depo: github.com/bfagargun/capagastro, dal `main`, klasör `/ (root)`. Dosyalar depoya gönderildikten birkaç dakika sonra canlıya yansır.
+
+## Özel alan adı (ör. capagastro.org)
+
+1. Depo köküne içinde yalnızca alan adı yazan `CNAME` dosyası koyun.
+2. Alan adı sağlayıcısında: kök için `A` kayıtları 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153; `www` için `CNAME` kaydı `bfagargun.github.io`.
+3. Settings > Pages > Custom domain alanına alan adını yazıp "Enforce HTTPS" kutusunu işaretleyin.
+4. `index.html` ve `yayinlar.html` içindeki `canonical`, `og:url` ve `og:image` adreslerini, `404.html` içindeki `/capagastro/` bağlantılarını yeni adrese göre güncelleyin.
