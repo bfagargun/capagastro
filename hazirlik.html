@@ -83,7 +83,6 @@ input[type=date],input[type=time]{width:100%;font:inherit;font-size:1rem;color:v
 input[type=date]:focus,input[type=time]:focus{border-color:var(--teal)}
 .opt{display:flex;gap:.7rem;align-items:flex-start;padding:.6rem .7rem;border:1px solid var(--line);border-radius:8px;margin-bottom:.45rem;background:var(--paper);cursor:pointer}
 .opt:has(input:checked){border-color:var(--teal);box-shadow:inset 0 0 0 1px var(--teal)}
-.opt[hidden]{display:none}
 .opt input{margin:.3rem 0 0;width:1.1rem;height:1.1rem;accent-color:var(--teal);flex-shrink:0}
 .opt b{display:block;font-weight:600;line-height:1.35}
 .opt small{display:block;color:var(--ink-2);font-size:.82rem;line-height:1.4}
@@ -201,18 +200,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
       <fieldset>
         <legend><span class="n">2</span><span data-i="l2">Size verilen solüsyon</span></legend>
         <div id="sols"></div>
-        <p class="hint" data-i="h2hint">Emin değilseniz ilacın kutusuna bakın; ürün listede yoksa son seçeneği işaretleyin.</p>
+        <p class="hint" data-i="h2hint">Emin değilseniz ünitenin verdiği hazırlık kağıdına veya ilacın kutusuna bakın.</p>
       </fieldset>
 
       <fieldset>
-        <legend><span class="n">3</span><span data-i="l3">Hazırlık düzeni</span></legend>
-        <label class="opt"><input type="radio" name="reg" value="split" checked><span><b data-i="regSplit">Bölünmüş doz (önerilen)</b><small data-i="regSplitS">İlk yarısı bir gün önce akşam, ikinci yarısı işlem sabahı.</small></span></label>
-        <label class="opt" id="reg-same"><input type="radio" name="reg" value="same"><span><b data-i="regSame">Tamamı işlem günü sabahı</b><small data-i="regSameS">Yalnızca öğleden sonra randevuları için; iki doz da aynı sabah.</small></span></label>
-        <p class="hint" id="reghint"></p>
-      </fieldset>
-
-      <fieldset>
-        <legend><span class="n">4</span><span data-i="l4">Sizinle ilgili durumlar</span></legend>
+        <legend><span class="n">3</span><span data-i="l4">Sizinle ilgili durumlar</span></legend>
         <label class="opt"><input type="checkbox" name="f" value="ac"><span><b data-i="fAc">Kan sulandırıcı kullanıyorum</b><small data-i="fAcS">Varfarin, apiksaban, rivaroksaban, dabigatran, klopidogrel, tikagrelor ve benzerleri.</small></span></label>
         <label class="opt"><input type="checkbox" name="f" value="dm"><span><b data-i="fDm">Şeker hastalığı ilacı veya insülin kullanıyorum</b></span></label>
         <label class="opt"><input type="checkbox" name="f" value="fe"><span><b data-i="fFe">Demir hapı kullanıyorum</b></span></label>
@@ -269,19 +261,24 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 <script>
 /* ==PURE== ---------------------------------------------------------------
    HAZIRLIK PROTOKOLLERİ. Ünitenin uygulamasına göre bu bölümü düzenleyin.
-   mode "liquid": iki sıvı doz (bölünmüş doz veya öğleden sonra randevularında aynı sabah);
-     d1 / d2 dozların dakika cinsinden süresi, how içme talimatı.
-   mode "xm": bir gün önce akşam iki şişe X-M Diet (dose1Hour, dose2Hour) ve işlem sabahı lavmanlar
-     (enemaBefore: her lavmanın randevudan kaç dakika önce uygulanacağı); how1, how2, enemas hasta metinleri.
+   Üç hazırlıkta da solüsyonun tamamı bir gün önce akşam içilir: dose1Hour ve dose2Hour
+   iki dozun saati, d1 / d2 her dozun dakika cinsinden süresi (takvim etkinliği için).
+   t1 / t2 adım başlıkları, how1 / how2 hasta metinleri; tips: true ise bulantı ve içme
+   ipuçları eklenir. enemaBefore: işlem sabahı lavmanların randevudan kaç dakika önce
+   uygulanacağı (yalnızca X-M); enemaTitles ve enemas lavman metinleri.
    rkWarn: böbrek veya kalp yetmezliği işaretlenirse uyarı göster. warn: ürüne özel bilgi notu.
    ---------------------------------------------------------------------- */
 const PROTOCOLS = [
-  { id: "pegdin", mode: "liquid", d1: 90, d2: 90,
-    tr: { name: "Pegdin", brands: "PEG solüsyonu: 1 poşet, iki ayrı 1,5 litrelik şişede",
-          how: "Poşeti ikiye bölüp her yarısını 1,5 litre suda eriterek iki şişe hazırlayın ve buzdolabında soğutun (48 saate kadar saklanabilir). Her şişe bir doz: her 10 dakikada bir su bardağı (240 mL) olacak şekilde yaklaşık 1 saatte bitirin; ardından en az yarım litre (2 bardak) su için. Hazırlık boyunca solüsyona ek olarak toplam en az 1 litre su içmeniz gerekir." },
-    en: { name: "Pegdin", brands: "PEG solution: 1 sachet split into two 1.5-litre bottles",
-          how: "Divide the sachet in two and dissolve each half in 1.5 litres of water to make two bottles; chill them (they keep up to 48 hours in the fridge). Each bottle is one dose: one glass (240 mL) every 10 minutes, finished in about 1 hour; then drink at least half a litre (2 glasses) of water. Over the whole preparation you need at least 1 extra litre of water on top of the solution." } },
-  { id: "xm", mode: "xm", dose1Hour: 16, dose2Hour: 20, enemaBefore: [180, 120], rkWarn: true,
+  { id: "pegdin", dose1Hour: 17, dose2Hour: 20, d1: 90, d2: 90, tips: true,
+    tr: { name: "Pegdin", brands: "PEG solüsyonu: 1 poşet, iki ayrı 1,5 litrelik şişede; tamamı bir gün önce akşam",
+          t1: "Pegdin, 1. şişe", t2: "Pegdin, 2. şişe",
+          how1: "Poşeti ikiye bölüp her yarısını 1,5 litre suda eriterek iki şişe hazırlayın ve soğutun. Birinci şişeyi her 10 dakikada bir su bardağı (240 mL) olacak şekilde yaklaşık 1 saatte bitirin; ardından en az yarım litre (2 bardak) su için.",
+          how2: "İkinci şişeyi aynı şekilde yaklaşık 1 saatte bitirin; ardından yine en az yarım litre su için. Solüsyona ek olarak toplam en az 1 litre su içmiş olmalısınız. Yatmadan önce dışkınız açık sarı, berrak bir sıvı haline gelmeli." },
+    en: { name: "Pegdin", brands: "PEG solution: 1 sachet split into two 1.5-litre bottles; all of it the evening before",
+          t1: "Pegdin, bottle 1", t2: "Pegdin, bottle 2",
+          how1: "Divide the sachet in two, dissolve each half in 1.5 litres of water to make two bottles and chill them. Drink the first bottle one glass (240 mL) every 10 minutes, finishing in about 1 hour; then drink at least half a litre (2 glasses) of water.",
+          how2: "Drink the second bottle the same way in about 1 hour; then again at least half a litre of water. In total you should drink at least 1 extra litre of water on top of the solution. By bedtime your stool should be a clear, pale yellow liquid." } },
+  { id: "xm", dose1Hour: 17, dose2Hour: 20, d1: 15, d2: 15, enemaBefore: [180, 120], rkWarn: true,
     tr: { name: "X-M Diet + B.T. Enema", brands: "2 şişe X-M Diet oral süspansiyon bir gün önce akşam, 2 adet B.T. Enema lavman işlem sabahı",
           t1: "X-M Diet, 1. şişe", t2: "X-M Diet, 2. şişe", enemaTitles: ["1. B.T. Enema lavman", "2. B.T. Enema lavman"],
           how1: "Şişeyi iyice çalkalayıp tamamını (250 mL) için; ardından 2 saat içinde en az 1 litre su veya berrak sıvı için. Etkisi genellikle 5-6 saat sonra başlar.",
@@ -296,18 +293,22 @@ const PROTOCOLS = [
           enemas: ["B.T. Enema (135 mL): lie on your left side with your knees drawn up; insert the nozzle gently into the rectum and squeeze the bottle until nearly empty. Hold for 5-10 minutes, then go to the toilet.",
                    "Apply the second enema the same way and finish before leaving home. After this your stool should be a clear, yellow liquid; if it is still dark or contains particles, tell us when you arrive."],
           warn: "B.T. Enema can upset salt balance in kidney failure, heart failure, dehydration and older age. If any of these applies to you, call the unit before using it." } },
-  { id: "pico", mode: "liquid", d1: 120, d2: 120, rkWarn: true,
-    tr: { name: "Picoprep veya CitraFleet", brands: "Sodyum pikosülfat + magnezyum sitrat: 2 poşet",
-          how: "Her doz: 1 poşeti 150 mL suda 2-3 dakika karıştırıp için (karışım ısınabilir). Ardından 2 saat boyunca her 15 dakikada bir bardak olacak şekilde en az 1,5-2 litre berrak sıvı için.",
+  { id: "pico", dose1Hour: 17, dose2Hour: 21, d1: 120, d2: 120, tips: true, rkWarn: true,
+    tr: { name: "Picoprep veya CitraFleet", brands: "Sodyum pikosülfat + magnezyum sitrat: 2 poşet, ikisi de bir gün önce akşam",
+          t1: "1. poşet", t2: "2. poşet",
+          how1: "1 poşeti 150 mL suda 2-3 dakika karıştırıp için (karışım ısınabilir). Ardından 2 saat boyunca her 15 dakikada bir bardak olacak şekilde en az 1,5-2 litre berrak sıvı için.",
+          how2: "İkinci poşeti aynı şekilde 150 mL suda karıştırıp için; ardından yatana kadar en az 1,5 litre daha berrak sıvı için. Dışkınız açık sarı, berrak bir sıvı haline gelmeli.",
           warn: "Bu ürün böbrek yetmezliği, kalp yetmezliği veya ileri yaşta sıvı ve tuz dengesini bozabilir. Bu durumlardan biri sizde varsa üniteyi önceden arayın." },
-    en: { name: "Picoprep or CitraFleet", brands: "Sodium picosulfate + magnesium citrate: 2 sachets",
-          how: "Each dose: stir 1 sachet into 150 mL of water for 2-3 minutes and drink it (the mixture may warm up). Then drink at least 1.5-2 litres of clear fluid over 2 hours, one glass every 15 minutes.",
+    en: { name: "Picoprep or CitraFleet", brands: "Sodium picosulfate + magnesium citrate: 2 sachets, both the evening before",
+          t1: "Sachet 1", t2: "Sachet 2",
+          how1: "Stir 1 sachet into 150 mL of water for 2-3 minutes and drink it (the mixture may warm up). Then drink at least 1.5-2 litres of clear fluid over 2 hours, one glass every 15 minutes.",
+          how2: "Stir the second sachet into 150 mL of water the same way and drink it; then drink at least another 1.5 litres of clear fluid until bedtime. Your stool should become a clear, pale yellow liquid.",
           warn: "In kidney failure, heart failure or older age this product can upset fluid and salt balance. If any of these applies to you, call the unit beforehand." } }
 ];
 
-/* Zamanlama kuralları (dakika). Bölünmüş dozda ikinci doz randevudan GAP_END dakika önce
-   bitecek şekilde geriye doğru hesaplanır; ağızdan alım randevudan STOP dakika önce kesilir. */
-const RULES = { dose1Hour: 18, gapEnd: 180, stop: 120, arrive: 30, sameDayGap: 30, ironDays: 7, dietDays: 3, dietDaysConstipation: 5 };
+/* Zamanlama kuralları (dakika). Ağızdan alım randevudan STOP dakika önce kesilir; sabah berrak sıvı
+   hatırlatması randevudan MORNING dakika önce; üniteye varış ARRIVE dakika önce. */
+const RULES = { stop: 120, morning: 180, arrive: 30, ironDays: 7, dietDays: 3, dietDaysConstipation: 5 };
 
 const T = {
   tr: {
@@ -316,13 +317,8 @@ const T = {
     intro: "Randevu saatinizi ve size verilen solüsyonu seçin; hangi gün ne yiyeceğinizi ve solüsyonu saat kaçta içeceğinizi gösteren kişisel bir plan hazırlansın. Planı telefonunuzun takvimine ekleyebilir, bir yakınınızla paylaşabilir ya da yazdırabilirsiniz.",
     privacy: "Bu sayfa hiçbir bilgiyi kaydetmez ve göndermez; plan yalnızca sizin tarayıcınızda hesaplanır. Adınız veya kimlik bilgileriniz sorulmaz.",
     l1: "Randevu tarihi ve saati", date: "Tarih", time: "Saat", h1hint: "Randevu kağıdınızdaki saati yazın.",
-    l2: "Size verilen solüsyon", h2hint: "Emin değilseniz ilacın kutusuna bakın; ürün listede yoksa son seçeneği işaretleyin.",
-    l3: "Hazırlık düzeni", regSplit: "Bölünmüş doz (önerilen)", regSplitS: "İlk yarısı bir gün önce akşam, ikinci yarısı işlem sabahı.",
-    regSame: "Tamamı işlem günü sabahı", regSameS: "Yalnızca öğleden sonra randevuları için; iki doz da aynı sabah.",
-    regHintPm: "Randevunuz öğleden sonra: isterseniz hazırlığın tamamını aynı sabah alabilirsiniz; her iki düzen de uygundur.",
-    regHintAm: "Sabah randevularında bölünmüş doz gerekir.",
-    regHintXm: "X-M Diet şişeleri bir gün önce akşam içilir; işlem sabahı yalnızca lavmanlar uygulanır.",
-    ruleXm: "Lavmanlar işlemden 3 ve 2 saat önce, ağızdan alım işlemden 2 saat önce kesilecek şekilde planlandı. Ünite size farklı bir saat verdiyse ünitenin dediğine uyun.",
+    l2: "Size verilen solüsyon", h2hint: "Emin değilseniz ünitenin verdiği hazırlık kağıdına veya ilacın kutusuna bakın.",
+    ruleXm: "X-M Diet şişeleri bir gün önce akşam içilir; lavmanlar işlemden 3 ve 2 saat önce uygulanır, ağızdan alım işlemden 2 saat önce kesilir. Ünite size farklı bir saat verdiyse ünitenin dediğine uyun.",
     l4: "Sizinle ilgili durumlar",
     fAc: "Kan sulandırıcı kullanıyorum", fAcS: "Varfarin, apiksaban, rivaroksaban, dabigatran, klopidogrel, tikagrelor ve benzerleri.",
     fDm: "Şeker hastalığı ilacı veya insülin kullanıyorum", fFe: "Demir hapı kullanıyorum",
@@ -334,7 +330,7 @@ const T = {
     copied: "Plan metni kopyalandı", linkCopied: "Bağlantı kopyalandı", calDone: "Takvim dosyası indirildi; açınca etkinlikler takviminize eklenir",
     procDay: "İşlem günü", dayBefore: "1 gün önce", daysBefore: n => n + " gün önce",
     tt: { date: "Tüm gün" },
-    rule: "İkinci doz, randevudan en az 2 saat önce bitecek ve işlemle arasında 4 saatten uzun süre kalmayacak şekilde hesaplandı; bu aralık hem güvenli sedasyon hem de temiz bir bağırsak için gereklidir. Ünite size farklı bir saat verdiyse ünitenin dediğine uyun.",
+    rule: "Solüsyonun tamamı bir gün önce akşam, yatmadan önce bitecek şekilde içilir; işlem sabahı yalnızca berrak sıvı alınır ve randevudan 2 saat önce kesilir. Ünite size farklı bir saat verdiyse ünitenin dediğine uyun.",
     steps: {
       fe: ["Demir haplarına ara verin", "Demir bağırsak duvarını koyu renge boyar ve görüşü bozar. Reçeteyi yazan hekiminize danışarak bugünden itibaren almayın; işlemden sonra kaldığınız yerden devam edebilirsiniz."],
       ac: ["Kan sulandırıcı planınızı netleştirin", "Kan sulandırıcıya kendi kararınızla ara vermeyin. Reçeteyi yazan hekiminizle konuşun ve endoskopi ünitesini arayarak hangi ilacı, hangi dozda kullandığınızı bildirin: 0212 414 20 00, dahili 30960."],
@@ -345,11 +341,9 @@ const T = {
       dietCn: "Kabızlık nedeniyle diyete 5 gün önceden başlıyorsunuz. Hazırlığın yeterli olmayabileceğini randevu alırken üniteye söyleyin; ek laksatif önerilebilir.",
       breakfast: ["Hafif bir kahvaltı yapın", "Beyaz ekmek, peynir, yumurta veya yoğurt gibi posasız bir kahvaltı. Bu, işlemden önceki son katı öğününüz."],
       clear: ["Bundan sonra yalnızca berrak sıvı", "Su, açık çay, süzülmüş çorba suyu, elma suyu, berrak limonata, maden suyu, sade jelatinli tatlı. Süt, posalı meyve suyu ve kırmızı-mor renkli içecek yok. Gün boyu sık sık için; susuz kalmak hazırlığı zorlaştırır."],
-      lowDay: ["Tüm gün posasız beslenin", "Akşam yemeğinizi 20.00'den önce bitirin; sonrasında sabaha kadar yalnızca berrak sıvı için."],
-      dose1: ["1. doz", ""], dose2: ["2. doz", ""],
+      morning: ["Sabah: berrak sıvı içebilirsiniz", "Kalkınca 1-2 bardak su veya açık çay için; susuz kalmak işlemi ve sedasyonu zorlaştırır. Katı gıda almayın."],
       dose1Note: "Her bardaktan sonra isterseniz biraz dinlenin. Bulantı olursa 20-30 dakika ara verip yavaşça devam edin. Solüsyonu soğuk içmek ve pipet kullanmak yardımcı olur.",
       dose2Note: "Bu doz bittiğinde dışkınız açık sarı, berrak bir sıvı haline gelmiş olmalı. Hala koyu veya parçacıklı ise üniteye geldiğinizde söyleyin.",
-      dose1Flex: "18.00 ile 20.00 arasında başlayabilirsiniz; yeter ki belirtilen sürede bitirin.",
       fluidsEve: ["Berrak sıvı içmeye devam edin", "Yatana kadar her saat 1-2 bardak berrak sıvı için."],
       stop: ["Son berrak sıvı; bundan sonra ağızdan hiçbir şey", "Sabah ilaçlarınızı (tansiyon, kalp, tiroid, epilepsi, psikiyatri) bu saatten önce bir yudum suyla alın. Şeker ilaçlarını ve insülini hekiminizin verdiği plana göre uygulayın, aç karnına kendi başınıza almayın."],
       arrive: ["Endoskopi ünitesine gelin", "Kimlik, randevu kağıdı, ilaç listeniz ve önceki raporlarınızla gelin. İstanbul Tıp Fakültesi Ek Poliklinikler Binası, dahili 30960."],
@@ -358,9 +352,6 @@ const T = {
       after: ["İşlem sonrası 24 saat", "Araç kullanmayın, alkol almayın, önemli karar veya imza gerektiren iş yapmayın. Hafif şişkinlik ve gaz normaldir; şiddetli karın ağrısı, ateş veya bol kanama olursa acile başvurun."]
     },
     warn: {
-      early: "Randevunuz erken saatte olduğu için ikinci doza gece başlamanız gerekiyor. Bu saat sizin için uygun değilse üniteye danışın; randevunuz ilerletilebilir.",
-      sameLate: "Bu randevu saati için hazırlığın tamamını aynı sabah almak sabah 5'ten önce başlamayı gerektiriyor. Bölünmüş dozu seçmenizi öneririz.",
-      sameAm: "Sabah randevularında hazırlığın tamamı aynı gün alınamaz; plan bölünmüş doza göre hazırlandı.",
       productRk: "Seçtiğiniz hazırlık böbrek veya kalp yetmezliğinde uygun olmayabilir. Hazırlığa başlamadan üniteyi arayın.",
       past: "Girdiğiniz randevu tarihi geçmişte. Tarihi kontrol edin."
     },
@@ -395,13 +386,8 @@ const T = {
     intro: "Enter your appointment time and the solution you were given, and get a personal plan showing what to eat on which day and when to drink each dose. Add it to your phone's calendar, share it with a relative or print it.",
     privacy: "This page stores and sends nothing; the plan is calculated in your own browser only. Your name or ID is never asked.",
     l1: "Appointment date and time", date: "Date", time: "Time", h1hint: "Use the time written on your appointment slip.",
-    l2: "The solution you were given", h2hint: "If unsure, check the box of the product; if it is not listed, choose the last option.",
-    l3: "Schedule", regSplit: "Split dose (recommended)", regSplitS: "First half the evening before, second half on the morning of the procedure.",
-    regSame: "All on the morning of the procedure", regSameS: "Afternoon appointments only; both doses the same morning.",
-    regHintPm: "Your appointment is in the afternoon: you may take the whole preparation that morning if you prefer; both schedules are suitable.",
-    regHintAm: "Morning appointments require the split-dose schedule.",
-    regHintXm: "The X-M Diet bottles are taken the evening before; on the morning of the procedure only the enemas are used.",
-    ruleXm: "The enemas are timed 3 and 2 hours before the procedure, and everything by mouth stops 2 hours before. If the unit gave you a different time, follow the unit.",
+    l2: "The solution you were given", h2hint: "If unsure, check the preparation sheet the unit gave you or the box of the product.",
+    ruleXm: "The X-M Diet bottles are taken the evening before; the enemas are timed 3 and 2 hours before the procedure, and everything by mouth stops 2 hours before. If the unit gave you a different time, follow the unit.",
     l4: "Things that apply to you",
     fAc: "I take a blood thinner", fAcS: "Warfarin, apixaban, rivaroxaban, dabigatran, clopidogrel, ticagrelor and similar.",
     fDm: "I take diabetes medication or insulin", fFe: "I take iron tablets",
@@ -413,7 +399,7 @@ const T = {
     copied: "Plan text copied", linkCopied: "Link copied", calDone: "Calendar file downloaded; open it to add the events to your calendar",
     procDay: "Procedure day", dayBefore: "1 day before", daysBefore: n => n + " days before",
     tt: { date: "All day" },
-    rule: "The second dose is timed to finish at least 2 hours before your appointment and no more than 4 hours before the procedure; this window is needed both for safe sedation and for a clean bowel. If the unit gave you a different time, follow the unit.",
+    rule: "All of the solution is taken the evening before, finishing before bedtime; on the morning of the procedure only clear fluids are allowed, stopping 2 hours before your appointment. If the unit gave you a different time, follow the unit.",
     steps: {
       fe: ["Pause iron tablets", "Iron stains the bowel wall dark and spoils the view. With your prescribing doctor's agreement, stop them from today; you can resume after the procedure."],
       ac: ["Sort out your blood-thinner plan", "Never pause a blood thinner on your own. Talk to the doctor who prescribed it and call the endoscopy unit to say which drug and dose you use: +90 212 414 20 00, ext. 30960."],
@@ -424,11 +410,9 @@ const T = {
       dietCn: "Because of constipation you start the diet 5 days ahead. Tell the unit when booking that your preparation may be insufficient; an extra laxative may be advised.",
       breakfast: ["Have a light breakfast", "A low-residue breakfast such as white bread, cheese, egg or yoghurt. This is your last solid meal before the procedure."],
       clear: ["Clear fluids only from now on", "Water, weak tea, strained broth, apple juice, clear lemonade, sparkling water, plain jelly. No milk, no pulpy juice, no red or purple drinks. Drink often through the day; dehydration makes the preparation harder."],
-      lowDay: ["Low-residue food all day", "Finish dinner before 20:00; after that only clear fluids until the morning."],
-      dose1: ["Dose 1", ""], dose2: ["Dose 2", ""],
+      morning: ["Morning: clear fluids allowed", "Drink 1-2 glasses of water or weak tea when you get up; dehydration makes the procedure and sedation harder. No solid food."],
       dose1Note: "Rest a little after each glass if you like. If you feel sick, pause for 20-30 minutes and then continue slowly. Drinking it cold and using a straw helps.",
       dose2Note: "By the end of this dose your stool should be a clear, pale yellow liquid. If it is still dark or contains particles, tell us when you arrive.",
-      dose1Flex: "You may start any time between 18:00 and 20:00, as long as you finish within the stated time.",
       fluidsEve: ["Keep drinking clear fluids", "Drink 1-2 glasses of clear fluid every hour until bedtime."],
       stop: ["Last clear fluid; nothing by mouth after this", "Take your morning medication (blood pressure, heart, thyroid, epilepsy, psychiatric) before this time with a sip of water. Follow your doctor's plan for diabetes tablets and insulin; do not take them on an empty stomach on your own."],
       arrive: ["Arrive at the endoscopy unit", "Bring your ID, appointment slip, medication list and previous reports. Istanbul Faculty of Medicine, Outpatient Annex Building, ext. 30960."],
@@ -437,9 +421,6 @@ const T = {
       after: ["The 24 hours after the procedure", "Do not drive, drink alcohol or make important decisions or sign documents. Mild bloating and wind are normal; go to an emergency department for severe abdominal pain, fever or heavy bleeding."]
     },
     warn: {
-      early: "Because your appointment is early, the second dose starts during the night. If that is not workable for you, ask the unit; a later slot may be possible.",
-      sameLate: "For this appointment time, taking the whole preparation the same morning would mean starting before 5 am. We recommend the split-dose schedule.",
-      sameAm: "For morning appointments the whole preparation cannot be taken the same day; the plan uses the split-dose schedule.",
       productRk: "The preparation you selected may not be suitable in kidney or heart failure. Call the unit before you start.",
       past: "The appointment date you entered is in the past. Please check it."
     },
@@ -481,7 +462,7 @@ function fmtDate(d, lang, withYear) {
 }
 function relLabel(offset, t) { return offset === 0 ? t.procDay : offset === -1 ? t.dayBefore : t.daysBefore(-offset); }
 
-/* Planı hesaplar. st: {date:"YYYY-MM-DD", time:"HH:MM", sol, reg, flags:Set}. DOM'a dokunmaz. */
+/* Planı hesaplar. st: {date:"YYYY-MM-DD", time:"HH:MM", sol, flags:Set}. DOM'a dokunmaz. */
 function buildPlan(st, lang) {
   const t = T[lang], S = t.steps, f = st.flags;
   const p = PROTOCOLS.find(x => x.id === st.sol) || PROTOCOLS[0], pt = p[lang];
@@ -489,9 +470,6 @@ function buildPlan(st, lang) {
   const A = new Date(y, mo - 1, da, hh, mi, 0, 0);
   const items = [], warnings = [], infos = [];
   const push = (at, timed, key, opts) => items.push(Object.assign({ at, timed, key }, opts || {}));
-  let reg = st.reg;
-  if (p.mode === "xm") reg = "split";
-  else if (reg === "same" && A.getHours() < 13) { reg = "split"; warnings.push(t.warn.sameAm); }
 
   const dietDays = f.has("cn") ? RULES.dietDaysConstipation : RULES.dietDays;
   if (f.has("fe")) push(atTime(A, -RULES.ironDays, 9), false, "fe", { title: S.fe[0], text: S.fe[1] });
@@ -501,33 +479,19 @@ function buildPlan(st, lang) {
   if (f.has("sed")) push(atTime(A, -dietDays, 9), false, "sedPrep", { title: S.sedPrep[0], text: S.sedPrep[1], soft: true });
   push(atTime(A, -dietDays, 8), false, "diet", { title: S.diet[0], text: S.diet[1] + (f.has("cn") ? " " + S.dietCn : ""), allDay: true, span: dietDays - 1 });
 
+  /* Bir gün önce: hafif kahvaltı, berrak sıvı, akşam iki doz */
+  push(atTime(A, -1, 8), true, "breakfast", { title: S.breakfast[0], text: S.breakfast[1] });
+  push(atTime(A, -1, 10), true, "clear", { title: S.clear[0], text: S.clear[1] });
+  const d1 = atTime(A, -1, p.dose1Hour), d2 = atTime(A, -1, p.dose2Hour);
+  push(d1, true, "dose1", { title: pt.t1, text: pt.how1 + (p.tips ? " " + S.dose1Note : ""), dose: true, dur: p.d1 });
+  push(d2, true, "dose2", { title: pt.t2, text: pt.how2 + (p.tips ? " " + S.dose2Note : ""), dose: true, dur: p.d2 });
+  const fe = addMin(d2, p.d2 + 30), feCap = atTime(A, -1, 22);
+  push(fe < feCap ? fe : feCap, true, "fluidsEve", { title: S.fluidsEve[0], text: S.fluidsEve[1], soft: true });
+
+  /* İşlem sabahı */
   const stopAt = addMin(A, -RULES.stop);
-  if (p.mode === "xm") {
-    push(atTime(A, -1, 8), true, "breakfast", { title: S.breakfast[0], text: S.breakfast[1] });
-    push(atTime(A, -1, 10), true, "clear", { title: S.clear[0], text: S.clear[1] });
-    const d1 = atTime(A, -1, p.dose1Hour), d2 = atTime(A, -1, p.dose2Hour);
-    push(d1, true, "dose1", { title: pt.t1, text: pt.how1, dose: true, dur: 15 });
-    push(d2, true, "dose2", { title: pt.t2, text: pt.how2, dose: true, dur: 15 });
-    push(addMin(d2, 60), true, "fluidsEve", { title: S.fluidsEve[0], text: S.fluidsEve[1], soft: true });
-    p.enemaBefore.forEach((m, i) => push(addMin(A, -m), true, "enema" + (i + 1), { title: pt.enemaTitles[i], text: pt.enemas[i], dose: true, dur: 15 }));
-  } else if (reg === "split") {
-    push(atTime(A, -1, 8), true, "breakfast", { title: S.breakfast[0], text: S.breakfast[1] });
-    push(atTime(A, -1, 10), true, "clear", { title: S.clear[0], text: S.clear[1] });
-    const d1 = atTime(A, -1, RULES.dose1Hour);
-    push(d1, true, "dose1", { title: S.dose1[0], text: pt.how + " " + S.dose1Note + " " + S.dose1Flex, dose: true, dur: p.d1 });
-    push(addMin(d1, p.d1 + 60), true, "fluidsEve", { title: S.fluidsEve[0], text: S.fluidsEve[1], soft: true });
-    const d2 = addMin(A, -(RULES.gapEnd + p.d2));
-    push(d2, true, "dose2", { title: S.dose2[0], text: pt.how + " " + S.dose2Note, dose: true, dur: p.d2 });
-    if ((d2.getHours() < 4 && dayDiff(d2, A) === 0) || dayDiff(d2, A) < 0) warnings.push(t.warn.early);
-    if (A.getHours() >= 13) infos.push(t.regHintPm);
-  } else {
-    push(atTime(A, -1, 8), false, "lowDay", { title: S.lowDay[0], text: S.lowDay[1], allDay: true });
-    const d2 = addMin(A, -(RULES.gapEnd + p.d2));
-    const d1 = addMin(d2, -(p.d1 + RULES.sameDayGap));
-    push(d1, true, "dose1", { title: S.dose1[0], text: pt.how + " " + S.dose1Note, dose: true, dur: p.d1 });
-    push(d2, true, "dose2", { title: S.dose2[0], text: pt.how + " " + S.dose2Note, dose: true, dur: p.d2 });
-    if (d1.getHours() < 5 || dayDiff(d1, A) < 0) warnings.push(t.warn.sameLate);
-  }
+  if (p.enemaBefore) p.enemaBefore.forEach((m, i) => push(addMin(A, -m), true, "enema" + (i + 1), { title: pt.enemaTitles[i], text: pt.enemas[i], dose: true, dur: 15 }));
+  else { const m8 = atTime(A, 0, 8), mLate = addMin(A, -RULES.morning); push(m8 < mLate ? m8 : mLate, true, "morning", { title: S.morning[0], text: S.morning[1], soft: true }); }
   push(stopAt, true, "stop", { title: S.stop[0], text: S.stop[1] });
   push(addMin(A, -RULES.arrive), true, "arrive", { title: S.arrive[0], text: S.arrive[1] + (f.has("sed") ? S.arriveSed : "") });
   push(A, true, "proc", { title: S.proc[0], text: S.proc[1], proc: true });
@@ -545,7 +509,7 @@ function buildPlan(st, lang) {
     d.items.push(it);
   });
   days.sort((a, b) => a.offset - b.offset);
-  return { appt: A, protocol: p, reg, days, warnings, infos };
+  return { appt: A, protocol: p, days, warnings, infos };
 }
 
 /* Düz metin (WhatsApp ve kopyalama için) */
@@ -607,15 +571,14 @@ function buildIcs(plan, lang) {
 function stateToQuery(st) {
   const q = new URLSearchParams();
   if (st.date && st.time) q.set("t", st.date + "T" + st.time);
-  q.set("s", st.sol); if (st.reg !== "split") q.set("r", st.reg);
+  q.set("s", st.sol);
   const fl = [...st.flags].join(","); if (fl) q.set("f", fl); else q.set("f", "-");
   return q.toString();
 }
 function queryToState(q) {
-  const st = { date: "", time: "", sol: PROTOCOLS[0].id, reg: "split", flags: new Set(["sed"]) };
+  const st = { date: "", time: "", sol: PROTOCOLS[0].id, flags: new Set(["sed"]) };
   const tt = q.get("t"); if (tt && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(tt)) { st.date = tt.slice(0, 10); st.time = tt.slice(11, 16); }
   const s = q.get("s"); if (s && PROTOCOLS.some(p => p.id === s)) st.sol = s;
-  if (q.get("r") === "same") st.reg = "same";
   const f = q.get("f"); if (f !== null) st.flags = new Set(f === "-" ? [] : f.split(",").filter(x => /^(ac|dm|fe|cn|rk|sed)$/.test(x)));
   return st;
 }
@@ -627,13 +590,11 @@ let plan = null;
 function readState() {
   return { date: $("date").value, time: $("time").value,
     sol: (document.querySelector("input[name=sol]:checked") || {}).value || PROTOCOLS[0].id,
-    reg: (document.querySelector("input[name=reg]:checked") || {}).value || "split",
     flags: new Set([...document.querySelectorAll("input[name=f]:checked")].map(x => x.value)) };
 }
 function writeState(st) {
   $("date").value = st.date; $("time").value = st.time;
   const s = document.querySelector('input[name=sol][value="' + st.sol + '"]'); if (s) s.checked = true;
-  document.querySelector('input[name=reg][value="' + st.reg + '"]').checked = true;
   document.querySelectorAll("input[name=f]").forEach(x => x.checked = st.flags.has(x.value));
 }
 function renderSols() {
@@ -644,11 +605,6 @@ function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
 
 function render() {
   const t = T[lang], st = readState();
-  const proto = PROTOCOLS.find(x => x.id === st.sol) || PROTOCOLS[0];
-  const xm = proto.mode === "xm";
-  $("reg-same").hidden = xm;
-  if (xm) document.querySelector("input[name=reg][value=split]").checked = true;
-  $("reghint").textContent = xm ? t.regHintXm : st.time ? (Number(st.time.slice(0, 2)) >= 13 ? t.regHintPm : t.regHintAm) : "";
   if (!st.date || !st.time) {
     plan = null;
     $("plan").innerHTML = `<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M8 14h3M13 14h3M8 17h3"/></svg><h2>${t.emptyH}</h2><p style="margin:0 auto">${t.emptyP}</p></div>`;
@@ -675,7 +631,7 @@ function render() {
       <button class="btn" type="button" id="b-print">${t.print}</button>
     </div>
     ${alerts}${days}
-    <p class="rule">${plan.protocol.mode === "xm" ? t.ruleXm : t.rule}</p>`;
+    <p class="rule">${plan.protocol.enemaBefore ? t.ruleXm : t.rule}</p>`;
   $("print-head").textContent = t.printTitle + ". " + t.printUnit;
   const url = location.href;
   $("b-wa").href = "https://wa.me/?text=" + encodeURIComponent(planText(plan, lang, url));
