@@ -11,6 +11,7 @@ Canlı adres: https://besimagargun.com/capagastro/ (İngilizce için `?lang=en` 
 | `index.html` | Ana sayfa (Türkçe ve İngilizce) |
 | `yayinlar.html` | Tüm yayınlar; kişiye, türe ve metne göre filtre |
 | `hazirlik.html` | Kolonoskopi hazırlık planlayıcı: randevu saati ve solüsyona göre saat saat plan; takvim (.ics), WhatsApp, yazdırma |
+| `islemler.html` | Her işlem için hasta bilgilendirme (hazırlık, işlem günü, sonrası, ne zaman aramalı, SSS); bölüm bazında yazdırma ve paylaşım |
 | `pubs.js` | PubMed'den derlenen yayın verisi (`PUBS_ALL`) |
 | `404.html` | Bulunamayan sayfalar için |
 | `og.png` | Bağlantı paylaşıldığında görünen görsel (1200x630) |
@@ -44,13 +45,17 @@ Protokoller dosyanın sonundaki `<script>` bölümünün başında, `PROTOCOLS` 
 
 Sayfa alt bilgisindeki "Hazırlayan / Kaynak / Son gözden geçirme" satırı (`stamp`) her içerik değişikliğinde güncellenmelidir; yayına almadan önce bilim dalı onayı alınıp "taslak" ibaresi kaldırılmalıdır.
 
+## İşlem bilgilendirme sayfası
+
+`islemler.html` içeriği dosyanın sonundaki `PROCEDURES` dizisindedir. Her işlemde `id` (bağlantı çapası, ör. `islemler.html#ercp`), her dil için `name`, `short` (bir cümlelik tanım), `facts` (`dur` süre, `sed` sedasyon, `fast` açlık, `comp` refakatçi, `res` sonuç), `prep` / `day` / `after` / `red` madde listeleri ve `faq` soru-cevap çiftleri vardır. Boş bırakılan `red` veya `faq` gösterilmez. Metinlerde geçen "hazırlık planlayıcı" ifadesi kendiliğinden `hazirlik.html` bağlantısına dönüşür. Yeni bir işlem eklemek için diziye aynı yapıda bir kayıt eklemek yeterlidir; üstteki işlem listesi kendiliğinden güncellenir.
+
 ## Dil
 
 Sayfa, tarayıcı dili Türkçe ise Türkçe, değilse İngilizce açılır. `?lang=en` veya `?lang=tr` bu seçimi zorlar; ziyaretçinin düğmeyle yaptığı seçim tarayıcıda hatırlanır.
 
 ## Arama motorları
 
-Site taslak olduğu için `index.html`, `yayinlar.html` ve `hazirlik.html` başında `noindex, nofollow` etiketleri var; Google ve diğer arama motorları sayfaları dizine eklemez, bağlantıyı bilen herkes ise açabilir. Yayına hazır olunca üç dosyadaki "TASLAK" yorumunun altındaki iki `robots`/`googlebot` satırını silin. `robots.txt` ile engellemeyin: tarayıcı sayfayı okuyamazsa `noindex` etiketini de göremez.
+Site taslak olduğu için `index.html`, `yayinlar.html`, `hazirlik.html` ve `islemler.html` başında `noindex, nofollow` etiketleri var; Google ve diğer arama motorları sayfaları dizine eklemez, bağlantıyı bilen herkes ise açabilir. Yayına hazır olunca bu dosyalardaki "TASLAK" yorumunun altındaki iki `robots`/`googlebot` satırını silin. `robots.txt` ile engellemeyin: tarayıcı sayfayı okuyamazsa `noindex` etiketini de göremez.
 
 ## Yayınlama
 
@@ -61,4 +66,4 @@ Depo: github.com/bfagargun/capagastro, dal `main`, klasör `/ (root)`. Dosyalar 
 1. Depo köküne içinde yalnızca alan adı yazan `CNAME` dosyası koyun.
 2. Alan adı sağlayıcısında: kök için `A` kayıtları 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153; `www` için `CNAME` kaydı `bfagargun.github.io`.
 3. Settings > Pages > Custom domain alanına alan adını yazıp "Enforce HTTPS" kutusunu işaretleyin.
-4. `index.html`, `yayinlar.html` ve `hazirlik.html` içindeki `canonical`, `og:url` ve `og:image` adreslerini, `404.html` içindeki `/capagastro/` bağlantılarını yeni adrese göre güncelleyin.
+4. `index.html`, `yayinlar.html`, `hazirlik.html` ve `islemler.html` içindeki `canonical`, `og:url` ve `og:image` adreslerini, `404.html` içindeki `/capagastro/` bağlantılarını yeni adrese göre güncelleyin.
