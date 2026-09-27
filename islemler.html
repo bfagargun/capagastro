@@ -149,7 +149,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
     <nav class="index" id="index" aria-label="İşlem listesi"></nav>
     <div class="planner">
       <p data-i="plannerP"><b>Kolonoskopi randevunuz mu var?</b> Randevu saatinize göre saat saat hazırlık planı çıkaran planlayıcıyı kullanın.</p>
-      <a class="btn solid" href="hazirlik.html" data-i="plannerBtn">Hazırlık planlayıcı</a>
+      <span style="display:flex;gap:.5rem;flex-wrap:wrap"><a class="btn solid" href="hazirlik.html" data-i="plannerBtn">Hazırlık planlayıcı</a><a class="btn" href="hatirlatici.html" data-i="remBtn">Takip hatırlatıcıları</a></span>
     </div>
   </div></div>
   <div id="procs"></div>
@@ -414,7 +414,7 @@ const T = {
   tr: { title: "İşlemler ve hazırlık | Çapa Gastroenterohepatoloji", sub: "İstanbul Tıp Fakültesi, İstanbul Üniversitesi", home: "Hastalar için",
     est: "Endoskopi ünitesi, hasta bilgilendirme", h1: "İşlemler ve hazırlık",
     intro: "Ünitemizde yapılan işlemlerin her biri için nasıl hazırlanacağınızı, işlem günü sizi neyin beklediğini ve sonrasında nelere dikkat edeceğinizi bir arada topladık. Her bölüm yazdırılabilir ve WhatsApp ile paylaşılabilir. Kendi hekiminizin verdiği talimatlar burada yazanlardan her zaman önceliklidir.",
-    plannerP: "<b>Kolonoskopi randevunuz mu var?</b> Randevu saatinize göre saat saat hazırlık planı çıkaran planlayıcıyı kullanın.", plannerBtn: "Hazırlık planlayıcı",
+    plannerP: "<b>Kolonoskopi randevunuz mu var?</b> Randevu saatinize göre saat saat hazırlık planı çıkaran planlayıcıyı kullanın.", plannerBtn: "Hazırlık planlayıcı", remBtn: "Takip hatırlatıcıları",
     facts: { dur: "Süre", sed: "Sedasyon", fast: "Açlık", comp: "Refakatçi", res: "Sonuç" },
     prep: "Hazırlık", day: "İşlem günü", after: "Sonrası", red: "Bizi arayın veya acile gidin", faq: "Sık sorulan sorular",
     print: "Yazdır", share: "WhatsApp ile paylaş", copy: "Bağlantıyı kopyala", copied: "Bağlantı kopyalandı",
@@ -427,7 +427,7 @@ const T = {
   en: { title: "Procedures and preparation | Çapa Gastroenterohepatology", sub: "Istanbul Faculty of Medicine, Istanbul University", home: "For patients",
     est: "Endoscopy unit, patient information", h1: "Procedures and preparation",
     intro: "For every procedure done in our unit: how to prepare, what to expect on the day and what to watch for afterwards. Each section can be printed or shared on WhatsApp. Your own physician's instructions always take precedence over what is written here.",
-    plannerP: "<b>Do you have a colonoscopy appointment?</b> Use the planner that builds an hour-by-hour preparation plan from your appointment time.", plannerBtn: "Preparation planner",
+    plannerP: "<b>Do you have a colonoscopy appointment?</b> Use the planner that builds an hour-by-hour preparation plan from your appointment time.", plannerBtn: "Preparation planner", remBtn: "Follow-up reminders",
     facts: { dur: "Duration", sed: "Sedation", fast: "Fasting", comp: "Companion", res: "Results" },
     prep: "Preparation", day: "On the day", after: "Afterwards", red: "Call us or go to an emergency department", faq: "Frequently asked questions",
     print: "Print", share: "Share on WhatsApp", copy: "Copy link", copied: "Link copied",

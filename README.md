@@ -13,6 +13,7 @@ Canlı adres: https://besimagargun.com/capagastro/ (İngilizce için `?lang=en` 
 | `hazirlik.html` | Kolonoskopi hazırlık planlayıcı: randevu saati ve solüsyona göre saat saat plan; takvim (.ics), WhatsApp, yazdırma |
 | `islemler.html` | Her işlem için hasta bilgilendirme (hazırlık, işlem günü, sonrası, ne zaman aramalı, SSS); bölüm bazında yazdırma ve paylaşım |
 | `veri-yonetisimi.html` | Araştırma grubunun veri yönetişimi ve sorumlu yapay zeka ilke belgesi (veri sınıfları, kimliksizleştirme akışı, LLM kuralları, güvenlik, paylaşım, roller) |
+| `hatirlatici.html` | Takip hatırlatıcıları: HCC taraması, ilaç raporu yenileme, biyolojik tedavi dozları, kontrol kolonoskopisi için .ics takvim dosyası |
 | `qr.html`, `img/qr/` | Hasta sayfalarının QR kartları (ünite içi, yazdırılabilir); kodlar `tools/make_qr.py` ile üretilir |
 | `pubs.js` | PubMed'den derlenen yayın verisi (`PUBS_ALL`) |
 | `404.html` | Bulunamayan sayfalar için |
@@ -64,7 +65,7 @@ Sayfa, tarayıcı dili Türkçe ise Türkçe, değilse İngilizce açılır. `?l
 
 ## Arama motorları
 
-Site taslak olduğu için `index.html`, `yayinlar.html`, `hazirlik.html`, `islemler.html` ve `veri-yonetisimi.html` başında `noindex, nofollow` etiketleri var; Google ve diğer arama motorları sayfaları dizine eklemez, bağlantıyı bilen herkes ise açabilir. Yayına hazır olunca bu dosyalardaki "TASLAK" yorumunun altındaki iki `robots`/`googlebot` satırını silin. `robots.txt` ile engellemeyin: tarayıcı sayfayı okuyamazsa `noindex` etiketini de göremez.
+Site taslak olduğu için `index.html`, `yayinlar.html`, `hazirlik.html`, `islemler.html`, `hatirlatici.html` ve `veri-yonetisimi.html` başında `noindex, nofollow` etiketleri var; Google ve diğer arama motorları sayfaları dizine eklemez, bağlantıyı bilen herkes ise açabilir. Yayına hazır olunca bu dosyalardaki "TASLAK" yorumunun altındaki iki `robots`/`googlebot` satırını silin. `robots.txt` ile engellemeyin: tarayıcı sayfayı okuyamazsa `noindex` etiketini de göremez.
 
 ## Yayınlama
 
@@ -75,4 +76,4 @@ Depo: github.com/bfagargun/capagastro, dal `main`, klasör `/ (root)`. Dosyalar 
 1. Depo köküne içinde yalnızca alan adı yazan `CNAME` dosyası koyun.
 2. Alan adı sağlayıcısında: kök için `A` kayıtları 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153; `www` için `CNAME` kaydı `bfagargun.github.io`.
 3. Settings > Pages > Custom domain alanına alan adını yazıp "Enforce HTTPS" kutusunu işaretleyin.
-4. `index.html`, `yayinlar.html`, `hazirlik.html`, `islemler.html` ve `veri-yonetisimi.html` içindeki `canonical`, `og:url` ve `og:image` adreslerini, `404.html` içindeki `/capagastro/` bağlantılarını yeni adrese göre güncelleyin.
+4. `index.html`, `yayinlar.html`, `hazirlik.html`, `islemler.html`, `hatirlatici.html` ve `veri-yonetisimi.html` içindeki `canonical`, `og:url` ve `og:image` adreslerini, `404.html` içindeki `/capagastro/` bağlantılarını yeni adrese göre güncelleyin.
