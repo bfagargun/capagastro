@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Veri yönetişimi ve sorumlu yapay zeka | Çapa Gastroenterohepatoloji</title>
+<meta name="description" content="İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı araştırma grubunun klinik veri, kimliksizleştirme ve yapay zeka kullanımına ilişkin ilkeleri.">
+<!-- TASLAK: yayına hazır olunca aşağıdaki iki robots satırını silin -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow, noarchive">
+<link rel="canonical" href="https://besimagargun.com/capagastro/veri-yonetisimi.html">
+<meta property="og:title" content="Veri yönetişimi ve sorumlu yapay zeka | Çapa Gastroenterohepatoloji">
+<meta property="og:description" content="Klinik veri sınıfları, kimliksizleştirme akışı ve yapay zeka araçlarının kullanım ilkeleri.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://besimagargun.com/capagastro/veri-yonetisimi.html">
+<meta property="og:image" content="https://besimagargun.com/capagastro/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0F5F66">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='18' fill='%230F5F66'/%3E%3Cpath d='M12 24c0-6 4-9 8-9s8 3 8 9-4 5-8 5-8 1-8-5z' fill='none' stroke='%23F7F5EF' stroke-width='2.2' stroke-linejoin='round'/%3E%3Ccircle cx='20' cy='21' r='2.2' fill='%23F7F5EF'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+(function () {
+  var d = document.documentElement, q = null, s = null, l;
+  try { q = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+  try { s = localStorage.getItem("lang"); var t = localStorage.getItem("theme"); if (t) d.dataset.theme = t; } catch (e) {}
+  if (q === "en" || q === "tr") { l = q; try { localStorage.setItem("lang", q); } catch (e) {} }
+  else if (s === "en" || s === "tr") l = s;
+  else l = (navigator.language || "tr").toLowerCase().indexOf("tr") === 0 ? "tr" : "en";
+  window.__lang = l;
+  if (l === "en") { d.classList.add("lang-pending"); setTimeout(function () { d.classList.remove("lang-pending"); }, 2000); }
+})();
+</script>
+<style>
+:root{--paper:#F7F5EF;--paper-2:#EEEAE0;--ink:#1B2A2F;--ink-2:#4A5A5F;--teal:#0F5F66;--teal-2:#0B4A50;--teal-soft:#D7E7E6;--claret:#8B1E2D;--claret-soft:#F3E1E3;--line:#CFC9BA;--font-display:"Fraunces",Georgia,serif;--font-body:"Public Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+:root:not([data-theme="light"]){@media (prefers-color-scheme:dark){--paper:#141B1E;--paper-2:#1C2528;--ink:#EDE9DF;--ink-2:#B4B9B6;--teal:#5FB3B6;--teal-2:#7FC6C8;--teal-soft:#1F3437;--claret:#D66A77;--claret-soft:#3A2226;--line:#33403F;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#141B1E;--paper-2:#1C2528;--ink:#EDE9DF;--ink-2:#B4B9B6;--teal:#5FB3B6;--teal-2:#7FC6C8;--teal-soft:#1F3437;--claret:#D66A77;--claret-soft:#3A2226;--line:#33403F;color-scheme:dark}
+.lang-pending body{opacity:0}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:5rem}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.6;transition:opacity .15s}
+a{color:var(--teal);text-decoration-thickness:1px;text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--claret);outline-offset:3px}
+h1,h2,h3{font-family:var(--font-display);font-weight:500;line-height:1.1;margin:0 0 .5em;letter-spacing:-.01em}
+h1{font-size:clamp(2rem,4.5vw,3.2rem)}
+h2{font-size:clamp(1.6rem,3vw,2.2rem)}
+h3{font-size:1.1rem;font-weight:600;font-family:var(--font-body)}
+p{margin:0 0 1em;max-width:70ch}
+.wrap{width:min(1100px,92vw);margin:0 auto}
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:.6rem;padding:.7rem 0}
+.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--ink);font-family:var(--font-display);font-size:1.1rem;font-weight:600;line-height:1.2;margin-right:auto}
+.brand svg{width:32px;height:32px;flex-shrink:0;color:var(--teal)}
+.brand small{display:block;font-family:var(--font-body);font-weight:400;font-size:.72rem;color:var(--ink-2)}
+.btn{display:inline-flex;align-items:center;gap:.45rem;border:1px solid var(--teal);color:var(--teal);background:transparent;border-radius:999px;padding:.45rem 1rem;font:500 .9rem var(--font-body);cursor:pointer;text-decoration:none;line-height:1.4}
+.btn:hover{background:var(--teal);color:var(--paper)}
+.btn.icon{padding:.35rem .6rem;min-width:2.3rem;justify-content:center}
+@media (max-width:560px){.brand small{display:none}.bar .home{display:none}}
+
+.intro{padding:3rem 0 2rem;border-bottom:1px solid var(--line)}
+.intro .est{font-family:var(--font-display);font-style:italic;color:var(--claret);font-size:1.05rem;margin-bottom:.6rem}
+.intro p{color:var(--ink-2);font-size:1.08rem}
+.meta{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.88rem;color:var(--ink-2);margin-top:1rem}
+.meta b{color:var(--ink);font-weight:600}
+.toc{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.2rem}
+.toc a{font-size:.85rem;border:1px solid var(--line);border-radius:999px;padding:.3rem .8rem;text-decoration:none;color:var(--ink);background:var(--paper)}
+.toc a:hover{border-color:var(--teal);color:var(--teal)}
+
+section{padding:3rem 0;border-bottom:1px solid var(--line)}
+section.alt{background:var(--paper-2)}
+.head{display:grid;grid-template-columns:1fr 1.6fr;gap:2rem;margin-bottom:1.8rem}
+.head p{color:var(--ink-2);margin:0}
+@media (max-width:900px){.head{grid-template-columns:1fr;gap:.5rem}}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem 2rem}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+@media (max-width:900px){.grid,.grid-2{grid-template-columns:1fr}}
+.card{border-top:3px solid var(--teal);padding-top:.9rem}
+.card h3{margin:0 0 .4rem}
+.card p,.card li{font-size:.97rem;color:var(--ink-2)}
+.card ul{padding-left:1.1rem;margin:0}
+.card li{margin-bottom:.35rem}
+
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+th,td{text-align:left;vertical-align:top;padding:.7rem .8rem;border-bottom:1px solid var(--line)}
+th{font-family:var(--font-body);font-weight:600;color:var(--ink);background:var(--paper-2)}
+td:first-child{white-space:nowrap;font-weight:600}
+td .lvl{display:inline-block;width:1.7rem;height:1.7rem;border-radius:50%;text-align:center;line-height:1.7rem;font-family:var(--font-display);color:var(--paper);margin-right:.4rem}
+.lvl.a{background:var(--claret)}.lvl.b{background:#B5651D}.lvl.c{background:var(--teal)}.lvl.d{background:#5A7D5A}
+.yes{color:var(--teal);font-weight:600}.no{color:var(--claret);font-weight:600}
+.tbl-wrap{overflow:auto;border:1px solid var(--line);border-radius:10px;background:var(--paper)}
+section.alt .tbl-wrap{background:var(--paper-2)}
+
+.flow{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(6,1fr);gap:.8rem;counter-reset:f}
+@media (max-width:1000px){.flow{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:600px){.flow{grid-template-columns:1fr}}
+.flow li{counter-increment:f;position:relative;border:1px solid var(--line);border-radius:10px;padding:2.2rem .9rem .9rem;background:var(--paper);font-size:.92rem}
+.flow li::before{content:counter(f);position:absolute;left:.9rem;top:.7rem;width:1.6rem;height:1.6rem;border-radius:50%;background:var(--teal);color:var(--paper);font-family:var(--font-display);text-align:center;line-height:1.6rem}
+.flow b{display:block;margin-bottom:.25rem}
+.flow span{color:var(--ink-2)}
+.principles{border-left:4px solid var(--teal);padding:.9rem 1.2rem;background:var(--paper-2);margin-top:1.4rem}
+.principles p{margin:0;max-width:none}
+.refs{font-size:.9rem;color:var(--ink-2);columns:2 22rem;column-gap:2.5rem;padding-left:1.1rem;margin:0}
+.refs li{break-inside:avoid;margin-bottom:.4rem}
+
+footer{padding:2rem 0;color:var(--ink-2);font-size:.85rem}
+footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.stamp{font-size:.8rem;color:var(--ink-2);width:100%}
+@media print{header,footer,.toc{display:none !important}section{padding:1rem 0;break-inside:avoid}body{font-size:11pt}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 24c0-6 4-9 8-9s8 3 8 9-4 5-8 5-8 1-8-5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="20" cy="21" r="2.2" fill="currentColor"/></svg>
+      <span>Çapa Gastroenterohepatoloji<small data-en="Istanbul Faculty of Medicine, Istanbul University">İstanbul Tıp Fakültesi, İstanbul Üniversitesi</small></span>
+    </a>
+    <a class="btn home" href="index.html#arastirma" data-en="Research">Araştırma</a>
+    <button class="btn icon" id="theme" type="button" aria-label="Açık veya koyu tema" data-en-aria="Light or dark theme">☾</button>
+    <button class="btn" id="lang" type="button" aria-label="Switch to English">EN</button>
+  </div>
+</header>
+
+<main id="top">
+  <div class="intro"><div class="wrap">
+    <div class="est" data-en="Research group, policy document">Araştırma grubu, ilke belgesi</div>
+    <h1 data-en="Data governance and responsible AI">Veri yönetişimi ve sorumlu yapay zeka</h1>
+    <p data-en="How the research group of the Division of Gastroenterohepatology handles clinical data, de-identifies it and uses artificial intelligence tools, including large language models. It applies to every project of the group, whoever leads it, and to every collaborator who receives data from us.">Gastroenterohepatoloji Bilim Dalı araştırma grubunun klinik veriyi nasıl işlediği, nasıl kimliksizleştirdiği ve büyük dil modelleri dahil yapay zeka araçlarını nasıl kullandığı. Grubun her projesi için, yürütücüsü kim olursa olsun, ve bizden veri alan her iş birliği ortağı için geçerlidir.</p>
+    <div class="meta">
+      <span><b data-en="Version">Sürüm</b> 0.1</span>
+      <span><b data-en="Status">Durum</b> <span data-en="draft, awaiting divisional approval">taslak, bilim dalı onayı bekliyor</span></span>
+      <span><b data-en="Owner">Sorumlu</b> Prof. Dr. Filiz Akyüz (PI)</span>
+      <span><b data-en="Data steward">Veri yöneticisi</b> Dr. Besim Fazıl Ağargün</span>
+      <span><b data-en="Last review">Son gözden geçirme</b> <span data-en="September 2026">Eylül 2026</span></span>
+    </div>
+    <nav class="toc" aria-label="Bölümler">
+      <a href="#ilkeler" data-en="Principles">İlkeler</a><a href="#siniflar" data-en="Data classes">Veri sınıfları</a><a href="#akis" data-en="De-identification">Kimliksizleştirme</a><a href="#yz" data-en="AI and LLM use">Yapay zeka ve LLM</a><a href="#guvenlik" data-en="Security">Güvenlik</a><a href="#paylasim" data-en="Sharing and collaboration">Paylaşım ve iş birliği</a><a href="#roller" data-en="Roles">Roller</a><a href="#kaynaklar" data-en="Standards and references">Standartlar</a>
+    </nav>
+  </div></div>
+
+  <section id="ilkeler">
+    <div class="wrap">
+      <div class="head"><h2 data-en="Principles">İlkeler</h2><p data-en="Six commitments that every project of the group is checked against before it starts and before it is published.">Grubun her projesi başlamadan ve yayımlanmadan önce şu altı taahhüde göre denetlenir.</p></div>
+      <div class="grid">
+        <div class="card"><h3 data-en="Patient first">Önce hasta</h3><p data-en="Research never delays or alters a patient's care. AI tools developed here support the physician's decision and never replace it; no model output reaches a patient without a physician's review.">Araştırma hiçbir hastanın bakımını geciktirmez veya değiştirmez. Burada geliştirilen yapay zeka araçları hekimin kararını destekler, yerine geçmez; hiçbir model çıktısı hekim incelemesi olmadan hastaya ulaşmaz.</p></div>
+        <div class="card"><h3 data-en="Ethics approval before data">Veriden önce etik kurul</h3><p data-en="No research data is extracted or processed without approval from the Istanbul Faculty of Medicine Clinical Research Ethics Committee and, where required, institutional permission. Retrospective studies use waiver of consent only when the committee grants it.">İstanbul Tıp Fakültesi Klinik Araştırmalar Etik Kurulu onayı ve gerektiğinde kurum izni olmadan hiçbir araştırma verisi çıkarılmaz veya işlenmez. Retrospektif çalışmalarda onam muafiyeti yalnızca kurul verdiğinde kullanılır.</p></div>
+        <div class="card"><h3 data-en="Minimum data, de-identified by default">En az veri, varsayılan olarak kimliksiz</h3><p data-en="Each project extracts only the variables its analysis plan needs. Direct identifiers are removed at the source; whatever leaves the hospital network is at least pseudonymised, and anything that reaches an external tool is de-identified.">Her proje yalnızca analiz planının gerektirdiği değişkenleri çıkarır. Doğrudan tanımlayıcılar kaynakta silinir; hastane ağının dışına çıkan her veri en az kodlanmış, dış bir araca ulaşan her veri kimliksizleştirilmiştir.</p></div>
+        <div class="card"><h3 data-en="Lawful basis">Hukuki dayanak</h3><p data-en="Health data is a special category under the Turkish Personal Data Protection Law (KVKK, article 6) and the Regulation on Personal Health Data. We process it on the basis the ethics committee and the institution define, and we keep a record of processing for each project.">Sağlık verisi KVKK'nın 6. maddesi ve Kişisel Sağlık Verileri Hakkında Yönetmelik kapsamında özel nitelikli veridir. Etik kurulun ve kurumun tanımladığı dayanakla işleriz ve her proje için bir işleme kaydı tutarız.</p></div>
+        <div class="card"><h3 data-en="Transparency and reproducibility">Şeffaflık ve tekrarlanabilirlik</h3><p data-en="Protocols are written before analysis and, for trials, registered. Code is version-controlled and published with the paper wherever the data agreement allows. AI studies follow TRIPOD+AI, CLAIM, CONSORT-AI, SPIRIT-AI, DECIDE-AI or STARD-AI as appropriate.">Protokoller analizden önce yazılır, klinik araştırmalar kayıt altına alınır. Kod sürüm kontrolündedir ve veri sözleşmesinin izin verdiği her durumda makaleyle birlikte yayımlanır. Yapay zeka çalışmaları duruma göre TRIPOD+AI, CLAIM, CONSORT-AI, SPIRIT-AI, DECIDE-AI veya STARD-AI rehberlerini izler.</p></div>
+        <div class="card"><h3 data-en="Accountable authorship">Hesap verebilir yazarlık</h3><p data-en="Contributions are recorded with CRediT roles and authorship follows ICMJE criteria. AI tools are never authors; their use in writing or analysis is declared as each journal requires, and the authors remain responsible for every sentence and every number.">Katkılar CRediT rolleriyle kaydedilir, yazarlık ICMJE ölçütlerine göre belirlenir. Yapay zeka araçları hiçbir zaman yazar değildir; yazım veya analizde kullanımı her derginin istediği biçimde beyan edilir ve her cümle ile her sayının sorumluluğu yazarlarda kalır.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="siniflar" class="alt">
+    <div class="wrap">
+      <div class="head"><h2 data-en="Data classes">Veri sınıfları</h2><p data-en="Every dataset is labelled with one of four classes at extraction. The class decides where the data may live and which tools may touch it.">Her veri seti çıkarıldığı anda dört sınıftan biriyle etiketlenir. Sınıf, verinin nerede durabileceğini ve hangi araçların ona dokunabileceğini belirler.</p></div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th data-en="Class">Sınıf</th><th data-en="What it contains">Ne içerir</th><th data-en="Where it may be stored">Nerede durabilir</th><th data-en="External or cloud tools">Dış veya bulut araçlar</th></tr></thead>
+        <tbody>
+          <tr><td><span class="lvl a">A</span><span data-en="Identified">Kimlikli</span></td><td data-en="Name, national ID, hospital protocol number, exact dates, raw free-text reports, unedited images and videos.">Ad, T.C. kimlik numarası, hastane protokol numarası, kesin tarihler, ham serbest metin raporlar, düzenlenmemiş görüntü ve videolar.</td><td data-en="Hospital information system and the division's institutional server only.">Yalnızca hastane bilgi sistemi ve bilim dalının kurum içi sunucusu.</td><td class="no" data-en="Never">Asla</td></tr>
+          <tr><td><span class="lvl b">B</span><span data-en="Pseudonymised">Kodlu</span></td><td data-en="Study ID in place of identifiers; the key file is kept separately, encrypted and under the PI's control; dates may remain exact.">Tanımlayıcılar yerine çalışma numarası; anahtar dosyası ayrı, şifreli ve PI kontrolünde; tarihler kesin kalabilir.</td><td data-en="Institutional server; encrypted institutional laptops for analysis.">Kurum içi sunucu; analiz için şifreli kurum bilgisayarları.</td><td class="no" data-en="No">Hayır</td></tr>
+          <tr><td><span class="lvl c">C</span><span data-en="De-identified">Kimliksiz</span></td><td data-en="Direct identifiers removed; dates shifted or reduced to year; free text scrubbed of names, places and numbers; DICOM headers and burned-in text removed from images; re-identification risk assessed.">Doğrudan tanımlayıcılar silinmiş; tarihler kaydırılmış veya yıla indirgenmiş; serbest metinden ad, yer ve numaralar ayıklanmış; görüntülerden DICOM başlıkları ve gömülü yazılar temizlenmiş; yeniden tanımlama riski değerlendirilmiş.</td><td data-en="Institutional server; approved cloud analysis environments under a data processing agreement.">Kurum içi sunucu; veri işleme sözleşmesi olan onaylı bulut analiz ortamları.</td><td class="yes" data-en="Yes, within an approved project and with no training on our data">Evet; onaylı proje kapsamında ve verimizle model eğitilmemesi koşuluyla</td></tr>
+          <tr><td><span class="lvl d">D</span><span data-en="Aggregate">Toplu</span></td><td data-en="Counts, rates, model metrics, figures and tables for publication; cells smaller than five are suppressed.">Sayılar, oranlar, model ölçütleri, yayın için şekil ve tablolar; beşten küçük hücreler gizlenir.</td><td data-en="Anywhere">Her yerde</td><td class="yes" data-en="Yes">Evet</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <section id="akis">
+    <div class="wrap">
+      <div class="head"><h2 data-en="De-identification workflow">Kimliksizleştirme akışı</h2><p data-en="The path from a clinical record to a class C dataset. Each step is logged with who did it and when; the log is part of the project file.">Klinik kayıttan C sınıfı veri setine giden yol. Her adım kimin, ne zaman yaptığıyla birlikte kaydedilir; kayıt proje dosyasının parçasıdır.</p></div>
+      <ol class="flow">
+        <li><b data-en="Approval and variable list">Onay ve değişken listesi</b><span data-en="Ethics approval, institutional permission and a minimum variable list signed by the PI.">Etik kurul onayı, kurum izni ve PI'nin imzaladığı en az değişken listesi.</span></li>
+        <li><b data-en="Extraction in the hospital network">Hastane ağında çıkarım</b><span data-en="Data is pulled inside the hospital network into the institutional server; it never passes through personal e-mail or personal cloud accounts.">Veri hastane ağı içinde kurum sunucusuna çekilir; kişisel e-posta veya kişisel bulut hesaplarından geçmez.</span></li>
+        <li><b data-en="Study IDs and key file">Çalışma numarası ve anahtar</b><span data-en="Identifiers are replaced by study IDs; the key file is encrypted and stored apart from the data.">Tanımlayıcılar çalışma numarasıyla değiştirilir; anahtar dosyası şifrelenir ve veriden ayrı saklanır.</span></li>
+        <li><b data-en="Free text">Serbest metin</b><span data-en="Turkish named-entity recognition plus rule-based patterns remove names, dates, places and numbers; a random sample of at least 10 percent is checked by hand.">Türkçe adlandırılmış varlık tanıma ve kural tabanlı desenlerle ad, tarih, yer ve numaralar ayıklanır; en az yüzde 10'luk rastgele örneklem elle denetlenir.</span></li>
+        <li><b data-en="Images and video">Görüntü ve video</b><span data-en="DICOM headers are stripped, burned-in text is masked, endoscopy video frames that show patient details are cropped or dropped.">DICOM başlıkları temizlenir, gömülü yazılar maskelenir, hasta bilgisi gösteren endoskopi video kareleri kırpılır veya atılır.</span></li>
+        <li><b data-en="Risk review and release">Risk değerlendirmesi ve teslim</b><span data-en="Re-identification risk (rare diagnoses, extreme values, small groups) is reviewed; the PI signs the release and the dataset is labelled class C.">Yeniden tanımlama riski (nadir tanılar, uç değerler, küçük gruplar) gözden geçirilir; PI teslimi imzalar ve veri seti C sınıfı olarak etiketlenir.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="yz" class="alt">
+    <div class="wrap">
+      <div class="head"><h2 data-en="Artificial intelligence and large language models">Yapay zeka ve büyük dil modelleri</h2><p data-en="Our own models and third-party tools, including large language models, are used under the same rules. The rules are about the data that goes in, the claims that come out and who is accountable in between.">Kendi modellerimiz ve büyük dil modelleri dahil üçüncü taraf araçlar aynı kurallarla kullanılır. Kurallar giren veriyi, çıkan iddiaları ve aradaki sorumluyu belirler.</p></div>
+      <div class="grid grid-2">
+        <div class="card"><h3 data-en="What goes in">Ne girer</h3><ul>
+          <li data-en="Only class C or D data reaches an external tool; class A and B never do, whatever the tool's privacy promise.">Dış bir araca yalnızca C veya D sınıfı veri ulaşır; A ve B sınıfı, aracın gizlilik vaadi ne olursa olsun, asla.</li>
+          <li data-en="Tools are used through institutional accounts covered by a data processing agreement that excludes training on our inputs; personal accounts are not used for research data.">Araçlar, girdilerimizle eğitim yapılmasını dışlayan bir veri işleme sözleşmesi kapsamındaki kurumsal hesaplarla kullanılır; kişisel hesaplar araştırma verisi için kullanılmaz.</li>
+          <li data-en="Prompts and outputs of any study that evaluates a model are stored with the project so the experiment can be repeated.">Bir modeli değerlendiren her çalışmanın istemleri ve çıktıları, deney tekrarlanabilsin diye projeyle birlikte saklanır.</li>
+        </ul></div>
+        <div class="card"><h3 data-en="What comes out">Ne çıkar</h3><ul>
+          <li data-en="Model outputs are research results until a prospective evaluation and ethics approval say otherwise; they are not used for patient care in the meantime.">Model çıktıları, prospektif bir değerlendirme ve etik kurul onayı aksini söyleyene kadar araştırma sonucudur; bu arada hasta bakımında kullanılmaz.</li>
+          <li data-en="Studies that compare model recommendations with clinical decisions, such as the tumour board study, are retrospective: the board decides first, the model is compared afterwards.">Tümör konseyi çalışması gibi model önerilerini klinik kararlarla karşılaştıran çalışmalar retrospektiftir: önce konsey karar verir, model sonra karşılaştırılır.</li>
+          <li data-en="Performance is reported with uncertainty and across subgroups (sex, age, disease severity, image quality); failure cases are described, not hidden.">Performans belirsizlik aralığıyla ve alt gruplarda (cinsiyet, yaş, hastalık şiddeti, görüntü kalitesi) raporlanır; başarısız olgular gizlenmez, tanımlanır.</li>
+        </ul></div>
+        <div class="card"><h3 data-en="Our own models">Kendi modellerimiz</h3><ul>
+          <li data-en="Every dataset has a data card (source, period, inclusion, labelling process, known gaps) and every model a model card (intended use, training data, metrics, limits).">Her veri setinin bir veri kartı (kaynak, dönem, dahil etme, etiketleme süreci, bilinen boşluklar), her modelin bir model kartı (kullanım amacı, eğitim verisi, ölçütler, sınırlar) vardır.</li>
+          <li data-en="Labels come from at least two clinicians or from pathology; disagreement is measured and reported.">Etiketler en az iki klinisyenden veya patolojiden gelir; uyumsuzluk ölçülür ve raporlanır.</li>
+          <li data-en="Training, validation and test sets are separated by patient, never by image, and the test set is locked before model development starts.">Eğitim, doğrulama ve test setleri görüntüye göre değil hastaya göre ayrılır; test seti model geliştirme başlamadan kilitlenir.</li>
+        </ul></div>
+        <div class="card"><h3 data-en="Writing and peer review">Yazım ve hakemlik</h3><ul>
+          <li data-en="Language models may help with language and structure; they do not generate results, references or interpretations that the authors have not verified.">Dil modelleri dil ve yapı için yardımcı olabilir; yazarların doğrulamadığı sonuç, kaynak veya yorum üretmez.</li>
+          <li data-en="Manuscripts under review that we receive as peer reviewers are never entered into external tools.">Hakem olarak aldığımız değerlendirme aşamasındaki makaleler dış araçlara asla girilmez.</li>
+          <li data-en="Use of AI tools is declared in the manuscript as the journal requires.">Yapay zeka araçlarının kullanımı makalede derginin istediği biçimde beyan edilir.</li>
+        </ul></div>
+      </div>
+      <div class="principles"><p data-en="Short version: de-identified data only, institutional accounts only, no training on our data, no clinical use without validation, and a physician between every model output and every patient.">Kısa hali: yalnızca kimliksiz veri, yalnızca kurumsal hesap, verimizle eğitim yok, doğrulanmadan klinik kullanım yok ve her model çıktısı ile her hasta arasında bir hekim.</p></div>
+    </div>
+  </section>
+
+  <section id="guvenlik">
+    <div class="wrap">
+      <div class="head"><h2 data-en="Security and retention">Güvenlik ve saklama</h2><p data-en="Technical and organisational measures that apply to every class of data.">Her veri sınıfı için geçerli teknik ve idari önlemler.</p></div>
+      <div class="grid">
+        <div class="card"><h3 data-en="Access">Erişim</h3><p data-en="Access is granted per project and per person by the PI, reviewed every six months and removed when a member leaves. Shared passwords do not exist.">Erişim PI tarafından proje ve kişi bazında verilir, altı ayda bir gözden geçirilir ve üye ayrılınca kaldırılır. Paylaşılan parola yoktur.</p></div>
+        <div class="card"><h3 data-en="Encryption and devices">Şifreleme ve cihazlar</h3><p data-en="Data at rest is encrypted on the institutional server and on laptops; transfers use encrypted channels only. Removable media are not used for class A or B data.">Veri kurum sunucusunda ve bilgisayarlarda şifreli saklanır; aktarımlar yalnızca şifreli kanallarla yapılır. A ve B sınıfı veri için taşınabilir ortam kullanılmaz.</p></div>
+        <div class="card"><h3 data-en="Retention and disposal">Saklama ve imha</h3><p data-en="Data is kept for the period stated in the ethics approval and then securely deleted; key files are destroyed first. Aggregate results and code are kept indefinitely.">Veri etik kurul onayında belirtilen süre boyunca saklanır, sonra güvenli biçimde silinir; önce anahtar dosyaları imha edilir. Toplu sonuçlar ve kod süresiz saklanır.</p></div>
+        <div class="card"><h3 data-en="Incidents">Olaylar</h3><p data-en="A suspected breach is reported to the PI and the institutional data protection officer on the same day and handled under the institution's incident procedure.">Şüpheli bir ihlal aynı gün PI'ye ve kurumun kişisel verileri koruma sorumlusuna bildirilir; kurumun olay prosedürüne göre ele alınır.</p></div>
+        <div class="card"><h3 data-en="Training">Eğitim</h3><p data-en="Every member completes personal data protection and good clinical practice training before first access and renews it every two years.">Her üye ilk erişimden önce kişisel verilerin korunması ve iyi klinik uygulamalar eğitimini tamamlar ve iki yılda bir yeniler.</p></div>
+        <div class="card"><h3 data-en="Audit trail">Denetim izi</h3><p data-en="Extractions, de-identification steps, releases to collaborators and deletions are logged in the project file.">Çıkarımlar, kimliksizleştirme adımları, ortaklara teslimler ve silmeler proje dosyasında kayıt altındadır.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="paylasim" class="alt">
+    <div class="wrap">
+      <div class="head"><h2 data-en="Sharing and collaboration">Paylaşım ve iş birliği</h2><p data-en="We welcome collaboration on datasets, multicentre studies and AI validation. These are the terms.">Veri setleri, çok merkezli çalışmalar ve yapay zeka doğrulaması konularında iş birliğine açığız. Koşullar şunlardır.</p></div>
+      <div class="grid">
+        <div class="card"><h3 data-en="Data use agreement">Veri kullanım sözleşmesi</h3><p data-en="Only class C data is shared, under a signed agreement that names the purpose, the persons with access, the retention period, the prohibition of re-identification and the return or deletion at the end.">Yalnızca C sınıfı veri, amacı, erişecek kişileri, saklama süresini, yeniden tanımlama yasağını ve sonunda iade veya silmeyi belirten imzalı bir sözleşmeyle paylaşılır.</p></div>
+        <div class="card"><h3 data-en="Cross-border transfers">Yurt dışına aktarım</h3><p data-en="Transfers abroad follow article 9 of the KVKK and institutional approval; where a transfer is not possible, analysis is brought to the data (federated or on-site analysis) instead.">Yurt dışına aktarım KVKK'nın 9. maddesine ve kurum onayına tabidir; aktarımın mümkün olmadığı durumlarda veri yerine analiz taşınır (federatif veya yerinde analiz).</p></div>
+        <div class="card"><h3 data-en="Credit">Katkı ve yazarlık</h3><p data-en="Data contributors are named in the acknowledgements at least; substantive contribution to design or interpretation earns authorship under ICMJE criteria. A data availability statement accompanies every paper.">Veri sağlayanlar en azından teşekkür bölümünde anılır; tasarıma veya yoruma önemli katkı ICMJE ölçütlerine göre yazarlık kazandırır. Her makaleye bir veri erişilebilirliği beyanı eşlik eder.</p></div>
+      </div>
+      <p style="margin-top:1.6rem"><a class="btn" href="mailto:bfagargun@istanbul.edu.tr?subject=Veri%20i%C5%9F%20birli%C4%9Fi" data-en="Write to the research group">Araştırma grubuna yazın</a></p>
+    </div>
+  </section>
+
+  <section id="roller">
+    <div class="wrap">
+      <div class="head"><h2 data-en="Roles">Roller</h2><p data-en="Who is accountable for what.">Kim neyden sorumlu.</p></div>
+      <div class="grid">
+        <div class="card"><h3 data-en="Principal investigator">Sorumlu araştırmacı</h3><p data-en="Prof. Dr. Filiz Akyüz. Approves projects, variable lists, releases and collaborations; owns this document.">Prof. Dr. Filiz Akyüz. Projeleri, değişken listelerini, teslimleri ve iş birliklerini onaylar; bu belgenin sahibidir.</p></div>
+        <div class="card"><h3 data-en="Data steward">Veri yöneticisi</h3><p data-en="Dr. Besim Fazıl Ağargün. Runs extraction and de-identification, keeps the logs and the tool inventory, and reviews this document yearly.">Dr. Besim Fazıl Ağargün. Çıkarım ve kimliksizleştirmeyi yürütür, kayıtları ve araç envanterini tutar, bu belgeyi yılda bir gözden geçirir.</p></div>
+        <div class="card"><h3 data-en="Project leads and members">Proje yürütücüleri ve üyeler</h3><p data-en="Each project has one named lead who is responsible for its data file. Every member signs this document before first access.">Her projenin veri dosyasından sorumlu bir yürütücüsü vardır. Her üye ilk erişimden önce bu belgeyi imzalar.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kaynaklar" class="alt">
+    <div class="wrap">
+      <div class="head"><h2 data-en="Standards and references">Standartlar ve kaynaklar</h2><p data-en="The documents this policy is built on.">Bu ilkelerin dayandığı belgeler.</p></div>
+      <ul class="refs">
+        <li data-en="Personal Data Protection Law No. 6698 (KVKK), articles 6 and 9">6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK), 6. ve 9. maddeler</li>
+        <li data-en="Regulation on Personal Health Data (Official Gazette, 21 June 2019)">Kişisel Sağlık Verileri Hakkında Yönetmelik (Resmi Gazete, 21 Haziran 2019)</li>
+        <li data-en="Regulation on Clinical Trials and Good Clinical Practice (Turkish Medicines and Medical Devices Agency)">Klinik Araştırmalar Hakkında Yönetmelik ve İyi Klinik Uygulamaları (TİTCK)</li>
+        <li data-en="World Medical Association, Declaration of Helsinki (2024 revision)">Dünya Tıp Birliği, Helsinki Bildirgesi (2024 revizyonu)</li>
+        <li data-en="ICMJE Recommendations, including the section on AI-assisted technology">ICMJE Önerileri, yapay zeka destekli teknoloji bölümü dahil</li>
+        <li data-en="CRediT contributor roles taxonomy">CRediT katkı rolleri sınıflandırması</li>
+        <li data-en="TRIPOD+AI (BMJ 2024) for prediction models">Tahmin modelleri için TRIPOD+AI (BMJ 2024)</li>
+        <li data-en="CLAIM 2024 for imaging AI studies">Görüntüleme yapay zeka çalışmaları için CLAIM 2024</li>
+        <li data-en="CONSORT-AI and SPIRIT-AI (2020) for trials of AI interventions">Yapay zeka müdahalelerinin klinik araştırmaları için CONSORT-AI ve SPIRIT-AI (2020)</li>
+        <li data-en="DECIDE-AI (2022) for early clinical evaluation">Erken klinik değerlendirme için DECIDE-AI (2022)</li>
+        <li data-en="STARD-AI for diagnostic accuracy studies">Tanısal doğruluk çalışmaları için STARD-AI</li>
+        <li data-en="ICH E9(R1) estimands framework and ICH E6(R3) good clinical practice">ICH E9(R1) estimand çerçevesi ve ICH E6(R3) iyi klinik uygulamalar</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <span>© <span id="year"></span> <span data-en="Division of Gastroenterohepatology, Istanbul Faculty of Medicine, Istanbul University">İstanbul Üniversitesi İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı</span></span>
+  <a href="index.html#arastirma" data-en="Research laboratory">Araştırma laboratuvarı</a>
+  <span class="stamp" data-en="Version 0.1, September 2026. Draft prepared by the data steward for the principal investigator's approval; it becomes binding for the group once approved and signed. Review at least yearly.">Sürüm 0.1, Eylül 2026. Veri yöneticisi tarafından sorumlu araştırmacının onayına sunulmak üzere hazırlanmış taslak; onaylanıp imzalandığında grup için bağlayıcı olur. En az yılda bir gözden geçirilir.</span>
+</div></footer>
+
+<script>
+const $ = id => document.getElementById(id);
+const TITLES = { tr: "Veri yönetişimi ve sorumlu yapay zeka | Çapa Gastroenterohepatoloji", en: "Data governance and responsible AI | Çapa Gastroenterohepatology" };
+let lang = "tr";
+const langBtn = $("lang");
+function applyLang(l, persist) {
+  lang = l; document.documentElement.lang = l; document.title = TITLES[l];
+  langBtn.textContent = l === "tr" ? "EN" : "TR";
+  langBtn.setAttribute("aria-label", l === "tr" ? "Switch to English" : "Türkçeye geç");
+  document.querySelectorAll("[data-en]").forEach(el => { if (el.dataset.tr === undefined) el.dataset.tr = el.innerHTML; el.innerHTML = l === "en" ? el.dataset.en : el.dataset.tr; });
+  document.querySelectorAll("[data-en-aria]").forEach(el => { if (el.dataset.trAria === undefined) el.dataset.trAria = el.getAttribute("aria-label") || ""; el.setAttribute("aria-label", l === "en" ? el.dataset.enAria : el.dataset.trAria); });
+  if (persist) { try { localStorage.setItem("lang", l); } catch (e) {} }
+}
+langBtn.addEventListener("click", () => applyLang(lang === "tr" ? "en" : "tr", true));
+if (window.__lang === "en") applyLang("en", false);
+document.documentElement.classList.remove("lang-pending");
+const themeBtn = $("theme");
+const isDark = () => document.documentElement.dataset.theme === "dark" || (!document.documentElement.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
+themeBtn.textContent = isDark() ? "☀" : "☾";
+themeBtn.addEventListener("click", () => { const nt = isDark() ? "light" : "dark"; document.documentElement.dataset.theme = nt; themeBtn.textContent = nt === "dark" ? "☀" : "☾"; try { localStorage.setItem("theme", nt); } catch (e) {} });
+$("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
