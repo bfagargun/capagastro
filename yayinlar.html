@@ -77,6 +77,22 @@ input[type=search]{flex:1;min-width:200px}
 .list li.empty{display:block;padding:2rem 0;color:var(--ink-2);border:0}
 .note{font-size:.85rem;color:var(--ink-2);border-left:3px solid var(--line);padding:.5rem .9rem;margin:1.5rem 0 3rem;max-width:80ch}
 @media (max-width:640px){.list li{grid-template-columns:1fr;gap:.2rem}.rank{display:flex;gap:.5rem;align-items:baseline}.controls{position:static}.count{margin-left:0;width:100%}}
+.tags .cit{background:transparent;border:1px solid var(--claret);color:var(--claret)}
+.chart{margin-top:1.6rem;max-width:720px}
+.chart h2{font-family:var(--font-body);font-size:.88rem;font-weight:600;color:var(--ink-2);margin:0 0 .4rem}
+.chart svg{width:100%;height:auto;display:block;overflow:visible}
+.chart rect{fill:var(--teal);opacity:.85;transition:opacity .15s}
+.chart rect:hover{opacity:1}
+.chart .axis{fill:var(--ink-2);font-size:11px}
+.chart .grid{stroke:var(--line);stroke-width:1}
+.chart .lbl{fill:var(--ink);font-size:11px;font-weight:600}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);font-size:.8rem;padding:.3rem .55rem;border-radius:6px;opacity:0;transition:opacity .1s;z-index:30;white-space:nowrap}
+.tip.show{opacity:1}
+.chart details{border:0;padding:0;margin-top:.3rem}
+.chart summary{font-size:.8rem;font-weight:500;color:var(--teal);cursor:pointer;list-style:none;display:inline}
+.chart summary::-webkit-details-marker{display:none}
+.chart table{border-collapse:collapse;font-size:.8rem;margin-top:.4rem}
+.chart td,.chart th{padding:.1rem .6rem .1rem 0;text-align:right;color:var(--ink-2)}
 footer{padding:2rem 0;color:var(--ink-2);font-size:.85rem;border-top:1px solid var(--line)}
 </style>
 </head>
@@ -97,6 +113,7 @@ footer{padding:2rem 0;color:var(--ink-2);font-size:.85rem;border-top:1px solid v
     <h1 data-i="h1">Yayınlar</h1>
     <p data-i="intro">Bilim dalı öğretim üyeleri ve yan dal asistanlarının PubMed'de dizinlenen yayınları. Liste dergi etki faktörüne, eşitlikte yıla göre sıralanır; kişiye, türe veya metne göre filtreleyebilirsiniz.</p>
     <div class="stats" id="stats"><!--pre:stats--><div><b>241</b><span>yayın</span></div><div><b>1995-2026</b><span>yıl aralığı</span></div><div><b>13</b><span>etki faktörü 10 ve üzeri dergide</span></div><div><b>9</b><span>ekip üyesi</span></div><!--/pre:stats--></div>
+    <div class="chart" id="chart"></div>
   </div></div>
   <div class="controls"><div class="wrap">
     <input type="search" id="q" autocomplete="off">
@@ -1568,10 +1585,11 @@ const T = {
     q: "Başlık, dergi veya yazar ara", all: "Tüm ekip", types: "Tüm türler",
     type: { Article: "Araştırma makalesi", Review: "Derleme", Letter: "Editöre mektup", Case: "Olgu sunumu" },
     chip: { Article: "Makale", Review: "Derleme", Letter: "Mektup", Case: "Olgu" },
-    sort: { jif: "Etki faktörüne göre", year: "Yıla göre (yeni)", journal: "Dergiye göre" },
+    sort: { jif: "Etki faktörüne göre", year: "Yıla göre (yeni)", journal: "Dergiye göre", cites: "Atıfa göre" },
+    cites: "atıf (OpenAlex)", hindex: "h-indeksi (bilim dalı)", cit: n => n + " atıf", chartH: "Yıllara göre yayın sayısı", chartTip: (y, n) => y + ": " + n + " yayın", table: "Tablo olarak göster", yearCol: "Yıl", nCol: "Yayın",
     count: n => `${n} yayın`, IF: "EF", clear: "Filtreleri temizle",
     none: "Bu filtrelerle eşleşen yayın yok. Aramayı kısaltın veya filtreleri temizleyin.",
-    note: "Kaynak: PubMed (NCBI). Etki faktörleri Journal Citation Reports'a dayalı yaklaşık değerlerdir ve yalnızca sıralama için kullanılır; resmi değerler için Clarivate JCR'ye bakın. Yazar adları PubMed'deki biçimiyle verilmiştir. Eksik ya da hatalı bir kayıt görürseniz <a href=\"mailto:bfagargun@istanbul.edu.tr\">bize yazın</a>.",
+    note: "Kaynak: PubMed (NCBI). Atıf sayıları OpenAlex'ten alınır ve haftada bir yenilenir. Etki faktörleri Journal Citation Reports'a dayalı yaklaşık değerlerdir ve yalnızca sıralama için kullanılır; resmi değerler için Clarivate JCR'ye bakın. Yazar adları PubMed'deki biçimiyle verilmiştir. Eksik ya da hatalı bir kayıt görürseniz <a href=\"mailto:bfagargun@istanbul.edu.tr\">bize yazın</a>.",
     foot: "İstanbul Üniversitesi İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı",
     langBtn: "EN", langAria: "Switch to English", theme: "Açık veya koyu tema",
     aria: { q: "Yayınlarda ara", who: "Kişi", typ: "Yayın türü", sort: "Sıralama" }
@@ -1583,10 +1601,11 @@ const T = {
     q: "Search title, journal or author", all: "All members", types: "All types",
     type: { Article: "Research article", Review: "Review", Letter: "Letter", Case: "Case report" },
     chip: { Article: "Article", Review: "Review", Letter: "Letter", Case: "Case" },
-    sort: { jif: "By impact factor", year: "By year (newest)", journal: "By journal" },
+    sort: { jif: "By impact factor", year: "By year (newest)", journal: "By journal", cites: "By citations" },
+    cites: "citations (OpenAlex)", hindex: "h-index (division)", cit: n => n + " citations", chartH: "Publications per year", chartTip: (y, n) => y + ": " + n + " publications", table: "Show as table", yearCol: "Year", nCol: "Publications",
     count: n => `${n} publications`, IF: "IF", clear: "Clear filters",
     none: "No publications match these filters. Try a shorter search or clear the filters.",
-    note: "Source: PubMed (NCBI). Impact factors are approximate values based on Journal Citation Reports and are used only for ranking; see Clarivate JCR for official figures. Author names appear as listed in PubMed. If you spot a missing or incorrect record, <a href=\"mailto:bfagargun@istanbul.edu.tr\">write to us</a>.",
+    note: "Source: PubMed (NCBI). Citation counts come from OpenAlex and refresh weekly. Impact factors are approximate values based on Journal Citation Reports and are used only for ranking; see Clarivate JCR for official figures. Author names appear as listed in PubMed. If you spot a missing or incorrect record, <a href=\"mailto:bfagargun@istanbul.edu.tr\">write to us</a>.",
     foot: "Division of Gastroenterohepatology, Istanbul Faculty of Medicine, Istanbul University",
     langBtn: "TR", langAria: "Türkçeye geç", theme: "Light or dark theme",
     aria: { q: "Search publications", who: "Person", typ: "Publication type", sort: "Sort order" }
@@ -1603,17 +1622,48 @@ function fillSelects() {
   const t = T[lang], w = who.value, ty = typ.value, so = sort.value || "jif";
   who.innerHTML = `<option value="">${t.all}</option>` + members.map(m => `<option value="${m}">${m} (${byMember(m)})</option>`).join("");
   typ.innerHTML = `<option value="">${t.types}</option>` + Object.keys(t.type).map(k => `<option value="${k}">${t.type[k]}</option>`).join("");
-  sort.innerHTML = Object.keys(t.sort).map(k => `<option value="${k}">${t.sort[k]}</option>`).join("");
+  sort.innerHTML = Object.keys(t.sort).filter(k => k !== "cites" || CITES).map(k => `<option value="${k}">${t.sort[k]}</option>`).join("");
   who.value = w; typ.value = ty; sort.value = so;
 }
 function stats() {
   const t = T[lang], years = PUBS_ALL.map(p => p.year);
-  $("stats").innerHTML = `<div><b>${PUBS_ALL.length}</b><span>${t.pubs}</span></div><div><b>${Math.min(...years)}-${Math.max(...years)}</b><span>${t.span}</span></div><div><b>${PUBS_ALL.filter(p => (p.jif || 0) >= 10).length}</b><span>${t.hi}</span></div><div><b>${members.length}</b><span>${t.members}</span></div>`;
+  let extra = "";
+  if (CITES) {
+    const c = PUBS_ALL.map(p => CITES[p.pmid] || 0).sort((a, b) => b - a);
+    const total = c.reduce((a, b) => a + b, 0);
+    let h = 0; while (h < c.length && c[h] >= h + 1) h++;
+    extra = `<div><b>${total.toLocaleString(lang === "tr" ? "tr-TR" : "en-GB")}</b><span>${t.cites}</span></div><div><b>${h}</b><span>${t.hindex}</span></div>`;
+  }
+  $("stats").innerHTML = `<div><b>${PUBS_ALL.length}</b><span>${t.pubs}</span></div><div><b>${Math.min(...years)}-${Math.max(...years)}</b><span>${t.span}</span></div><div><b>${PUBS_ALL.filter(p => (p.jif || 0) >= 10).length}</b><span>${t.hi}</span></div><div><b>${members.length}</b><span>${t.members}</span></div>${extra}`;
+  chart();
+}
+/* Yıllara göre yayın sayısı: tek seri, tek renk, ince çubuklar, üzerine gelince ipucu, tablo görünümü */
+function chart() {
+  const t = T[lang], counts = {};
+  PUBS_ALL.forEach(p => counts[p.year] = (counts[p.year] || 0) + 1);
+  const y0 = Math.min(...PUBS_ALL.map(p => p.year)), y1 = Math.max(...PUBS_ALL.map(p => p.year));
+  const yrs = []; for (let y = y0; y <= y1; y++) yrs.push(y);
+  const max = Math.max(...yrs.map(y => counts[y] || 0));
+  const W = 720, H = 150, padL = 26, padB = 22, padT = 14, iw = W - padL - 6, ih = H - padB - padT;
+  const bw = iw / yrs.length, gap = 2;
+  const ticks = [0, Math.ceil(max / 2), max];
+  const bars = yrs.map((y, i) => { const n = counts[y] || 0, h = n ? Math.max(3, n / max * ih) : 0, x = padL + i * bw + gap / 2, yy = padT + ih - h;
+    return `<rect x="${x.toFixed(1)}" y="${yy.toFixed(1)}" width="${(bw - gap).toFixed(1)}" height="${h.toFixed(1)}" rx="3" data-y="${y}" data-n="${n}"><title>${t.chartTip(y, n)}</title></rect>` + (n === max ? `<text class="lbl" x="${(x + (bw - gap) / 2).toFixed(1)}" y="${(yy - 4).toFixed(1)}" text-anchor="middle">${n}</text>` : ""); }).join("");
+  const grid = ticks.map(v => { const yy = padT + ih - (max ? v / max * ih : 0); return `<line class="grid" x1="${padL}" x2="${W - 6}" y1="${yy.toFixed(1)}" y2="${yy.toFixed(1)}"/><text class="axis" x="${padL - 6}" y="${(yy + 4).toFixed(1)}" text-anchor="end">${v}</text>`; }).join("");
+  const labels = yrs.filter(y => y % 5 === 0 || (y === y1 && y1 % 5 >= 3)).map(y => `<text class="axis" x="${(padL + (y - y0) * bw + bw / 2).toFixed(1)}" y="${H - 6}" text-anchor="middle">${y}</text>`).join("");
+  $("chart").innerHTML = `<h2>${t.chartH}</h2><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${t.chartH}">${grid}${bars}${labels}</svg>
+    <details><summary>${t.table}</summary><table><tr><th>${t.yearCol}</th><th>${t.nCol}</th></tr>${yrs.filter(y => counts[y]).map(y => `<tr><td>${y}</td><td>${counts[y]}</td></tr>`).join("")}</table></details>`;
+  let tip = $("tip"); if (!tip) { tip = document.createElement("div"); tip.id = "tip"; tip.className = "tip"; document.body.appendChild(tip); }
+  $("chart").querySelectorAll("rect").forEach(r => {
+    r.addEventListener("mousemove", e => { tip.textContent = t.chartTip(r.dataset.y, r.dataset.n); tip.style.left = (e.clientX + 12) + "px"; tip.style.top = (e.clientY - 28) + "px"; tip.classList.add("show"); });
+    r.addEventListener("mouseleave", () => tip.classList.remove("show"));
+  });
 }
 function render() {
   const t = T[lang], s = fold(q.value.trim());
   let rows = PUBS_ALL.filter(p => (!who.value || p.members.includes(who.value)) && (!typ.value || p.type === typ.value) && (!s || fold(p.title + " " + p.journal + " " + p.authors).includes(s)));
-  if (sort.value === "year") rows.sort((a, b) => b.year - a.year || (b.jif || 0) - (a.jif || 0));
+  if (sort.value === "cites" && CITES) rows.sort((a, b) => (CITES[b.pmid] || 0) - (CITES[a.pmid] || 0) || b.year - a.year);
+  else if (sort.value === "year") rows.sort((a, b) => b.year - a.year || (b.jif || 0) - (a.jif || 0));
   else if (sort.value === "journal") rows.sort((a, b) => a.journal.localeCompare(b.journal) || b.year - a.year);
   else rows.sort((a, b) => (b.jif || 0) - (a.jif || 0) || b.year - a.year);
   count.textContent = t.count(rows.length);
@@ -1623,7 +1673,7 @@ function render() {
     <div>
       <div class="t"><a href="${p.doi ? "https://doi.org/" + p.doi : "https://pubmed.ncbi.nlm.nih.gov/" + p.pmid + "/"}" target="_blank" rel="noopener">${p.title}</a></div>
       <div class="m">${p.authors} <i>${p.journal}</i> ${p.year}. <a href="https://pubmed.ncbi.nlm.nih.gov/${p.pmid}/" target="_blank" rel="noopener">PubMed</a></div>
-      <div class="tags">${p.members.map(m => `<span>${m}</span>`).join("")}<span class="typ">${t.chip[p.type] || p.type}</span></div>
+      <div class="tags">${p.members.map(m => `<span>${m}</span>`).join("")}<span class="typ">${t.chip[p.type] || p.type}</span>${CITES && CITES[p.pmid] ? `<span class="cit">${t.cit(CITES[p.pmid])}</span>` : ""}</div>
     </div></li>`).join("") : `<li class="empty">${t.none}</li>`;
 }
 function applyLang(l, persist) {
@@ -1659,12 +1709,42 @@ themeBtn.addEventListener("click", () => {
 });
 themeBtn.textContent = isDark() ? "☀" : "☾";
 
+/* Atıf sayıları: OpenAlex, tarayıcıda, 7 gün önbellek. Erişilemezse sayfa atıfsız çalışır. */
+let CITES = null;
+const OA_KEY = "oa-cites-v1", OA_TTL = 7 * 24 * 3600 * 1000;
+function loadCitations() {
+  try { const c = JSON.parse(localStorage.getItem(OA_KEY)); if (c && c.map && Date.now() - c.ts < OA_TTL) { CITES = c.map; return Promise.resolve(); } } catch (e) {}
+  const withDoi = PUBS_ALL.filter(p => p.doi), noDoi = PUBS_ALL.filter(p => !p.doi), batches = [];
+  for (let i = 0; i < withDoi.length; i += 40) batches.push({ k: "doi", items: withDoi.slice(i, i + 40) });
+  for (let i = 0; i < noDoi.length; i += 40) batches.push({ k: "pmid", items: noDoi.slice(i, i + 40) });
+  const byDoi = {}; withDoi.forEach(p => byDoi[p.doi.toLowerCase()] = p.pmid);
+  const map = {}; let got = 0;
+  return batches.reduce((pr, b) => pr.then(() => {
+    const vals = b.items.map(p => b.k === "doi" ? p.doi.toLowerCase() : String(p.pmid)).join("|");
+    const url = "https://api.openalex.org/works?filter=" + b.k + ":" + encodeURIComponent(vals) + "&select=doi,ids,cited_by_count&per-page=50&mailto=bfagargun%40istanbul.edu.tr";
+    return fetch(url).then(r => r.ok ? r.json() : null).then(j => {
+      if (!j || !j.results) return;
+      j.results.forEach(w => {
+        const d = String(w.doi || "").replace(/^https?:\/\/doi\.org\//, "").toLowerCase();
+        const pm = w.ids && w.ids.pmid ? String(w.ids.pmid).replace(/^.*\//, "") : "";
+        const key = byDoi[d] || (pm && PUBS_ALL.some(p => String(p.pmid) === pm) ? pm : "");
+        if (key) { map[key] = w.cited_by_count || 0; got++; }
+      });
+    }).catch(() => {});
+  }), Promise.resolve()).then(() => {
+    if (!got) return;
+    CITES = map;
+    try { localStorage.setItem(OA_KEY, JSON.stringify({ ts: Date.now(), map })); } catch (e) {}
+  });
+}
+
 fillSelects();
 const u = new URLSearchParams(location.search);
 if (u.get("kisi") && members.includes(u.get("kisi"))) who.value = u.get("kisi");
 if (u.get("q")) q.value = u.get("q");
 applyLang(lang, false);
 $("year").textContent = new Date().getFullYear();
+loadCitations().then(() => { if (CITES) { fillSelects(); stats(); render(); } });
 </script>
 </body>
 </html>
