@@ -271,28 +271,30 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
    HAZIRLIK PROTOKOLLERİ. Ünitenin uygulamasına göre bu bölümü düzenleyin.
    mode "liquid": iki sıvı doz (bölünmüş doz veya öğleden sonra randevularında aynı sabah);
      d1 / d2 dozların dakika cinsinden süresi, how içme talimatı.
-   mode "xm": bir gün önce akşam iki yarım doz X-M Diet (dose1Hour, dose2Hour) ve işlem sabahı
-     lavman (enemaBefore: randevudan kaç dakika önce); how1, how2, enema hasta metinleri.
+   mode "xm": bir gün önce akşam iki şişe X-M Diet (dose1Hour, dose2Hour) ve işlem sabahı lavmanlar
+     (enemaBefore: her lavmanın randevudan kaç dakika önce uygulanacağı); how1, how2, enemas hasta metinleri.
    rkWarn: böbrek veya kalp yetmezliği işaretlenirse uyarı göster. warn: ürüne özel bilgi notu.
    ---------------------------------------------------------------------- */
 const PROTOCOLS = [
-  { id: "pegdin", mode: "liquid", d1: 100, d2: 100,
-    tr: { name: "Pegdin", brands: "PEG solüsyonu: 1 poşet, 4 litre suda",
-          how: "Poşetin tamamını 4 litre ılık suda eritip soğutun (buzdolabında 48 saate kadar saklanabilir). Her doz 2 litre: her 10 dakikada bir su bardağı (240 mL) olacak şekilde yaklaşık 1,5 saatte bitirin." },
-    en: { name: "Pegdin", brands: "PEG solution: 1 sachet in 4 litres of water",
-          how: "Dissolve the whole sachet in 4 litres of lukewarm water and chill it (keeps up to 48 hours in the fridge). Each dose is 2 litres: one glass (240 mL) every 10 minutes, finished in about 1.5 hours." } },
-  { id: "xm", mode: "xm", dose1Hour: 16, dose2Hour: 20, enemaBefore: 120, rkWarn: true,
-    tr: { name: "X-M Diet + B.T. Enema", brands: "X-M Diet oral süspansiyon (250 mL) bir gün önce akşam, B.T. Enema lavman işlem sabahı",
-          t1: "X-M Diet, ilk yarı", t2: "X-M Diet, ikinci yarı", t3: "B.T. Enema lavman",
-          how1: "Şişeyi iyice çalkalayıp yarısını (125 mL) için; ardından 2 saat içinde en az 1 litre su veya berrak sıvı için. Etkisi genellikle 5-6 saat sonra başlar.",
-          how2: "Şişenin kalan yarısını için; ardından yatana kadar bol berrak sıvı içmeye devam edin. Gece tuvalete kalkmanız normaldir.",
-          enema: "B.T. Enema (135 mL): sol yanınıza yatıp dizlerinizi karnınıza çekin; ucunu makata yavaşça yerleştirip şişeyi boşalana yakın sıkın. 5-10 dakika tutun, sonra tuvalete gidin. Evden çıkmadan önce, işlemden yaklaşık 2 saat önce uygulayın.",
+  { id: "pegdin", mode: "liquid", d1: 90, d2: 90,
+    tr: { name: "Pegdin", brands: "PEG solüsyonu: 1 poşet, iki ayrı 1,5 litrelik şişede",
+          how: "Poşeti ikiye bölüp her yarısını 1,5 litre suda eriterek iki şişe hazırlayın ve buzdolabında soğutun (48 saate kadar saklanabilir). Her şişe bir doz: her 10 dakikada bir su bardağı (240 mL) olacak şekilde yaklaşık 1 saatte bitirin; ardından en az yarım litre (2 bardak) su için. Hazırlık boyunca solüsyona ek olarak toplam en az 1 litre su içmeniz gerekir." },
+    en: { name: "Pegdin", brands: "PEG solution: 1 sachet split into two 1.5-litre bottles",
+          how: "Divide the sachet in two and dissolve each half in 1.5 litres of water to make two bottles; chill them (they keep up to 48 hours in the fridge). Each bottle is one dose: one glass (240 mL) every 10 minutes, finished in about 1 hour; then drink at least half a litre (2 glasses) of water. Over the whole preparation you need at least 1 extra litre of water on top of the solution." } },
+  { id: "xm", mode: "xm", dose1Hour: 16, dose2Hour: 20, enemaBefore: [180, 120], rkWarn: true,
+    tr: { name: "X-M Diet + B.T. Enema", brands: "2 şişe X-M Diet oral süspansiyon bir gün önce akşam, 2 adet B.T. Enema lavman işlem sabahı",
+          t1: "X-M Diet, 1. şişe", t2: "X-M Diet, 2. şişe", enemaTitles: ["1. B.T. Enema lavman", "2. B.T. Enema lavman"],
+          how1: "Şişeyi iyice çalkalayıp tamamını (250 mL) için; ardından 2 saat içinde en az 1 litre su veya berrak sıvı için. Etkisi genellikle 5-6 saat sonra başlar.",
+          how2: "İkinci şişenin tamamını için; ardından yatana kadar bol berrak sıvı içmeye devam edin. Gece tuvalete kalkmanız normaldir.",
+          enemas: ["B.T. Enema (135 mL): sol yanınıza yatıp dizlerinizi karnınıza çekin; ucunu makata yavaşça yerleştirip şişeyi boşalana yakın sıkın. 5-10 dakika tutun, sonra tuvalete gidin.",
+                   "İkinci lavmanı aynı şekilde uygulayın ve evden çıkmadan önce bitirin. Bundan sonra gelen dışkı berrak, sarı bir sıvı olmalı; hala koyu veya parçacıklı ise üniteye geldiğinizde söyleyin."],
           warn: "B.T. Enema böbrek yetmezliği, kalp yetmezliği, susuz kalma ve ileri yaşta tuz dengesini bozabilir. Bu durumlardan biri sizde varsa uygulamadan önce üniteyi arayın." },
-    en: { name: "X-M Diet + B.T. Enema", brands: "X-M Diet oral suspension (250 mL) the evening before, B.T. Enema on the morning of the procedure",
-          t1: "X-M Diet, first half", t2: "X-M Diet, second half", t3: "B.T. Enema",
-          how1: "Shake the bottle well and drink half of it (125 mL); then drink at least 1 litre of water or clear fluid within 2 hours. It usually starts working after 5-6 hours.",
-          how2: "Drink the remaining half of the bottle; then keep drinking plenty of clear fluid until bedtime. Getting up at night for the toilet is normal.",
-          enema: "B.T. Enema (135 mL): lie on your left side with your knees drawn up; insert the nozzle gently into the rectum and squeeze the bottle until nearly empty. Hold for 5-10 minutes, then go to the toilet. Apply it before leaving home, about 2 hours before the procedure.",
+    en: { name: "X-M Diet + B.T. Enema", brands: "2 bottles of X-M Diet oral suspension the evening before, 2 B.T. Enemas on the morning of the procedure",
+          t1: "X-M Diet, bottle 1", t2: "X-M Diet, bottle 2", enemaTitles: ["B.T. Enema, first", "B.T. Enema, second"],
+          how1: "Shake the bottle well and drink all of it (250 mL); then drink at least 1 litre of water or clear fluid within 2 hours. It usually starts working after 5-6 hours.",
+          how2: "Drink all of the second bottle; then keep drinking plenty of clear fluid until bedtime. Getting up at night for the toilet is normal.",
+          enemas: ["B.T. Enema (135 mL): lie on your left side with your knees drawn up; insert the nozzle gently into the rectum and squeeze the bottle until nearly empty. Hold for 5-10 minutes, then go to the toilet.",
+                   "Apply the second enema the same way and finish before leaving home. After this your stool should be a clear, yellow liquid; if it is still dark or contains particles, tell us when you arrive."],
           warn: "B.T. Enema can upset salt balance in kidney failure, heart failure, dehydration and older age. If any of these applies to you, call the unit before using it." } },
   { id: "pico", mode: "liquid", d1: 120, d2: 120, rkWarn: true,
     tr: { name: "Picoprep veya CitraFleet", brands: "Sodyum pikosülfat + magnezyum sitrat: 2 poşet",
@@ -319,8 +321,8 @@ const T = {
     regSame: "Tamamı işlem günü sabahı", regSameS: "Yalnızca öğleden sonra randevuları için; iki doz da aynı sabah.",
     regHintPm: "Randevunuz öğleden sonra: isterseniz hazırlığın tamamını aynı sabah alabilirsiniz; her iki düzen de uygundur.",
     regHintAm: "Sabah randevularında bölünmüş doz gerekir.",
-    regHintXm: "X-M Diet hazırlığı bir gün önce akşam yapılır; işlem sabahı yalnızca lavman uygulanır.",
-    ruleXm: "Lavman, işlemden yaklaşık 2 saat önce uygulanacak ve ağızdan alım işlemden 2 saat önce kesilecek şekilde planlandı. Ünite size farklı bir saat verdiyse ünitenin dediğine uyun.",
+    regHintXm: "X-M Diet şişeleri bir gün önce akşam içilir; işlem sabahı yalnızca lavmanlar uygulanır.",
+    ruleXm: "Lavmanlar işlemden 3 ve 2 saat önce, ağızdan alım işlemden 2 saat önce kesilecek şekilde planlandı. Ünite size farklı bir saat verdiyse ünitenin dediğine uyun.",
     l4: "Sizinle ilgili durumlar",
     fAc: "Kan sulandırıcı kullanıyorum", fAcS: "Varfarin, apiksaban, rivaroksaban, dabigatran, klopidogrel, tikagrelor ve benzerleri.",
     fDm: "Şeker hastalığı ilacı veya insülin kullanıyorum", fFe: "Demir hapı kullanıyorum",
@@ -398,8 +400,8 @@ const T = {
     regSame: "All on the morning of the procedure", regSameS: "Afternoon appointments only; both doses the same morning.",
     regHintPm: "Your appointment is in the afternoon: you may take the whole preparation that morning if you prefer; both schedules are suitable.",
     regHintAm: "Morning appointments require the split-dose schedule.",
-    regHintXm: "The X-M Diet preparation is taken the evening before; on the morning of the procedure only the enema is used.",
-    ruleXm: "The enema is timed about 2 hours before the procedure, and everything by mouth stops 2 hours before. If the unit gave you a different time, follow the unit.",
+    regHintXm: "The X-M Diet bottles are taken the evening before; on the morning of the procedure only the enemas are used.",
+    ruleXm: "The enemas are timed 3 and 2 hours before the procedure, and everything by mouth stops 2 hours before. If the unit gave you a different time, follow the unit.",
     l4: "Things that apply to you",
     fAc: "I take a blood thinner", fAcS: "Warfarin, apixaban, rivaroxaban, dabigatran, clopidogrel, ticagrelor and similar.",
     fDm: "I take diabetes medication or insulin", fFe: "I take iron tablets",
@@ -507,7 +509,7 @@ function buildPlan(st, lang) {
     push(d1, true, "dose1", { title: pt.t1, text: pt.how1, dose: true, dur: 15 });
     push(d2, true, "dose2", { title: pt.t2, text: pt.how2, dose: true, dur: 15 });
     push(addMin(d2, 60), true, "fluidsEve", { title: S.fluidsEve[0], text: S.fluidsEve[1], soft: true });
-    push(addMin(A, -p.enemaBefore), true, "enema", { title: pt.t3, text: pt.enema, dose: true, dur: 15 });
+    p.enemaBefore.forEach((m, i) => push(addMin(A, -m), true, "enema" + (i + 1), { title: pt.enemaTitles[i], text: pt.enemas[i], dose: true, dur: 15 }));
   } else if (reg === "split") {
     push(atTime(A, -1, 8), true, "breakfast", { title: S.breakfast[0], text: S.breakfast[1] });
     push(atTime(A, -1, 10), true, "clear", { title: S.clear[0], text: S.clear[1] });
