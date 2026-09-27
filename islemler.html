@@ -484,7 +484,8 @@ let toastTimer;
 function toast(msg) { const el = $("toast"); el.textContent = msg; el.classList.add("show"); clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove("show"), 2400); }
 
 render();
-if (location.hash) { const el = document.querySelector(location.hash); if (el) el.scrollIntoView(); }
+function jumpToHash() { if (!location.hash) return; const el = document.getElementById(location.hash.slice(1)); if (el) el.scrollIntoView(); }
+jumpToHash(); setTimeout(jumpToHash, 60); addEventListener("load", () => setTimeout(jumpToHash, 60)); addEventListener("hashchange", jumpToHash);
 $("year").textContent = new Date().getFullYear();
 $("lang").addEventListener("click", () => { lang = lang === "tr" ? "en" : "tr"; try { localStorage.setItem("lang", lang); } catch (e) {} render(); });
 const themeBtn = $("theme");
