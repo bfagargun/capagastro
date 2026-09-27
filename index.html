@@ -237,6 +237,18 @@ section.alt{background:var(--paper-2)}
 .timeline span{color:var(--ink-2)}
 .source{font-size:.85rem;color:var(--ink-2);margin:.2rem 0 0 1.4rem}
 
+/* News */
+.news{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem 2rem}
+@media (max-width:900px){.news{grid-template-columns:1fr}}
+.news article{border-top:3px solid var(--claret);padding-top:1rem}
+.news article.hidden{display:none}
+.news time{font-family:var(--font-display);font-size:1.1rem;color:var(--claret)}
+.news .tag{font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);margin-left:.6rem}
+.news h3{font-size:1.1rem;margin:.45rem 0 .3rem}
+.news p{font-size:.95rem;color:var(--ink-2);margin:0 0 .5rem}
+.news-more{margin-top:1.6rem}
+.stamp{font-size:.85rem;color:var(--ink-2);border-top:1px dashed var(--line);padding-top:.8rem;margin:2.2rem 0 0;max-width:none}
+
 /* Research */
 .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem 2rem}
 @media (max-width:900px){.projects{grid-template-columns:1fr}}
@@ -359,6 +371,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
       <ul>
         <li><a href="#sorumlu-arastirmaci" data-en="Principal investigator">Sorumlu araştırmacı</a></li>
         <li><a href="#hakkimizda" data-en="About">Hakkımızda</a></li>
+        <li><a href="#haberler" data-en="News">Haberler</a></li>
         <li><a href="#arastirma" data-en="Research">Araştırma</a></li>
         <li><a href="#ekip" data-en="People">Ekip</a></li>
         <li><a href="#mezunlar" data-en="Alumni">Mezunlar</a></li>
@@ -523,6 +536,19 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
 </section>
 
 <!-- ARAŞTIRMA -->
+
+<!-- HABERLER -->
+<section id="haberler">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-en="News and announcements">Haberler ve duyurular</h2>
+      <p data-en="Publications, meetings, grants and unit news from the division; newest first.">Bilim dalından yayınlar, toplantılar, projeler ve ünite haberleri; en yeniden eskiye.</p>
+    </div>
+    <div class="news" id="news"></div>
+    <div class="news-more" id="news-more" hidden><button class="btn" type="button" id="news-btn" data-en="Older news">Daha eski haberler</button></div>
+  </div>
+</section>
+
 <section id="arastirma">
   <div class="wrap">
     <div class="section-head">
@@ -1002,6 +1028,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
         <p class="hint-line" data-en="ERCP, EUS, capsule endoscopy, POEM, manometry, FibroScan, liver biopsy, paracentesis, intestinal ultrasound, the infusion unit and PEG, each on its own printable page section.">ERCP, EUS, kapsül endoskopi, POEM, manometri, FibroScan, karaciğer biyopsisi, parasentez, bağırsak ultrasonografisi, infüzyon ünitesi ve PEG; her biri yazdırılabilir ayrı bir bölümde.</p>
       </div>
     </div>
+    <p class="stamp" data-en="Patient information on this site is prepared by the division's endoscopy unit and reviewed by its faculty. Last review: September 2026 (draft; awaiting divisional approval). Sources: ESGE bowel preparation guideline (2019 update), ESGE and BSG patient information documents, product leaflets.">Bu sitedeki hasta bilgileri bilim dalı endoskopi ünitesi tarafından hazırlanır ve öğretim üyelerince gözden geçirilir. Son gözden geçirme: Eylül 2026 (taslak; bilim dalı onayı bekliyor). Kaynaklar: ESGE bağırsak hazırlığı rehberi (2019 güncellemesi), ESGE ve BSG hasta bilgilendirme belgeleri, ürün prospektüsleri.</p>
   </div>
 </section>
 
@@ -1010,14 +1037,14 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
   <div class="wrap">
     <div class="section-head">
       <h2 data-en="Çapa Gastroenterohepatology Days">Çapa Gastroenterohepatoloji Günleri</h2>
-      <p data-en="Every year the division hosts a national meeting that walks from pathophysiology to the clinic: basic science recalled from the first years of medical school, worked into the cases seen yesterday. The 25th meeting takes place in 2026.">
-        Bilim dalı her yıl patofizyolojiden kliniğe uzanan ulusal bir toplantı düzenler: tıp fakültesinin ilk yıllarında öğrenilen temel bilimler, dün görülen olgularla yoğrulur. 25. toplantı 2026 yılında yapılıyor.
+      <p data-en="Every year the division hosts a national meeting that walks from pathophysiology to the clinic: basic science recalled from the first years of medical school, worked into the cases seen yesterday. The 25th meeting was held in Istanbul on 9-11 April 2026.">
+        Bilim dalı her yıl patofizyolojiden kliniğe uzanan ulusal bir toplantı düzenler: tıp fakültesinin ilk yıllarında öğrenilen temel bilimler, dün görülen olgularla yoğrulur. 25. toplantı 9-11 Nisan 2026'da İstanbul'da yapıldı.
       </p>
     </div>
     <div class="cols">
       <div class="block">
         <h3 data-en="25th meeting, 2026">25. toplantı, 2026</h3>
-        <p data-en="From Pathophysiology to the Clinic: Gastroenterology. Scientific programme, registration and abstract submission are on the meeting website.">Patofizyolojiden Kliniğe Gastroenteroloji. Bilimsel program, kayıt ve bildiri gönderimi toplantı sitesinde.</p>
+        <p data-en="From Pathophysiology to the Clinic: Gastroenterology, 9-11 April 2026, Fairmont Quasar Hotel, Istanbul. The scientific programme is on the meeting website.">Patofizyolojiden Kliniğe Gastroenteroloji; 9-11 Nisan 2026, Fairmont Quasar Hotel, İstanbul. Bilimsel program toplantı sitesinde.</p>
         <a class="btn solid" href="https://capagastro2026.org/" target="_blank" rel="noopener">capagastro2026.org</a>
       </div>
       <div class="block">
@@ -1027,7 +1054,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
       </div>
       <div class="block">
         <h3 data-en="Past meetings">Önceki toplantılar</h3>
-        <p data-en="Twenty-four meetings since the first Çapa Days. Programme archives will be added here.">İlk Çapa Günleri'nden bu yana yirmi dört toplantı. Program arşivi buraya eklenecek.</p>
+        <p data-en="Twenty-five meetings since the first Çapa Days. Programme archives will be added here.">İlk Çapa Günleri'nden bu yana yirmi beş toplantı. Program arşivi buraya eklenecek.</p>
       </div>
     </div>
   </div>
@@ -1243,6 +1270,28 @@ const PI_PUBS = [
   "10.5152/tjg.2023.21961", "10.1002/ueg2.12259", "10.1016/S0140-6736(20)31909-7", "10.1016/j.aohep.2019.01.007",
 ];
 
+/* Haberler. d: "YYYY-MM-DD", "YYYY-MM" veya "YYYY"; tag: Yayın | Kongre | Proje | Toplantı | Ünite; link isteğe bağlı. En yeni 6 haber görünür, kalanı düğmeyle açılır. */
+const NEWS = [
+  { d: "2026-10-17", tag: ["Kongre", "Congress"], link: "https://ueg.eu/",
+    tr: ["UEG Week 2026, Barselona", "Bilim dalından üç bildiri UEG Week 2026'da (17-20 Ekim): Türkçe endoskopi raporlarında büyük dil modeliyle Montreal sınıflaması, kalp yetmezliğinde transient elastografi (moderated poster) ve bir ince bağırsak berrak hücreli sarkomu olgusu. Dr. Besim Fazıl Ağargün ayrıca bir İBH poster oturumunda eş başkan (Young Co-Chair)."],
+    en: ["UEG Week 2026, Barcelona", "Three abstracts from the division at UEG Week 2026 (17-20 October): large language model based Montreal classification of Turkish endoscopy reports, transient elastography in heart failure (moderated poster) and a small-bowel clear cell sarcoma case. Dr. Besim Fazıl Ağargün also serves as Young Co-Chair of an IBD poster session."] },
+  { d: "2026-07", tag: ["Proje", "Grant"],
+    tr: ["Ulusal İBH epidemiyolojisi projesine TÜSEB desteği", "Türkiye'de İBH insidansı, prevalansı ve tedavi örüntülerini Sağlık Bakanlığı ulusal verileriyle inceleyecek proje TÜSEB 2026 A grubu çağrısında desteklendi (2026-A4-54032). Yürütücü: Prof. Dr. Filiz Akyüz."],
+    en: ["TÜSEB grant for the national IBD epidemiology project", "The project that will study IBD incidence, prevalence and treatment patterns in Türkiye using Ministry of Health national data was funded in the TÜSEB 2026 group A call (2026-A4-54032). Principal investigator: Prof. Dr. Filiz Akyüz."] },
+  { d: "2026-04-09", tag: ["Toplantı", "Meeting"], link: "https://capagastro2026.org/",
+    tr: ["25. Çapa Gastroenterohepatoloji Günleri yapıldı", "Patofizyolojiden Kliniğe Gastroenteroloji temalı 25. toplantı 9-11 Nisan 2026'da Fairmont Quasar Hotel, İstanbul'da gerçekleşti."],
+    en: ["25th Çapa Gastroenterohepatology Days held", "The 25th meeting, themed From Pathophysiology to the Clinic, took place on 9-11 April 2026 at the Fairmont Quasar Hotel, Istanbul."] },
+  { d: "2026-02-18", tag: ["Kongre", "Congress"], link: "https://doi.org/10.1093/ecco-jcc/jjaf231.443",
+    tr: ["ECCO'26, Stockholm", "Kolonoskopi görüntülerinden ülseratif kolitte Mayo endoskopik skorunu sınıflandıran derin öğrenme modeli 21. ECCO Kongresi'nde (18-21 Şubat 2026) sunuldu."],
+    en: ["ECCO'26, Stockholm", "A deep learning model that classifies the Mayo endoscopic score in ulcerative colitis from colonoscopy images was presented at the 21st Congress of ECCO (18-21 February 2026)."] },
+  { d: "2026-02-11", tag: ["Yayın", "Publication"], link: "https://doi.org/10.1111/hepr.70136",
+    tr: ["ELASTIBD Hepatology Research'te yayımlandı", "İBH'de karaciğer fibrozisi ve steatozunu eşleştirilmiş kontrol grubuyla transient elastografi ile değerlendiren ELASTIBD çalışması yayımlandı (Ağargün BF ve ark.)."],
+    en: ["ELASTIBD published in Hepatology Research", "ELASTIBD, a matched-control transient elastography study of liver fibrosis and steatosis in IBD, was published (Agargun BF et al.)."] },
+  { d: "2025", tag: ["Yayın", "Publication"], link: "https://doi.org/10.1002/ueg2.70049",
+    tr: ["Crohn hastalığında enzim replasmanı randomize çalışması", "Özel enteral beslenmeye bağlı ishalde pankreas enzim replasman tedavisini inceleyen prospektif randomize çalışma United European Gastroenterology Journal'da yayımlandı."],
+    en: ["Randomised trial of enzyme replacement in Crohn's disease", "The prospective randomised trial of pancreatic enzyme replacement for diarrhoea related to exclusive enteral nutrition was published in United European Gastroenterology Journal."] }
+];
+
 /* Üst şerit. Değeri boş ("") bırakılan madde gösterilmez. */
 const teamCount = TEAM.reduce((n, g) => n + g.people.length, 0);
 const FACTS = [
@@ -1263,6 +1312,22 @@ const $ = id => document.getElementById(id);
 
 $("facts").innerHTML = FACTS.filter(f => f.v).map(f =>
   `<div><b>${f.v}</b><span data-en="${esc(f.en)}">${f.tr}</span></div>`).join("");
+
+function newsDate(d, l) {
+  const parts = d.split("-").map(Number), loc = l === "tr" ? "tr-TR" : "en-GB";
+  const dt = new Date(parts[0], (parts[1] || 1) - 1, parts[2] || 1);
+  const opt = parts.length === 3 ? { day: "numeric", month: "long", year: "numeric" } : parts.length === 2 ? { month: "long", year: "numeric" } : { year: "numeric" };
+  return new Intl.DateTimeFormat(loc, opt).format(dt);
+}
+const NEWS_SORTED = [...NEWS].sort((a, b) => b.d.localeCompare(a.d)), NEWS_SHOW = 6;
+$("news").innerHTML = NEWS_SORTED.map((n, i) => `
+  <article${i >= NEWS_SHOW ? ' class="hidden"' : ""}>
+    <time datetime="${n.d}" data-en="${esc(newsDate(n.d, "en"))}">${newsDate(n.d, "tr")}</time><span class="tag" data-en="${esc(n.tag[1])}">${n.tag[0]}</span>
+    <h3 data-en="${esc(n.en[0])}">${n.tr[0]}</h3>
+    <p data-en="${esc(n.en[1])}">${n.tr[1]}</p>
+    ${n.link ? `<a class="chip" href="${n.link}" target="_blank" rel="noopener" data-en="${/doi\.org/.test(n.link) ? "Publication" : "Details"}">${/doi\.org/.test(n.link) ? "Yayın" : "Ayrıntı"}</a>` : ""}
+  </article>`).join("");
+if (NEWS_SORTED.length > NEWS_SHOW) { $("news-more").hidden = false; $("news-btn").addEventListener("click", () => { document.querySelectorAll("#news article.hidden").forEach(a => a.classList.remove("hidden")); $("news-more").hidden = true; }); }
 
 $("projects").innerHTML = PROJECTS.map(p => `
   <article class="project ${p.status === "plan" ? "plan" : ""}">
