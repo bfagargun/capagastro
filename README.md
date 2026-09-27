@@ -13,6 +13,7 @@ Canlı adres: https://besimagargun.com/capagastro/ (İngilizce için `?lang=en` 
 | `hazirlik.html` | Kolonoskopi hazırlık planlayıcı: randevu saati ve solüsyona göre saat saat plan; takvim (.ics), WhatsApp, yazdırma |
 | `islemler.html` | Her işlem için hasta bilgilendirme (hazırlık, işlem günü, sonrası, ne zaman aramalı, SSS); bölüm bazında yazdırma ve paylaşım |
 | `veri-yonetisimi.html` | Araştırma grubunun veri yönetişimi ve sorumlu yapay zeka ilke belgesi (veri sınıfları, kimliksizleştirme akışı, LLM kuralları, güvenlik, paylaşım, roller) |
+| `qr.html`, `img/qr/` | Hasta sayfalarının QR kartları (ünite içi, yazdırılabilir); kodlar `tools/make_qr.py` ile üretilir |
 | `pubs.js` | PubMed'den derlenen yayın verisi (`PUBS_ALL`) |
 | `404.html` | Bulunamayan sayfalar için |
 | `og.png` | Bağlantı paylaşıldığında görünen görsel (1200x630) |
@@ -52,6 +53,10 @@ Sayfa alt bilgisindeki "Hazırlayan / Kaynak / Son gözden geçirme" satırı (`
 ## İşlem bilgilendirme sayfası
 
 `islemler.html` içeriği dosyanın sonundaki `PROCEDURES` dizisindedir. Her işlemde `id` (bağlantı çapası, ör. `islemler.html#ercp`), her dil için `name`, `short` (bir cümlelik tanım), `facts` (`dur` süre, `sed` sedasyon, `fast` açlık, `comp` refakatçi, `res` sonuç), `prep` / `day` / `after` / `red` madde listeleri ve `faq` soru-cevap çiftleri vardır. Boş bırakılan `red` veya `faq` gösterilmez. Metinlerde geçen "hazırlık planlayıcı" ifadesi kendiliğinden `hazirlik.html` bağlantısına dönüşür. Yeni bir işlem eklemek için diziye aynı yapıda bir kayıt eklemek yeterlidir; üstteki işlem listesi kendiliğinden güncellenir.
+
+## QR kartları
+
+`qr.html` hazırlık kağıdına ve panolara basılacak QR kodlarını iki sütunlu A4 düzeninde listeler. Kodlar `img/qr/` altındadır ve `tools/make_qr.py` ile üretilir (`pip install qrcode pillow`; `python3 tools/make_qr.py --base https://capagastro.org/` gibi). Bağlantı listesi betiğin içindeki `LINKS` dizisindedir; yeni bir sayfa eklenince oraya bir satır ekleyip betiği yeniden çalıştırın. Alan adı değişince kodlar yenilenmelidir; eski kağıtlardaki kodlar önceki adrese gider.
 
 ## Dil
 
