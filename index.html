@@ -295,7 +295,8 @@ summary::-webkit-details-marker{display:none}
 summary::after{content:"+";font-family:var(--font-display);font-size:1.4rem;color:var(--teal)}
 details[open] summary::after{content:"-"}
 details p,details ul{margin-top:.6rem}
-.print-row{margin-top:1.2rem}
+.print-row{margin-top:1.2rem;display:flex;gap:.5rem;flex-wrap:wrap}
+.hint-line{font-size:.88rem;color:var(--ink-2);margin:.7rem 0 0}
 
 /* Publications */
 .pubs{list-style:none;padding:0;margin:0}
@@ -952,7 +953,8 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
           <li><b data-en="Morning of the procedure">İşlem sabahı</b><span data-en="Take the second half 4-6 hours before your appointment and stop all intake 2 hours before.">İkinci yarıyı randevunuzdan 4-6 saat önce için; işlemden 2 saat önce her türlü alımı kesin.</span></li>
           <li><b data-en="Medication">İlaçlar</b><span data-en="Take blood-pressure and heart medication with a sip of water. Tell us in advance if you use blood thinners, insulin or iron tablets.">Tansiyon ve kalp ilaçlarınızı bir yudum suyla alın. Kan sulandırıcı, insülin veya demir hapı kullanıyorsanız önceden bildirin.</span></li>
         </ol>
-        <div class="print-row"><button class="btn" id="print" type="button" data-en="Print these instructions">Bu talimatı yazdır</button></div>
+        <div class="print-row"><a class="btn solid" href="hazirlik.html" data-en="Build my personal preparation plan">Kişisel hazırlık planımı oluştur</a> <button class="btn" id="print" type="button" data-en="Print these instructions">Bu talimatı yazdır</button></div>
+        <p class="hint-line" data-en="The planner turns your appointment time and the solution you were given into an hour-by-hour plan you can add to your phone's calendar, share on WhatsApp or print.">Planlayıcı, randevu saatinize ve size verilen solüsyona göre saat saat bir plan çıkarır; telefonunuzun takvimine ekleyebilir, WhatsApp ile paylaşabilir ya da yazdırabilirsiniz.</p>
       </div>
       <div class="block">
         <h3 data-en="Other procedures">Diğer işlemler</h3>
@@ -1091,6 +1093,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
       <h4 data-en="Patients">Hastalar</h4>
       <ul>
         <li><a href="#hastalar" data-en="Preparing for your procedure">İşleme hazırlık</a></li>
+        <li><a href="hazirlik.html" data-en="Colonoscopy preparation planner">Kolonoskopi hazırlık planlayıcı</a></li>
         <li><a href="https://mhrs.gov.tr/" target="_blank" rel="noopener" data-en="MHRS appointments">MHRS randevu</a></li>
         <li><a href="#iletisim" data-en="Directions">Ulaşım</a></li>
       </ul>
