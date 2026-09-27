@@ -38,7 +38,8 @@
 :root[data-theme="dark"]{--paper:#141B1E;--paper-2:#1C2528;--ink:#EDE9DF;--ink-2:#B4B9B6;--teal:#5FB3B6;--teal-2:#7FC6C8;--teal-soft:#1F3437;--claret:#D66A77;--claret-soft:#3A2226;--line:#33403F;color-scheme:dark}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:5rem}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.6}
+html.big{font-size:118%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:1.0625rem;line-height:1.6}
 a{color:var(--teal);text-decoration-thickness:1px;text-underline-offset:3px}
 :focus-visible{outline:3px solid var(--claret);outline-offset:3px}
 h1,h2,h3,h4{font-family:var(--font-display);font-weight:500;line-height:1.1;margin:0 0 .5em;letter-spacing:-.01em}
@@ -133,6 +134,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
       <span>Çapa Gastroenterohepatoloji<small data-i="sub">İstanbul Tıp Fakültesi, İstanbul Üniversitesi</small></span>
     </a>
     <a class="btn home" href="index.html#hastalar" data-i="home">Hastalar için</a>
+    <button class="btn icon" id="big" type="button" aria-label="Yazıyı büyüt" title="Yazıyı büyüt" style="font-size:.95rem;letter-spacing:-.02em">A<sup style="font-size:.6em">+</sup></button>
     <button class="btn icon" id="theme" type="button">☾</button>
     <button class="btn" id="lang" type="button">EN</button>
   </div>
@@ -421,7 +423,7 @@ const T = {
     foot: "İstanbul Üniversitesi İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı",
     disc: "Bu sayfa genel bilgilendirme amaçlıdır; kendi hekiminizin talimatları her zaman önceliklidir.",
     stamp: "Hazırlayan: Gastroenterohepatoloji Bilim Dalı endoskopi ünitesi. Kaynak: ESGE ve BSG hasta bilgilendirme belgeleri ile ünite uygulamaları. Son gözden geçirme: Eylül 2026 (taslak; bilim dalı onayı bekliyor).",
-    langBtn: "EN", langAria: "Switch to English", theme: "Açık veya koyu tema", totop: "Başa dön" },
+    langBtn: "EN", langAria: "Switch to English", theme: "Açık veya koyu tema", totop: "Başa dön", big: "Yazıyı büyüt" },
   en: { title: "Procedures and preparation | Çapa Gastroenterohepatology", sub: "Istanbul Faculty of Medicine, Istanbul University", home: "For patients",
     est: "Endoscopy unit, patient information", h1: "Procedures and preparation",
     intro: "For every procedure done in our unit: how to prepare, what to expect on the day and what to watch for afterwards. Each section can be printed or shared on WhatsApp. Your own physician's instructions always take precedence over what is written here.",
@@ -434,7 +436,7 @@ const T = {
     foot: "Division of Gastroenterohepatology, Istanbul Faculty of Medicine, Istanbul University",
     disc: "This page is general information; your own physician's instructions always take precedence.",
     stamp: "Prepared by the endoscopy unit of the Division of Gastroenterohepatology. Sources: ESGE and BSG patient information documents and unit practice. Last reviewed September 2026 (draft; awaiting divisional approval).",
-    langBtn: "TR", langAria: "Türkçeye geç", theme: "Light or dark theme", totop: "Back to top" }
+    langBtn: "TR", langAria: "Türkçeye geç", theme: "Light or dark theme", totop: "Back to top", big: "Larger text" }
 };
 
 const $ = id => document.getElementById(id);
@@ -446,7 +448,7 @@ function render() {
   const t = T[lang];
   document.documentElement.lang = lang; document.title = t.title;
   document.querySelectorAll("[data-i]").forEach(el => { const v = t[el.dataset.i]; if (v !== undefined) el.innerHTML = v; });
-  $("lang").textContent = t.langBtn; $("lang").setAttribute("aria-label", t.langAria); $("theme").setAttribute("aria-label", t.theme); $("totop").setAttribute("aria-label", t.totop);
+  $("lang").textContent = t.langBtn; $("lang").setAttribute("aria-label", t.langAria); $("theme").setAttribute("aria-label", t.theme); $("totop").setAttribute("aria-label", t.totop); $("big").setAttribute("aria-label", t.big); $("big").title = t.big;
   $("print-head").textContent = t.printTitle;
   $("index").innerHTML = PROCEDURES.map(p => `<a href="#${p.id}">${esc(p[lang].name)}</a>`).join("");
   const block = (n, title, items, cls) => items && items.length ? `<div class="block${cls ? " " + cls : ""}"><h3><span>${n}</span>${title}</h3><ul>${items.map(i => `<li>${linkify(esc(i))}</li>`).join("")}</ul>${cls ? `<p class="note" style="margin:.6rem 0 0">${t.phone}</p>` : ""}</div>` : "";
@@ -494,6 +496,12 @@ themeBtn.textContent = isDark() ? "☀" : "☾";
 themeBtn.addEventListener("click", () => { const nt = isDark() ? "light" : "dark"; document.documentElement.dataset.theme = nt; themeBtn.textContent = nt === "dark" ? "☀" : "☾"; try { localStorage.setItem("theme", nt); } catch (e) {} });
 const totop = $("totop");
 addEventListener("scroll", () => totop.classList.toggle("show", scrollY > 600), { passive: true });
+
+/* Yazı boyutu: büyük yazı tercihi hatırlanır */
+const bigBtn = $("big");
+function applyBig(on) { document.documentElement.classList.toggle("big", on); bigBtn.setAttribute("aria-pressed", on ? "true" : "false"); bigBtn.title = bigBtn.getAttribute("aria-label"); }
+try { applyBig(localStorage.getItem("bigtext") === "1"); } catch (e) {}
+bigBtn.addEventListener("click", () => { const on = !document.documentElement.classList.contains("big"); applyBig(on); try { localStorage.setItem("bigtext", on ? "1" : "0"); } catch (e) {} });
 </script>
 </body>
 </html>

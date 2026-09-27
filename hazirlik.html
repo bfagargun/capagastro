@@ -39,7 +39,8 @@
 :root[data-theme="light"]{color-scheme:light}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.6}
+html.big{font-size:118%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:1.0625rem;line-height:1.6}
 a{color:var(--teal);text-decoration-thickness:1px;text-underline-offset:3px}
 :focus-visible{outline:3px solid var(--claret);outline-offset:3px}
 h1,h2,h3{font-family:var(--font-display);font-weight:500;line-height:1.1;margin:0 0 .5em;letter-spacing:-.01em}
@@ -172,6 +173,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
       <span>Çapa Gastroenterohepatoloji<small data-i="sub">İstanbul Tıp Fakültesi, İstanbul Üniversitesi</small></span>
     </a>
     <a class="btn home" href="index.html#hastalar" data-i="home">Hastalar için</a>
+    <button class="btn icon" id="big" type="button" aria-label="Yazıyı büyüt" title="Yazıyı büyüt" style="font-size:.95rem;letter-spacing:-.02em">A<sup style="font-size:.6em">+</sup></button>
     <button class="btn icon" id="theme" type="button">☾</button>
     <button class="btn" id="lang" type="button">EN</button>
   </div>
@@ -378,7 +380,7 @@ const T = {
     shareTitle: "Kolonoskopi hazırlık planım", shareUnit: "Çapa Gastroenterohepatoloji, İstanbul Tıp Fakültesi", shareLink: "Planı tarayıcıda aç:",
     calSummary: "Kolonoskopi hazırlığı", calProc: "Kolonoskopi, Çapa Gastroenterohepatoloji",
     printTitle: "Kolonoskopi hazırlık planı", printUnit: "Çapa Gastroenterohepatoloji, İstanbul Tıp Fakültesi Ek Poliklinikler Binası. Endoskopi ünitesi: 0212 414 20 00, dahili 30960.",
-    langBtn: "EN", langAria: "Switch to English", theme: "Açık veya koyu tema"
+    langBtn: "EN", langAria: "Switch to English", theme: "Açık veya koyu tema", big: "Yazıyı büyüt"
   },
   en: {
     title: "Colonoscopy preparation planner | Çapa Gastroenterohepatology", sub: "Istanbul Faculty of Medicine, Istanbul University", home: "For patients",
@@ -447,7 +449,7 @@ const T = {
     shareTitle: "My colonoscopy preparation plan", shareUnit: "Çapa Gastroenterohepatology, Istanbul Faculty of Medicine", shareLink: "Open the plan in a browser:",
     calSummary: "Colonoscopy preparation", calProc: "Colonoscopy, Çapa Gastroenterohepatology",
     printTitle: "Colonoscopy preparation plan", printUnit: "Çapa Gastroenterohepatology, Istanbul Faculty of Medicine, Outpatient Annex Building. Endoscopy unit: +90 212 414 20 00, ext. 30960.",
-    langBtn: "TR", langAria: "Türkçeye geç", theme: "Light or dark theme"
+    langBtn: "TR", langAria: "Türkçeye geç", theme: "Light or dark theme", big: "Larger text"
   }
 };
 
@@ -662,7 +664,7 @@ function renderStatic() {
   document.documentElement.lang = lang;
   document.title = t.title;
   document.querySelectorAll("[data-i]").forEach(el => { const v = t[el.dataset.i]; if (v !== undefined) el.textContent = v; });
-  $("lang").textContent = t.langBtn; $("lang").setAttribute("aria-label", t.langAria); $("theme").setAttribute("aria-label", t.theme);
+  $("lang").textContent = t.langBtn; $("lang").setAttribute("aria-label", t.langAria); $("theme").setAttribute("aria-label", t.theme); $("big").setAttribute("aria-label", t.big); $("big").title = t.big;
   const li = arr => arr.map(s => `<li class="${/: (HAYIR|NO)$/.test(s) ? "no" : "ok"}">${esc(s)}</li>`).join("");
   $("clearList").innerHTML = li(t.lists.clear); $("lowList").innerHTML = li(t.lists.low); $("tipsList").innerHTML = li(t.lists.tips); $("redList").innerHTML = li(t.lists.red);
   $("faq").innerHTML = t.faq.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("");
@@ -692,6 +694,12 @@ themeBtn.addEventListener("click", () => {
   document.documentElement.dataset.theme = nt; themeBtn.textContent = nt === "dark" ? "☀" : "☾";
   try { localStorage.setItem("theme", nt); } catch (e) {}
 });
+
+/* Yazı boyutu: büyük yazı tercihi hatırlanır */
+const bigBtn = $("big");
+function applyBig(on) { document.documentElement.classList.toggle("big", on); bigBtn.setAttribute("aria-pressed", on ? "true" : "false"); bigBtn.title = bigBtn.getAttribute("aria-label"); }
+try { applyBig(localStorage.getItem("bigtext") === "1"); } catch (e) {}
+bigBtn.addEventListener("click", () => { const on = !document.documentElement.classList.contains("big"); applyBig(on); try { localStorage.setItem("bigtext", on ? "1" : "0"); } catch (e) {} });
 </script>
 </body>
 </html>

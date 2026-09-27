@@ -318,6 +318,12 @@ details p,details ul{margin-top:.6rem}
 @media (max-width:700px){.pubs li{grid-template-columns:1fr;gap:.2rem}}
 .pub-links{margin-top:1.5rem;display:flex;gap:.6rem;flex-wrap:wrap}
 
+/* Referring physicians */
+.refer{margin-top:3rem;border-top:1px solid var(--line);padding-top:2rem}
+.refer h3{font-size:1.35rem;margin-bottom:1.2rem}
+.refer h4{margin:0 0 .4rem}
+.refer p{font-size:.97rem;color:var(--ink-2)}
+
 /* Contact */
 .contact{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
 @media (max-width:900px){.contact{grid-template-columns:1fr}}
@@ -1088,6 +1094,29 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
       <div class="map">
         <iframe title="Bilim dalının konumu" data-en-title="Location of the division" src="https://www.google.com/maps?q=41.0155164,28.9377281&amp;z=18&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
         <a class="chip" href="https://maps.app.goo.gl/tPBKiJYtdbyNP7zR9" target="_blank" rel="noopener" data-en="Get directions">Yol tarifi al</a>
+      </div>
+    </div>
+    <div class="refer">
+      <h3 data-en="For referring physicians">Sevk eden hekimler için</h3>
+      <div class="cols">
+        <div class="block">
+          <h4 data-en="What to send with the patient">Hastayla birlikte gönderilecekler</h4>
+          <ul>
+            <li data-en="A short referral letter with the question being asked and the working diagnosis">Sorulan soruyu ve ön tanıyı içeren kısa bir sevk yazısı</li>
+            <li data-en="Recent laboratory results, imaging reports (and images on disc or via the national e-Nabız system) and pathology reports">Güncel laboratuvar, görüntüleme raporları (görüntüler CD veya e-Nabız üzerinden) ve patoloji raporları</li>
+            <li data-en="Current medication list, including blood thinners and biologic therapy">Kan sulandırıcılar ve biyolojik tedaviler dahil güncel ilaç listesi</li>
+            <li data-en="Previous endoscopy reports, if any">Varsa önceki endoskopi raporları</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h4 data-en="Urgent cases">Acil durumlar</h4>
+          <p data-en="Suspected upper or lower gastrointestinal bleeding, cholangitis, food bolus or foreign body impaction and caustic ingestion should be discussed by phone before transfer: switchboard 0212 414 20 00, ext. 30960 during working hours; outside working hours through the Istanbul Faculty of Medicine emergency department.">Üst veya alt GİS kanaması şüphesi, kolanjit, gıda veya yabancı cisim takılması ve koroziv madde alımı nakilden önce telefonla görüşülmelidir: mesai saatlerinde santral 0212 414 20 00, dahili 30960; mesai dışında İstanbul Tıp Fakültesi acil servisi üzerinden.</p>
+        </div>
+        <div class="block">
+          <h4 data-en="Outpatient and endoscopy appointments">Poliklinik ve endoskopi randevusu</h4>
+          <p data-en="Outpatient appointments are made through MHRS. Endoscopy is scheduled after the outpatient visit; patients receive the preparation instructions and a link to the preparation planner with their appointment.">Poliklinik randevusu MHRS üzerinden alınır. Endoskopi, poliklinik değerlendirmesinden sonra planlanır; hastalar randevularıyla birlikte hazırlık talimatını ve hazırlık planlayıcı bağlantısını alır.</p>
+          <a class="chip" href="mailto:bfagargun@istanbul.edu.tr?subject=Konsültasyon" data-en="Write to us">Bize yazın</a>
+        </div>
       </div>
     </div>
   </div>
