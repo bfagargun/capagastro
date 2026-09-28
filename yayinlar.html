@@ -128,10 +128,13 @@ input[type=search]{flex:1;min-width:200px}
 .chart table{border-collapse:collapse;font-size:.8rem;margin-top:.4rem}
 .chart td,.chart th{padding:.1rem .6rem .1rem 0;text-align:right;color:var(--ink-2)}
 footer{padding:2rem 0;color:var(--ink-2);font-size:.85rem;border-top:1px solid var(--line)}
+.skip{position:absolute;left:-999px;top:0;background:var(--claret);color:#fff;padding:.5rem 1rem;z-index:99;text-decoration:none}
+.skip:focus{left:1rem;top:1rem}
 </style>
 <script>if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) addEventListener("load", function () { navigator.serviceWorker.register("sw.js").catch(function () {}); });</script>
 </head>
 <body>
+<a class="skip" href="#top" data-i="skip">İçeriğe geç</a>
 <header>
   <div class="wrap bar">
     <a class="brand" href="index.html">
@@ -143,7 +146,7 @@ footer{padding:2rem 0;color:var(--ink-2);font-size:.85rem;border-top:1px solid v
     <button class="btn" id="lang" type="button">EN</button>
   </div>
 </header>
-<main>
+<main id="top">
   <div class="intro"><div class="wrap">
     <h1 data-i="h1">Yayınlar</h1>
     <p data-i="intro">Bilim dalı öğretim üyeleri ve yan dal asistanlarının PubMed'de dizinlenen yayınları. Liste dergi etki faktörüne, eşitlikte yıla göre sıralanır; kişiye, türe veya metne göre filtreleyebilirsiniz.</p>
@@ -1626,7 +1629,7 @@ const T = {
     none: "Bu filtrelerle eşleşen yayın yok. Aramayı kısaltın veya filtreleri temizleyin.",
     note: "Kaynak: PubMed (NCBI). Atıf sayıları OpenAlex'ten alınır ve haftada bir yenilenir. Etki faktörleri Journal Citation Reports'a dayalı yaklaşık değerlerdir ve yalnızca sıralama için kullanılır; resmi değerler için Clarivate JCR'ye bakın. Yazar adları PubMed'deki biçimiyle verilmiştir. Eksik ya da hatalı bir kayıt görürseniz <a href=\"mailto:bfagargun@istanbul.edu.tr\">bize yazın</a>.",
     foot: "İstanbul Üniversitesi İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı",
-    langBtn: "EN", langAria: "Switch to English", theme: "Açık veya koyu tema",
+    skip: "İçeriğe geç", langBtn: "EN", langAria: "Switch to English", theme: "Açık veya koyu tema",
     aria: { q: "Yayınlarda ara", who: "Kişi", typ: "Yayın türü", sort: "Sıralama" }
   },
   en: {
@@ -1642,7 +1645,7 @@ const T = {
     none: "No publications match these filters. Try a shorter search or clear the filters.",
     note: "Source: PubMed (NCBI). Citation counts come from OpenAlex and refresh weekly. Impact factors are approximate values based on Journal Citation Reports and are used only for ranking; see Clarivate JCR for official figures. Author names appear as listed in PubMed. If you spot a missing or incorrect record, <a href=\"mailto:bfagargun@istanbul.edu.tr\">write to us</a>.",
     foot: "Division of Gastroenterohepatology, Istanbul Faculty of Medicine, Istanbul University",
-    langBtn: "TR", langAria: "Türkçeye geç", theme: "Light or dark theme",
+    skip: "Skip to content", langBtn: "TR", langAria: "Türkçeye geç", theme: "Light or dark theme",
     aria: { q: "Search publications", who: "Person", typ: "Publication type", sort: "Sort order" }
   }
 };

@@ -212,10 +212,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
   .print-only{display:block !important}
 }
 .print-only{display:none;font-size:.9rem;margin-top:.5rem}
+.skip{position:absolute;left:-999px;top:0;background:var(--claret);color:#fff;padding:.5rem 1rem;z-index:99;text-decoration:none}
+.skip:focus{left:1rem;top:1rem}
 </style>
 <script>if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) addEventListener("load", function () { navigator.serviceWorker.register("sw.js").catch(function () {}); });</script>
 </head>
 <body>
+<a class="skip" href="#top" data-i="skip">İçeriğe geç</a>
 <header>
   <div class="wrap bar">
     <a class="brand" href="index.html">
@@ -229,7 +232,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
   </div>
 </header>
 
-<main>
+<main id="top">
   <div class="intro"><div class="wrap">
     <div class="est" data-i="est">Endoskopi ünitesi, hasta bilgilendirme</div>
     <h1 data-i="h1">Kolonoskopi hazırlık planlayıcı</h1>
@@ -432,7 +435,7 @@ const T = {
     shareTitle: "Kolonoskopi hazırlık planım", shareUnit: "Çapa Gastroenterohepatoloji, İstanbul Tıp Fakültesi", shareLink: "Planı tarayıcıda aç:",
     calSummary: "Kolonoskopi hazırlığı", calProc: "Kolonoskopi, Çapa Gastroenterohepatoloji",
     printTitle: "Kolonoskopi hazırlık planı", printUnit: "Çapa Gastroenterohepatoloji, İstanbul Tıp Fakültesi Ek Poliklinikler Binası. Endoskopi ünitesi: 0212 414 20 00, dahili 30960.",
-    langBtn: "EN", langAria: "Switch to English", theme: "Açık veya koyu tema", big: "Yazıyı büyüt"
+    skip: "İçeriğe geç", langBtn: "EN", langAria: "Switch to English", theme: "Açık veya koyu tema", big: "Yazıyı büyüt"
   },
   en: {
     title: "Colonoscopy preparation planner | Çapa Gastroenterohepatology", sub: "Istanbul Faculty of Medicine, Istanbul University", home: "For patients",
@@ -502,7 +505,7 @@ const T = {
     shareTitle: "My colonoscopy preparation plan", shareUnit: "Çapa Gastroenterohepatology, Istanbul Faculty of Medicine", shareLink: "Open the plan in a browser:",
     calSummary: "Colonoscopy preparation", calProc: "Colonoscopy, Çapa Gastroenterohepatology",
     printTitle: "Colonoscopy preparation plan", printUnit: "Çapa Gastroenterohepatology, Istanbul Faculty of Medicine, Outpatient Annex Building. Endoscopy unit: +90 212 414 20 00, ext. 30960.",
-    langBtn: "TR", langAria: "Türkçeye geç", theme: "Light or dark theme", big: "Larger text"
+    skip: "Skip to content", langBtn: "TR", langAria: "Türkçeye geç", theme: "Light or dark theme", big: "Larger text"
   }
 };
 

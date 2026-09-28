@@ -100,10 +100,13 @@ dd{margin:0;min-width:0;overflow-wrap:anywhere}
 footer{padding:2rem 0;color:var(--ink-2);font-size:.85rem}
 footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 .stamp{font-size:.8rem;color:var(--ink-2);width:100%}
+.skip{position:absolute;left:-999px;top:0;background:var(--claret);color:#fff;padding:.5rem 1rem;z-index:99;text-decoration:none}
+.skip:focus{left:1rem;top:1rem}
 </style>
 <script>if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) addEventListener("load", function () { navigator.serviceWorker.register("sw.js").catch(function () {}); });</script>
 </head>
 <body>
+<a class="skip" href="#top" data-en="Skip to content">İçeriğe geç</a>
 <header>
   <div class="wrap bar">
     <a class="brand" href="index.html">

@@ -130,10 +130,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
   .print-head{display:block !important;font-size:.9rem;border-bottom:1px solid #000;padding-bottom:.4rem;margin-bottom:1rem}
 }
 .print-head{display:none}
+.skip{position:absolute;left:-999px;top:0;background:var(--claret);color:#fff;padding:.5rem 1rem;z-index:99;text-decoration:none}
+.skip:focus{left:1rem;top:1rem}
 </style>
 <script>if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) addEventListener("load", function () { navigator.serviceWorker.register("sw.js").catch(function () {}); });</script>
 </head>
 <body>
+<a class="skip" href="#top" data-i="skip">İçeriğe geç</a>
 <header>
   <div class="wrap bar">
     <a class="brand" href="index.html">
@@ -430,7 +433,7 @@ const T = {
     foot: "İstanbul Üniversitesi İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı",
     disc: "Bu sayfa genel bilgilendirme amaçlıdır; kendi hekiminizin talimatları her zaman önceliklidir.",
     stamp: "Hazırlayan: Gastroenterohepatoloji Bilim Dalı endoskopi ünitesi. Kaynak: ESGE ve BSG hasta bilgilendirme belgeleri ile ünite uygulamaları. Son gözden geçirme: Eylül 2026 (taslak; bilim dalı onayı bekliyor).",
-    langBtn: "EN", langAria: "Switch to English", theme: "Açık veya koyu tema", totop: "Başa dön", big: "Yazıyı büyüt" },
+    skip: "İçeriğe geç", langBtn: "EN", langAria: "Switch to English", theme: "Açık veya koyu tema", totop: "Başa dön", big: "Yazıyı büyüt" },
   en: { title: "Procedures and preparation | Çapa Gastroenterohepatology", sub: "Istanbul Faculty of Medicine, Istanbul University", home: "For patients",
     est: "Endoscopy unit, patient information", h1: "Procedures and preparation",
     intro: "For every procedure done in our unit: how to prepare, what to expect on the day and what to watch for afterwards. Each section can be printed or shared on WhatsApp. Your own physician's instructions always take precedence over what is written here.",
@@ -443,7 +446,7 @@ const T = {
     foot: "Division of Gastroenterohepatology, Istanbul Faculty of Medicine, Istanbul University",
     disc: "This page is general information; your own physician's instructions always take precedence.",
     stamp: "Prepared by the endoscopy unit of the Division of Gastroenterohepatology. Sources: ESGE and BSG patient information documents and unit practice. Last reviewed September 2026 (draft; awaiting divisional approval).",
-    langBtn: "TR", langAria: "Türkçeye geç", theme: "Light or dark theme", totop: "Back to top", big: "Larger text" }
+    skip: "Skip to content", langBtn: "TR", langAria: "Türkçeye geç", theme: "Light or dark theme", totop: "Back to top", big: "Larger text" }
 };
 
 const $ = id => document.getElementById(id);

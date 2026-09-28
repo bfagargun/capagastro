@@ -72,7 +72,8 @@ header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper
 @media (max-width:900px){.cols{grid-template-columns:1fr}}
 .box{border:1px solid var(--line);border-radius:10px;padding:.9rem 1.1rem;background:var(--paper)}
 .proto:nth-child(even) .box{background:var(--paper-2)}
-.box h4{margin-top:0}
+.box h4,.box h3.h4{margin-top:0}
+.box h3.h4{font-size:.95rem;font-weight:600;font-family:var(--font-body);margin-bottom:.3rem;line-height:1.3}
 .key{border-left:4px solid var(--teal);background:var(--teal-soft);padding:.7rem 1rem;border-radius:0 8px 8px 0;margin:.8rem 0 1rem;font-size:.95rem}
 .key p{margin:0;max-width:none}
 .tbl{overflow:auto;border:1px solid var(--line);border-radius:10px;margin:.6rem 0 1rem;background:var(--paper)}
@@ -94,10 +95,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
   .key,.box{background:#fff;border-color:#000}
   .tbl{border-color:#000}
 }
+.skip{position:absolute;left:-999px;top:0;background:var(--claret);color:#fff;padding:.5rem 1rem;z-index:99;text-decoration:none}
+.skip:focus{left:1rem;top:1rem}
 </style>
 <script>if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) addEventListener("load", function () { navigator.serviceWorker.register("sw.js").catch(function () {}); });</script>
 </head>
 <body>
+<a class="skip" href="#top">İçeriğe geç</a>
 <header>
   <div class="wrap bar">
     <a class="brand" href="index.html">
@@ -134,13 +138,13 @@ const PROTOCOLS = [
   lead: "Kanama riski işleme, tromboz riski hastaya göre sınıflanır; karar ikisinin kesişimidir. Kardiyoloji veya nöroloji ile görüşülmesi gereken hastalar önceden belirlenir; hiçbir antitrombotik hasta tarafından kendi kararıyla kesilmez.",
   body: `
   <div class="cols">
-    <div class="box"><h4>Düşük kanama riskli işlemler</h4><ul>
+    <div class="box"><h3 class="h4">Düşük kanama riskli işlemler</h3><ul>
       <li>Tanısal gastroskopi, kolonoskopi, enteroskopi (biyopsi dahil)</li>
       <li>Sfinkterotomisiz ERCP; biliyer veya pankreatik stent (dilatasyonsuz)</li>
       <li>FNA/FNB yapılmayan EUS</li>
       <li>Kapsül endoskopi</li>
     </ul></div>
-    <div class="box"><h4>Yüksek kanama riskli işlemler</h4><ul>
+    <div class="box"><h3 class="h4">Yüksek kanama riskli işlemler</h3><ul>
       <li>Polipektomi, EMR, ESD, ampullektomi</li>
       <li>Sfinkterotomili ERCP; EUS eşliğinde FNA/FNB, kist drenajı, çölyak blok</li>
       <li>Dilatasyon, özofagus/enteral/kolon stenti, PEG</li>
@@ -173,13 +177,13 @@ const PROTOCOLS = [
   lead: "Elektif endoskopide açlık süreleri, sedasyon düzeyi ve izlem, taburculuk ölçütleri ve hangi işlemlerde antibiyotik profilaksisi gerektiği.",
   body: `
   <div class="cols">
-    <div class="box"><h4>Açlık</h4><ul>
+    <div class="box"><h3 class="h4">Açlık</h3><ul>
       <li>Berrak sıvı: 2 saat; hafif öğün: 6 saat; yağlı veya ağır öğün: 8 saat</li>
       <li>Gastroparezi, akalazya, çıkış obstrüksiyonu: uzatılmış açlık; akalazyada 24-48 saat sıvı diyet</li>
       <li>Enteral tüple beslenen hasta: beslenme 6 saat önce kesilir</li>
       <li>Sabah ilaçları bir yudum suyla alınır; oral antidiyabetikler ve kısa etkili insülin açken atlanır, uzun etkili insülin doz azaltılarak verilir (bkz. hasta sayfaları)</li>
     </ul></div>
-    <div class="box"><h4>Anestezi ekibi ile planlanacak hastalar</h4><ul>
+    <div class="box"><h3 class="h4">Anestezi ekibi ile planlanacak hastalar</h3><ul>
       <li>ASA III ve üzeri, morbid obezite, obstrüktif uyku apnesi, zor havayolu öngörüsü (Mallampati 3-4)</li>
       <li>Alkol veya madde kullanımı, sedasyona dirençli öykü, ileri yaş ve kırılganlık</li>
       <li>Uzun veya karmaşık işlemler: ERCP, EUS, POEM, ESD, enteroskopi</li>
@@ -210,13 +214,13 @@ const PROTOCOLS = [
   lead: "Kimin taranacağı, hangi yöntemle ve ne sıklıkla; anormal bulguda geri çağırma algoritması ve tanı konulunca konsey akışı.",
   body: `
   <div class="cols">
-    <div class="box"><h4>Sürveyans endikasyonları</h4><ul>
+    <div class="box"><h3 class="h4">Sürveyans endikasyonları</h3><ul>
       <li>Her etiyolojiden siroz: Child-Pugh A ve B; Child-Pugh C yalnızca nakil listesindeyse veya adayı ise</li>
       <li>Sirozsuz kronik hepatit B: yüksek riskli gruplar (PAGE-B skoru 10 ve üzeri, HCC aile öyküsü, Afrika veya Asya kökenli 40 yaş üstü erkek)</li>
       <li>Sirozsuz ileri fibrozis (F3): olgu bazında, özellikle HCV tedavisi sonrası ve MASLD'de ek risk faktörü varsa</li>
       <li>Sürveyans yapılmaz: küratif tedaviye aday olmayacak hasta (Child C nakil adayı değil, ağır komorbidite)</li>
     </ul></div>
-    <div class="box"><h4>Yöntem ve sıklık</h4><ul>
+    <div class="box"><h3 class="h4">Yöntem ve sıklık</h3><ul>
       <li>Karaciğer ultrasonografisi, deneyimli elde, 6 ayda bir; AFP eklenmesi duyarlılığı artırır (ünite uygulaması: USG + AFP)</li>
       <li>USG görüntü kalitesi yetersizse (obezite, kaba nodüler karaciğer, meteorizm): kontrastlı MR veya kısaltılmış (abbreviated) MR, ya da BT</li>
       <li>Sıklık risk düzeyine göre kısaltılmaz veya uzatılmaz; 6 ay standarttır</li>
@@ -239,7 +243,7 @@ const PROTOCOLS = [
   lead: "Anti-TNF, anti-integrin, anti-IL-12/23, anti-IL-23, JAK inhibitörü ve S1P modülatörü başlanmadan önce tamamlanacak tarama, aşılama ve tedavi sırasında izlem.",
   body: `
   <div class="cols">
-    <div class="box"><h4>Başlamadan önce taramalar</h4><ul>
+    <div class="box"><h3 class="h4">Başlamadan önce taramalar</h3><ul>
       <li><b>Tüberküloz:</b> IGRA (QuantiFERON) ve akciğer grafisi; IGRA belirsizse TST veya tekrar. Temas ve tedavi öyküsü sorgulanır. Latent TB'de biyolojikten en az 3-4 hafta önce kemoprofilaksi başlanır (izoniazid 9 ay veya rifampisin 4 ay); göğüs hastalıklarıyla birlikte</li>
       <li><b>Hepatit B:</b> HBsAg, anti-HBc, anti-HBs. HBsAg pozitif: tedavi süresince ve bitiminden 12 ay sonrasına kadar entekavir veya tenofovir profilaksisi. Anti-HBc pozitif, HBsAg negatif: HBV DNA bakılır; 3 ayda bir ALT ve HBV DNA ile izlem (yüksek riskli tedavilerde profilaksi)</li>
       <li><b>Hepatit C, HIV:</b> anti-HCV, anti-HIV</li>
@@ -248,7 +252,7 @@ const PROTOCOLS = [
       <li><b>Laboratuvar:</b> tam kan, KCFT, kreatinin, CRP, fekal kalprotektin; JAK inhibitörü için lipid profili; gebelik testi</li>
       <li><b>Öykü ve muayene:</b> malignite (son 5 yıl), kalp yetmezliği (NYHA III-IV'te anti-TNF kontrendike), demiyelinizan hastalık, ciddi enfeksiyon, VTE ve kardiyovasküler risk (JAK inhibitörlerinde 65 yaş üstü ve risk faktörü varsa alternatif tercih), deri muayenesi, kadınlarda servikal tarama güncelliği</li>
     </ul></div>
-    <div class="box"><h4>Aşılama</h4><ul>
+    <div class="box"><h3 class="h4">Aşılama</h3><ul>
       <li>İnaktif aşılar tedavi sırasında güvenlidir; ideal olarak başlamadan 2 hafta önce tamamlanır</li>
       <li>İnfluenza (her yıl), pnömokok (PCV20 tek doz veya PCV13 ardından 8 hafta sonra PPSV23), hepatit B (seronegatifte; yanıt kontrolü), COVID-19 (güncel şema), HPV (9-45 yaş), tetanoz-difteri-boğmaca güncellemesi</li>
       <li>Rekombinant zona aşısı (Shingrix): 50 yaş üstü tüm hastalar ve JAK inhibitörü başlanacak 18 yaş üstü hastalar</li>
@@ -271,13 +275,13 @@ const PROTOCOLS = [
   lead: "Nadir hastalıklar polikliniğinde izlenen Wilson hastaları için tanı ölçütleri, tedavi seçimi ve izlem takvimi; tedaviye uyumsuzluğun en sık dekompansasyon nedeni olduğu unutulmaz.",
   body: `
   <div class="cols">
-    <div class="box"><h4>Tanı</h4><ul>
+    <div class="box"><h3 class="h4">Tanı</h3><ul>
       <li>Kimde düşünülür: 3-55 yaş arasında nedeni bilinmeyen karaciğer hastalığı, akut karaciğer yetmezliği ile birlikte Coombs negatif hemoliz, açıklanamayan hareket bozukluğu veya psikiyatrik tablo, aile öyküsü</li>
       <li>Seruloplazmin, 24 saat idrar bakırı, yarık lamba ile Kayser-Fleischer halkası, tam kan ve KCFT, karaciğer ultrasonografisi; gerekirse karaciğer biyopsisinde kuru ağırlık bakırı ve ATP7B mutasyon analizi</li>
       <li>Leipzig skoru 4 ve üzeri tanıyı doğrular; 2-3 ise ek inceleme. Nörolojik belirtide beyin MR ve nöroloji değerlendirmesi</li>
       <li>Birinci derece akrabalar tarandığında tanı alan asemptomatik bireyler de tedavi edilir</li>
     </ul></div>
-    <div class="box"><h4>Tedavi</h4><ul>
+    <div class="box"><h3 class="h4">Tedavi</h3><ul>
       <li>Semptomatik hastada şelatör: D-penisilamin veya trientin (nörolojik başlangıçta trientin veya çinko tercih edilir; penisilamin başlangıçta nörolojik kötüleşme yapabilir); düşük dozdan başlanıp haftalar içinde artırılır</li>
       <li>Asemptomatik veya idame döneminde çinko monoterapisi seçenektir; şelatör ile çinko ayrı saatlerde alınır</li>
       <li>Diyet: yüksek bakırlı gıdalar (kabuklu deniz ürünleri, karaciğer, kuruyemiş, çikolata, mantar) özellikle ilk yıl kısıtlanır</li>
@@ -309,7 +313,7 @@ const PROTOCOLS = [
     <li>Eritromisin 250 mg IV, endoskopiden 30-120 dakika önce (QT uzaması yoksa).</li>
   </ul>
   <div class="cols">
-    <div class="box"><h4>Varis dışı kanama</h4><ul>
+    <div class="box"><h3 class="h4">Varis dışı kanama</h3><ul>
       <li>IV PPI (bolus ardından infüzyon veya 40 mg 2x1) endoskopi öncesi başlanabilir; endoskopiyi geciktirmez</li>
       <li>Endoskopi 24 saat içinde; hemodinamik instabilite düzeltildikten sonra. Çok erken (12 saat içi) endoskopinin ek yararı yoktur</li>
       <li>Forrest Ia, Ib, IIa: ikili tedavi (epinefrin enjeksiyonu + klips, termal koagülasyon veya diğer); IIb: pıhtı kaldırılıp altındaki lezyona göre; IIc-III: tedavi gerekmez, oral PPI</li>
@@ -317,7 +321,7 @@ const PROTOCOLS = [
       <li>Yüksek riskli lezyonda 72 saat yüksek doz PPI, sonra oral; H. pylori test edilir ve tedavi edilir (test negatifse kanama sonrası tekrar)</li>
       <li>Tekrar kanamada ikinci endoskopi; başarısızsa transarteriyel embolizasyon, cerrahi</li>
     </ul></div>
-    <div class="box"><h4>Varis kanaması (siroz şüphesi)</h4><ul>
+    <div class="box"><h3 class="h4">Varis kanaması (siroz şüphesi)</h3><ul>
       <li>Vazoaktif ilaç hemen: terlipressin 2 mg IV 4 saatte bir (kontrol sonrası 1 mg) veya oktreotid 50 mikrogram bolus, 50 mikrogram/saat; 2-5 gün</li>
       <li>Antibiyotik profilaksisi: seftriakson 1 g/gün IV, 7 gün; laktuloz ile ensefalopati profilaksisi</li>
       <li>Endoskopi 12 saat içinde (entübasyon düşünülür): özofagus varisi bant ligasyonu; gastrik varis (GOV2, IGV1) siyanoakrilat; GOV1 bant veya siyanoakrilat</li>
@@ -333,7 +337,7 @@ const PROTOCOLS = [
   lead: "ERCP'nin tanısal değil terapötik bir işlem olduğu ilkesinden hareketle endikasyon doğrulaması, hazırlık ve pankreatit riskini azaltan önlemler.",
   body: `
   <div class="cols">
-    <div class="box"><h4>İşlem öncesi kontrol listesi</h4><ul>
+    <div class="box"><h3 class="h4">İşlem öncesi kontrol listesi</h3><ul>
       <li>Endikasyon: koledok taşı, biliyer obstrüksiyon veya kaçak, kolanjit; taş olasılığı orta ise önce MRCP veya EUS</li>
       <li>Görüntüleme gözden geçirildi (BT, MR, MRCP); anatomi (Billroth II, Roux-en-Y) ve önceki ERCP notları biliniyor</li>
       <li>Antitrombotik protokolü uygulandı; INR, trombosit, kreatinin, KCFT güncel</li>
@@ -342,7 +346,7 @@ const PROTOCOLS = [
       <li>Rektal NSAİİ için kontrendikasyon (böbrek yetmezliği, aktif ülser, NSAİİ alerjisi) sorgulandı</li>
       <li>İşlem sonrası izlem ve yatış planı belli; hasta refakatçi ve uyarı belirtileri konusunda bilgilendirildi</li>
     </ul></div>
-    <div class="box"><h4>Pankreatit riskini artıran etmenler</h4><ul>
+    <div class="box"><h3 class="h4">Pankreatit riskini artıran etmenler</h3><ul>
       <li>Hasta: genç yaş, kadın, önceki ERCP sonrası pankreatit, Oddi sfinkter disfonksiyonu şüphesi, normal bilirubin, dilate olmayan koledok</li>
       <li>İşlem: zor veya uzamış kanülasyon, pankreatik kanala tel veya kontrast geçişi, pankreatik sfinkterotomi, precut, ampullektomi, balon dilatasyonu</li>
     </ul></div>

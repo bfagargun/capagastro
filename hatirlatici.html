@@ -137,10 +137,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 .stamp{font-size:.8rem;color:var(--ink-2);width:100%}
 .toast{position:fixed;left:50%;bottom:1.4rem;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;pointer-events:none;transition:opacity .2s;z-index:30}
 .toast.show{opacity:1}
+.skip{position:absolute;left:-999px;top:0;background:var(--claret);color:#fff;padding:.5rem 1rem;z-index:99;text-decoration:none}
+.skip:focus{left:1rem;top:1rem}
 </style>
 <script>if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) addEventListener("load", function () { navigator.serviceWorker.register("sw.js").catch(function () {}); });</script>
 </head>
 <body>
+<a class="skip" href="#top" data-i="skip">İçeriğe geç</a>
 <header>
   <div class="wrap bar">
     <a class="brand" href="index.html">
@@ -247,7 +250,7 @@ const T = {
     colH: "Kontrol kolonoskopisi", colP: "Polip çıkarıldıysa veya ülseratif kolit, Crohn hastalığı, ailesel risk gibi nedenlerle izlemdeyseniz, raporunuzda bir sonraki kolonoskopi için önerilen süre yazar. O süreyi seçin; randevu almanız için önceden hatırlatalım.", colDate: "Son kolonoskopi tarihi", colInt: "Önerilen süre", y1: "1 yıl", y2: "2 yıl", y3: "3 yıl", y5: "5 yıl", y10: "10 yıl", colHint: "Kontrol ayından 2 ay önce randevu hatırlatması ve kontrol ayı kaydı.",
     notice: "Buradaki aralıklar örnektir; sizin için geçerli olan hekiminizin raporunuza yazdığı süredir. Hatırlatıcı bir randevunun yerine geçmez: tarama, tahlil ve kolonoskopi için poliklinik randevunuzu MHRS üzerinden veya hastane randevu biriminden zamanında alın.",
     foot: "İstanbul Üniversitesi İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı", disc: "Bu sayfa genel bilgilendirme amaçlıdır; kendi hekiminizin talimatları her zaman önceliklidir.", stamp: "Hazırlayan: Gastroenterohepatoloji Bilim Dalı. Son gözden geçirme: Eylül 2026 (taslak; bilim dalı onayı bekliyor).",
-    langBtn: "EN", langAria: "Switch to English", theme: "Açık veya koyu tema", big: "Yazıyı büyüt", done: "Takvim dosyası indirildi; açınca kayıtlar takviminize eklenir",
+    skip: "İçeriğe geç", langBtn: "EN", langAria: "Switch to English", theme: "Açık veya koyu tema", big: "Yazıyı büyüt", done: "Takvim dosyası indirildi; açınca kayıtlar takviminize eklenir",
     ev: {
       hccRem: "Hatırlatma: karaciğer taraması için randevu alın (USG ve AFP)", hcc: "Karaciğer taraması: ultrasonografi ve AFP", hccDesc: "Çapa Gastroenterohepatoloji izlem hatırlatıcısı. Poliklinik randevunuzu önceden alın; tahlil için aç gelmeniz gerekebilir.",
       rep30: n => n + " 30 gün sonra bitiyor: yenileme için poliklinik randevusu alın", rep7: n => n + " 7 gün sonra bitiyor", rep0: n => n + " bitiş günü", repDesc: "Rapor bitmeden yenilenmelidir; yeni rapor için gerekli tahlil ve raporları yanınızda getirin.",
@@ -268,7 +271,7 @@ const T = {
     colH: "Surveillance colonoscopy", colP: "If polyps were removed, or you are under surveillance for ulcerative colitis, Crohn's disease or family risk, your report states when the next colonoscopy is due. Choose that interval and we will remind you to book in time.", colDate: "Date of the last colonoscopy", colInt: "Recommended interval", y1: "1 year", y2: "2 years", y3: "3 years", y5: "5 years", y10: "10 years", colHint: "A booking reminder 2 months before the due month, plus the due month.",
     notice: "The intervals here are examples; the one that applies to you is what your physician wrote in your report. A reminder does not replace an appointment: book your clinic visit for the scan, blood test or colonoscopy in time through MHRS or the hospital appointment desk.",
     foot: "Division of Gastroenterohepatology, Istanbul Faculty of Medicine, Istanbul University", disc: "This page is general information; your own physician's instructions always take precedence.", stamp: "Prepared by the Division of Gastroenterohepatology. Last reviewed September 2026 (draft; awaiting divisional approval).",
-    langBtn: "TR", langAria: "Türkçeye geç", theme: "Light or dark theme", big: "Larger text", done: "Calendar file downloaded; open it to add the entries to your calendar",
+    skip: "Skip to content", langBtn: "TR", langAria: "Türkçeye geç", theme: "Light or dark theme", big: "Larger text", done: "Calendar file downloaded; open it to add the entries to your calendar",
     ev: {
       hccRem: "Reminder: book your liver surveillance appointment (ultrasound and AFP)", hcc: "Liver surveillance: ultrasound and AFP", hccDesc: "Çapa Gastroenterohepatology follow-up reminder. Book the clinic appointment in advance; you may need to fast for the blood test.",
       rep30: n => n + " expires in 30 days: book a clinic appointment for renewal", rep7: n => n + " expires in 7 days", rep0: n => n + " expiry day", repDesc: "The report must be renewed before it expires; bring the tests and reports needed for the new one.",
