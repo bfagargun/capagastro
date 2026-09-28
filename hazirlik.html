@@ -170,6 +170,13 @@ input[type=date]:focus,input[type=time]:focus{border-color:var(--teal)}
 .items b{display:block;font-weight:600;line-height:1.35}
 .items span.d{display:block;color:var(--ink-2);font-size:.95rem;line-height:1.55}
 .items li.dose b{color:var(--teal-2)}
+.more{margin-top:.4rem;font-size:.9rem}
+.more summary{cursor:pointer;color:var(--teal);font-weight:500}
+.more table{border-collapse:collapse;width:100%;margin-top:.5rem;font-size:.86rem}
+.more th,.more td{border:1px solid var(--line);padding:.35rem .5rem;text-align:left;vertical-align:top}
+.more thead th{background:var(--paper-2);font-weight:600}
+.more tbody th{font-weight:600;white-space:nowrap;background:var(--paper-2)}
+@media print{.more summary{display:none}.more[open] table,.more table{display:table}.more{display:block}.more th,.more td{border-color:#000}.more thead th,.more tbody th{background:#eee}}
 :root[data-theme="dark"] .items li.dose b{color:var(--teal-2)}
 @media (max-width:560px){.items li{grid-template-columns:1fr;gap:.1rem}.items .t{font-size:1.05rem}}
 .rule{font-size:.88rem;color:var(--ink-2);border-top:1px solid var(--line);padding-top:1rem;margin-top:.5rem}
@@ -404,6 +411,8 @@ const T = {
       dm: ["Şeker ilaçlarınız için doz planı alın", "Hazırlık günlerinde az yiyeceğiniz için insülin ve şeker ilaçlarının dozu değişebilir. Hekiminize sorun. Hazırlık boyunca kan şekerinizi sık ölçün; düşme belirtilerinde şekerli berrak bir sıvı (elma suyu, şekerli çay) için."],
       rk: ["Böbrek veya kalp hastalığınızı üniteye bildirin", "Bazı solüsyonlar sıvı ve tuz dengesini etkileyebilir; ünite gerekirse farklı bir ürün önerir. Bu ilaçların bir kısmı hazırlık günü verilmeyebilir, hekiminize sorun."],
       sedPrep: ["Refakatçi ayarlayın", "Sedasyon sonrası tek başınıza dönemez, araç kullanamazsınız. Sizi eve götürecek bir yakınınızı şimdiden belirleyin."],
+      dietMore: "Ayrıntılı liste", dietOk: "Yiyebilirsiniz", dietNo: "Kaçının",
+      dietTable: [["Tahıl", "Beyaz ekmek, pirinç, makarna, irmik, beyaz un ürünleri", "Tam tahıl, kepekli ekmek, bulgur, yulaf, müsli"], ["Et, yumurta, süt", "Haşlanmış veya ızgara tavuk, balık, yumurta, peynir, yoğurt, süt", "Yağlı ve kızarmış etler, sucuk, salam"], ["Sebze ve meyve", "Kabuksuz haşlanmış patates ve havuç, süzülmüş meyve suyu, muz, kabuğu soyulmuş elma ve şeftali", "Çiğ sebze, salata, tohumlu ve kabuklu meyveler, kırmızı ve mor renkli meyve-sebze (pancar, kırmızı lahana, üzüm)"], ["Baklagil ve kuruyemiş", "Yok", "Kuru fasulye, nohut, mercimek, fındık, ceviz, çekirdek, tohumlu her şey"], ["İçecek", "Su, açık çay, süzülmüş meyve suyu, et suyu", "Posalı meyve suyu, kırmızı ve mor renkli içecekler, alkol"]],
       diet: ["Posasız diyete başlayın", "Beyaz ekmek, pirinç, makarna, kabuksuz patates, yumurta, peynir, yoğurt, haşlanmış veya ızgara tavuk ve balık yiyebilirsiniz. Tam tahıl, kepek, kuruyemiş, tohumlu ve çekirdekli meyveler, çiğ sebze, baklagil ve kırmızı-mor renkli meyve-sebze yemeyin. Bol su için."],
       dietCn: "Kabızlık nedeniyle diyete 5 gün önceden başlıyorsunuz. Hazırlığın yeterli olmayabileceğini randevu alırken üniteye söyleyin; ek laksatif önerilebilir.",
       breakfast: ["Hafif bir kahvaltı yapın", "Beyaz ekmek, peynir, yumurta veya yoğurt gibi posasız bir kahvaltı. Bu, işlemden önceki son katı öğününüz."],
@@ -476,6 +485,8 @@ const T = {
       dm: ["Get a dose plan for your diabetes medication", "You will eat little on the preparation days, so insulin and diabetes tablets may need adjusting. Ask your doctor. Check your blood sugar often; if it drops, drink a sugary clear fluid (apple juice, sweet tea)."],
       rk: ["Tell the unit about your kidney or heart condition", "Some solutions affect fluid and salt balance; the unit may suggest a different product. Some of these medicines may be withheld on the preparation day; ask your doctor."],
       sedPrep: ["Arrange a companion", "After sedation you cannot go home alone or drive. Decide now who will take you home."],
+      dietMore: "Detailed list", dietOk: "You may eat", dietNo: "Avoid",
+      dietTable: [["Grains", "White bread, rice, pasta, semolina, white-flour products", "Whole grains, wholemeal bread, bulgur, oats, muesli"], ["Meat, eggs, dairy", "Boiled or grilled chicken, fish, eggs, cheese, yoghurt, milk", "Fatty and fried meats, cured sausages"], ["Vegetables and fruit", "Peeled boiled potato and carrot, strained fruit juice, banana, peeled apple and peach", "Raw vegetables, salads, fruit with seeds or skins, red and purple produce (beetroot, red cabbage, grapes)"], ["Pulses and nuts", "None", "Beans, chickpeas, lentils, nuts, seeds, anything with seeds"], ["Drinks", "Water, weak tea, strained fruit juice, clear broth", "Pulpy juice, red and purple drinks, alcohol"]],
       diet: ["Start a low-residue diet", "You may eat white bread, rice, pasta, peeled potatoes, eggs, cheese, yoghurt, boiled or grilled chicken and fish. Avoid whole grains, bran, nuts, seeds, fruit with seeds or skins, raw vegetables, pulses and red or purple fruit and vegetables. Drink plenty of water."],
       dietCn: "Because of constipation you start the diet 5 days ahead. Tell the unit when booking that your preparation may be insufficient; an extra laxative may be advised.",
       breakfast: ["Have a light breakfast", "A low-residue breakfast such as white bread, cheese, egg or yoghurt. This is your last solid meal before the procedure."],
@@ -549,7 +560,7 @@ function buildPlan(st, lang) {
   if (f.has("dm")) push(atTime(A, -RULES.ironDays, 9), false, "dm", { title: S.dm[0], text: S.dm[1] });
   if (f.has("rk")) push(atTime(A, -RULES.ironDays, 9), false, "rk", { title: S.rk[0], text: S.rk[1] });
   if (f.has("sed")) push(atTime(A, -dietDays, 9), false, "sedPrep", { title: S.sedPrep[0], text: S.sedPrep[1], soft: true });
-  push(atTime(A, -dietDays, 8), false, "diet", { title: S.diet[0], text: S.diet[1] + (f.has("cn") ? " " + S.dietCn : ""), allDay: true, span: dietDays - 1 });
+  push(atTime(A, -dietDays, 8), false, "diet", { title: S.diet[0], text: S.diet[1] + (f.has("cn") ? " " + S.dietCn : ""), allDay: true, span: dietDays - 1, diet: true });
 
   /* Bir gün önce: hafif kahvaltı, berrak sıvı, akşam iki doz */
   push(atTime(A, -1, 8), true, "breakfast", { title: S.breakfast[0], text: S.breakfast[1] });
@@ -674,6 +685,11 @@ function renderSols() {
   $("sols").innerHTML = PROTOCOLS.map(p => `<label class="opt"><input type="radio" name="sol" value="${p.id}"${p.id === cur ? " checked" : ""}><span><b>${p[lang].name}</b><small>${p[lang].brands}</small></span></label>`).join("");
 }
 function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
+addEventListener("beforeprint", () => document.querySelectorAll(".more").forEach(d => d.open = true));
+function dietTable(t) {
+  const S = t.steps;
+  return `<details class="more"><summary>${S.dietMore}</summary><table><thead><tr><th></th><th>${S.dietOk}</th><th>${S.dietNo}</th></tr></thead><tbody>${S.dietTable.map(r => `<tr><th>${esc(r[0])}</th><td>${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`).join("")}</tbody></table></details>`;
+}
 /* Resmi tatiller: sabit günler (ay-gün) ve yıla bağlı dini bayramlar (yıl-ay-gün, arife öğleden sonrası hariç). Yeni yılın bayram tarihlerini buraya ekleyin. */
 const HOLIDAYS_FIXED = ["01-01", "04-23", "05-01", "05-19", "07-15", "08-30", "10-29"];
 const HOLIDAYS_DATED = ["2026-03-20", "2026-03-21", "2026-03-22", "2026-05-27", "2026-05-28", "2026-05-29", "2026-05-30", "2027-03-09", "2027-03-10", "2027-03-11", "2027-05-16", "2027-05-17", "2027-05-18", "2027-05-19"];
@@ -696,7 +712,7 @@ function render() {
     <div class="day">
       <div class="day-h">${generic ? `<b>${relLabel(d.offset, t)}</b>` : `<b>${fmtDate(d.date, lang)}</b><span class="rel">${relLabel(d.offset, t)}</span>`}</div>
       <ol class="items${generic && d.offset === 0 ? " rel" : ""}">${d.items.map(it => `
-        <li class="${it.dose ? "dose" : it.soft ? "soft" : ""}"><span class="t${it.timed && !(generic && d.offset === 0) ? "" : " x"}">${it.timed ? (generic && d.offset === 0 ? relTime(it) : fmtTime(it.at, lang)) : t.tt.date}</span><div><b>${esc(it.title)}</b><span class="d">${esc(it.text)}</span></div></li>`).join("")}
+        <li class="${it.dose ? "dose" : it.soft ? "soft" : ""}"><span class="t${it.timed && !(generic && d.offset === 0) ? "" : " x"}">${it.timed ? (generic && d.offset === 0 ? relTime(it) : fmtTime(it.at, lang)) : t.tt.date}</span><div><b>${esc(it.title)}</b><span class="d">${esc(it.text)}</span>${it.diet ? dietTable(t) : ""}</div></li>`).join("")}
       </ol>
     </div>`).join("");
   const alerts = plan.warnings.map(w => `<div class="alert"><p>${esc(w)}</p></div>`).join("") + plan.infos.map(w => `<div class="alert note"><p>${esc(w)}</p></div>`).join("");
@@ -726,7 +742,7 @@ function render() {
   });
   $("b-copy").addEventListener("click", () => copy(planText(plan, lang, url), t.copied));
   $("b-link").addEventListener("click", () => copy(url, t.linkCopied));
-  $("b-print").addEventListener("click", () => window.print());
+  $("b-print").addEventListener("click", () => { document.querySelectorAll(".more").forEach(d => d.open = true); window.print(); });
 }
 function copy(text, msg) {
   const done = () => toast(msg);
