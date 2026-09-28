@@ -10,7 +10,7 @@ Canlı adres: https://besimagargun.com/capagastro/ (İngilizce için `?lang=en` 
 |---|---|
 | `index.html` | Ana sayfa (Türkçe ve İngilizce) |
 | `yayinlar.html` | Tüm yayınlar; kişiye, türe ve metne göre filtre |
-| `hazirlik.html` | Kolonoskopi hazırlık planlayıcı: randevu saati ve solüsyona göre saat saat plan; takvim (.ics), WhatsApp, yazdırma |
+| `hazirlik.html` | Kolonoskopi hazırlık planlayıcı: randevu saati ve solüsyona göre saat saat plan; takvim (.ics), WhatsApp, yazdırma (çıktıda ürüne özel QR); hafta sonu ve resmi tatil uyarısı (`HOLIDAYS_DATED` listesine yeni yılın bayram tarihlerini ekleyin) |
 | `islemler.html` | Her işlem için hasta bilgilendirme (hazırlık, işlem günü, sonrası, ne zaman aramalı, SSS); bölüm bazında yazdırma ve paylaşım |
 | `egitim.html` | Eğitim ve başvuru: yan dal programı, haftalık akademik program, rotasyon, öğrenci projeleri, gözlemci başvurusu |
 | `sevk.html` | Sevk eden hekimler için: kimleri yönlendirmeli, aciliyet şeritleri (acil / öncelikli / rutin), gönderilecekler, tek sayfa yazdırılan sevk formu (kimlik bilgisi e-postaya girmez), iletişim |

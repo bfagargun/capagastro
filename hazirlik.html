@@ -212,6 +212,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
   .print-only{display:block !important}
 }
 .print-only{display:none;font-size:.9rem;margin-top:.5rem}
+.print-qr{align-items:center;gap:.8rem;font-size:.85rem;max-width:34rem}
+@media print{.print-qr{display:flex !important}.print-qr img{width:24mm;height:24mm}}
 .skip{position:absolute;left:-999px;top:0;background:var(--claret);color:#fff;padding:.5rem 1rem;z-index:99;text-decoration:none}
 .skip:focus{left:1rem;top:1rem}
 </style>
@@ -240,6 +242,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
     <div class="privacy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span data-i="privacy">Bu sayfa hiçbir bilgiyi kaydetmez ve göndermez; plan yalnızca sizin tarayıcınızda hesaplanır. Adınız veya kimlik bilgileriniz sorulmaz.</span></div>
     <p class="install-row" id="install-row" hidden><button class="btn" id="install" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:1.1em;height:1.1em"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg><span data-i="install">Telefona ekle</span></button> <small data-i="installS">Bağlantı olmadan da açılır.</small></p>
     <div class="print-only" id="print-head"></div>
+    <div class="print-only print-qr" id="print-qr"><img alt="" width="96" height="96"><span id="print-qr-text"></span></div>
   </div></div>
 
   <div class="wrap layout">
@@ -415,7 +418,9 @@ const T = {
     },
     warn: {
       productRk: "Seçtiğiniz hazırlık böbrek veya kalp yetmezliğinde uygun olmayabilir. Hazırlığa başlamadan üniteyi arayın.",
-      past: "Girdiğiniz randevu tarihi geçmişte. Tarihi kontrol edin."
+      past: "Girdiğiniz randevu tarihi geçmişte. Tarihi kontrol edin.",
+      weekend: "Girdiğiniz tarih hafta sonuna denk geliyor; ünite hafta içi çalışır. Randevu kağıdınızdaki tarihi kontrol edin.",
+      holiday: "Girdiğiniz tarih resmi tatile denk geliyor olabilir. Randevu kağıdınızdaki tarihi kontrol edin; emin değilseniz üniteyi arayın."
     },
     lists: {
       clear: ["Su, maden suyu, soda", "Açık çay, bitki çayı (şekerli olabilir), sade kahve", "Süzülmüş et, tavuk veya sebze suyu", "Elma suyu, beyaz üzüm suyu, süzülmüş limonata", "Sade veya sarı-yeşil renkli jelatinli tatlı, bal, şeker", "Süt ve sütlü içecekler, ayran: HAYIR", "Portakal, vişne, nar, şeftali gibi posalı veya kırmızı-mor renkli içecekler: HAYIR", "Alkol: HAYIR"],
@@ -439,7 +444,7 @@ const T = {
     stamp: "Hazırlayan: Gastroenterohepatoloji Bilim Dalı endoskopi ünitesi. Kaynak: ESGE bağırsak hazırlığı rehberi (2019 güncellemesi) ve ürün prospektüsleri. Son gözden geçirme: Eylül 2026 (taslak; bilim dalı onayı bekliyor).",
     shareTitle: "Kolonoskopi hazırlık planım", shareUnit: "Çapa Gastroenterohepatoloji, İstanbul Tıp Fakültesi", shareLink: "Planı tarayıcıda aç:",
     calSummary: "Kolonoskopi hazırlığı", calProc: "Kolonoskopi, Çapa Gastroenterohepatoloji",
-    printTitle: "Kolonoskopi hazırlık planı", printUnit: "Çapa Gastroenterohepatoloji, İstanbul Tıp Fakültesi Ek Poliklinikler Binası. Endoskopi ünitesi: 0212 414 20 00, dahili 30960.",
+    printTitle: "Kolonoskopi hazırlık planı", printQr: "Kendi randevu saatinize göre saat saat plan ve telefon takvimi için bu kodu okutun; adres:", printUnit: "Çapa Gastroenterohepatoloji, İstanbul Tıp Fakültesi Ek Poliklinikler Binası. Endoskopi ünitesi: 0212 414 20 00, dahili 30960.",
     skip: "İçeriğe geç", langBtn: "EN", langAria: "Switch to English", theme: "Açık veya koyu tema", big: "Yazıyı büyüt"
   },
   en: {
@@ -485,7 +490,9 @@ const T = {
     },
     warn: {
       productRk: "The preparation you selected may not be suitable in kidney or heart failure. Call the unit before you start.",
-      past: "The appointment date you entered is in the past. Please check it."
+      past: "The appointment date you entered is in the past. Please check it.",
+      weekend: "The date you entered falls on a weekend; the unit works on weekdays. Check the date on your appointment slip.",
+      holiday: "The date you entered may be a public holiday. Check the date on your appointment slip; call the unit if unsure."
     },
     lists: {
       clear: ["Water, sparkling water", "Weak tea, herbal tea (sugar allowed), black coffee", "Strained meat, chicken or vegetable broth", "Apple juice, white grape juice, strained lemonade", "Plain or yellow-green jelly, honey, sugar", "Milk and milky drinks, ayran: NO", "Pulpy or red/purple drinks such as orange, cherry, pomegranate, peach: NO", "Alcohol: NO"],
@@ -509,7 +516,7 @@ const T = {
     stamp: "Prepared by the endoscopy unit of the Division of Gastroenterohepatology. Sources: ESGE bowel preparation guideline (2019 update) and product leaflets. Last reviewed September 2026 (draft; awaiting divisional approval).",
     shareTitle: "My colonoscopy preparation plan", shareUnit: "Çapa Gastroenterohepatology, Istanbul Faculty of Medicine", shareLink: "Open the plan in a browser:",
     calSummary: "Colonoscopy preparation", calProc: "Colonoscopy, Çapa Gastroenterohepatology",
-    printTitle: "Colonoscopy preparation plan", printUnit: "Çapa Gastroenterohepatology, Istanbul Faculty of Medicine, Outpatient Annex Building. Endoscopy unit: +90 212 414 20 00, ext. 30960.",
+    printTitle: "Colonoscopy preparation plan", printQr: "Scan for an hour-by-hour plan for your own appointment time and a phone calendar; address:", printUnit: "Çapa Gastroenterohepatology, Istanbul Faculty of Medicine, Outpatient Annex Building. Endoscopy unit: +90 212 414 20 00, ext. 30960.",
     skip: "Skip to content", langBtn: "TR", langAria: "Türkçeye geç", theme: "Light or dark theme", big: "Larger text"
   }
 };
@@ -665,6 +672,10 @@ function renderSols() {
   $("sols").innerHTML = PROTOCOLS.map(p => `<label class="opt"><input type="radio" name="sol" value="${p.id}"${p.id === cur ? " checked" : ""}><span><b>${p[lang].name}</b><small>${p[lang].brands}</small></span></label>`).join("");
 }
 function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
+/* Resmi tatiller: sabit günler (ay-gün) ve yıla bağlı dini bayramlar (yıl-ay-gün, arife öğleden sonrası hariç). Yeni yılın bayram tarihlerini buraya ekleyin. */
+const HOLIDAYS_FIXED = ["01-01", "04-23", "05-01", "05-19", "07-15", "08-30", "10-29"];
+const HOLIDAYS_DATED = ["2026-03-20", "2026-03-21", "2026-03-22", "2026-05-27", "2026-05-28", "2026-05-29", "2026-05-30", "2027-03-09", "2027-03-10", "2027-03-11", "2027-05-16", "2027-05-17", "2027-05-18", "2027-05-19"];
+function isHoliday(d) { const md = pad(d.getMonth() + 1) + "-" + pad(d.getDate()); return HOLIDAYS_FIXED.includes(md) || HOLIDAYS_DATED.includes(d.getFullYear() + "-" + md); }
 
 function render() {
   const t = T[lang], st = readState();
@@ -676,6 +687,7 @@ function render() {
   }
   plan = buildPlan(st, lang);
   plan.generic = generic;
+  if (!generic) { const dow = plan.appt.getDay(); if (dow === 0 || dow === 6) plan.warnings.push(t.warn.weekend); else if (isHoliday(plan.appt)) plan.warnings.push(t.warn.holiday); }
   try { history.replaceState(null, "", "?" + stateToQuery(generic ? Object.assign({}, st, { date: "", time: "" }) : st) + (lang === "en" ? "&lang=en" : "")); } catch (e) {}
   const relTime = it => t.relTimes[it.key] || fmtTime(it.at, lang);
   const days = plan.days.map(d => `
@@ -698,6 +710,9 @@ function render() {
     ${alerts}${days}
     <p class="rule">${plan.protocol.enemaBefore ? t.ruleXm : t.rule}</p>`;
   $("print-head").textContent = t.printTitle + ". " + t.printUnit;
+  const qrName = ["pegdin", "xm", "pico"].includes(st.sol) ? "hazirlik-" + st.sol : "hazirlik";
+  $("print-qr").querySelector("img").src = "img/qr/" + qrName + ".png";
+  $("print-qr-text").textContent = t.printQr + " " + (location.protocol === "file:" ? "besimagargun.com/capagastro/hazirlik.html" : location.host + location.pathname) + (["pegdin", "xm", "pico"].includes(st.sol) ? "?s=" + st.sol : "");
   const url = location.href;
   if (generic) { $("b-wa").hidden = true; $("b-copy").hidden = true; }
   else $("b-wa").href = "https://wa.me/?text=" + encodeURIComponent(planText(plan, lang, url));
