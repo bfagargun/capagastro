@@ -1166,8 +1166,9 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
       <span data-en="This page provides general information and does not replace medical advice.">Bu sayfa genel bilgilendirme amaçlıdır; tıbbi tavsiye yerine geçmez.</span>
     </div>
   </div>
+  <a class="btn totop" id="totop" href="#top" aria-label="Başa dön" data-en-aria="Back to top">↑</a>
 </footer>
-<a class="btn totop" id="totop" href="#top" aria-label="Başa dön" data-en-aria="Back to top">↑</a>
+
 
 <script src="pubs.js"></script>
 <script>
@@ -1387,6 +1388,7 @@ const personCard = p => {
     prof ? `<a class="chip" href="${prof}" target="_blank" rel="noopener" data-en="Profile">Profil</a>` : "",
     p.orcid ? `<a class="chip" href="https://orcid.org/${p.orcid}" target="_blank" rel="noopener">ORCID</a>` : "",
     p.email ? `<a class="chip" href="mailto:${p.email}" data-en="E-mail">E-posta</a>` : "",
+    (n => n ? `<a class="chip" href="yayinlar.html?kisi=${encodeURIComponent(p.name.replace(/^(Prof\. Dr\.|Doç\. Dr\.|Dr\.)\s+/, ""))}" data-en="Publications (${n})">Yayınlar (${n})</a>` : "")(PUBS_ALL.filter(x => x.members.includes(p.name.replace(/^(Prof\. Dr\.|Doç\. Dr\.|Dr\.)\s+/, ""))).length),
   ].join("");
   return `
     <div class="person">

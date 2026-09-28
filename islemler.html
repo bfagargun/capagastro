@@ -89,6 +89,8 @@ header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper
 .block li{margin-bottom:.4rem}
 .block.red{grid-column:1/-1;border-left:4px solid var(--claret);padding:.8rem 1.1rem;background:var(--claret-soft);border-radius:0 10px 10px 0}
 .block.red h3{color:var(--claret)}
+:root[data-theme="dark"] .block.red h3{color:#F2B2B9}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .block.red h3{color:#F2B2B9}}
 .block.red h3 span{background:var(--claret)}
 .block.red ul{columns:2 20rem;column-gap:2rem}
 .block.red li{break-inside:avoid}
@@ -159,8 +161,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
   <span>© <span id="year"></span> <span data-i="foot">İstanbul Üniversitesi İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı</span></span>
   <span data-i="disc">Bu sayfa genel bilgilendirme amaçlıdır; kendi hekiminizin talimatları her zaman önceliklidir.</span>
   <span class="stamp" data-i="stamp">Hazırlayan: Gastroenterohepatoloji Bilim Dalı endoskopi ünitesi. Kaynak: ESGE ve BSG hasta bilgilendirme belgeleri ile ünite uygulamaları. Son gözden geçirme: Eylül 2026 (taslak; bilim dalı onayı bekliyor).</span>
+  <a class="btn totop" id="totop" href="#top" aria-label="Başa dön">↑</a>
 </div></footer>
-<a class="btn totop" id="totop" href="#top" aria-label="Başa dön">↑</a>
 <div class="toast" id="toast" role="status"></div>
 
 <script>
