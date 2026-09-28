@@ -70,6 +70,8 @@ Sayfa alt bilgisindeki "Hazırlayan / Kaynak / Son gözden geçirme" satırı (`
 
 ## Dil
 
+Alt sayfaların altbilgisinin üstündeki "site haritası" şeridi `tools/inject_sitenav.py` ile eklenir; yeni bir sayfa eklenince betikteki listeye yazıp betiği yeniden çalıştırın (işaretçiler arasındaki parça yenilenir).
+
 Sayfa, tarayıcı dili Türkçe ise Türkçe, değilse İngilizce açılır. `?lang=en` veya `?lang=tr` bu seçimi zorlar; ziyaretçinin düğmeyle yaptığı seçim tarayıcıda hatırlanır.
 
 ## Arama motorları
