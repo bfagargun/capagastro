@@ -9,6 +9,9 @@
 <meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="googlebot" content="noindex, nofollow, noarchive">
 <link rel="canonical" href="https://besimagargun.com/capagastro/islemler.html">
+<link rel="alternate" hreflang="tr" href="https://besimagargun.com/capagastro/islemler.html">
+<link rel="alternate" hreflang="en" href="https://besimagargun.com/capagastro/islemler.html?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://besimagargun.com/capagastro/islemler.html">
 <meta property="og:title" content="İşlemler ve hazırlık | Çapa Gastroenterohepatoloji">
 <meta property="og:description" content="Endoskopi ünitemizde yapılan işlemler için hazırlık, işlem günü ve sonrasında bilmeniz gerekenler.">
 <meta property="og:type" content="website">
@@ -483,6 +486,23 @@ function render() {
     const done = () => toast(t.copied);
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, done); else done();
   }));
+  structuredData(t);
+}
+// Arama motorları için yapılandırılmış veri (schema.org): sayfa, işlemler ve görünen SSS; dil değişince yenilenir.
+function structuredData(t) {
+  const base = "https://besimagargun.com/capagastro/", url = base + "islemler.html";
+  const desc = document.querySelector('meta[name="description"]').content;
+  const faqs = [];
+  PROCEDURES.forEach(p => p[lang].faq.forEach(([q, a]) => faqs.push({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })));
+  const graph = [{
+    "@type": "MedicalWebPage", "@id": url + "#page", url, name: t.h1, description: desc, inLanguage: lang,
+    isPartOf: { "@id": base + "#site" }, about: PROCEDURES.map(p => ({ "@type": "MedicalProcedure", name: p[lang].name, url: url + "#" + p.id })),
+    audience: { "@type": "MedicalAudience", audienceType: "Patient" }, lastReviewed: "2026-09", reviewedBy: { "@id": base + "#org" }, publisher: { "@id": base + "#org" }
+  }];
+  if (faqs.length) graph.push({ "@type": "FAQPage", "@id": url + "#faq", inLanguage: lang, mainEntity: faqs, isPartOf: { "@id": url + "#page" } });
+  let el = document.getElementById("ld");
+  if (!el) { el = document.createElement("script"); el.type = "application/ld+json"; el.id = "ld"; document.head.appendChild(el); }
+  el.textContent = JSON.stringify({ "@context": "https://schema.org", "@graph": graph });
 }
 let toastTimer;
 function toast(msg) { const el = $("toast"); el.textContent = msg; el.classList.add("show"); clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove("show"), 2400); }

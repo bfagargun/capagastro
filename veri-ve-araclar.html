@@ -9,6 +9,9 @@
 <meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="googlebot" content="noindex, nofollow, noarchive">
 <link rel="canonical" href="https://besimagargun.com/capagastro/veri-ve-araclar.html">
+<link rel="alternate" hreflang="tr" href="https://besimagargun.com/capagastro/veri-ve-araclar.html">
+<link rel="alternate" hreflang="en" href="https://besimagargun.com/capagastro/veri-ve-araclar.html?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://besimagargun.com/capagastro/veri-ve-araclar.html">
 <meta property="og:title" content="Veri setleri ve araçlar | Çapa Gastroenterohepatoloji">
 <meta property="og:description" content="Veri kartları, model kartları ve erişim koşulları.">
 <meta property="og:type" content="website">
@@ -298,9 +301,37 @@ function applyLang(l, persist) {
   document.querySelectorAll("[data-en]").forEach(el => { if (el.dataset.tr === undefined) el.dataset.tr = el.innerHTML; el.innerHTML = l === "en" ? el.dataset.en : el.dataset.tr; });
   document.querySelectorAll("[data-en-aria]").forEach(el => { if (el.dataset.trAria === undefined) el.dataset.trAria = el.getAttribute("aria-label") || ""; el.setAttribute("aria-label", l === "en" ? el.dataset.enAria : el.dataset.trAria); });
   if (persist) { try { localStorage.setItem("lang", l); } catch (e) {} }
+  structuredData();
+}
+// Arama motorları ve veri seti dizinleri için yapılandırılmış veri (schema.org DataCatalog, Dataset, SoftwareSourceCode); kartlardan üretilir.
+function structuredData() {
+  const base = "https://besimagargun.com/capagastro/", url = base + "veri-ve-araclar.html", org = { "@id": base + "#org" };
+  const txt = el => el ? el.textContent.trim() : "";
+  const planned = card => !!card.querySelector(".tags .st") && /Planlama|Planning/.test(txt(card.querySelector(".tags .st")));
+  const cards = sel => [...document.querySelectorAll(sel)].filter(c => !planned(c));
+  const access = lang === "en" ? "Available to research partners under a data-use agreement after ethics approval; de-identified data only; no open download."
+    : "Etik kurul onayı ve veri kullanım sözleşmesi ile araştırma ortaklarına açıktır; yalnızca kimliksizleştirilmiş veri; açık indirme yoktur.";
+  const datasets = cards("#veri .card").map((c, i) => ({
+    "@type": "Dataset", "@id": url + "#dataset-" + (i + 1), name: txt(c.querySelector("h3")), description: txt(c.querySelector(".sum")),
+    inLanguage: lang, creator: org, publisher: org, includedInDataCatalog: { "@id": url + "#catalog" },
+    isAccessibleForFree: false, conditionsOfAccess: access, keywords: [...c.querySelectorAll(".tags span:not(.cls):not(.st)")].map(txt), spatialCoverage: "Türkiye"
+  }));
+  const software = cards("#araclar .card").map((c, i) => ({
+    "@type": "SoftwareSourceCode", "@id": url + "#tool-" + (i + 1), name: txt(c.querySelector("h3")), description: txt(c.querySelector(".sum")),
+    inLanguage: lang, author: org, applicationCategory: "HealthApplication", keywords: [...c.querySelectorAll(".tags span:not(.cls):not(.st)")].map(txt),
+    codeRepository: (c.querySelector('a[href*="github.com"]') || {}).href || undefined
+  }));
+  const graph = [
+    { "@type": "WebPage", "@id": url + "#page", url, name: document.title.split(" | ")[0], description: document.querySelector('meta[name="description"]').content, inLanguage: lang, isPartOf: { "@id": base + "#site" }, about: org },
+    { "@type": "DataCatalog", "@id": url + "#catalog", name: lang === "en" ? "Çapa Gastroenterohepatology research data catalogue" : "Çapa Gastroenterohepatoloji araştırma veri kataloğu", url, provider: org, dataset: datasets.map(d => ({ "@id": d["@id"] })) },
+    ...datasets, ...software
+  ];
+  let el = document.getElementById("ld");
+  if (!el) { el = document.createElement("script"); el.type = "application/ld+json"; el.id = "ld"; document.head.appendChild(el); }
+  el.textContent = JSON.stringify({ "@context": "https://schema.org", "@graph": graph });
 }
 langBtn.addEventListener("click", () => applyLang(lang === "tr" ? "en" : "tr", true));
-if (window.__lang === "en") applyLang("en", false);
+if (window.__lang === "en") applyLang("en", false); else structuredData();
 document.documentElement.classList.remove("lang-pending");
 const themeBtn = $("theme");
 const isDark = () => document.documentElement.dataset.theme === "dark" || (!document.documentElement.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
