@@ -225,6 +225,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
         <ul class="dates" id="col-list"></ul>
         <div class="act"><button class="btn solid" id="col-btn" type="button" disabled data-i="add">Takvime ekle</button><span class="hint" data-i="colHint">Kontrol ayından 2 ay önce randevu hatırlatması ve kontrol ayı kaydı.</span></div>
       </section>
+      <section class="tool" id="asi">
+        <h2><span class="n">5</span><span data-i="asiH">Yıllık grip aşısı</span></h2>
+        <p class="lead" data-i="asiP">Biyolojik veya bağışıklık baskılayıcı tedavi alıyorsanız ya da siroz, kronik karaciğer hastalığı gibi bir nedenle risk grubundaysanız her sonbahar grip aşısı önerilir. Aşı aile hekiminizde veya eczanede yapılabilir; hangi aşıların size uygun olduğunu hekiminize sorun.</p>
+        <div class="row">
+          <div><label class="f" for="asi-month" data-i="asiMonth">Aşı ayı</label><select id="asi-month"><option value="9" data-i="oct">Ekim</option><option value="8" data-i="sep">Eylül</option><option value="10" data-i="nov">Kasım</option></select></div>
+          <div><label class="f" for="asi-years" data-i="asiYears">Kaç yıl</label><select id="asi-years"><option value="3">3</option><option value="5" selected>5</option><option value="10">10</option></select></div>
+        </div>
+        <ul class="dates" id="asi-list"></ul>
+        <div class="act"><button class="btn solid" id="asi-btn" type="button" data-i="add">Takvime ekle</button><span class="hint" data-i="asiHint">Her yıl seçtiğiniz ayın 1'inde hatırlatma; yıl seçimi gerekmez.</span></div>
+      </section>
     </div>
 
     <div class="notice"><p data-i="notice">Buradaki aralıklar örnektir; sizin için geçerli olan hekiminizin raporunuza yazdığı süredir. Hatırlatıcı bir randevunun yerine geçmez: tarama, tahlil ve kolonoskopi için poliklinik randevunuzu MHRS üzerinden veya hastane randevu biriminden zamanında alın.</p></div>
@@ -258,13 +268,15 @@ const T = {
     notice: "Buradaki aralıklar örnektir; sizin için geçerli olan hekiminizin raporunuza yazdığı süredir. Hatırlatıcı bir randevunun yerine geçmez: tarama, tahlil ve kolonoskopi için poliklinik randevunuzu MHRS üzerinden veya hastane randevu biriminden zamanında alın.",
     foot: "İstanbul Üniversitesi İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı", disc: "Bu sayfa genel bilgilendirme amaçlıdır; kendi hekiminizin talimatları her zaman önceliklidir.", stamp: "Hazırlayan: Gastroenterohepatoloji Bilim Dalı. Son gözden geçirme: Eylül 2026 (taslak; bilim dalı onayı bekliyor).",
     skip: "İçeriğe geç", langBtn: "EN", langAria: "Switch to English", theme: "Açık veya koyu tema", big: "Yazıyı büyüt", done: "Takvim dosyası indirildi; açınca kayıtlar takviminize eklenir",
+    asiH: "Yıllık grip aşısı", asiP: "Biyolojik veya bağışıklık baskılayıcı tedavi alıyorsanız ya da siroz, kronik karaciğer hastalığı gibi bir nedenle risk grubundaysanız her sonbahar grip aşısı önerilir. Aşı aile hekiminizde veya eczanede yapılabilir; hangi aşıların size uygun olduğunu hekiminize sorun.", asiMonth: "Aşı ayı", asiYears: "Kaç yıl", oct: "Ekim", sep: "Eylül", nov: "Kasım", asiHint: "Her yıl seçtiğiniz ayın 1'inde hatırlatma; yıl seçimi gerekmez.",
     ev: {
       hccRem: "Hatırlatma: karaciğer taraması için randevu alın (USG ve AFP)", hcc: "Karaciğer taraması: ultrasonografi ve AFP", hccDesc: "Çapa Gastroenterohepatoloji izlem hatırlatıcısı. Poliklinik randevunuzu önceden alın; tahlil için aç gelmeniz gerekebilir.",
       rep30: n => n + " 30 gün sonra bitiyor: yenileme için poliklinik randevusu alın", rep7: n => n + " 7 gün sonra bitiyor", rep0: n => n + " bitiş günü", repDesc: "Rapor bitmeden yenilenmelidir; yeni rapor için gerekli tahlil ve raporları yanınızda getirin.",
       dozInf: i => "Biyolojik tedavi: " + i + ". doz (infüzyon ünitesi)", dozSc: i => "Biyolojik tedavi: " + i + ". doz (evde enjeksiyon)", dozLoad: " (yükleme)", dozDesc: "Enfeksiyon belirtisi (ateş, öksürük, idrar yanması) varsa dozdan önce üniteye bildirin. İlaç raporunuzun geçerli olduğundan emin olun.",
-      colRem: "Hatırlatma: kontrol kolonoskopisi için poliklinik randevusu alın", col: "Kontrol kolonoskopisi ayı", colDesc: "Raporunuzda önerilen süre doldu. Randevu alın; hazırlık için hazirlik.html sayfasındaki planlayıcıyı kullanabilirsiniz."
+      colRem: "Hatırlatma: kontrol kolonoskopisi için poliklinik randevusu alın", col: "Kontrol kolonoskopisi ayı", colDesc: "Raporunuzda önerilen süre doldu. Randevu alın; hazırlık için hazirlik.html sayfasındaki planlayıcıyı kullanabilirsiniz.",
+      asi: "Grip aşısı zamanı", asiDesc: "Yıllık grip aşınızı aile hekiminizde veya eczanede yaptırın. Bağışıklık baskılayıcı tedavi alıyorsanız canlı aşı yapılmaz; emin değilseniz gastroenteroloji polikliniğine sorun."
     },
-    names: { ilac: "İlaç raporu", biyolojik: "Biyolojik tedavi raporu", diger: "Sağlık kurulu raporu" }, rem: "hatırlatma", file: { hcc: "karaciger-tarama.ics", rep: "rapor-yenileme.ics", doz: "biyolojik-tedavi-dozlari.ics", col: "kontrol-kolonoskopisi.ics" }
+    names: { ilac: "İlaç raporu", biyolojik: "Biyolojik tedavi raporu", diger: "Sağlık kurulu raporu" }, rem: "hatırlatma", file: { hcc: "karaciger-tarama.ics", rep: "rapor-yenileme.ics", doz: "biyolojik-tedavi-dozlari.ics", col: "kontrol-kolonoskopisi.ics", asi: "grip-asisi.ics" }
   },
   en: {
     title: "Follow-up reminders | Çapa Gastroenterohepatology", sub: "Istanbul Faculty of Medicine, Istanbul University", home: "For patients",
@@ -279,13 +291,15 @@ const T = {
     notice: "The intervals here are examples; the one that applies to you is what your physician wrote in your report. A reminder does not replace an appointment: book your clinic visit for the scan, blood test or colonoscopy in time through MHRS or the hospital appointment desk.",
     foot: "Division of Gastroenterohepatology, Istanbul Faculty of Medicine, Istanbul University", disc: "This page is general information; your own physician's instructions always take precedence.", stamp: "Prepared by the Division of Gastroenterohepatology. Last reviewed September 2026 (draft; awaiting divisional approval).",
     skip: "Skip to content", langBtn: "TR", langAria: "Türkçeye geç", theme: "Light or dark theme", big: "Larger text", done: "Calendar file downloaded; open it to add the entries to your calendar",
+    asiH: "Yearly flu vaccine", asiP: "If you take a biologic or immunosuppressive treatment, or are in a risk group because of cirrhosis or chronic liver disease, a flu vaccine is recommended every autumn. It is given by your family physician or at a pharmacy; ask your physician which other vaccines suit you.", asiMonth: "Vaccine month", asiYears: "For how many years", oct: "October", sep: "September", nov: "November", asiHint: "A reminder on the 1st of the chosen month every year; no year needed.",
     ev: {
       hccRem: "Reminder: book your liver surveillance appointment (ultrasound and AFP)", hcc: "Liver surveillance: ultrasound and AFP", hccDesc: "Çapa Gastroenterohepatology follow-up reminder. Book the clinic appointment in advance; you may need to fast for the blood test.",
       rep30: n => n + " expires in 30 days: book a clinic appointment for renewal", rep7: n => n + " expires in 7 days", rep0: n => n + " expiry day", repDesc: "The report must be renewed before it expires; bring the tests and reports needed for the new one.",
       dozInf: i => "Biologic therapy: dose " + i + " (infusion unit)", dozSc: i => "Biologic therapy: dose " + i + " (home injection)", dozLoad: " (loading)", dozDesc: "Tell the unit before the dose if you have signs of infection (fever, cough, burning on urination). Make sure your drug report is valid.",
-      colRem: "Reminder: book your surveillance colonoscopy", col: "Surveillance colonoscopy due", colDesc: "The interval recommended in your report has passed. Book an appointment; the planner at hazirlik.html helps with preparation."
+      colRem: "Reminder: book your surveillance colonoscopy", col: "Surveillance colonoscopy due", colDesc: "The interval recommended in your report has passed. Book an appointment; the planner at hazirlik.html helps with preparation.",
+      asi: "Flu vaccine due", asiDesc: "Have your yearly flu vaccine at your family physician or a pharmacy. Live vaccines are not given during immunosuppressive treatment; ask the gastroenterology clinic if unsure."
     },
-    names: { ilac: "Drug report", biyolojik: "Biologic therapy report", diger: "Medical board report" }, rem: "reminder", file: { hcc: "liver-surveillance.ics", rep: "report-renewal.ics", doz: "biologic-doses.ics", col: "surveillance-colonoscopy.ics" }
+    names: { ilac: "Drug report", biyolojik: "Biologic therapy report", diger: "Medical board report" }, rem: "reminder", file: { hcc: "liver-surveillance.ics", rep: "report-renewal.ics", doz: "biologic-doses.ics", col: "surveillance-colonoscopy.ics", asi: "flu-vaccine.ics" }
   }
 };
 
@@ -357,7 +371,13 @@ function colEvents() {
   const t = T[lang].ev, last = parse(v), due = addMonths(last, Number($("col-int").value));
   return [{ date: addMonths(due, -2), title: t.colRem, desc: t.colDesc, rem: true }, { date: due, title: t.col, desc: t.colDesc, month: true }];
 }
-const TOOLS = [["hcc", "hcc", hccEvents], ["rep", "rapor", repEvents], ["doz", "doz", dozEvents], ["col", "kontrol", colEvents]];
+function asiEvents() {
+  const t = T[lang].ev, m = Number($("asi-month").value), n = Number($("asi-years").value), now = new Date();
+  let y = now.getFullYear(); if (new Date(y, m, 1) < new Date(now.getFullYear(), now.getMonth(), 1)) y++;
+  const ev = []; for (let i = 0; i < n; i++) ev.push({ date: new Date(y + i, m, 1), title: t.asi, desc: t.asiDesc, month: true });
+  return ev;
+}
+const TOOLS = [["hcc", "hcc", hccEvents], ["rep", "rapor", repEvents], ["doz", "doz", dozEvents], ["col", "kontrol", colEvents], ["asi", "asi", asiEvents]];
 function refresh(id, fn) {
   const ev = fn(), list = $(id + "-list"), btn = $(id + "-btn");
   btn.disabled = !ev;
