@@ -13,6 +13,7 @@ Canlı adres: https://besimagargun.com/capagastro/ (İngilizce için `?lang=en` 
 | `hazirlik.html` | Kolonoskopi hazırlık planlayıcı: randevu saati ve solüsyona göre saat saat plan; takvim (.ics), WhatsApp, yazdırma |
 | `islemler.html` | Her işlem için hasta bilgilendirme (hazırlık, işlem günü, sonrası, ne zaman aramalı, SSS); bölüm bazında yazdırma ve paylaşım |
 | `egitim.html` | Eğitim ve başvuru: yan dal programı, haftalık akademik program, rotasyon, öğrenci projeleri, gözlemci başvurusu |
+| `sevk.html` | Sevk eden hekimler için: kimleri yönlendirmeli, aciliyet şeritleri (acil / öncelikli / rutin), gönderilecekler, tek sayfa yazdırılan sevk formu (kimlik bilgisi e-postaya girmez), iletişim |
 | `protokoller.html` | Asistanlar için klinik protokol özetleri (`PROTOCOLS` dizisi: id, title, lead, version, approved, body HTML, src); protokol bazında yazdırma; Türkçe |
 | `veri-yonetisimi.html` | Araştırma grubunun veri yönetişimi ve sorumlu yapay zeka ilke belgesi (veri sınıfları, kimliksizleştirme akışı, LLM kuralları, güvenlik, paylaşım, roller) |
 | `veri-ve-araclar.html` | Veri seti ve araç kataloğu: her veri seti ve yazılım/model için bir kart (kaynak, dönem, etiketler, erişim sınıfı, kullanım amacı, doğrulama, sınırlar); erişim akışı |
@@ -73,7 +74,7 @@ Sayfa, tarayıcı dili Türkçe ise Türkçe, değilse İngilizce açılır. `?l
 
 ## Arama motorları
 
-Site taslak olduğu için `index.html`, `yayinlar.html`, `hazirlik.html`, `islemler.html`, `hatirlatici.html`, `egitim.html`, `protokoller.html`, `izlem.html`, `sss.html`, `veri-yonetisimi.html`, `veri-ve-araclar.html`, `veri-sozlesme.html` ve `kimlik.html` başında `noindex, nofollow` etiketleri var; Google ve diğer arama motorları sayfaları dizine eklemez, bağlantıyı bilen herkes ise açabilir. Yayına hazır olunca bu dosyalardaki "TASLAK" yorumunun altındaki iki `robots`/`googlebot` satırını silin. `robots.txt` ile engellemeyin: tarayıcı sayfayı okuyamazsa `noindex` etiketini de göremez.
+Site taslak olduğu için `index.html`, `yayinlar.html`, `hazirlik.html`, `islemler.html`, `hatirlatici.html`, `egitim.html`, `sevk.html`, `protokoller.html`, `izlem.html`, `sss.html`, `veri-yonetisimi.html`, `veri-ve-araclar.html`, `veri-sozlesme.html` ve `kimlik.html` başında `noindex, nofollow` etiketleri var; Google ve diğer arama motorları sayfaları dizine eklemez, bağlantıyı bilen herkes ise açabilir. Yayına hazır olunca bu dosyalardaki "TASLAK" yorumunun altındaki iki `robots`/`googlebot` satırını silin. `robots.txt` ile engellemeyin: tarayıcı sayfayı okuyamazsa `noindex` etiketini de göremez.
 
 Yayına hazırlık için diğer parçalar hazır:
 
@@ -94,5 +95,5 @@ Depo: github.com/bfagargun/capagastro, dal `main`, klasör `/ (root)`. Dosyalar 
 1. Depo köküne içinde yalnızca alan adı yazan `CNAME` dosyası koyun.
 2. Alan adı sağlayıcısında: kök için `A` kayıtları 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153; `www` için `CNAME` kaydı `bfagargun.github.io`.
 3. Settings > Pages > Custom domain alanına alan adını yazıp "Enforce HTTPS" kutusunu işaretleyin.
-4. `index.html`, `yayinlar.html`, `hazirlik.html`, `islemler.html`, `hatirlatici.html`, `egitim.html`, `protokoller.html`, `izlem.html`, `sss.html`, `veri-yonetisimi.html`, `veri-ve-araclar.html`, `veri-sozlesme.html` ve `kimlik.html` içindeki `canonical`, `hreflang`, `og:url`, `og:image` ve JSON-LD (`besimagargun.com/capagastro/`) adreslerini, `404.html` içindeki `/capagastro/` bağlantılarını yeni adrese göre güncelleyin.
+4. `index.html`, `yayinlar.html`, `hazirlik.html`, `islemler.html`, `hatirlatici.html`, `egitim.html`, `sevk.html`, `protokoller.html`, `izlem.html`, `sss.html`, `veri-yonetisimi.html`, `veri-ve-araclar.html`, `veri-sozlesme.html` ve `kimlik.html` içindeki `canonical`, `hreflang`, `og:url`, `og:image` ve JSON-LD (`besimagargun.com/capagastro/`) adreslerini, `404.html` içindeki `/capagastro/` bağlantılarını yeni adrese göre güncelleyin.
 5. `python3 tools/make_sitemap.py --base https://capagastro.org/` ve `python3 tools/make_qr.py --base https://capagastro.org/` çalıştırın; `robots.txt` içindeki `Sitemap:` satırını güncelleyin.
