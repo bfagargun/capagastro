@@ -42,7 +42,7 @@ Ana sayfadaki değişken içerik `index.html` dosyasının sonundaki `<script>` 
 - `NEWS`: haberler ve duyurular. `d`: tarih (`"2026-10-17"`, `"2026-07"` veya `"2026"`), `tag`: [Türkçe, İngilizce] etiket, `tr` / `en`: [başlık, metin], `link`: isteğe bağlı bağlantı (DOI bağlantısı "Yayın", diğerleri "Ayrıntı" düğmesi olur). En yeni 6 haber görünür, kalanı "Daha eski haberler" düğmesiyle açılır.
 - `FACTS`: üst şerit sayıları. Değeri boş (`""`) bırakılan madde gizlenir; ekip, proje ve yayın sayıları kendiliğinden hesaplanır.
 
-Listeler (ekip, mezunlar, projeler, yayınlar) sayfaya ayrıca statik HTML olarak `<!--pre:...-->` işaretleri arasında gömülüdür; böylece JavaScript çalıştırmayan okuyucular ve arama motorları da içeriği görür. Tarayıcıda sayfa her açıldığında listeler verilerden yeniden çizildiği için veriyi değiştirmeniz yeterlidir; işaretler arasındaki statik kopya ise bir sonraki güncellemede yenilenir.
+Listeler (ekip, mezunlar, projeler, yayınlar) sayfaya ayrıca statik HTML olarak `<!--pre:...-->` işaretleri arasında gömülüdür; böylece JavaScript çalıştırmayan okuyucular ve arama motorları da içeriği görür. Tarayıcıda sayfa her açıldığında listeler verilerden yeniden çizildiği için veriyi değiştirmeniz yeterlidir; işaretler arasındaki statik kopyayı `node tools/prerender.js` yeniler (Playwright gerekir: `npm i -g playwright && npx playwright install chromium`).
 
 Sabit metinlerde (başlıklar, paragraflar, sorumlu araştırmacı özgeçmişi) Türkçe metin öğenin içinde, İngilizcesi `data-en` özniteliğindedir. Yeni bir cümle eklerken ikisini de yazın. Sitede uzun ve kısa tire karakterleri ile şapkalı a kullanılmaz; aralıklarda kısa çizgi (-) kullanılır.
 
@@ -51,6 +51,8 @@ Sabit metinlerde (başlıklar, paragraflar, sorumlu araştırmacı özgeçmişi)
 `yayinlar.html` açılınca atıf sayılarını OpenAlex API'sinden tarayıcıda çeker (DOI ile, DOI'si olmayanlar PMID ile; 40'lık paketler halinde, `mailto` ile kibar havuz), 7 gün `localStorage`'da saklar ve üst şeride toplam atıf ile bilim dalı h-indeksini, listeye "atıfa göre" sıralamayı ve her kayda atıf etiketini ekler. API'ye erişilemezse sayfa atıfsız çalışır. Yıllara göre yayın grafiği `pubs.js` verisinden çizilir.
 
 `pubs.js` PubMed'den ekip üyelerinin adı ve İstanbul adresiyle derlendi, adaş yazarlar ayıklandı. Her kayıtta `jif` yaklaşık dergi etki faktörüdür ve yalnızca sıralama içindir. Yeni yayın eklemek için aynı biçimde bir satır ekleyin; liste etki faktörüne göre kendiliğinden sıralanır.
+
+Yeni yayınları bulmak için `python3 tools/update_pubs.py` çalıştırın: ekip üyelerinin adı ve İstanbul adresiyle PubMed'i tarar (varsayılan olarak listedeki son yıldan bir yıl öncesinden itibaren; `--since 2020` ile değiştirilir), `pubs.js`'de olmayan kayıtları adres özetiyle `pubs-candidates.json` dosyasına yazar. Dosyada adaş yazarları ayıklayıp uygun kayıtlarda `"keep": true` bırakın, eksik `jif` değerlerini doldurun, sonra `python3 tools/update_pubs.py --apply` ile `pubs.js`'ye ekleyin. Üye listesi betiğin başındaki `MEMBERS` sözlüğündedir; yeni üye gelince oraya PubMed yazar biçimiyle ekleyin. Ana sayfadaki yayın sayısı ve ekip kartlarındaki "Yayınlar (n)" değerleri tarayıcıda `pubs.js`'den hesaplanır; `<!--pre:...-->` işaretleri arasındaki statik kopyaları yenilemek için `node tools/prerender.js` çalıştırın (Playwright gerekir).
 
 ## Kolonoskopi hazırlık planlayıcı
 
