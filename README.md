@@ -20,6 +20,7 @@ Canlı adres: https://besimagargun.com/capagastro/ (İngilizce için `?lang=en` 
 | `veri-sozlesme.html` | Veri kullanım sözleşmesi şablonu (Türkçe): doldurulabilir alanlar, yazdırma/PDF, örnek değerler; hukuk müşavirliği incelemesi bekleyen taslak |
 | `kimlik.html`, `img/logo*` | Kurumsal kimlik ve basın kiti: logo dosyaları (SVG ve PNG, `tools/make_logo.py` ve `tools/make_logo_png.js` ile üretilir), renkler, yazı tipleri, ad yazımları, tanıtım metinleri, sunum ve poster şablonları, e-posta imzası; `img/capagastro-kimlik.zip` tüm set |
 | `img/og-*.png` | Sayfa başına sosyal medya kartı (WhatsApp, X, LinkedIn önizlemesi); `node tools/make_og.js` ile üretilir |
+| `sablon/capagastro-sunum.pptx` | Sekiz slaytlık PowerPoint şablonu (kimlik kitinden); `node tools/make_pptx.js` ile üretilir (pptxgenjs) |
 | `hatirlatici.html` | Takip hatırlatıcıları: HCC taraması, ilaç raporu yenileme, biyolojik tedavi dozları, kontrol kolonoskopisi, yıllık grip aşısı için .ics takvim dosyası |
 | `izlem.html` | Uzun süreli izlem rehberleri: İBH, siroz, karaciğer nakli adayları, Wilson; bizde nasıl işler, ne zaman aramalı |
 | `sss.html` | Hastalar için sık sorulan sorular (randevu, işlem günü, sonuç ve raporlar, hazırlık ve ilaçlar, ulaşım, diğer); arama kutusu, FAQPage yapılandırılmış verisi |
