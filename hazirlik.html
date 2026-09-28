@@ -98,6 +98,7 @@ p{margin:0 0 1em;max-width:68ch}
 .wrap{width:min(1100px,92vw);margin:0 auto}
 header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .bar{display:flex;align-items:center;gap:.6rem;padding:.7rem 0}
+@media (max-width:420px){.brand{font-size:.98rem}.brand svg{width:26px;height:26px}.bar{gap:.4rem}}
 .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--ink);font-family:var(--font-display);font-size:1.1rem;font-weight:600;line-height:1.2;margin-right:auto}
 .brand svg{width:32px;height:32px;flex-shrink:0;color:var(--teal)}
 .brand small{display:block;font-family:var(--font-body);font-weight:400;font-size:.72rem;color:var(--ink-2)}
@@ -176,6 +177,8 @@ input[type=date]:focus,input[type=time]:focus{border-color:var(--teal)}
 .more th,.more td{border:1px solid var(--line);padding:.35rem .5rem;text-align:left;vertical-align:top}
 .more thead th{background:var(--paper-2);font-weight:600}
 .more tbody th{font-weight:600;white-space:nowrap;background:var(--paper-2)}
+.items li > div{min-width:0}
+@media (max-width:600px){.more tbody th{white-space:normal}.more table{font-size:.8rem}.more th,.more td{padding:.3rem .35rem}}
 @media print{.more summary{display:none}.more[open] table,.more table{display:table}.more{display:block}.more th,.more td{border-color:#000}.more thead th,.more tbody th{background:#eee}}
 :root[data-theme="dark"] .items li.dose b{color:var(--teal-2)}
 @media (max-width:560px){.items li{grid-template-columns:1fr;gap:.1rem}.items .t{font-size:1.05rem}}
