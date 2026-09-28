@@ -38,6 +38,7 @@ LINKS = [
     ("peg", "PEG (beslenme tüpü)", "PEG (feeding tube)", "islemler.html#peg", "islemler"),
     ("hatirlatici", "Takip hatırlatıcıları", "Follow-up reminders", "hatirlatici.html", "diger"),
     ("izlem", "Uzun süreli izlem rehberi", "Long-term follow-up guide", "izlem.html", "diger"),
+    ("sss", "Sık sorulan sorular", "Frequently asked questions", "sss.html", "diger"),
     ("site", "Bilim dalı sitesi", "Division website", "", "diger"),
 ]
 

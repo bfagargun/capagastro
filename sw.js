@@ -2,9 +2,9 @@
    Gezinmelerde ağ öncelikli (sayfa güncelse hemen görünür), ağ yoksa önbellek, o da yoksa cevrimdisi.html.
    Aynı kaynaktan diğer dosyalarda önce önbellek, arkada yenileme. Başka kaynaklar (yazı tipleri, OpenAlex) dokunulmaz.
    Sayfa içerikleri değiştiğinde VERSION değiştirmek gerekmez; eski önbellekleri temizlemek için değiştirin. */
-const VERSION = "2026-09-28a";
+const VERSION = "2026-09-28b";
 const CACHE = "capagastro-" + VERSION;
-const PRECACHE = ["./", "./index.html", "./hazirlik.html", "./islemler.html", "./hatirlatici.html", "./izlem.html", "./cevrimdisi.html", "./pubs.js", "./img/icon-192.png", "./manifest.webmanifest"];
+const PRECACHE = ["./", "./index.html", "./hazirlik.html", "./islemler.html", "./hatirlatici.html", "./izlem.html", "./sss.html", "./cevrimdisi.html", "./pubs.js", "./img/icon-192.png", "./manifest.webmanifest"];
 
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(PRECACHE)).then(() => self.skipWaiting()));

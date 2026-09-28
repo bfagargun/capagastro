@@ -329,8 +329,8 @@ summary::after{content:"+";font-family:var(--font-display);font-size:1.4rem;colo
 details[open] summary::after{content:"-"}
 details p,details ul{margin-top:.6rem}
 .print-row{margin-top:1.2rem;display:flex;gap:.5rem;flex-wrap:wrap}
-.ptools{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:2.5rem}
-@media (max-width:1000px){.ptools{grid-template-columns:repeat(2,1fr)}}
+.ptools{display:grid;grid-template-columns:repeat(5,1fr);gap:1.1rem;margin-bottom:2.5rem}
+@media (max-width:1000px){.ptools{grid-template-columns:repeat(2,1fr)}.ptools a:last-child:nth-child(odd){grid-column:1/-1}}
 @media (max-width:600px){.ptools{grid-template-columns:1fr}}
 .ptools a{display:block;border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.2rem;background:var(--paper);text-decoration:none;color:var(--ink);transition:border-color .15s}
 .ptools a:hover{border-color:var(--teal)}
@@ -1030,6 +1030,11 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
         <b data-en="Long-term follow-up">Uzun süreli izlem</b>
         <span data-en="IBD, cirrhosis, transplant candidates and Wilson disease: how follow-up works in our clinics and when to call.">İBH, siroz, nakil adayları ve Wilson hastalığı: izlem polikliniklerimizde nasıl işler, ne zaman aramalı.</span>
       </a>
+      <a href="sss.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .8-1 1.5v.2"/><circle cx="12" cy="17" r=".6" fill="currentColor"/></svg>
+        <b data-en="Frequently asked questions">Sık sorulan sorular</b>
+        <span data-en="Appointments, reports, companions, results and getting here: short answers, with search.">Randevu, rapor, refakatçi, sonuçlar ve ulaşım: kısa yanıtlar, arama ile.</span>
+      </a>
     </div>
     <div class="cols cols-2">
       <div class="block">
@@ -1215,6 +1220,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
         <li><a href="islemler.html" data-en="Procedures and preparation">İşlemler ve hazırlık</a></li>
         <li><a href="hatirlatici.html" data-en="Follow-up reminders">Takip hatırlatıcıları</a></li>
         <li><a href="izlem.html" data-en="Long-term follow-up">Uzun süreli izlem</a></li>
+        <li><a href="sss.html" data-en="Frequently asked questions">Sık sorulan sorular</a></li>
         <li><a href="https://mhrs.gov.tr/" target="_blank" rel="noopener" data-en="MHRS appointments">MHRS randevu</a></li>
         <li><a href="#iletisim" data-en="Directions">Ulaşım</a></li>
       </ul>
