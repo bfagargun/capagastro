@@ -308,6 +308,13 @@ summary::after{content:"+";font-family:var(--font-display);font-size:1.4rem;colo
 details[open] summary::after{content:"-"}
 details p,details ul{margin-top:.6rem}
 .print-row{margin-top:1.2rem;display:flex;gap:.5rem;flex-wrap:wrap}
+.ptools{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:2.5rem}
+@media (max-width:900px){.ptools{grid-template-columns:1fr}}
+.ptools a{display:block;border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.2rem;background:var(--paper);text-decoration:none;color:var(--ink);transition:border-color .15s}
+.ptools a:hover{border-color:var(--teal)}
+.ptools svg{width:26px;height:26px;color:var(--teal);margin-bottom:.5rem}
+.ptools b{display:block;font-weight:600;line-height:1.3;margin-bottom:.25rem}
+.ptools span{display:block;font-size:.9rem;color:var(--ink-2);line-height:1.45}
 .hint-line{font-size:.88rem;color:var(--ink-2);margin:.7rem 0 0}
 
 /* Publications */
@@ -976,6 +983,23 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
         İşleminiz öncesinde bilmeniz gerekenler. Kendi hekiminizin verdiği talimatlar, burada yazanlardan her zaman önceliklidir.
       </p>
     </div>
+    <div class="ptools">
+      <a href="hazirlik.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <b data-en="Colonoscopy preparation planner">Kolonoskopi hazırlık planlayıcı</b>
+        <span data-en="Your appointment time and solution become an hour-by-hour plan; add it to your calendar or share it on WhatsApp.">Randevu saatiniz ve solüsyonunuz saat saat plana dönüşür; takvime ekleyin veya WhatsApp ile paylaşın.</span>
+      </a>
+      <a href="islemler.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 12h7M9 16h7"/></svg>
+        <b data-en="Procedures and preparation">İşlemler ve hazırlık</b>
+        <span data-en="Gastroscopy, ERCP, EUS, capsule, POEM, FibroScan, biopsy and more: preparation, the day and afterwards.">Gastroskopi, ERCP, EUS, kapsül, POEM, FibroScan, biyopsi ve diğerleri: hazırlık, işlem günü ve sonrası.</span>
+      </a>
+      <a href="hatirlatici.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0v5l2 3H4l2-3z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+        <b data-en="Follow-up reminders">Takip hatırlatıcıları</b>
+        <span data-en="Liver cancer surveillance, drug report renewal, biologic doses and surveillance colonoscopy in your calendar.">Karaciğer kanseri taraması, ilaç raporu yenileme, biyolojik tedavi dozları ve kontrol kolonoskopisi takviminizde.</span>
+      </a>
+    </div>
     <div class="cols cols-2">
       <div class="block">
         <h3 data-en="Colonoscopy preparation">Kolonoskopi hazırlığı</h3>
@@ -987,7 +1011,6 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
           <li><b data-en="Medication">İlaçlar</b><span data-en="Take blood-pressure and heart medication with a sip of water. Tell us in advance if you use blood thinners, insulin or iron tablets.">Tansiyon ve kalp ilaçlarınızı bir yudum suyla alın. Kan sulandırıcı, insülin veya demir hapı kullanıyorsanız önceden bildirin.</span></li>
         </ol>
         <div class="print-row"><a class="btn solid" href="hazirlik.html" data-en="Build my personal preparation plan">Kişisel hazırlık planımı oluştur</a> <button class="btn" id="print" type="button" data-en="Print these instructions">Bu talimatı yazdır</button></div>
-        <p class="hint-line" data-en="The planner turns your appointment time and the solution you were given into an hour-by-hour plan you can add to your phone's calendar, share on WhatsApp or print.">Planlayıcı, randevu saatinize ve size verilen solüsyona göre saat saat bir plan çıkarır; telefonunuzun takvimine ekleyebilir, WhatsApp ile paylaşabilir ya da yazdırabilirsiniz.</p>
       </div>
       <div class="block">
         <h3 data-en="Other procedures">Diğer işlemler</h3>
@@ -1031,8 +1054,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
         <div class="notice" data-en="Blood thinners (warfarin, apixaban, rivaroxaban, clopidogrel and others) may need to be paused before therapeutic procedures. Never stop them on your own; ask the physician who prescribed them and let the endoscopy unit know.">
           Kan sulandırıcı ilaçlar (varfarin, apiksaban, rivaroksaban, klopidogrel ve benzerleri) terapötik işlemler öncesinde ara verilmeyi gerektirebilir. Kendi kararınızla kesmeyin; reçeteyi yazan hekiminize danışın ve endoskopi ünitesine bilgi verin.
         </div>
-        <div class="print-row"><a class="btn solid" href="islemler.html" data-en="All procedures: preparation, the day and afterwards">Tüm işlemler: hazırlık, işlem günü ve sonrası</a> <a class="btn" href="hatirlatici.html" data-en="Follow-up reminders">Takip hatırlatıcıları</a></div>
-        <p class="hint-line" data-en="ERCP, EUS, capsule endoscopy, POEM, manometry, FibroScan, liver biopsy, paracentesis, intestinal ultrasound, the infusion unit and PEG, each on its own printable page section. Reminders: calendar entries for liver cancer surveillance, drug report renewal, biologic doses and surveillance colonoscopy.">ERCP, EUS, kapsül endoskopi, POEM, manometri, FibroScan, karaciğer biyopsisi, parasentez, bağırsak ultrasonografisi, infüzyon ünitesi ve PEG; her biri yazdırılabilir ayrı bir bölümde. Hatırlatıcılar: karaciğer kanseri taraması, ilaç raporu yenileme, biyolojik tedavi dozları ve kontrol kolonoskopisi için takvim kayıtları.</p>
+        <div class="print-row"><a class="btn" href="islemler.html" data-en="All procedures">Tüm işlemler</a></div>
       </div>
     </div>
     <p class="stamp" data-en="Patient information on this site is prepared by the division's endoscopy unit and reviewed by its faculty. Last review: September 2026 (draft; awaiting divisional approval). Sources: ESGE bowel preparation guideline (2019 update), ESGE and BSG patient information documents, product leaflets.">Bu sitedeki hasta bilgileri bilim dalı endoskopi ünitesi tarafından hazırlanır ve öğretim üyelerince gözden geçirilir. Son gözden geçirme: Eylül 2026 (taslak; bilim dalı onayı bekliyor). Kaynaklar: ESGE bağırsak hazırlığı rehberi (2019 güncellemesi), ESGE ve BSG hasta bilgilendirme belgeleri, ürün prospektüsleri.</p>
