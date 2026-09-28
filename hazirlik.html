@@ -59,6 +59,7 @@ header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper
 .btn.solid{background:var(--teal);color:var(--paper)}
 .btn.solid:hover{background:var(--teal-2);border-color:var(--teal-2)}
 .btn.icon{padding:.35rem .6rem;min-width:2.3rem;justify-content:center}
+.btn[hidden],[hidden]{display:none !important}
 .btn svg{width:16px;height:16px;flex-shrink:0}
 @media (max-width:560px){.brand small{display:none}.bar .home{display:none}}
 
@@ -116,6 +117,8 @@ input[type=date]:focus,input[type=time]:focus{border-color:var(--teal)}
 .items li.soft::before{background:var(--paper);border:2px solid var(--line);}
 .items .t{font-family:var(--font-display);font-size:1.15rem;color:var(--claret);line-height:1.35;font-variant-numeric:tabular-nums}
 .items .t.x{color:var(--ink-2);font-family:var(--font-body);font-size:.85rem;line-height:1.7}
+.items.rel li{grid-template-columns:9rem 1fr}
+.items.rel .t.x{font-size:.9rem;font-weight:500;color:var(--claret)}
 .items b{display:block;font-weight:600;line-height:1.35}
 .items span.d{display:block;color:var(--ink-2);font-size:.95rem;line-height:1.55}
 .items li.dose b{color:var(--teal-2)}
@@ -326,7 +329,8 @@ const T = {
     fDm: "Şeker hastalığı ilacı veya insülin kullanıyorum", fFe: "Demir hapı kullanıyorum",
     fCn: "Kabızlık sorunum var", fCnS: "Haftada 3'ten az dışkılama ya da düzenli laksatif kullanımı.",
     fRk: "Böbrek veya kalp yetmezliğim var", fSed: "İşlemde sedasyon (uyutma) uygulanacak", fSedS: "Ünitemizde işlemlerin çoğu sedasyonla yapılır; emin değilseniz işaretli bırakın.", jump: "Planımı göster",
-    emptyH: "Planınız burada görünecek", emptyP: "Randevu tarihinizi ve saatinizi girin; plan kendiliğinden oluşur.",
+    genericH: "Genel hazırlık talimatı", genericP: "Randevu tarihinizi ve saatinizi girerseniz plan gün ve saatleriyle kişiselleşir; takvime eklenebilir ve paylaşılabilir.",
+    relTimes: { morning: "Kalkınca", stop: "Randevudan 2 saat önce", arrive: "Randevudan 30 dk önce", proc: "Randevu saati", enema1: "Randevudan 3 saat önce", enema2: "Randevudan 2 saat önce" },
     planH: "Hazırlık planınız", appt: "Kolonoskopi randevusu:",
     cal: "Takvime ekle", wa: "WhatsApp ile paylaş", copy: "Metni kopyala", link: "Bağlantıyı kopyala", print: "Yazdır",
     copied: "Plan metni kopyalandı", linkCopied: "Bağlantı kopyalandı", calDone: "Takvim dosyası indirildi; açınca etkinlikler takviminize eklenir",
@@ -395,7 +399,8 @@ const T = {
     fDm: "I take diabetes medication or insulin", fFe: "I take iron tablets",
     fCn: "I have constipation", fCnS: "Fewer than 3 bowel movements a week, or regular laxative use.",
     fRk: "I have kidney or heart failure", fSed: "I will have sedation for the procedure", fSedS: "Most procedures in our unit are done under sedation; leave this ticked if unsure.", jump: "Show my plan",
-    emptyH: "Your plan will appear here", emptyP: "Enter your appointment date and time; the plan builds itself.",
+    genericH: "General preparation instructions", genericP: "Enter your appointment date and time and the plan becomes personal, with dates and times; it can then be added to your calendar and shared.",
+    relTimes: { morning: "On waking", stop: "2 hours before", arrive: "30 min before", proc: "Appointment time", enema1: "3 hours before", enema2: "2 hours before" },
     planH: "Your preparation plan", appt: "Colonoscopy appointment:",
     cal: "Add to calendar", wa: "Share on WhatsApp", copy: "Copy text", link: "Copy link", print: "Print",
     copied: "Plan text copied", linkCopied: "Link copied", calDone: "Calendar file downloaded; open it to add the events to your calendar",
@@ -607,26 +612,28 @@ function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
 
 function render() {
   const t = T[lang], st = readState();
-  if (!st.date || !st.time) {
-    plan = null;
-    $("plan").innerHTML = `<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M8 14h3M13 14h3M8 17h3"/></svg><h2>${t.emptyH}</h2><p style="margin:0 auto">${t.emptyP}</p></div>`;
-    $("print-head").textContent = "";
-    return;
+  const generic = !st.date || !st.time;
+  if (generic) {
+    /* Tarih girilmeden genel talimat: gün başlıkları göreli, işlem günü saatleri randevuya göre yazılır */
+    const d = new Date(); d.setDate(d.getDate() + 14);
+    st.date = d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); st.time = "09:00";
   }
   plan = buildPlan(st, lang);
-  try { history.replaceState(null, "", "?" + stateToQuery(st) + (lang === "en" ? "&lang=en" : "")); } catch (e) {}
+  plan.generic = generic;
+  try { history.replaceState(null, "", "?" + stateToQuery(generic ? Object.assign({}, st, { date: "", time: "" }) : st) + (lang === "en" ? "&lang=en" : "")); } catch (e) {}
+  const relTime = it => t.relTimes[it.key] || fmtTime(it.at, lang);
   const days = plan.days.map(d => `
     <div class="day">
-      <div class="day-h"><b>${fmtDate(d.date, lang)}</b><span class="rel">${relLabel(d.offset, t)}</span></div>
-      <ol class="items">${d.items.map(it => `
-        <li class="${it.dose ? "dose" : it.soft ? "soft" : ""}"><span class="t${it.timed ? "" : " x"}">${it.timed ? fmtTime(it.at, lang) : t.tt.date}</span><div><b>${esc(it.title)}</b><span class="d">${esc(it.text)}</span></div></li>`).join("")}
+      <div class="day-h">${generic ? `<b>${relLabel(d.offset, t)}</b>` : `<b>${fmtDate(d.date, lang)}</b><span class="rel">${relLabel(d.offset, t)}</span>`}</div>
+      <ol class="items${generic && d.offset === 0 ? " rel" : ""}">${d.items.map(it => `
+        <li class="${it.dose ? "dose" : it.soft ? "soft" : ""}"><span class="t${it.timed && !(generic && d.offset === 0) ? "" : " x"}">${it.timed ? (generic && d.offset === 0 ? relTime(it) : fmtTime(it.at, lang)) : t.tt.date}</span><div><b>${esc(it.title)}</b><span class="d">${esc(it.text)}</span></div></li>`).join("")}
       </ol>
     </div>`).join("");
   const alerts = plan.warnings.map(w => `<div class="alert"><p>${esc(w)}</p></div>`).join("") + plan.infos.map(w => `<div class="alert note"><p>${esc(w)}</p></div>`).join("");
   $("plan").innerHTML = `
-    <div class="plan-head"><h2>${t.planH}</h2><div class="appt">${t.appt} <b>${fmtDate(plan.appt, lang, true)}, ${fmtTime(plan.appt, lang)}</b></div></div>
+    <div class="plan-head"><h2>${generic ? t.genericH : t.planH}</h2><div class="appt">${generic ? t.genericP : `${t.appt} <b>${fmtDate(plan.appt, lang, true)}, ${fmtTime(plan.appt, lang)}</b>`}</div></div>
     <div class="actions">
-      <button class="btn solid" type="button" id="b-cal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>${t.cal}</button>
+      <button class="btn solid" type="button" id="b-cal"${generic ? " hidden" : ""}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>${t.cal}</button>
       <a class="btn" id="b-wa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8.2 19z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 1a5 5 0 0 1-2-2l1-1-1-2z"/></svg>${t.wa}</a>
       <button class="btn" type="button" id="b-copy">${t.copy}</button>
       <button class="btn" type="button" id="b-link">${t.link}</button>
@@ -636,7 +643,8 @@ function render() {
     <p class="rule">${plan.protocol.enemaBefore ? t.ruleXm : t.rule}</p>`;
   $("print-head").textContent = t.printTitle + ". " + t.printUnit;
   const url = location.href;
-  $("b-wa").href = "https://wa.me/?text=" + encodeURIComponent(planText(plan, lang, url));
+  if (generic) { $("b-wa").hidden = true; $("b-copy").hidden = true; }
+  else $("b-wa").href = "https://wa.me/?text=" + encodeURIComponent(planText(plan, lang, url));
   $("b-cal").addEventListener("click", () => {
     const blob = new Blob([buildIcs(plan, lang)], { type: "text/calendar;charset=utf-8" });
     const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "kolonoskopi-hazirlik.ics"; document.body.appendChild(a); a.click();
