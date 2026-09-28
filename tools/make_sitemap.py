@@ -26,6 +26,7 @@ PAGES = [
     ("egitim.html", "0.7", "monthly", True),
     ("veri-yonetisimi.html", "0.6", "yearly", True),
     ("veri-ve-araclar.html", "0.6", "monthly", True),
+    ("kimlik.html", "0.5", "yearly", True),
 ]
 
 
