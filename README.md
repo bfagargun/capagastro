@@ -9,7 +9,7 @@ Canlı adres: https://besimagargun.com/capagastro/ (İngilizce için `?lang=en` 
 | Dosya | İçerik |
 |---|---|
 | `index.html` | Ana sayfa (Türkçe ve İngilizce) |
-| `yayinlar.html` | Tüm yayınlar; kişiye, türe ve metne göre filtre |
+| `yayinlar.html` | Tüm yayınlar; kişiye, türe ve metne göre filtre; OpenAlex atıfları; görüntülenen listeyi BibTeX, RIS veya CSV olarak indirme |
 | `hazirlik.html` | Kolonoskopi hazırlık planlayıcı: randevu saati ve solüsyona göre saat saat plan; takvim (.ics), WhatsApp, yazdırma (çıktıda ürüne özel QR); hafta sonu ve resmi tatil uyarısı (`HOLIDAYS_DATED` listesine yeni yılın bayram tarihlerini ekleyin) |
 | `islemler.html` | Her işlem için hasta bilgilendirme (hazırlık, işlem günü, sonrası, ne zaman aramalı, SSS); bölüm bazında yazdırma ve paylaşım |
 | `egitim.html` | Eğitim ve başvuru: yan dal programı, haftalık akademik program, rotasyon, öğrenci projeleri, gözlemci başvurusu |
@@ -76,6 +76,10 @@ Sayfa alt bilgisindeki "Hazırlayan / Kaynak / Son gözden geçirme" satırı (`
 Alt sayfaların altbilgisinin üstündeki "site haritası" şeridi `tools/inject_sitenav.py` ile eklenir; yeni bir sayfa eklenince betikteki listeye yazıp betiği yeniden çalıştırın (işaretçiler arasındaki parça yenilenir).
 
 Sayfa, tarayıcı dili Türkçe ise Türkçe, değilse İngilizce açılır. `?lang=en` veya `?lang=tr` bu seçimi zorlar; ziyaretçinin düğmeyle yaptığı seçim tarayıcıda hatırlanır.
+
+## Denetim
+
+Değişiklikten sonra `python3 tools/check.py` çalıştırın: yasak karakterler (uzun/kısa tire, şapkalı a), etiket dengesi, satır içi script sözdizimi (node varsa), JSON-LD, yerel bağlantılar, canonical; ayrıca `sw.js`, `manifest.webmanifest`, `sitemap.xml`. Görsel denetim için Playwright ile ekran görüntüsü alıp açık/koyu tema ve mobil genişlikte bakın; erişilebilirlik için axe-core.
 
 ## Arama motorları
 

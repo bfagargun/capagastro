@@ -97,6 +97,10 @@ header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper
 input,select{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:.45rem .7rem;max-width:100%}
 input[type=search]{flex:1;min-width:200px}
 .count{color:var(--ink-2);font-size:.9rem;margin-left:auto}
+.export{color:var(--ink-2);font-size:.85rem;display:inline-flex;gap:.2rem;align-items:center;flex-wrap:wrap}
+.export button{background:none;border:1px solid var(--line);border-radius:999px;color:var(--teal);font:inherit;font-size:.8rem;cursor:pointer;padding:.15rem .6rem}
+.export button:hover{border-color:var(--teal)}
+@media print{.export{display:none}}
 .clear{background:none;border:0;color:var(--teal);font:inherit;font-size:.9rem;cursor:pointer;text-decoration:underline;padding:0}
 .list{list-style:none;padding:0;margin:0 0 2rem}
 .list li{display:grid;grid-template-columns:5rem 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line)}
@@ -162,6 +166,7 @@ footer{padding:2rem 0;color:var(--ink-2);font-size:.85rem;border-top:1px solid v
     <select id="sort"><!--pre:sort--><option value="jif">Etki faktörüne göre</option><option value="year">Yıla göre (yeni)</option><option value="journal">Dergiye göre</option><!--/pre:sort--></select>
     <button class="clear" id="clear" type="button" hidden></button>
     <span class="count" id="count" aria-live="polite">241 yayın</span>
+    <span class="export" id="export"><span id="export-lbl">İndir:</span> <button type="button" data-fmt="bib">BibTeX</button> <button type="button" data-fmt="ris">RIS</button> <button type="button" data-fmt="csv">CSV</button></span>
   </div></div>
   <div class="wrap">
     <ol class="list" id="list"><!--pre:list--><li>
@@ -1632,7 +1637,7 @@ const T = {
     chip: { Article: "Makale", Review: "Derleme", Letter: "Mektup", Case: "Olgu" },
     sort: { jif: "Etki faktörüne göre", year: "Yıla göre (yeni)", journal: "Dergiye göre", cites: "Atıfa göre" },
     cites: "atıf (OpenAlex)", hindex: "h-indeksi (bilim dalı)", cit: n => n + " atıf", chartH: "Yıllara göre yayın sayısı", chartTip: (y, n) => y + ": " + n + " yayın", table: "Tablo olarak göster", yearCol: "Yıl", nCol: "Yayın",
-    count: n => `${n} yayın`, IF: "EF", clear: "Filtreleri temizle",
+    count: n => `${n} yayın`, IF: "EF", clear: "Filtreleri temizle", export: "Listeyi indir:",
     none: "Bu filtrelerle eşleşen yayın yok. Aramayı kısaltın veya filtreleri temizleyin.",
     note: "Kaynak: PubMed (NCBI). Atıf sayıları OpenAlex'ten alınır ve haftada bir yenilenir. Etki faktörleri Journal Citation Reports'a dayalı yaklaşık değerlerdir ve yalnızca sıralama için kullanılır; resmi değerler için Clarivate JCR'ye bakın. Yazar adları PubMed'deki biçimiyle verilmiştir. Eksik ya da hatalı bir kayıt görürseniz <a href=\"mailto:bfagargun@istanbul.edu.tr\">bize yazın</a>.",
     foot: "İstanbul Üniversitesi İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı",
@@ -1648,7 +1653,7 @@ const T = {
     chip: { Article: "Article", Review: "Review", Letter: "Letter", Case: "Case" },
     sort: { jif: "By impact factor", year: "By year (newest)", journal: "By journal", cites: "By citations" },
     cites: "citations (OpenAlex)", hindex: "h-index (division)", cit: n => n + " citations", chartH: "Publications per year", chartTip: (y, n) => y + ": " + n + " publications", table: "Show as table", yearCol: "Year", nCol: "Publications",
-    count: n => `${n} publications`, IF: "IF", clear: "Clear filters",
+    count: n => `${n} publications`, IF: "IF", clear: "Clear filters", export: "Download list:",
     none: "No publications match these filters. Try a shorter search or clear the filters.",
     note: "Source: PubMed (NCBI). Citation counts come from OpenAlex and refresh weekly. Impact factors are approximate values based on Journal Citation Reports and are used only for ranking; see Clarivate JCR for official figures. Author names appear as listed in PubMed. If you spot a missing or incorrect record, <a href=\"mailto:bfagargun@istanbul.edu.tr\">write to us</a>.",
     foot: "Division of Gastroenterohepatology, Istanbul Faculty of Medicine, Istanbul University",
@@ -1712,6 +1717,7 @@ function render() {
   else if (sort.value === "journal") rows.sort((a, b) => a.journal.localeCompare(b.journal) || b.year - a.year);
   else rows.sort((a, b) => (b.jif || 0) - (a.jif || 0) || b.year - a.year);
   count.textContent = t.count(rows.length);
+  lastRows = rows;
   clearBtn.hidden = !(q.value || who.value || typ.value);
   list.innerHTML = rows.length ? rows.map((p, i) => `<li>
     <div class="rank">${i + 1}<small>${p.jif != null ? t.IF + " " + p.jif.toFixed(1) : ""}</small></div>
@@ -1721,9 +1727,32 @@ function render() {
       <div class="tags">${p.members.map(m => `<span>${m}</span>`).join("")}<span class="typ">${t.chip[p.type] || p.type}</span>${CITES && CITES[p.pmid] ? `<span class="cit">${t.cit(CITES[p.pmid])}</span>` : ""}</div>
     </div></li>`).join("") : `<li class="empty">${t.none}</li>`;
 }
+/* Dışa aktarma: görüntülenen (filtrelenmiş, sıralı) liste BibTeX, RIS veya CSV olarak; tarayıcıda üretilir */
+let lastRows = [];
+const bibEsc = v => String(v).replace(/[{}]/g, "").replace(/&/g, "\\&");
+function bibAuthors(a) { return a.split(/,\s*/).map(x => x.trim()).filter(Boolean).map(x => x === "et al." ? "others" : x).join(" and "); }
+function toBib(rows) {
+  return rows.map(p => `@article{pmid${p.pmid},\n  title = {${bibEsc(p.title)}},\n  author = {${bibAuthors(p.authors)}},\n  journal = {${bibEsc(p.journal)}},\n  year = {${p.year}},` + (p.doi ? `\n  doi = {${p.doi}},` : "") + `\n  pmid = {${p.pmid}},\n  note = {${p.type}; ${p.members.join(", ")}}\n}`).join("\n\n") + "\n";
+}
+function toRis(rows) {
+  return rows.map(p => ["TY  - JOUR", `TI  - ${p.title}`, ...p.authors.split(/,\s*/).filter(a => a && a !== "et al.").map(a => `AU  - ${a}`), `JO  - ${p.journal}`, `PY  - ${p.year}`, p.doi ? `DO  - ${p.doi}` : "", `AN  - ${p.pmid}`, `UR  - https://pubmed.ncbi.nlm.nih.gov/${p.pmid}/`, `KW  - ${p.type}`, ...p.members.map(m => `KW  - ${m}`), "ER  - "].filter(Boolean).join("\r\n")).join("\r\n\r\n") + "\r\n";
+}
+function toCsv(rows) {
+  const c = v => `"${String(v == null ? "" : v).replace(/"/g, '""')}"`;
+  const head = ["pmid", "doi", "year", "journal", "jif", "type", "authors", "title", "members", "citations"];
+  return "\ufeff" + [head.join(","), ...rows.map(p => [p.pmid, p.doi, p.year, p.journal, p.jif, p.type, p.authors, p.title, p.members.join("; "), CITES ? (CITES[p.pmid] || 0) : ""].map(c).join(","))].join("\r\n") + "\r\n";
+}
+document.getElementById("export").addEventListener("click", e => {
+  const b = e.target.closest("button[data-fmt]"); if (!b || !lastRows.length) return;
+  const fmt = b.dataset.fmt, gen = { bib: [toBib, "text/plain", "bib"], ris: [toRis, "application/x-research-info-systems", "ris"], csv: [toCsv, "text/csv", "csv"] }[fmt];
+  const blob = new Blob([gen[0](lastRows)], { type: gen[1] + ";charset=utf-8" });
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "capagastro-yayinlar" + (who.value ? "-" + fold(who.value).replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "") : "") + "." + gen[2];
+  document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+});
 function applyLang(l, persist) {
   lang = l;
   const t = T[l];
+  $("export-lbl").textContent = t.export;
   document.documentElement.lang = l;
   document.title = t.title;
   document.querySelectorAll("[data-i]").forEach(el => { el.innerHTML = t[el.dataset.i]; });
