@@ -62,6 +62,7 @@
 </script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='18' fill='%230F5F66'/%3E%3Cpath d='M12 24c0-6 4-9 8-9s8 3 8 9-4 5-8 5-8 1-8-5z' fill='none' stroke='%23F7F5EF' stroke-width='2.2' stroke-linejoin='round'/%3E%3Ccircle cx='20' cy='21' r='2.2' fill='%23F7F5EF'/%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -135,6 +136,7 @@ input[type=date]:focus,input[type=time]:focus{border-color:var(--teal)}
 .hint{font-size:.85rem;color:var(--ink-2);margin:.2rem 0 0}
 .hint.warn{color:var(--claret)}
 .jump{display:none}
+.install-row{margin:.6rem 0 0;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;color:var(--ink-2);font-size:.9rem}
 @media (max-width:900px){.jump{display:block;text-align:center;margin-top:1rem}}
 
 /* Plan */
@@ -211,6 +213,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 }
 .print-only{display:none;font-size:.9rem;margin-top:.5rem}
 </style>
+<script>if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) addEventListener("load", function () { navigator.serviceWorker.register("sw.js").catch(function () {}); });</script>
 </head>
 <body>
 <header>
@@ -232,6 +235,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
     <h1 data-i="h1">Kolonoskopi hazırlık planlayıcı</h1>
     <p data-i="intro">Randevu saatinizi ve size verilen solüsyonu seçin; hangi gün ne yiyeceğinizi ve solüsyonu saat kaçta içeceğinizi gösteren kişisel bir plan hazırlansın. Planı telefonunuzun takvimine ekleyebilir, bir yakınınızla paylaşabilir ya da yazdırabilirsiniz.</p>
     <div class="privacy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span data-i="privacy">Bu sayfa hiçbir bilgiyi kaydetmez ve göndermez; plan yalnızca sizin tarayıcınızda hesaplanır. Adınız veya kimlik bilgileriniz sorulmaz.</span></div>
+    <p class="install-row" id="install-row" hidden><button class="btn" id="install" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:1.1em;height:1.1em"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg><span data-i="install">Telefona ekle</span></button> <small data-i="installS">Bağlantı olmadan da açılır.</small></p>
     <div class="print-only" id="print-head"></div>
   </div></div>
 
@@ -372,7 +376,7 @@ const T = {
     fAc: "Kan sulandırıcı kullanıyorum", fAcS: "Varfarin, apiksaban, rivaroksaban, dabigatran, klopidogrel, tikagrelor ve benzerleri.",
     fDm: "Şeker hastalığı ilacı veya insülin kullanıyorum", fFe: "Demir hapı kullanıyorum",
     fCn: "Kabızlık sorunum var", fCnS: "Haftada 3'ten az dışkılama ya da düzenli laksatif kullanımı.",
-    fRk: "Böbrek veya kalp yetmezliğim var", fSed: "İşlemde sedasyon (uyutma) uygulanacak", fSedS: "Ünitemizde işlemlerin çoğu sedasyonla yapılır; emin değilseniz işaretli bırakın.", jump: "Planımı göster",
+    fRk: "Böbrek veya kalp yetmezliğim var", fSed: "İşlemde sedasyon (uyutma) uygulanacak", fSedS: "Ünitemizde işlemlerin çoğu sedasyonla yapılır; emin değilseniz işaretli bırakın.", jump: "Planımı göster", install: "Telefona ekle", installS: "Bağlantı olmadan da açılır.",
     genericH: "Genel hazırlık talimatı", genericP: "Randevu tarihinizi ve saatinizi girerseniz plan gün ve saatleriyle kişiselleşir; takvime eklenebilir ve paylaşılabilir.",
     relTimes: { morning: "Kalkınca", stop: "Randevudan 2 saat önce", arrive: "Randevudan 30 dk önce", proc: "Randevu saati", enema1: "Randevudan 3 saat önce", enema2: "Randevudan 2 saat önce" },
     planH: "Hazırlık planınız", appt: "Kolonoskopi randevusu:",
@@ -442,7 +446,7 @@ const T = {
     fAc: "I take a blood thinner", fAcS: "Warfarin, apixaban, rivaroxaban, dabigatran, clopidogrel, ticagrelor and similar.",
     fDm: "I take diabetes medication or insulin", fFe: "I take iron tablets",
     fCn: "I have constipation", fCnS: "Fewer than 3 bowel movements a week, or regular laxative use.",
-    fRk: "I have kidney or heart failure", fSed: "I will have sedation for the procedure", fSedS: "Most procedures in our unit are done under sedation; leave this ticked if unsure.", jump: "Show my plan",
+    fRk: "I have kidney or heart failure", fSed: "I will have sedation for the procedure", fSedS: "Most procedures in our unit are done under sedation; leave this ticked if unsure.", jump: "Show my plan", install: "Add to phone", installS: "Opens without a connection too.",
     genericH: "General preparation instructions", genericP: "Enter your appointment date and time and the plan becomes personal, with dates and times; it can then be added to your calendar and shared.",
     relTimes: { morning: "On waking", stop: "2 hours before", arrive: "30 min before", proc: "Appointment time", enema1: "3 hours before", enema2: "2 hours before" },
     planH: "Your preparation plan", appt: "Colonoscopy appointment:",
@@ -752,6 +756,11 @@ const bigBtn = $("big");
 function applyBig(on) { document.documentElement.classList.toggle("big", on); bigBtn.setAttribute("aria-pressed", on ? "true" : "false"); bigBtn.title = bigBtn.getAttribute("aria-label"); }
 try { applyBig(localStorage.getItem("bigtext") === "1"); } catch (e) {}
 bigBtn.addEventListener("click", () => { const on = !document.documentElement.classList.contains("big"); applyBig(on); try { localStorage.setItem("bigtext", on ? "1" : "0"); } catch (e) {} });
+// Telefona ekle (PWA): tarayıcı yükleme izni verirse düğme görünür
+let installEvt = null;
+addEventListener("beforeinstallprompt", e => { e.preventDefault(); installEvt = e; $("install-row").hidden = false; });
+$("install").addEventListener("click", async () => { if (!installEvt) return; installEvt.prompt(); try { await installEvt.userChoice; } catch (e) {} installEvt = null; $("install-row").hidden = true; });
+addEventListener("appinstalled", () => { $("install-row").hidden = true; });
 </script>
 </body>
 </html>

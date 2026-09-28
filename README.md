@@ -22,6 +22,7 @@ Canlı adres: https://besimagargun.com/capagastro/ (İngilizce için `?lang=en` 
 | `qr.html`, `img/qr/` | Hasta sayfalarının QR kartları (ünite içi, yazdırılabilir); kodlar `tools/make_qr.py` ile üretilir |
 | `pubs.js` | PubMed'den derlenen yayın verisi (`PUBS_ALL`) |
 | `404.html` | Bulunamayan sayfalar için |
+| `cevrimdisi.html`, `sw.js`, `manifest.webmanifest` | Çevrimdışı yedek sayfa, hizmet çalışanı ve uygulama bildirimi (aşağıda) |
 | `og.png` | Bağlantı paylaşıldığında görünen görsel (1200x630) |
 | `apple-touch-icon.png` | Telefon ana ekranı simgesi |
 | `.nojekyll` | GitHub Pages'in dosyaları işlememesi için |
@@ -77,6 +78,10 @@ Yayına hazırlık için diğer parçalar hazır:
 - `sitemap.xml`: herkese açık dokuz sayfa; `python3 tools/make_sitemap.py` ile üretilir (lastmod git tarihinden). Yayın sonrası Google Search Console ve Bing Webmaster Tools'a bu dosyayı bildirin. `protokoller.html` ve `qr.html` ünite içi olduğundan haritada yoktur.
 - `robots.txt`: yalnızca site alan adının kökünden sunulurken (özel alan adı) okunur; GitHub Pages alt klasöründeyken etkisi yoktur.
 - Her sayfada `hreflang` bağlantıları (`tr`, `en`, `x-default`) ve schema.org yapılandırılmış verisi vardır: ana sayfada kuruluş, kişi ve site; `islemler.html` sayfasında işlemler ve sık sorulan sorular (`FAQPage`, sayfa dilinde JavaScript ile üretilir); `veri-ve-araclar.html` sayfasında veri kataloğu ve veri setleri (`DataCatalog`, `Dataset`; Google Dataset Search için); diğer sayfalarda `MedicalWebPage` veya `WebPage`. Yayın sonrası https://validator.schema.org ve Search Console "Zengin sonuçlar" testinden geçirin.
+
+## Çevrimdışı kullanım ve telefona ekleme
+
+`manifest.webmanifest` ve `sw.js` sayesinde site telefona uygulama gibi eklenebilir (hazırlık planlayıcıda "Telefona ekle" düğmesi, tarayıcı izin verirse görünür) ve hasta sayfaları (`index`, `hazirlik`, `islemler`, `hatirlatici`, `izlem`) ilk ziyaretten sonra bağlantı olmadan da açılır; diğer sayfalar bir kez açıldıysa çevrimdışı da çalışır, açılmadıysa `cevrimdisi.html` görünür. Sayfalar her zaman önce ağdan alınır, bu yüzden içerik güncellemeleri hemen görünür. Simgeler `img/icon-*.png` (dolu işaretten üretildi). Eski önbellekleri temizlemek gerekirse `sw.js` içindeki `VERSION` değiştirilir. Yalnızca HTTPS'te (ve localhost'ta) çalışır; alan adı değişince yol göreli olduğu için ek işlem gerekmez.
 
 ## Yayınlama
 
