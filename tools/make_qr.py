@@ -37,6 +37,7 @@ LINKS = [
     ("infuzyon", "Biyolojik tedavi ünitesi", "Biologic therapy unit", "islemler.html#infuzyon", "islemler"),
     ("peg", "PEG (beslenme tüpü)", "PEG (feeding tube)", "islemler.html#peg", "islemler"),
     ("hatirlatici", "Takip hatırlatıcıları", "Follow-up reminders", "hatirlatici.html", "diger"),
+    ("izlem", "Uzun süreli izlem rehberi", "Long-term follow-up guide", "izlem.html", "diger"),
     ("site", "Bilim dalı sitesi", "Division website", "", "diger"),
 ]
 

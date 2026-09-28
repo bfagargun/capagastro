@@ -308,8 +308,9 @@ summary::after{content:"+";font-family:var(--font-display);font-size:1.4rem;colo
 details[open] summary::after{content:"-"}
 details p,details ul{margin-top:.6rem}
 .print-row{margin-top:1.2rem;display:flex;gap:.5rem;flex-wrap:wrap}
-.ptools{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:2.5rem}
-@media (max-width:900px){.ptools{grid-template-columns:1fr}}
+.ptools{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:2.5rem}
+@media (max-width:1000px){.ptools{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.ptools{grid-template-columns:1fr}}
 .ptools a{display:block;border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.2rem;background:var(--paper);text-decoration:none;color:var(--ink);transition:border-color .15s}
 .ptools a:hover{border-color:var(--teal)}
 .ptools svg{width:26px;height:26px;color:var(--teal);margin-bottom:.5rem}
@@ -1000,6 +1001,11 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
         <b data-en="Follow-up reminders">Takip hatırlatıcıları</b>
         <span data-en="Liver cancer surveillance, drug report renewal, biologic doses and surveillance colonoscopy in your calendar.">Karaciğer kanseri taraması, ilaç raporu yenileme, biyolojik tedavi dozları ve kontrol kolonoskopisi takviminizde.</span>
       </a>
+      <a href="izlem.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14"/><path d="M4 19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2M8 8h8M8 12h8M8 16h5"/></svg>
+        <b data-en="Long-term follow-up">Uzun süreli izlem</b>
+        <span data-en="IBD, cirrhosis, transplant candidates and Wilson disease: how follow-up works in our clinics and when to call.">İBH, siroz, nakil adayları ve Wilson hastalığı: izlem polikliniklerimizde nasıl işler, ne zaman aramalı.</span>
+      </a>
     </div>
     <div class="cols cols-2">
       <div class="block">
@@ -1182,6 +1188,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
         <li><a href="hazirlik.html" data-en="Colonoscopy preparation planner">Kolonoskopi hazırlık planlayıcı</a></li>
         <li><a href="islemler.html" data-en="Procedures and preparation">İşlemler ve hazırlık</a></li>
         <li><a href="hatirlatici.html" data-en="Follow-up reminders">Takip hatırlatıcıları</a></li>
+        <li><a href="izlem.html" data-en="Long-term follow-up">Uzun süreli izlem</a></li>
         <li><a href="https://mhrs.gov.tr/" target="_blank" rel="noopener" data-en="MHRS appointments">MHRS randevu</a></li>
         <li><a href="#iletisim" data-en="Directions">Ulaşım</a></li>
       </ul>
