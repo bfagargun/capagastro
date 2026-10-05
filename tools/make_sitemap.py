@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """sitemap.xml dosyasını üretir (sayfa başına bir adres; İngilizce sürüm hreflang ile).
 
-Kullanım: python3 tools/make_sitemap.py [--base https://besimagargun.com/capagastro/]
+Kullanım: python3 tools/make_sitemap.py [--base https://capagastro.org/]
 Alan adı değişince --base ile yeniden çalıştırın. lastmod her dosyanın son git tarihinden alınır;
 git yoksa dosyanın değiştirilme tarihi kullanılır. Gereksinim yok (yalnızca standart kütüphane).
 
@@ -10,7 +10,7 @@ git yoksa dosyanın değiştirilme tarihi kullanılır. Gereksinim yok (yalnızc
 import argparse, os, subprocess, datetime
 
 ap = argparse.ArgumentParser()
-ap.add_argument("--base", default="https://besimagargun.com/capagastro/")
+ap.add_argument("--base", default="https://capagastro.org/")
 args = ap.parse_args()
 BASE = args.base.rstrip("/") + "/"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

@@ -8,15 +8,15 @@
 <!-- TASLAK: yayına hazır olunca aşağıdaki iki robots satırını silin -->
 <meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="googlebot" content="noindex, nofollow, noarchive">
-<link rel="canonical" href="https://besimagargun.com/capagastro/veri-ve-araclar.html">
-<link rel="alternate" hreflang="tr" href="https://besimagargun.com/capagastro/veri-ve-araclar.html">
-<link rel="alternate" hreflang="en" href="https://besimagargun.com/capagastro/veri-ve-araclar.html?lang=en">
-<link rel="alternate" hreflang="x-default" href="https://besimagargun.com/capagastro/veri-ve-araclar.html">
+<link rel="canonical" href="https://capagastro.org/veri-ve-araclar.html">
+<link rel="alternate" hreflang="tr" href="https://capagastro.org/veri-ve-araclar.html">
+<link rel="alternate" hreflang="en" href="https://capagastro.org/veri-ve-araclar.html?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://capagastro.org/veri-ve-araclar.html">
 <meta property="og:title" content="Veri setleri ve araçlar | Çapa Gastroenterohepatoloji">
 <meta property="og:description" content="Veri kartları, model kartları ve erişim koşulları.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://besimagargun.com/capagastro/veri-ve-araclar.html">
-<meta property="og:image" content="https://besimagargun.com/capagastro/img/og-veri-ve-araclar.png">
+<meta property="og:url" content="https://capagastro.org/veri-ve-araclar.html">
+<meta property="og:image" content="https://capagastro.org/img/og-veri-ve-araclar.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -317,7 +317,7 @@ function applyLang(l, persist) {
 }
 // Arama motorları ve veri seti dizinleri için yapılandırılmış veri (schema.org DataCatalog, Dataset, SoftwareSourceCode); kartlardan üretilir.
 function structuredData() {
-  const base = "https://besimagargun.com/capagastro/", url = base + "veri-ve-araclar.html", org = { "@id": base + "#org" };
+  const base = "https://capagastro.org/", url = base + "veri-ve-araclar.html", org = { "@id": base + "#org" };
   const txt = el => el ? el.textContent.trim() : "";
   const planned = card => !!card.querySelector(".tags .st") && /Planlama|Planning/.test(txt(card.querySelector(".tags .st")));
   const cards = sel => [...document.querySelectorAll(sel)].filter(c => !planned(c));

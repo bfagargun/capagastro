@@ -8,15 +8,15 @@
 <!-- TASLAK: yayına hazır olunca aşağıdaki iki robots satırını silin -->
 <meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="googlebot" content="noindex, nofollow, noarchive">
-<link rel="canonical" href="https://besimagargun.com/capagastro/sss.html">
-<link rel="alternate" hreflang="tr" href="https://besimagargun.com/capagastro/sss.html">
-<link rel="alternate" hreflang="en" href="https://besimagargun.com/capagastro/sss.html?lang=en">
-<link rel="alternate" hreflang="x-default" href="https://besimagargun.com/capagastro/sss.html">
+<link rel="canonical" href="https://capagastro.org/sss.html">
+<link rel="alternate" hreflang="tr" href="https://capagastro.org/sss.html">
+<link rel="alternate" hreflang="en" href="https://capagastro.org/sss.html?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://capagastro.org/sss.html">
 <meta property="og:title" content="Sık sorulan sorular | Çapa Gastroenterohepatoloji">
 <meta property="og:description" content="Randevu, işlem günü, sonuçlar, hazırlık ve ulaşım hakkında hastaların en sık sorduğu sorular.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://besimagargun.com/capagastro/sss.html">
-<meta property="og:image" content="https://besimagargun.com/capagastro/img/og-sss.png">
+<meta property="og:url" content="https://capagastro.org/sss.html">
+<meta property="og:image" content="https://capagastro.org/img/og-sss.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@ function filter() {
 $("q").addEventListener("input", filter);
 // Arama motorları için görünen soru ve yanıtlar (schema.org FAQPage), sayfa dilinde
 function structuredData() {
-  const base = "https://besimagargun.com/capagastro/", url = base + "sss.html";
+  const base = "https://capagastro.org/", url = base + "sss.html";
   const qs = [...document.querySelectorAll("details")].map(d => ({ "@type": "Question", name: d.querySelector("summary").textContent.trim(), acceptedAnswer: { "@type": "Answer", text: [...d.querySelectorAll(".a p")].map(p => p.textContent.trim()).join(" ") } }));
   const graph = [
     { "@type": "MedicalWebPage", "@id": url + "#page", url, name: document.title.split(" | ")[0], description: document.querySelector('meta[name="description"]').content, inLanguage: lang, isPartOf: { "@id": base + "#site" }, audience: { "@type": "MedicalAudience", audienceType: "Patient" }, lastReviewed: "2026-09", reviewedBy: { "@id": base + "#org" }, publisher: { "@id": base + "#org" } },

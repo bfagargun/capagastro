@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """QR kodlarını üretir: img/qr/<ad>.png ile qr.html'nin okuduğu img/qr/list.js (ve list.json).
 
-Kullanım: python3 tools/make_qr.py [--base https://besimagargun.com/capagastro/]
+Kullanım: python3 tools/make_qr.py [--base https://capagastro.org/]
 Alan adı değişince --base ile yeniden çalıştırın; kartlar ve kodlar yenilenir.
 Gereksinim: pip install qrcode pillow
 """
@@ -10,7 +10,7 @@ import qrcode
 from qrcode.constants import ERROR_CORRECT_Q
 
 ap = argparse.ArgumentParser()
-ap.add_argument("--base", default="https://besimagargun.com/capagastro/")
+ap.add_argument("--base", default="https://capagastro.org/")
 args = ap.parse_args()
 BASE = args.base.rstrip("/") + "/"
 

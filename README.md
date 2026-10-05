@@ -2,7 +2,7 @@
 
 İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı'nın sitesi. Derleme veya paket gerektirmez; dosyalar olduğu gibi GitHub Pages'te yayınlanır.
 
-Canlı adres: https://besimagargun.com/capagastro/ (İngilizce için `?lang=en` ekleyin)
+Canlı adres: https://capagastro.org/ (İngilizce için `?lang=en` ekleyin). Site taslak olduğu için arama motorlarına kapalıdır (aşağıda "Arama motorları").
 
 ## Dosyalar
 
@@ -84,12 +84,12 @@ Değişiklikten sonra `python3 tools/check.py` çalıştırın: yasak karakterle
 
 ## Arama motorları
 
-Site taslak olduğu için `index.html`, `yayinlar.html`, `hazirlik.html`, `islemler.html`, `hatirlatici.html`, `egitim.html`, `sevk.html`, `protokoller.html`, `izlem.html`, `sss.html`, `veri-yonetisimi.html`, `veri-ve-araclar.html`, `veri-sozlesme.html` ve `kimlik.html` başında `noindex, nofollow` etiketleri var; Google ve diğer arama motorları sayfaları dizine eklemez, bağlantıyı bilen herkes ise açabilir. Yayına hazır olunca bu dosyalardaki "TASLAK" yorumunun altındaki iki `robots`/`googlebot` satırını silin. `robots.txt` ile engellemeyin: tarayıcı sayfayı okuyamazsa `noindex` etiketini de göremez.
+Site taslak olduğu için `index.html`, `yayinlar.html`, `hazirlik.html`, `islemler.html`, `hatirlatici.html`, `egitim.html`, `sevk.html`, `protokoller.html`, `izlem.html`, `sss.html`, `veri-yonetisimi.html`, `veri-ve-araclar.html`, `veri-sozlesme.html` ve `kimlik.html` başında `noindex, nofollow` etiketleri var; Google ve diğer arama motorları sayfaları dizine eklemez, bağlantıyı bilen herkes ise açabilir. Yayına hazır olunca bu dosyalardaki "TASLAK" yorumunun altındaki iki `robots`/`googlebot` satırını silin ve `robots.txt` içindeki `Sitemap:` satırının başındaki `#` işaretini kaldırın. `robots.txt` ile engellemeyin: tarayıcı sayfayı okuyamazsa `noindex` etiketini de göremez.
 
 Yayına hazırlık için diğer parçalar hazır:
 
-- `sitemap.xml`: herkese açık dokuz sayfa; `python3 tools/make_sitemap.py` ile üretilir (lastmod git tarihinden). Yayın sonrası Google Search Console ve Bing Webmaster Tools'a bu dosyayı bildirin. `protokoller.html` ve `qr.html` ünite içi olduğundan haritada yoktur.
-- `robots.txt`: yalnızca site alan adının kökünden sunulurken (özel alan adı) okunur; GitHub Pages alt klasöründeyken etkisi yoktur.
+- `sitemap.xml`: herkese açık on iki sayfa; `python3 tools/make_sitemap.py` ile üretilir (lastmod git tarihinden). Yayın sonrası Google Search Console ve Bing Webmaster Tools'a bu dosyayı bildirin. `protokoller.html` ve `qr.html` ünite içi olduğundan haritada yoktur.
+- `robots.txt`: site alan adının kökünden sunulduğu için tarayıcılar okur. Tarama serbesttir (sayfalardaki `noindex` görülsün diye); taslak süresince `Sitemap:` satırı yorum olarak durur, site haritası duyurulmaz.
 - Her sayfada `hreflang` bağlantıları (`tr`, `en`, `x-default`) ve schema.org yapılandırılmış verisi vardır: ana sayfada kuruluş, kişi ve site; `islemler.html` sayfasında işlemler ve sık sorulan sorular (`FAQPage`, sayfa dilinde JavaScript ile üretilir); `veri-ve-araclar.html` sayfasında veri kataloğu ve veri setleri (`DataCatalog`, `Dataset`; Google Dataset Search için); diğer sayfalarda `MedicalWebPage` veya `WebPage`. Yayın sonrası https://validator.schema.org ve Search Console "Zengin sonuçlar" testinden geçirin.
 
 ## Çevrimdışı kullanım ve telefona ekleme
@@ -100,10 +100,12 @@ Yayına hazırlık için diğer parçalar hazır:
 
 Depo: github.com/bfagargun/capagastro, dal `main`, klasör `/ (root)`. Dosyalar depoya gönderildikten birkaç dakika sonra canlıya yansır.
 
-## Özel alan adı (ör. capagastro.org)
+## Alan adı (capagastro.org)
 
-1. Depo köküne içinde yalnızca alan adı yazan `CNAME` dosyası koyun.
-2. Alan adı sağlayıcısında: kök için `A` kayıtları 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153; `www` için `CNAME` kaydı `bfagargun.github.io`.
-3. Settings > Pages > Custom domain alanına alan adını yazıp "Enforce HTTPS" kutusunu işaretleyin.
-4. `index.html`, `yayinlar.html`, `hazirlik.html`, `islemler.html`, `hatirlatici.html`, `egitim.html`, `sevk.html`, `protokoller.html`, `izlem.html`, `sss.html`, `veri-yonetisimi.html`, `veri-ve-araclar.html`, `veri-sozlesme.html` ve `kimlik.html` içindeki `canonical`, `hreflang`, `og:url`, `og:image` ve JSON-LD (`besimagargun.com/capagastro/`) adreslerini, `404.html` içindeki `/capagastro/` bağlantılarını yeni adrese göre güncelleyin. Sosyal medya kartları (`img/og-*.png`) altta adresi yazılı taşır: `tools/make_og.js` içindeki adres metnini değiştirip `node tools/make_og.js` ile yeniden üretin.
-5. `python3 tools/make_sitemap.py --base https://capagastro.org/` ve `python3 tools/make_qr.py --base https://capagastro.org/` çalıştırın; `robots.txt` içindeki `Sitemap:` satırını güncelleyin.
+Site Ekim 2026'dan beri `capagastro.org` adresinden yayınlanır; alan adı depo kökündeki `CNAME` dosyasındadır. Eski adres (besimagargun.com/capagastro/) GitHub Pages tarafından yeni adrese yönlendirilir.
+
+1. Alan adı sağlayıcısındaki DNS kayıtları: kök (`@`) için dört `A` kaydı 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153; IPv6 için isteğe bağlı dört `AAAA` kaydı 2606:50c0:8000::153, 2606:50c0:8001::153, 2606:50c0:8002::153, 2606:50c0:8003::153; `www` için `CNAME` kaydı `bfagargun.github.io`. Kökte başka `A`, `AAAA` veya yönlendirme (forwarding/park) kaydı kalmamalı.
+2. Settings > Pages > Custom domain alanında `capagastro.org` yazılıdır. DNS doğrulanıp sertifika çıkınca (birkaç dakika ile birkaç saat) "Enforce HTTPS" kutusu işaretlenir.
+3. Önerilir: alan adını GitHub hesabında doğrulayın (profil Settings > Pages > Add a domain; verilen `TXT` kaydını DNS'e ekleyin). Başkasının bu alan adını kendi deposuna bağlamasını önler.
+
+Adres yeniden değişirse (ör. istanbul.edu.tr alt alanı): `CNAME` dosyasını; HTML dosyalarındaki `canonical`, `hreflang`, `og:url`, `og:image` ve JSON-LD adreslerini; `sss.html`, `islemler.html` ve `veri-ve-araclar.html` içindeki `const base` değerini; `sevk.html` yazdırma notunu, `kimlik.html` web satırını ve e-posta imzasını, `hazirlik.html` yazdırma QR metnini ve `hazirlik.html` ile `hatirlatici.html` takvim UID alan adını değiştirin. Ardından `python3 tools/make_sitemap.py --base <adres>` ve `python3 tools/make_qr.py --base <adres>` çalıştırın, `robots.txt` içindeki `Sitemap:` satırını güncelleyin. Sosyal medya kartları (`img/og-*.png`) altta adresi yazılı taşır: `tools/make_og.js` içindeki adres metnini değiştirip `node tools/make_og.js` ile yeniden üretin. `tools/make_pptx.js` içindeki adresleri değiştirip şablonu yeniden üretin; `img/capagastro-kimlik.zip` içindeki `BENIOKU.txt` ve şablonu, `img/sunum-sablon-onizleme.png` grafik slaytının kaynak satırını yenileyin. `404.html` kök yolu (`/`) kullanır. Basılı kağıtlardaki eski QR kodlar eski adrese gider.

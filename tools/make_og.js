@@ -52,7 +52,7 @@ function html(kicker, tr, en) {
   </style></head><body>
   <svg class="logo" viewBox="0 0 481.2 57.9" width="722" height="87" style="overflow:visible">${logoInner}</svg>
   ${art}
-  <div class="kicker">${kicker}</div><div class="title">${tr}</div><div class="bar"></div><div class="en">${en}</div><div class="url">besimagargun.com/capagastro</div>
+  <div class="kicker">${kicker}</div><div class="title">${tr}</div><div class="bar"></div><div class="en">${en}</div><div class="url">capagastro.org</div>
   </body></html>`;
 }
 

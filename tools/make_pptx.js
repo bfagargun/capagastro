@@ -34,7 +34,7 @@ let n = 0;
   s.addText("Sunum başlığı buraya", { x: 0.63, y: 2.05, w: 6.2, h: 1.3, fontFace: H, fontSize: 36, color: C.paper, isTextBox: true, margin: 0, valign: "top" });
   s.addText("Alt başlık veya toplantı adı", { x: 0.63, y: 3.35, w: 6.2, h: 0.45, fontFace: B, fontSize: 18, color: C.paper, isTextBox: true, margin: 0 });
   s.addText("Konuşmacı adı, unvanı  ·  Tarih", { x: 0.63, y: 3.85, w: 6.2, h: 0.4, fontFace: B, fontSize: 14, color: C.paper, transparency: 15, isTextBox: true, margin: 0 });
-  s.addNotes("Şablon kullanımı: gereken slaytı çoğaltıp metni değiştirin; kullanmadığınız örnek slaytları silin. Renkler ve logo dosyaları besimagargun.com/capagastro/kimlik.html adresinde. Yazı tipleri Georgia ve Arial olarak ayarlıdır; Fraunces ve Public Sans kuruluysa Giriş > Değiştir > Yazı Tiplerini Değiştir ile dönüştürün. Kapak zemini img/sunum-kapak.png dosyasıdır.");
+  s.addNotes("Şablon kullanımı: gereken slaytı çoğaltıp metni değiştirin; kullanmadığınız örnek slaytları silin. Renkler ve logo dosyaları capagastro.org/kimlik.html adresinde. Yazı tipleri Georgia ve Arial olarak ayarlıdır; Fraunces ve Public Sans kuruluysa Giriş > Değiştir > Yazı Tiplerini Değiştir ile dönüştürün. Kapak zemini img/sunum-kapak.png dosyasıdır.");
 }
 
 // 2. Bölüm ayırıcı
@@ -117,7 +117,7 @@ let n = 0;
     x: 0.5, y: 1.25, w: 9, h: 3.5, barDir: "col", chartColors: [C.teal], showLegend: false, showValue: true, dataLabelPosition: "outEnd", dataLabelFontFace: B, dataLabelFontSize: 11, dataLabelColor: C.ink,
     catAxisLabelFontFace: B, catAxisLabelFontSize: 12, catAxisLabelColor: C.ink2, valAxisLabelFontFace: B, valAxisLabelFontSize: 11, valAxisLabelColor: C.ink2, valGridLine: { color: C.line, size: 0.5 }, catGridLine: { style: "none" }, showTitle: false, plotArea: { fill: { color: C.paper } }, chartArea: { fill: { color: C.paper } }
   });
-  s.addText("Kaynak: PubMed, bilim dalı yayın listesi (besimagargun.com/capagastro/yayinlar.html), Eylül 2026.", { x: 0.5, y: 4.78, w: 8.5, h: 0.3, fontFace: B, fontSize: 10, color: C.ink2, isTextBox: true, margin: 0 });
+  s.addText("Kaynak: PubMed, bilim dalı yayın listesi (capagastro.org/yayinlar.html), Eylül 2026.", { x: 0.5, y: 4.78, w: 8.5, h: 0.3, fontFace: B, fontSize: 10, color: C.ink2, isTextBox: true, margin: 0 });
   footer(s, n);
 }
 
@@ -131,7 +131,7 @@ let n = 0;
     { text: "Ad Soyad, unvan", options: { breakLine: true, bold: true } },
     { text: "ad.soyad@istanbul.edu.tr", options: { breakLine: true } },
     { text: "İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı  ·  0212 414 20 00, dahili 30960", options: { breakLine: true } },
-    { text: "besimagargun.com/capagastro", options: {} },
+    { text: "capagastro.org", options: {} },
   ], { x: 0.5, y: 2.85, w: 8.5, h: 1.5, fontFace: B, fontSize: 16, color: C.paper, valign: "top", isTextBox: true, margin: 0, paraSpaceAfter: 4 });
 }
 

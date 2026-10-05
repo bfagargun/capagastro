@@ -8,15 +8,15 @@
 <!-- TASLAK: yayına hazır olunca aşağıdaki iki robots satırını silin -->
 <meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="googlebot" content="noindex, nofollow, noarchive">
-<link rel="canonical" href="https://besimagargun.com/capagastro/hatirlatici.html">
-<link rel="alternate" hreflang="tr" href="https://besimagargun.com/capagastro/hatirlatici.html">
-<link rel="alternate" hreflang="en" href="https://besimagargun.com/capagastro/hatirlatici.html?lang=en">
-<link rel="alternate" hreflang="x-default" href="https://besimagargun.com/capagastro/hatirlatici.html">
+<link rel="canonical" href="https://capagastro.org/hatirlatici.html">
+<link rel="alternate" hreflang="tr" href="https://capagastro.org/hatirlatici.html">
+<link rel="alternate" hreflang="en" href="https://capagastro.org/hatirlatici.html?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://capagastro.org/hatirlatici.html">
 <meta property="og:title" content="Takip hatırlatıcıları | Çapa Gastroenterohepatoloji">
 <meta property="og:description" content="HCC taraması, ilaç raporu, biyolojik tedavi dozları ve kontrol kolonoskopisi için takvim hatırlatıcıları.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://besimagargun.com/capagastro/hatirlatici.html">
-<meta property="og:image" content="https://besimagargun.com/capagastro/img/og-hatirlatici.png">
+<meta property="og:url" content="https://capagastro.org/hatirlatici.html">
+<meta property="og:image" content="https://capagastro.org/img/og-hatirlatici.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -27,16 +27,16 @@
  "@graph": [
   {
    "@type": "MedicalWebPage",
-   "@id": "https://besimagargun.com/capagastro/hatirlatici.html#page",
-   "url": "https://besimagargun.com/capagastro/hatirlatici.html",
+   "@id": "https://capagastro.org/hatirlatici.html#page",
+   "url": "https://capagastro.org/hatirlatici.html",
    "name": "Takip hatırlatıcıları",
    "description": "Karaciğer kanseri taraması, ilaç raporu yenileme, biyolojik tedavi dozları ve kontrol kolonoskopisi için telefonunuzun takvimine eklenebilen hatırlatıcılar. İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı.",
    "inLanguage": "tr",
    "isPartOf": {
-    "@id": "https://besimagargun.com/capagastro/#site"
+    "@id": "https://capagastro.org/#site"
    },
    "publisher": {
-    "@id": "https://besimagargun.com/capagastro/#org"
+    "@id": "https://capagastro.org/#org"
    },
    "alternateName": "Follow-up reminders",
    "audience": {
@@ -45,7 +45,7 @@
    },
    "lastReviewed": "2026-09",
    "reviewedBy": {
-    "@id": "https://besimagargun.com/capagastro/#org"
+    "@id": "https://capagastro.org/#org"
    },
    "about": [
     {
@@ -324,7 +324,7 @@ function buildIcs(events, tag) {
   const out = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Capa Gastroenterohepatoloji//Hatirlatici//" + lang.toUpperCase(), "CALSCALE:GREGORIAN", "METHOD:PUBLISH"];
   events.forEach((e, i) => {
     const end = addDays(e.date, 1);
-    out.push("BEGIN:VEVENT", "UID:capagastro-" + tag + "-" + icsDate(e.date) + "-" + i + "@besimagargun.com", "DTSTAMP:" + stamp, "DTSTART;VALUE=DATE:" + icsDate(e.date), "DTEND;VALUE=DATE:" + icsDate(end), icsFold("SUMMARY:" + icsEscape(e.title)), icsFold("DESCRIPTION:" + icsEscape(e.desc)));
+    out.push("BEGIN:VEVENT", "UID:capagastro-" + tag + "-" + icsDate(e.date) + "-" + i + "@capagastro.org", "DTSTAMP:" + stamp, "DTSTART;VALUE=DATE:" + icsDate(e.date), "DTEND;VALUE=DATE:" + icsDate(end), icsFold("SUMMARY:" + icsEscape(e.title)), icsFold("DESCRIPTION:" + icsEscape(e.desc)));
     out.push("BEGIN:VALARM", "TRIGGER;VALUE=DATE-TIME:" + icsUtc(new Date(e.date.getFullYear(), e.date.getMonth(), e.date.getDate(), 9, 0)), "ACTION:DISPLAY", icsFold("DESCRIPTION:" + icsEscape(e.title)), "END:VALARM", "END:VEVENT");
   });
   out.push("END:VCALENDAR");

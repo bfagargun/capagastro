@@ -8,15 +8,15 @@
 <!-- TASLAK: yayına hazır olunca aşağıdaki iki robots satırını silin -->
 <meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="googlebot" content="noindex, nofollow, noarchive">
-<link rel="canonical" href="https://besimagargun.com/capagastro/hazirlik.html">
-<link rel="alternate" hreflang="tr" href="https://besimagargun.com/capagastro/hazirlik.html">
-<link rel="alternate" hreflang="en" href="https://besimagargun.com/capagastro/hazirlik.html?lang=en">
-<link rel="alternate" hreflang="x-default" href="https://besimagargun.com/capagastro/hazirlik.html">
+<link rel="canonical" href="https://capagastro.org/hazirlik.html">
+<link rel="alternate" hreflang="tr" href="https://capagastro.org/hazirlik.html">
+<link rel="alternate" hreflang="en" href="https://capagastro.org/hazirlik.html?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://capagastro.org/hazirlik.html">
 <meta property="og:title" content="Kolonoskopi hazırlık planlayıcı | Çapa Gastroenterohepatoloji">
 <meta property="og:description" content="Randevu saatinize göre saat saat kolonoskopi hazırlık planı; takvime ekleyin, WhatsApp ile paylaşın veya yazdırın.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://besimagargun.com/capagastro/hazirlik.html">
-<meta property="og:image" content="https://besimagargun.com/capagastro/img/og-hazirlik.png">
+<meta property="og:url" content="https://capagastro.org/hazirlik.html">
+<meta property="og:image" content="https://capagastro.org/img/og-hazirlik.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -27,23 +27,23 @@
  "@graph": [
   {
    "@type": "MedicalWebPage",
-   "@id": "https://besimagargun.com/capagastro/hazirlik.html#page",
-   "url": "https://besimagargun.com/capagastro/hazirlik.html",
+   "@id": "https://capagastro.org/hazirlik.html#page",
+   "url": "https://capagastro.org/hazirlik.html",
    "name": "Kolonoskopi hazırlık planlayıcı",
    "description": "Randevu saatinize ve kullanacağınız solüsyona göre saat saat kolonoskopi hazırlık planı. İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı endoskopi ünitesi.",
    "inLanguage": "tr",
    "isPartOf": {
-    "@id": "https://besimagargun.com/capagastro/#site"
+    "@id": "https://capagastro.org/#site"
    },
    "publisher": {
-    "@id": "https://besimagargun.com/capagastro/#org"
+    "@id": "https://capagastro.org/#org"
    },
    "alternateName": "Colonoscopy preparation planner",
    "about": {
     "@type": "MedicalProcedure",
     "name": "Kolonoskopi",
     "alternateName": "Colonoscopy",
-    "url": "https://besimagargun.com/capagastro/islemler.html#kolonoskopi"
+    "url": "https://capagastro.org/islemler.html#kolonoskopi"
    },
    "audience": {
     "@type": "MedicalAudience",
@@ -51,12 +51,12 @@
    },
    "lastReviewed": "2026-09",
    "reviewedBy": {
-    "@id": "https://besimagargun.com/capagastro/#org"
+    "@id": "https://capagastro.org/#org"
    },
    "potentialAction": {
     "@type": "UseAction",
     "name": "Hazırlık planı oluştur",
-    "target": "https://besimagargun.com/capagastro/hazirlik.html"
+    "target": "https://capagastro.org/hazirlik.html"
    }
   }
  ]
@@ -639,7 +639,7 @@ function buildIcs(plan, lang) {
   plan.days.forEach(d => d.items.forEach(it => {
     n++;
     const summary = (it.proc ? t.calProc : t.calSummary + ": " + it.title);
-    out.push("BEGIN:VEVENT", "UID:capagastro-" + tag + "-" + n + "@besimagargun.com", "DTSTAMP:" + stamp);
+    out.push("BEGIN:VEVENT", "UID:capagastro-" + tag + "-" + n + "@capagastro.org", "DTSTAMP:" + stamp);
     if (it.timed) {
       const dur = it.dur || (it.proc ? 60 : 15);
       out.push("DTSTART:" + icsUtc(it.at), "DTEND:" + icsUtc(addMin(it.at, dur)));
@@ -735,7 +735,7 @@ function render() {
   $("print-head").textContent = t.printTitle + ". " + t.printUnit;
   const qrName = ["pegdin", "xm", "pico"].includes(st.sol) ? "hazirlik-" + st.sol : "hazirlik";
   $("print-qr").querySelector("img").src = "img/qr/" + qrName + ".png";
-  $("print-qr-text").textContent = t.printQr + " " + (location.protocol === "file:" ? "besimagargun.com/capagastro/hazirlik.html" : location.host + location.pathname) + (["pegdin", "xm", "pico"].includes(st.sol) ? "?s=" + st.sol : "");
+  $("print-qr-text").textContent = t.printQr + " " + (location.protocol === "file:" ? "capagastro.org/hazirlik.html" : location.host + location.pathname) + (["pegdin", "xm", "pico"].includes(st.sol) ? "?s=" + st.sol : "");
   const url = location.href;
   if (generic) { $("b-wa").hidden = true; $("b-copy").hidden = true; }
   else $("b-wa").href = "https://wa.me/?text=" + encodeURIComponent(planText(plan, lang, url));

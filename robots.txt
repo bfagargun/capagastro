@@ -1,7 +1,9 @@
-# Bu dosya yalnızca site alan adının kökünden sunulduğunda (özel alan adı) geçerlidir;
-# GitHub Pages alt klasöründe tarayıcılar onu okumaz. Sayfaları engellemeyin: taslak
-# aşamasında noindex etiketi kullanılır (README, "Arama motorları").
+# capagastro.org kökünden sunulur. Site taslak: tüm sayfalarda noindex, nofollow etiketi var,
+# arama motorları sayfaları dizine eklemez. Sayfaları burada engellemeyin (Disallow kullanmayın):
+# tarayıcı sayfayı okuyamazsa noindex etiketini de göremez (README, "Arama motorları").
 User-agent: *
 Allow: /
 
-Sitemap: https://besimagargun.com/capagastro/sitemap.xml
+# Site haritası taslak aşamasında duyurulmuyor. Yayına alınınca (noindex satırları silinince)
+# aşağıdaki satırın başındaki # işaretini kaldırın.
+# Sitemap: https://capagastro.org/sitemap.xml
