@@ -97,6 +97,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 }
 .skip{position:absolute;left:-999px;top:0;background:var(--claret);color:#fff;padding:.5rem 1rem;z-index:99;text-decoration:none}
 .skip:focus{left:1rem;top:1rem}
+.en-note{border-left:4px solid var(--teal);background:var(--teal-soft,var(--paper-2));padding:.8rem 1rem;border-radius:0 8px 8px 0;margin:1rem 0;font-size:.92rem;max-width:80ch}.en-note p{margin:0 0 .5rem}.en-note p:last-child{margin:0}.en-note[hidden]{display:none}@media print{.en-note{display:none !important}}
 </style>
 <script>if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) addEventListener("load", function () { navigator.serviceWorker.register("sw.js").catch(function () {}); });</script>
 </head>
@@ -119,6 +120,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
     <div class="est">Asistanlar ve rotasyoncular için</div>
     <h1>Klinik protokoller</h1>
     <p>Bilim dalında sık karşılaşılan durumlar için kılavuz kaynaklı, tek sayfalık protokol özetleri. Amaç nöbette ve poliklinikte hızlı, tutarlı karar; ayrıntı ve istisnalar için kaynak kılavuza ve sorumlu öğretim üyesine başvurulur. Her protokolün sürümü, kaynağı ve onay durumu altında yazılıdır.</p>
+    <div class="en-note" id="en-note" lang="en" hidden><p><b>In English.</b> One-page clinical protocol summaries for the division's fellows and rotating residents: antithrombotic management before endoscopy; fasting, sedation and antibiotic prophylaxis; hepatocellular carcinoma surveillance; screening, vaccination and monitoring before biologic and small-molecule therapy in IBD; Wilson disease diagnosis and follow-up; initial management of acute upper GI bleeding; and an ERCP checklist with post-ERCP pancreatitis prophylaxis.</p><p>They are kept in Turkish because they are working documents for the unit's staff on call and in clinic. Each summary is drawn from the international guidelines cited beneath it and remains a draft until the faculty approve it.</p></div><script>(function(){var q=null,s=null,l;try{q=new URLSearchParams(location.search).get("lang")}catch(e){}try{s=localStorage.getItem("lang")}catch(e){}if(q==="en"||q==="tr"){l=q;try{localStorage.setItem("lang",q)}catch(e){}}else if(s==="en"||s==="tr")l=s;else l=(navigator.language||"tr").toLowerCase().indexOf("tr")===0?"tr":"en";if(l==="en")document.getElementById("en-note").hidden=false})();</script>
     <nav class="toc" aria-label="Protokoller" id="toc"></nav>
     <div class="warnbox"><b>Taslak.</b> Bu özetler uluslararası kılavuzlardan hazırlanmıştır ve bilim dalı öğretim üyelerince onaylanana kadar ünitenin resmi protokolü değildir. Onay verildikçe her protokolün "Onay" satırı güncellenecektir. Hasta bakımında son karar hastayı gören hekimindir.</div>
   </div></div>

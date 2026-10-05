@@ -53,6 +53,7 @@ h1{font-family:var(--font-display);font-weight:500;font-size:clamp(1.8rem,4vw,2.
 }
 .skip{position:absolute;left:-999px;top:0;background:var(--claret);color:#fff;padding:.5rem 1rem;z-index:99;text-decoration:none}
 .skip:focus{left:1rem;top:1rem}
+.en-note{border-left:4px solid var(--teal);background:var(--teal-soft,var(--paper-2));padding:.8rem 1rem;border-radius:0 8px 8px 0;margin:1rem 0;font-size:.92rem;max-width:80ch}.en-note p{margin:0 0 .5rem}.en-note p:last-child{margin:0}.en-note[hidden]{display:none}@media print{.en-note{display:none !important}}
 </style>
 </head>
 <body>
@@ -72,6 +73,7 @@ h1{font-family:var(--font-display);font-weight:500;font-size:clamp(1.8rem,4vw,2.
     <div class="intro">
       <h1>QR kartları</h1>
       <p>Hasta sayfalarının QR kodları. Hazırlık kağıdına, randevu fişine veya ünite panosuna basılır; hasta telefonuyla okutunca ilgili sayfa (ürün seçili planlayıcı, işlem bölümü) doğrudan açılır. Kartları filtreleyip "Yazdır" ile A4'e iki sütun halinde basabilirsiniz; "Büyük" görünüm pano ve afiş içindir.</p>
+      <div class="en-note" id="en-note" lang="en" hidden><p><b>In English.</b> An internal page for the endoscopy unit: printable QR codes that open the patient pages on a patient's phone, such as the preparation planner with the prescribed bowel preparation already selected, or the information for a given procedure. The labels are in Turkish because the cards are printed for patients; the pages they open are available in English too.</p></div><script>(function(){var q=null,s=null,l;try{q=new URLSearchParams(location.search).get("lang")}catch(e){}try{s=localStorage.getItem("lang")}catch(e){}if(q==="en"||q==="tr"){l=q;try{localStorage.setItem("lang",q)}catch(e){}}else if(s==="en"||s==="tr")l=s;else l=(navigator.language||"tr").toLowerCase().indexOf("tr")===0?"tr":"en";if(l==="en")document.getElementById("en-note").hidden=false})();</script>
       <p class="note">Kodlar <code>tools/make_qr.py</code> ile üretilir; alan adı değişirse (ör. capagastro.org) betiği yeni adresle çalıştırıp kodları yenileyin. Eski kağıtlardaki kodlar önceki adrese gider.</p>
       <div class="controls">
         <button class="btn on" type="button" data-f="all">Tümü</button>
