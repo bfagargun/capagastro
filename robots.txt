@@ -1,9 +1,4 @@
-# capagastro.org kökünden sunulur. Site taslak: tüm sayfalarda noindex, nofollow etiketi var,
-# arama motorları sayfaları dizine eklemez. Sayfaları burada engellemeyin (Disallow kullanmayın):
-# tarayıcı sayfayı okuyamazsa noindex etiketini de göremez (README, "Arama motorları").
+# Site geçici olarak kapalı; sayfada noindex etiketi var. Taramayı engellemeyin
+# (tarayıcı sayfayı okuyamazsa noindex etiketini de göremez).
 User-agent: *
 Allow: /
-
-# Site haritası taslak aşamasında duyurulmuyor. Yayına alınınca (noindex satırları silinince)
-# aşağıdaki satırın başındaki # işaretini kaldırın.
-# Sitemap: https://capagastro.org/sitemap.xml
