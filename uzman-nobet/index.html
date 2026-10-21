@@ -87,7 +87,7 @@ footer{font-size:.8rem;color:var(--muted);text-align:center}
   <header>
     <h1>Uzman Nöbet İstek Formu</h1>
     <p>Takvimde günlere dokunarak işaretleyin: bir kez <b>istiyorum</b>, iki kez <b>istemiyorum</b>, üçüncü dokunuş temizler. Boş bıraktığınız günler "fark etmez" sayılır. Mümkün olduğunca çok gün seçmeniz isteğinizin gerçekleşme ihtimalini artırır. Sonda <b>Gönder</b>'e basmanız yeterli. Yanıtınızı yalnızca listeyi hazırlayan kişi görür.</p>
-    <p id="deadline" class="deadline"><b>Son gönderim:</b> 20 Ekim 2026 Salı, 23:59. Bu saatten sonra form kapanır.</p>
+    <p id="deadline" class="deadline"><b>Son gönderim:</b> 21 Ekim 2026 Çarşamba, 23:59. Bu saatten sonra form kapanır.</p>
     <p></p>
   </header>
 
@@ -165,7 +165,7 @@ footer{font-size:.8rem;color:var(--muted);text-align:center}
   const E={name:930609652,phone:496484287,count:564132280,note:1837146566,
     capa:[37949047, 714289742, 825928813, 1918148681, 1769803282, 365488378, 1069663033, 1474544837, 405739195, 2056068491, 1325791252, 355237122, 999823466, 1507947078, 659672801, 1669171414, 803915097, 690666004, 22200546, 307591434, 303041660, 654763578, 1094731463, 2066327901, 1330557443, 1901144159, 2030942948, 1544944122, 942514612, 1725665966],
     esen:[1145179666, 32514003, 877262593, 1544388730, 649139512, 136282910, 903113856, 321822356, 484522957, 873201034, 1082149509, 1174059874, 975289104, 1707442867, 920113298, 750442828, 1127441232, 31295132, 367315679, 1638275948, 458906132, 1124026157, 895396745, 1229135404, 1369945024, 378817095, 1706503708, 1925301612, 460978628, 1808518156]};
-  const DEADLINE=new Date("2026-10-20T23:59:59+03:00");
+  const DEADLINE=new Date("2026-10-21T23:59:59+03:00");
   let payload=null;
   const COUNT_LABEL={"0":"0","1":"1","2":"2","3":"3","4":"4","5":"5"};
   function ym(){return {y:2026,m:11};}
@@ -222,7 +222,7 @@ footer{font-size:.8rem;color:var(--muted);text-align:center}
     $("out").textContent=txt;
     const closed=Date.now()>DEADLINE.getTime();
     const ok=name.length>1&&!closed;
-    $("err").textContent=closed?"Form kapandı (son gönderim 20 Ekim 2026, 23:59). Değişiklik için listeyi hazırlayan kişiye ulaşın.":(name.length>1?"":"Göndermeden önce adınızı yazın.");
+    $("err").textContent=closed?"Form kapandı (son gönderim 21 Ekim 2026, 23:59). Değişiklik için listeyi hazırlayan kişiye ulaşın.":(name.length>1?"":"Göndermeden önce adınızı yazın.");
     const p=new URLSearchParams();
     p.set("entry."+E.name,name);
     if(phone)p.set("entry."+E.phone,phone);
