@@ -217,6 +217,16 @@ section.alt{background:var(--paper-2)}
 .block h3{margin-top:0}
 .block ul{padding-left:1.1rem;margin:0}
 .block li{margin-bottom:.35rem}
+.unit-room{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:2.2rem;align-items:center;margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--line)}
+.unit-room figure{margin:0}
+.unit-room img{width:100%;height:auto;aspect-ratio:1200/1260;object-fit:cover;border-radius:10px;border:1px solid var(--line);background:var(--paper);display:block}
+.unit-room h3{margin-top:0}
+.unit-room p{color:var(--ink-2)}
+.unit-room dl{display:grid;grid-template-columns:auto 1fr;gap:.45rem 1.2rem;margin:1.2rem 0 0}
+.unit-room dt{font-weight:600}
+.unit-room dd{margin:0;color:var(--ink-2)}
+@media (max-width:820px){.unit-room{grid-template-columns:1fr;gap:1.4rem}.unit-room dl{grid-template-columns:1fr;gap:.15rem}.unit-room dd{margin-bottom:.6rem}}
+@media print{.unit-room{break-inside:avoid}.unit-room img{max-width:9cm}}
 
 /* Principal investigator */
 .pi-grid{display:grid;grid-template-columns:130px 1fr;gap:2.5rem;align-items:start}
@@ -969,6 +979,25 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
         </ul>
       </div>
     </div>
+    <div class="unit-room" id="elastografi-odasi">
+      <figure>
+        <picture>
+          <source type="image/webp" srcset="img/unite/elastografi-odasi-640.webp 640w, img/unite/elastografi-odasi.webp 1200w" sizes="(max-width:820px) 92vw, 460px">
+          <img src="img/unite/elastografi-odasi-640.jpg" srcset="img/unite/elastografi-odasi-640.jpg 640w, img/unite/elastografi-odasi.jpg 1200w" sizes="(max-width:820px) 92vw, 460px" width="1200" height="1260" loading="lazy" decoding="async" alt="Elastografi ve ultrason odası: solda Samsung V8 ultrason sistemi, sağda FibroScan Expert 630 cihazı" data-en-alt="Elastography and ultrasound room: the Samsung V8 ultrasound system on the left and the FibroScan Expert 630 on the right">
+        </picture>
+      </figure>
+      <div>
+        <h3 data-en="Elastography and ultrasound room">Elastografi ve ultrason odası</h3>
+        <p data-en="Non-invasive liver assessment and intestinal ultrasound are performed in a dedicated room within the unit. Examinations need no sedation and results are available the same day; the measurements also feed the division's elastography archive.">Karaciğerin girişimsel olmayan değerlendirmesi ve bağırsak ultrasonografisi ünite içindeki ayrı bir odada yapılır. İncelemeler sedasyon gerektirmez, sonuç aynı gün verilir; ölçümler bilim dalının elastografi arşivini de besler.</p>
+        <dl>
+          <dt>FibroScan Expert 630</dt>
+          <dd data-en="Transient elastography (liver stiffness, kPa) and controlled attenuation parameter (CAP, dB/m)">Transient elastografi (karaciğer sertliği, kPa) ve kontrollü atenüasyon parametresi (CAP, dB/m)</dd>
+          <dt>Samsung V8</dt>
+          <dd data-en="Abdominal and intestinal ultrasound; shear-wave elastography of the liver, spleen and bowel wall">Abdominal ve bağırsak ultrasonografisi; karaciğer, dalak ve bağırsak duvarı shear-wave elastografisi</dd>
+        </dl>
+        <p><a href="islemler.html#fibroscan" data-en="What to expect at a FibroScan">FibroScan öncesi bilmeniz gerekenler</a></p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1508,6 +1537,10 @@ function applyLang(l, persist) {
   document.querySelectorAll("[data-en-aria]").forEach(el => {
     if (el.dataset.trAria === undefined) el.dataset.trAria = el.getAttribute("aria-label") || "";
     el.setAttribute("aria-label", l === "en" ? el.dataset.enAria : el.dataset.trAria);
+  });
+  document.querySelectorAll("[data-en-alt]").forEach(el => {
+    if (el.dataset.trAlt === undefined) el.dataset.trAlt = el.getAttribute("alt") || "";
+    el.setAttribute("alt", l === "en" ? el.dataset.enAlt : el.dataset.trAlt);
   });
   document.querySelectorAll("[data-en-title]").forEach(el => {
     if (el.dataset.trTitle === undefined) el.dataset.trTitle = el.getAttribute("title") || "";

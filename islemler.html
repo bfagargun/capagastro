@@ -80,6 +80,10 @@ header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper
 .proc:nth-child(even){background:var(--paper-2)}
 .proc-head{display:grid;grid-template-columns:1fr auto;gap:1rem 2rem;align-items:start;margin-bottom:1.4rem}
 .proc-head .lead{color:var(--ink-2);font-size:1.05rem;max-width:64ch}
+.proc-photo{margin:1rem 0 0;max-width:340px}
+.proc-photo img{width:100%;height:auto;aspect-ratio:1200/1260;object-fit:cover;border-radius:10px;border:1px solid var(--line);display:block}
+.proc-photo figcaption{margin-top:.45rem;font-size:.82rem;color:var(--ink-2)}
+@media print{.proc-photo{max-width:6cm}}
 .proc-actions{display:flex;gap:.45rem;flex-wrap:wrap;justify-content:flex-end}
 @media (max-width:760px){.proc-head{grid-template-columns:1fr}.proc-actions{justify-content:flex-start}}
 .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.7rem;margin-bottom:1.8rem}
@@ -332,6 +336,7 @@ const PROCEDURES = [
       faq: [] } },
 
   { id: "fibroscan",
+    photo: { src: "img/unite/elastografi-odasi", tr: "Elastografi ve ultrason odası: solda Samsung V8 ultrason sistemi, sağda FibroScan Expert 630", en: "Elastography and ultrasound room: Samsung V8 ultrasound system (left) and FibroScan Expert 630 (right)" },
     tr: { name: "FibroScan ve elastografi", short: "Ultrason benzeri bir prob ile karaciğer sertliği (fibrozis) ve yağlanma (CAP) ölçülür; biyopsi gerektirmeden karaciğer hasarının derecesini gösterir. Bağırsak ve dalak shear-wave elastografisi de aynı prensiple yapılır.",
       facts: { dur: "10 dakika", sed: "Yok", fast: "En az 3 saat", comp: "Gerekmez", res: "Hemen" },
       prep: ["Ölçümden en az 3 saat önce yemeyi bırakın; su içebilirsiniz. Tokluk sertliği yanlış yüksek gösterir.", "İlaçlarınıza devam edin.", "Sağ kaburga altına ulaşılabilecek rahat giysi giyin."],
@@ -380,6 +385,7 @@ const PROCEDURES = [
       faq: [] } },
 
   { id: "bagirsak-usg",
+    photo: { src: "img/unite/elastografi-odasi", tr: "Elastografi ve ultrason odası: solda Samsung V8 ultrason sistemi, sağda FibroScan Expert 630", en: "Elastography and ultrasound room: Samsung V8 ultrasound system (left) and FibroScan Expert 630 (right)" },
     tr: { name: "Bağırsak ultrasonografisi", short: "Karın üzerinden yapılan ultrason ile bağırsak duvarının kalınlığı, kan akımı ve komplikasyonlar değerlendirilir; Crohn hastalığı ve ülseratif kolit izleminde radyasyonsuz ve hazırlıksız bir yöntemdir.",
       facts: { dur: "20-30 dakika", sed: "Yok", fast: "Tercihen 4-6 saat", comp: "Gerekmez", res: "Hemen" },
       prep: ["Mümkünse 4-6 saat aç gelin; su içebilirsiniz. Zorunlu değildir.", "Bağırsak temizliği gerekmez.", "İlaçlarınıza devam edin."],
@@ -474,7 +480,7 @@ function render() {
   <section class="proc" id="${p.id}">
     <div class="wrap">
       <div class="proc-head">
-        <div><h2>${esc(d.name)}</h2><p class="lead">${esc(d.short)}</p></div>
+        <div><h2>${esc(d.name)}</h2><p class="lead">${esc(d.short)}</p>${p.photo ? `<figure class="proc-photo"><picture><source type="image/webp" srcset="${p.photo.src}-640.webp 640w, ${p.photo.src}.webp 1200w" sizes="340px"><img src="${p.photo.src}-640.jpg" srcset="${p.photo.src}-640.jpg 640w, ${p.photo.src}.jpg 1200w" sizes="340px" width="1200" height="1260" loading="lazy" decoding="async" alt="${esc(p.photo[lang])}"></picture><figcaption>${esc(p.photo[lang])}</figcaption></figure>` : ""}</div>
         <div class="proc-actions">
           <a class="btn" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(d.name + " - " + t.sub + "\n" + location.origin + location.pathname + (lang === "en" ? "?lang=en" : "") + "#" + p.id)}">${t.share}</a>
           <button class="btn" type="button" data-copy="${p.id}">${t.copy}</button>
