@@ -81,7 +81,8 @@ header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper
 .proc-head{display:grid;grid-template-columns:1fr auto;gap:1rem 2rem;align-items:start;margin-bottom:1.4rem}
 .proc-head .lead{color:var(--ink-2);font-size:1.05rem;max-width:64ch}
 .proc-photo{margin:1rem 0 0;max-width:340px}
-.proc-photo img{width:100%;height:auto;aspect-ratio:1200/1260;object-fit:cover;border-radius:10px;border:1px solid var(--line);display:block}
+.proc-photo.wide{max-width:480px}
+.proc-photo img{width:100%;height:auto;object-fit:cover;border-radius:10px;border:1px solid var(--line);display:block}
 .proc-photo figcaption{margin-top:.45rem;font-size:.82rem;color:var(--ink-2)}
 @media print{.proc-photo{max-width:6cm}}
 .proc-actions{display:flex;gap:.45rem;flex-wrap:wrap;justify-content:flex-end}
@@ -224,6 +225,7 @@ const PROCEDURES = [
       faq: [["What if my preparation is not good enough?", "If the view is poor the procedure may be repeated or extra preparation given in the unit. Tell us on arrival if your last stool was not a clear yellow liquid."], ["Is menstruation a problem?", "No."]] } },
 
   { id: "ercp",
+    photo: { src: "img/unite/ileri-endoskopi", w: 1600, h: 858, sm: 800, tr: "İleri endoskopi laboratuvarı: Fujifilm endoskopi kulesi, mobil C-kollu floroskopi ve hasta monitörizasyonu", en: "Advanced endoscopy suite: Fujifilm endoscopy stack, mobile C-arm fluoroscopy and patient monitoring" },
     tr: { name: "ERCP", short: "Endoskop ile safra yolları ve pankreas kanalına ulaşılıp röntgen altında taşların çıkarılması, darlıkların açılması veya stent yerleştirilmesi; tanıdan çok tedavi amaçlı bir işlemdir.",
       facts: { dur: "30-60 dakika", sed: "Derin sedasyon veya anestezi", fast: "Gece yarısından itibaren aç", comp: "Gerekli", res: "Rapor aynı gün; genellikle birkaç saat veya bir gece gözlem" },
       prep: ["Gece yarısından sonra yemeyin, içmeyin; sabah ilaçlarınızı bir yudum suyla alın (şeker ilaçları hariç).", "Önceki BT, MR ve MRCP görüntülerinizi ve raporlarınızı getirin.", "Kan sulandırıcılara genellikle ara verilir; hangi gün keseceğinizi hekiminiz söyler.", "Kontrast madde veya iyot alerjiniz, gebelik olasılığınız varsa mutlaka bildirin.", "Kan tahlilleri (pıhtılaşma, böbrek) genellikle işlemden önce istenir."],
@@ -240,6 +242,7 @@ const PROCEDURES = [
       faq: [["Why not MRCP instead of ERCP?", "MRCP only images the ducts; if stones must be removed or a stent placed, ERCP is needed. If the diagnosis is unclear, MRCP or EUS may be done first."], ["Is sphincterotomy permanent?", "Yes, but it does not affect digestion; it makes future stones easier to pass."]] } },
 
   { id: "eus",
+    photo: { src: "img/unite/ileri-endoskopi", w: 1600, h: 858, sm: 800, tr: "İleri endoskopi laboratuvarı: Fujifilm endoskopi kulesi, mobil C-kollu floroskopi ve hasta monitörizasyonu", en: "Advanced endoscopy suite: Fujifilm endoscopy stack, mobile C-arm fluoroscopy and patient monitoring" },
     tr: { name: "Endoskopik ultrasonografi (EUS)", short: "Ucunda ultrason bulunan endoskop ile pankreas, safra yolları, mide duvarı ve çevre lenf bezlerinin yakından görüntülenmesi; gerekirse ince iğne ile örnek alınır, kistler boşaltılır veya ağrı için sinir blokajı yapılır.",
       facts: { dur: "20-45 dakika", sed: "Damardan sedasyon veya anestezi", fast: "Gece yarısından itibaren aç", comp: "Gerekli", res: "Görüntü raporu aynı gün; iğne örneği sonucu 1-2 hafta" },
       prep: ["Gece yarısından sonra yemeyin, içmeyin; sabah ilaçlarınızı bir yudum suyla alın.", "Önceki BT ve MR görüntülerinizi getirin; alt EUS (rektal) yapılacaksa ünitenin verdiği lavmanı uygulayın.", "İğne ile örnek alınacaksa kan sulandırıcılara ara vermek gerekebilir; hekiminize danışın.", "Kan tahlilleri istenmiş olabilir; sonuçları getirin."],
@@ -272,6 +275,7 @@ const PROCEDURES = [
       faq: [["Can the capsule get stuck?", "Rarely (under 1 percent) without a known narrowing. If narrowing is suspected, a self-dissolving test capsule is given first."]] } },
 
   { id: "enteroskopi",
+    photo: { src: "img/unite/ileri-endoskopi", w: 1600, h: 858, sm: 800, tr: "İleri endoskopi laboratuvarı: Fujifilm endoskopi kulesi, mobil C-kollu floroskopi ve hasta monitörizasyonu", en: "Advanced endoscopy suite: Fujifilm endoscopy stack, mobile C-arm fluoroscopy and patient monitoring" },
     tr: { name: "Çift balon enteroskopi", short: "Ağızdan veya makattan ilerletilen özel bir endoskop ile ince bağırsağın derin bölümlerinin incelenmesi ve tedavisi; kapsül endoskopide bulunan lezyonlara ulaşmak için kullanılır.",
       facts: { dur: "1-2 saat", sed: "Derin sedasyon veya anestezi", fast: "Gece yarısından itibaren aç; makattan yapılacaksa kolonoskopi hazırlığı", comp: "Gerekli", res: "Rapor aynı gün; biyopsi birkaç hafta" },
       prep: ["Ağızdan (antegrad) yaklaşım için gece yarısından itibaren aç kalın.", "Makattan (retrograd) yaklaşım için kolonoskopi hazırlığının aynısını yapın.", "Kan sulandırıcılar ve önceki kapsül veya görüntüleme raporları için gastroskopi ile aynı kurallar geçerlidir."],
@@ -336,7 +340,7 @@ const PROCEDURES = [
       faq: [] } },
 
   { id: "fibroscan",
-    photo: { src: "img/unite/elastografi-odasi", tr: "Elastografi ve ultrason odası: solda Samsung V8 ultrason sistemi, sağda FibroScan Expert 630", en: "Elastography and ultrasound room: Samsung V8 ultrasound system (left) and FibroScan Expert 630 (right)" },
+    photo: { src: "img/unite/elastografi-odasi", w: 1200, h: 1260, sm: 640, tr: "Elastografi ve ultrason odası: solda Samsung V8 ultrason sistemi, sağda FibroScan Expert 630", en: "Elastography and ultrasound room: Samsung V8 ultrasound system (left) and FibroScan Expert 630 (right)" },
     tr: { name: "FibroScan ve elastografi", short: "Ultrason benzeri bir prob ile karaciğer sertliği (fibrozis) ve yağlanma (CAP) ölçülür; biyopsi gerektirmeden karaciğer hasarının derecesini gösterir. Bağırsak ve dalak shear-wave elastografisi de aynı prensiple yapılır.",
       facts: { dur: "10 dakika", sed: "Yok", fast: "En az 3 saat", comp: "Gerekmez", res: "Hemen" },
       prep: ["Ölçümden en az 3 saat önce yemeyi bırakın; su içebilirsiniz. Tokluk sertliği yanlış yüksek gösterir.", "İlaçlarınıza devam edin.", "Sağ kaburga altına ulaşılabilecek rahat giysi giyin."],
@@ -385,7 +389,7 @@ const PROCEDURES = [
       faq: [] } },
 
   { id: "bagirsak-usg",
-    photo: { src: "img/unite/elastografi-odasi", tr: "Elastografi ve ultrason odası: solda Samsung V8 ultrason sistemi, sağda FibroScan Expert 630", en: "Elastography and ultrasound room: Samsung V8 ultrasound system (left) and FibroScan Expert 630 (right)" },
+    photo: { src: "img/unite/elastografi-odasi", w: 1200, h: 1260, sm: 640, tr: "Elastografi ve ultrason odası: solda Samsung V8 ultrason sistemi, sağda FibroScan Expert 630", en: "Elastography and ultrasound room: Samsung V8 ultrasound system (left) and FibroScan Expert 630 (right)" },
     tr: { name: "Bağırsak ultrasonografisi", short: "Karın üzerinden yapılan ultrason ile bağırsak duvarının kalınlığı, kan akımı ve komplikasyonlar değerlendirilir; Crohn hastalığı ve ülseratif kolit izleminde radyasyonsuz ve hazırlıksız bir yöntemdir.",
       facts: { dur: "20-30 dakika", sed: "Yok", fast: "Tercihen 4-6 saat", comp: "Gerekmez", res: "Hemen" },
       prep: ["Mümkünse 4-6 saat aç gelin; su içebilirsiniz. Zorunlu değildir.", "Bağırsak temizliği gerekmez.", "İlaçlarınıza devam edin."],
@@ -480,7 +484,7 @@ function render() {
   <section class="proc" id="${p.id}">
     <div class="wrap">
       <div class="proc-head">
-        <div><h2>${esc(d.name)}</h2><p class="lead">${esc(d.short)}</p>${p.photo ? `<figure class="proc-photo"><picture><source type="image/webp" srcset="${p.photo.src}-640.webp 640w, ${p.photo.src}.webp 1200w" sizes="340px"><img src="${p.photo.src}-640.jpg" srcset="${p.photo.src}-640.jpg 640w, ${p.photo.src}.jpg 1200w" sizes="340px" width="1200" height="1260" loading="lazy" decoding="async" alt="${esc(p.photo[lang])}"></picture><figcaption>${esc(p.photo[lang])}</figcaption></figure>` : ""}</div>
+        <div><h2>${esc(d.name)}</h2><p class="lead">${esc(d.short)}</p>${p.photo ? `<figure class="proc-photo${p.photo.w > p.photo.h ? " wide" : ""}"><picture><source type="image/webp" srcset="${p.photo.src}-${p.photo.sm}.webp ${p.photo.sm}w, ${p.photo.src}.webp ${p.photo.w}w" sizes="(max-width:760px) 92vw, 480px"><img src="${p.photo.src}-${p.photo.sm}.jpg" srcset="${p.photo.src}-${p.photo.sm}.jpg ${p.photo.sm}w, ${p.photo.src}.jpg ${p.photo.w}w" sizes="(max-width:760px) 92vw, 480px" width="${p.photo.w}" height="${p.photo.h}" style="aspect-ratio:${p.photo.w}/${p.photo.h}" loading="lazy" decoding="async" alt="${esc(p.photo[lang])}"></picture><figcaption>${esc(p.photo[lang])}</figcaption></figure>` : ""}</div>
         <div class="proc-actions">
           <a class="btn" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(d.name + " - " + t.sub + "\n" + location.origin + location.pathname + (lang === "en" ? "?lang=en" : "") + "#" + p.id)}">${t.share}</a>
           <button class="btn" type="button" data-copy="${p.id}">${t.copy}</button>

@@ -221,6 +221,8 @@ section.alt{background:var(--paper-2)}
 .unit-room figure{margin:0}
 .unit-room img{width:100%;height:auto;aspect-ratio:1200/1260;object-fit:cover;border-radius:10px;border:1px solid var(--line);background:var(--paper);display:block}
 .unit-room h3{margin-top:0}
+.unit-room.wide{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);margin-top:2.5rem}
+.unit-room.wide img{aspect-ratio:1600/858}
 .unit-room p{color:var(--ink-2)}
 .unit-room dl{display:grid;grid-template-columns:auto 1fr;gap:.45rem 1.2rem;margin:1.2rem 0 0}
 .unit-room dt{font-weight:600}
@@ -996,6 +998,27 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
           <dd data-en="Abdominal and intestinal ultrasound; shear-wave elastography of the liver, spleen and bowel wall">Abdominal ve bağırsak ultrasonografisi; karaciğer, dalak ve bağırsak duvarı shear-wave elastografisi</dd>
         </dl>
         <p><a href="islemler.html#fibroscan" data-en="What to expect at a FibroScan">FibroScan öncesi bilmeniz gerekenler</a></p>
+      </div>
+    </div>
+    <div class="unit-room wide" id="ileri-endoskopi">
+      <figure>
+        <picture>
+          <source type="image/webp" srcset="img/unite/ileri-endoskopi-800.webp 800w, img/unite/ileri-endoskopi.webp 1600w" sizes="(max-width:820px) 92vw, 600px">
+          <img src="img/unite/ileri-endoskopi-800.jpg" srcset="img/unite/ileri-endoskopi-800.jpg 800w, img/unite/ileri-endoskopi.jpg 1600w" sizes="(max-width:820px) 92vw, 600px" width="1600" height="858" loading="lazy" decoding="async" alt="İleri endoskopi laboratuvarı: Fujifilm endoskopi kulesi, mobil C-kollu floroskopi, hasta monitörü ve işlem sedyesi" data-en-alt="Advanced endoscopy suite: Fujifilm endoscopy stack, mobile C-arm fluoroscopy, patient monitor and procedure trolley">
+        </picture>
+      </figure>
+      <div>
+        <h3 data-en="Advanced endoscopy suite">İleri endoskopi laboratuvarı</h3>
+        <p data-en="ERCP, endoscopic ultrasound, double-balloon enteroscopy and cholangioscopy are performed in a dedicated suite with fluoroscopy, under sedation or anaesthesia with continuous monitoring.">ERCP, endoskopik ultrasonografi, çift balon enteroskopi ve kolanjiyoskopi floroskopi donanımlı ayrı bir odada, sürekli monitörizasyon altında sedasyon veya anesteziyle yapılır.</p>
+        <dl>
+          <dt>Fujifilm</dt>
+          <dd data-en="Endoscopy and EUS processors, double-balloon enteroscopy system">Endoskopi ve EUS işlemcileri, çift balon enteroskopi sistemi</dd>
+          <dt data-en="Fluoroscopy">Floroskopi</dt>
+          <dd data-en="Mobile C-arm (Siemens Healthineers) for ERCP and stent placement">ERCP ve stent yerleştirme için mobil C-kollu cihaz (Siemens Healthineers)</dd>
+          <dt data-en="Cholangioscopy">Kolanjiyoskopi</dt>
+          <dd data-en="Single-operator cholangioscopy (SpyGlass) and lithotripsy">Tek operatörlü kolanjiyoskopi (SpyGlass) ve taş kırma</dd>
+        </dl>
+        <p><a href="islemler.html#ercp" data-en="What to expect at ERCP">ERCP öncesi bilmeniz gerekenler</a> · <a href="islemler.html#eus" data-en="EUS">EUS</a> · <a href="islemler.html#enteroskopi" data-en="Enteroscopy">Enteroskopi</a></p>
       </div>
     </div>
   </div>
