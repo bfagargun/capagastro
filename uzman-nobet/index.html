@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<title>Uzman Nöbet İstek Formu – Kasım 2026</title>
+<title>Uzman Nöbet İstek Formu – Aralık 2026</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 html{color-scheme:light}
@@ -87,7 +87,7 @@ footer{font-size:.8rem;color:var(--muted);text-align:center}
   <header>
     <h1>Uzman Nöbet İstek Formu</h1>
     <p>Takvimde günlere dokunarak işaretleyin: bir kez <b>istiyorum</b>, iki kez <b>istemiyorum</b>, üçüncü dokunuş temizler. Boş bıraktığınız günler "fark etmez" sayılır. Mümkün olduğunca çok gün seçmeniz isteğinizin gerçekleşme ihtimalini artırır. Sonda <b>Gönder</b>'e basmanız yeterli. Yanıtınızı yalnızca listeyi hazırlayan kişi görür.</p>
-    <p id="deadline" class="deadline"><b>Son gönderim:</b> 21 Ekim 2026 Çarşamba, 23:59. Bu saatten sonra form kapanır.</p>
+    <p id="deadline" class="deadline"><b>Son gönderim:</b> 24 Kasım 2026 Salı, 23:59. Bu saatten sonra form kapanır.</p>
     <p></p>
   </header>
 
@@ -98,7 +98,7 @@ footer{font-size:.8rem;color:var(--muted);text-align:center}
       <label class="f">Telefon<input type="tel" id="phone" autocomplete="tel" placeholder="05xx xxx xx xx"></label>
     </div>
     <div class="row">
-      <label class="f">Ay<input type="text" id="monthLabel" value="Kasım 2026" readonly></label>
+      <label class="f">Ay<input type="text" id="monthLabel" value="Aralık 2026" readonly></label>
       <label class="f">Çapa'da kaç nöbet istiyorsunuz?
         <select id="capaCount">
           <option value="0">0</option>
@@ -161,14 +161,14 @@ footer{font-size:.8rem;color:var(--muted);text-align:center}
   const state={capa:{},esen:{}};
   const $=id=>document.getElementById(id);
 
-  const FORM="https://docs.google.com/forms/d/e/1FAIpQLSc4ug9498Qvhdkmwz9kvWECMFyqYZa8neX2zF-ryQEmCn2sEg/formResponse";
+  const FORM="https://docs.google.com/forms/d/e/1FAIpQLSfCKTRDLDc0oKdjA3y1SoVfPsOZFAsd0_f96V8Aq1GVBQ_d_g/formResponse";
   const E={name:930609652,phone:496484287,count:564132280,note:1837146566,
-    capa:[37949047, 714289742, 825928813, 1918148681, 1769803282, 365488378, 1069663033, 1474544837, 405739195, 2056068491, 1325791252, 355237122, 999823466, 1507947078, 659672801, 1669171414, 803915097, 690666004, 22200546, 307591434, 303041660, 654763578, 1094731463, 2066327901, 1330557443, 1901144159, 2030942948, 1544944122, 942514612, 1725665966],
-    esen:[1145179666, 32514003, 877262593, 1544388730, 649139512, 136282910, 903113856, 321822356, 484522957, 873201034, 1082149509, 1174059874, 975289104, 1707442867, 920113298, 750442828, 1127441232, 31295132, 367315679, 1638275948, 458906132, 1124026157, 895396745, 1229135404, 1369945024, 378817095, 1706503708, 1925301612, 460978628, 1808518156]};
-  const DEADLINE=new Date("2026-10-21T23:59:59+03:00");
+    capa:[37949047, 714289742, 825928813, 1918148681, 1769803282, 365488378, 1069663033, 1474544837, 405739195, 2056068491, 1325791252, 355237122, 999823466, 1507947078, 659672801, 1669171414, 803915097, 690666004, 22200546, 307591434, 303041660, 654763578, 1094731463, 2066327901, 1330557443, 1901144159, 2030942948, 1544944122, 942514612, 1725665966, 1083844938],
+    esen:[1145179666, 32514003, 877262593, 1544388730, 649139512, 136282910, 903113856, 321822356, 484522957, 873201034, 1082149509, 1174059874, 975289104, 1707442867, 920113298, 750442828, 1127441232, 31295132, 367315679, 1638275948, 458906132, 1124026157, 895396745, 1229135404, 1369945024, 378817095, 1706503708, 1925301612, 460978628, 1808518156, 1605363276]};
+  const DEADLINE=new Date("2026-11-24T23:59:59+03:00");
   let payload=null;
   const COUNT_LABEL={"0":"0","1":"1","2":"2","3":"3","4":"4","5":"5"};
-  function ym(){return {y:2026,m:11};}
+  function ym(){return {y:2026,m:12};}
   function daysIn(y,m){return new Date(y,m,0).getDate();}
   function isWe(y,m,d){const w=new Date(y,m-1,d).getDay();return w===6||w===0;}
 
@@ -222,12 +222,12 @@ footer{font-size:.8rem;color:var(--muted);text-align:center}
     $("out").textContent=txt;
     const closed=Date.now()>DEADLINE.getTime();
     const ok=name.length>1&&!closed;
-    $("err").textContent=closed?"Form kapandı (son gönderim 21 Ekim 2026, 23:59). Değişiklik için listeyi hazırlayan kişiye ulaşın.":(name.length>1?"":"Göndermeden önce adınızı yazın.");
+    $("err").textContent=closed?"Form kapandı (son gönderim 24 Kasım 2026, 23:59). Değişiklik için listeyi hazırlayan kişiye ulaşın.":(name.length>1?"":"Göndermeden önce adınızı yazın.");
     const p=new URLSearchParams();
     p.set("entry."+E.name,name);
     if(phone)p.set("entry."+E.phone,phone);
     p.set("entry."+E.count,COUNT_LABEL[$("capaCount").value]);
-    for(let d=1;d<=30;d++){
+    for(let d=1;d<=daysIn(y,m);d++){
       const c=state.capa[d]||0,e=state.esen[d]||0;
       if(c)p.append("entry."+E.capa[d-1],c===1?"İstiyorum":"İstemiyorum");
       if(e)p.append("entry."+E.esen[d-1],e===1?"İstiyorum":"İstemiyorum");
@@ -236,7 +236,7 @@ footer{font-size:.8rem;color:var(--muted);text-align:center}
     p.set("fvv","1");p.set("pageHistory","0");
     payload=p;
     $("send").disabled=!ok;
-    try{localStorage.setItem("uzman-nobet-2026-11",JSON.stringify({name,phone,note,capaCount:$("capaCount").value,state}));}catch(e){}
+    try{localStorage.setItem("uzman-nobet-2026-12",JSON.stringify({name,phone,note,capaCount:$("capaCount").value,state}));}catch(e){}
   }
 
   document.querySelectorAll(".chip").forEach(c=>c.addEventListener("click",()=>{
@@ -251,7 +251,7 @@ footer{font-size:.8rem;color:var(--muted);text-align:center}
     try{
       await fetch(FORM,{method:"POST",mode:"no-cors",body:payload,headers:{"Content-Type":"application/x-www-form-urlencoded"}});
       $("sendCard").hidden=true;$("doneCard").hidden=false;
-      $("doneText").textContent=$("name").value.trim()+" için Kasım 2026 nöbet isteğiniz kaydedildi. Teşekkürler.";
+      $("doneText").textContent=$("name").value.trim()+" için Aralık 2026 nöbet isteğiniz kaydedildi. Teşekkürler.";
       window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
     }catch(e){
       $("toast").textContent="Gönderilemedi. Bağlantınızı kontrol edip tekrar deneyin.";
@@ -261,7 +261,7 @@ footer{font-size:.8rem;color:var(--muted);text-align:center}
   $("again").addEventListener("click",()=>{$("doneCard").hidden=true;$("sendCard").hidden=false;});
 
   // restore draft
-  try{const d=JSON.parse(localStorage.getItem("uzman-nobet-2026-11")||"null");
+  try{const d=JSON.parse(localStorage.getItem("uzman-nobet-2026-12")||"null");
     if(d){$("name").value=d.name||"";$("phone").value=d.phone||"";$("note").value=d.note||"";
       $("capaCount").value=d.capaCount||"1";
       if(d.state){state.capa=d.state.capa||{};state.esen=d.state.esen||{};}}
