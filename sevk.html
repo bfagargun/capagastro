@@ -329,7 +329,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
         <div class="actions">
           <button class="btn solid" type="button" id="print" data-en="Print or save as PDF">Yazdır veya PDF kaydet</button>
           <button class="btn" type="button" id="copy" data-en="Copy clinical summary (without identifiers)">Klinik özeti kopyala (kimlik bilgisi olmadan)</button>
-          <a class="btn" id="mail" href="mailto:bfagargun@istanbul.edu.tr?subject=Sevk%20sorusu" data-en="E-mail the division">Bilim dalına e-posta</a>
+          <a class="btn" id="mail" href="mailto:filiz.akyuz@istanbul.edu.tr?subject=Sevk%20sorusu" data-en="E-mail the division">Bilim dalına e-posta</a>
           <button class="btn" type="button" id="clear" data-en="Clear">Temizle</button>
           <small data-en="The copied summary contains the urgency, the clinical question, history, medicines, risks and your contact details, but not the patient's name, year of birth or phone.">Kopyalanan özet aciliyeti, klinik soruyu, öyküyü, ilaçları, riskleri ve iletişim bilgilerinizi içerir; hastanın adını, doğum yılını ve telefonunu içermez.</small>
         </div>
@@ -344,7 +344,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
       <div class="cols">
         <div class="box"><h3 data-en="Endoscopy unit">Endoskopi ünitesi</h3><p style="margin:0" data-en="0212 414 20 00, ext. 30960, weekdays 08:30 to 16:30. Emergencies outside working hours: Istanbul Faculty of Medicine emergency department.">0212 414 20 00, dahili 30960, hafta içi 08.30-16.30. Mesai dışı acil: İstanbul Tıp Fakültesi acil servisi.</p></div>
         <div class="box"><h3 data-en="Head of division">Bilim dalı başkanı</h3><p style="margin:0">Prof. Dr. Filiz Akyüz · <a href="mailto:filiz.akyuz@istanbul.edu.tr">filiz.akyuz@istanbul.edu.tr</a></p></div>
-        <div class="box"><h3 data-en="Website and research questions">Site ve araştırma soruları</h3><p style="margin:0">Dr. Besim Fazıl Ağargün · <a href="mailto:bfagargun@istanbul.edu.tr">bfagargun@istanbul.edu.tr</a></p></div>
       </div>
       <p style="margin-top:1.4rem"><a class="btn" href="index.html#iletisim" data-en="Address and map">Adres ve harita</a> <a class="btn" href="kimlik.html#ad" data-en="Official name and affiliation line">Resmi ad ve adres satırı</a></p>
     </div>
@@ -399,7 +398,7 @@ function summary() {
   return lines.join("\n");
 }
 $("copy").addEventListener("click", () => { const t = summary(); const done = () => toast(lang === "en" ? "Summary copied" : "Özet kopyalandı"); if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, done); else done(); });
-$("mail").addEventListener("click", e => { const t = summary(); if (t.length > 1500) return; e.currentTarget.href = "mailto:bfagargun@istanbul.edu.tr?subject=" + encodeURIComponent(lang === "en" ? "Referral question" : "Sevk sorusu") + "&body=" + encodeURIComponent(t); });
+$("mail").addEventListener("click", e => { const t = summary(); if (t.length > 1500) return; e.currentTarget.href = "mailto:filiz.akyuz@istanbul.edu.tr?subject=" + encodeURIComponent(lang === "en" ? "Referral question" : "Sevk sorusu") + "&body=" + encodeURIComponent(t); });
 const themeBtn = $("theme");
 const isDark = () => document.documentElement.dataset.theme === "dark" || (!document.documentElement.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
 themeBtn.textContent = isDark() ? "☀" : "☾";
