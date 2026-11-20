@@ -217,6 +217,18 @@ section.alt{background:var(--paper-2)}
 .block h3{margin-top:0}
 .block ul{padding-left:1.1rem;margin:0}
 .block li{margin-bottom:.35rem}
+.unit-room{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:2.2rem;align-items:center;margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--line)}
+.unit-room figure{margin:0}
+.unit-room img{width:100%;height:auto;aspect-ratio:1200/1260;object-fit:cover;border-radius:10px;border:1px solid var(--line);background:var(--paper);display:block}
+.unit-room h3{margin-top:0}
+.unit-room.wide{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);margin-top:2.5rem}
+.unit-room.wide img{aspect-ratio:1600/858}
+.unit-room p{color:var(--ink-2)}
+.unit-room dl{display:grid;grid-template-columns:auto 1fr;gap:.45rem 1.2rem;margin:1.2rem 0 0}
+.unit-room dt{font-weight:600}
+.unit-room dd{margin:0;color:var(--ink-2)}
+@media (max-width:820px){.unit-room{grid-template-columns:1fr;gap:1.4rem}.unit-room dl{grid-template-columns:1fr;gap:.15rem}.unit-room dd{margin-bottom:.6rem}}
+@media print{.unit-room{break-inside:avoid}.unit-room img{max-width:9cm}}
 
 /* Principal investigator */
 .pi-grid{display:grid;grid-template-columns:130px 1fr;gap:2.5rem;align-items:start}
@@ -442,7 +454,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
         <a class="btn" href="#hastalar" data-en="Patient information">Hasta bilgilendirme</a>
       </div>
       <a class="hero-pi" href="#sorumlu-arastirmaci">
-        <img src="https://cdn.istanbul.edu.tr/image/A0FB851BD9/6B932A9C7665423289A69048D043AF67" alt="" referrerpolicy="no-referrer" onerror="this.remove()">
+        <img src="img/ekip/filiz-akyuz-240.jpg" alt="" onerror="this.remove()">
         <span><b>Prof. Dr. Filiz Akyüz</b><small data-en="Head of Division and Principal Investigator">Bilim Dalı Başkanı ve Sorumlu Araştırmacı</small></span>
       </a>
     </div>
@@ -459,13 +471,13 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
   </div>
 </div>
 
-<div class="facts"><div class="wrap" id="facts"><!--pre:facts--><div><b>1963</b><span data-en="Gastroenterology section founded">Gastroenteroloji seksiyonunun kuruluş yılı</span></div><div><b>11</b><span data-en="Faculty and fellows">Öğretim üyesi ve yan dal asistanı</span></div><div><b>37</b><span data-en="Fellowship graduates">Yan dal mezunu gastroenterolog</span></div><div><b>9</b><span data-en="Ongoing research projects">Süren araştırma projesi</span></div><div><b>241</b><span data-en="PubMed-indexed publications">PubMed'de dizinli yayın</span></div><div><b>25</b><span data-en="Çapa Gastroenterohepatology Days meetings">Çapa Gastroenterohepatoloji Günleri</span></div><!--/pre:facts--></div></div>
+<div class="facts"><div class="wrap" id="facts"><!--pre:facts--><div><b>1963</b><span data-en="Gastroenterology section founded">Gastroenteroloji seksiyonunun kuruluş yılı</span></div><div><b>10</b><span data-en="Faculty and fellows">Öğretim üyesi ve yan dal asistanı</span></div><div><b>38</b><span data-en="Fellowship graduates">Yan dal mezunu gastroenterolog</span></div><div><b>9</b><span data-en="Ongoing research projects">Süren araştırma projesi</span></div><div><b>241</b><span data-en="PubMed-indexed publications">PubMed'de dizinli yayın</span></div><div><b>25</b><span data-en="Çapa Gastroenterohepatology Days meetings">Çapa Gastroenterohepatoloji Günleri</span></div><!--/pre:facts--></div></div>
 
 <!-- SORUMLU ARAŞTIRMACI -->
 <section id="sorumlu-arastirmaci" class="pi" aria-labelledby="pi-name">
   <div class="wrap pi-grid">
     <figure class="pi-photo">
-      <img src="https://cdn.istanbul.edu.tr/image/A0FB851BD9/6B932A9C7665423289A69048D043AF67" alt="Prof. Dr. Filiz Akyüz" referrerpolicy="no-referrer" onerror="this.outerHTML='&lt;div class=&quot;ph&quot;&gt;FA&lt;/div&gt;'">
+      <img src="img/ekip/filiz-akyuz.jpg" alt="Prof. Dr. Filiz Akyüz" onerror="this.outerHTML='&lt;div class=&quot;ph&quot;&gt;FA&lt;/div&gt;'">
       <figcaption>
         <a href="mailto:bfagargun@istanbul.edu.tr">bfagargun@istanbul.edu.tr</a><br>
         <span data-en="Division of Gastroenterohepatology, Istanbul Faculty of Medicine">İstanbul Tıp Fakültesi, Gastroenterohepatoloji Bilim Dalı</span>
@@ -791,7 +803,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
     <h3 data-en="Faculty">Öğretim üyeleri</h3>
     <div class="people">
     <div class="person">
-      <div class="avatar"><img src="https://cdn.istanbul.edu.tr/image/A0FB851BD9/6B932A9C7665423289A69048D043AF67" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(document.createTextNode('FA'))"></div>
+      <div class="avatar"><img src="img/ekip/filiz-akyuz-240.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(document.createTextNode('FA'))"></div>
       <div>
         <b>Prof. Dr. Filiz Akyüz</b>
         <span data-en="Head of Division">Bilim Dalı Başkanı</span>
@@ -858,15 +870,6 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
       </div>
     </div>
     <div class="person">
-      <div class="avatar"><img src="https://avesis.istanbul.edu.tr/user/image/71674" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(document.createTextNode('AG'))"></div>
-      <div>
-        <b>Dr. Asım Gurbanov</b>
-        <span data-en="Gastroenterology fellow">Gastroenteroloji yan dal asistanı</span>
-        
-        <div class="links"><a class="chip" href="https://avesis.istanbul.edu.tr/71674" target="_blank" rel="noopener" data-en="Profile">Profil</a><a class="chip" href="yayinlar.html?kisi=As%C4%B1m%20Gurbanov" data-en="Publications (2)">Yayınlar (2)</a></div>
-      </div>
-    </div>
-    <div class="person">
       <div class="avatar"><img src="https://cdn.istanbul.edu.tr/image/A0FB851BD9/744DF7DE02E54C01BD5C5C174547E99B" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(document.createTextNode('NN'))"></div>
       <div>
         <b>Dr. Nijat Nasirov</b>
@@ -908,7 +911,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
       <h2 data-en="Alumni">Mezunlarımız</h2>
       <p data-en="Physicians who completed their gastroenterology fellowship in our division, in the order of our honour board, from the earliest to the most recent.">Bilim dalımızda gastroenteroloji yan dal eğitimini tamamlayan hekimler; onur panomuzdaki sırayla, ilk mezunumuzdan en yenisine.</p>
     </div>
-    <ol class="alumni-list" id="alumni"><!--pre:alumni--><li><div><b>Arif Acar</b></div></li><li><div><b>Levent Kamil Erdem</b></div></li><li><div><b>Dinç Dinçer</b></div></li><li><div><b>Çetin Karaca</b></div></li><li><div><b>Mehmet Derya Onuk</b></div></li><li><div><b>Ahmet Faruk Ağan</b></div></li><li><div><b>Ziyaettin Durakoğlu</b></div></li><li><div><b>Filiz Akyüz</b></div></li><li><div><b>Kürşad Türkdoğan</b></div></li><li><div><b>Selim Gürel</b></div></li><li><div><b>Ahmet Danalıoğlu</b></div></li><li><div><b>Nevzat Aksoy</b></div></li><li><div><b>Celal Ulaşoğlu</b></div></li><li><div><b>İlyas Tuncer</b></div></li><li><div><b>Şule Poturoğlu</b></div></li><li><div><b>Duygu İbrişim</b></div></li><li><div><b>Binnur Pınarbaşı</b></div></li><li><div><b>Emel Ahıshalı</b></div></li><li><div><b>Fatih Ermiş</b></div></li><li><div><b>Ahmet Uyanıkoğlu</b></div></li><li><div><b>Bülent Baran</b></div></li><li><div><b>Aslı Çifcibaşı Örmeci</b></div></li><li><div><b>Özlem Mutluay Soyer</b></div></li><li><div><b>Suut Göktürk</b></div></li><li><div><b>Sami Evirgen</b></div></li><li><div><b>Bilger Çavuş</b></div></li><li><div><b>Raim İliaz</b></div></li><li><div><b>Alp Atasoy</b></div></li><li><div><b>Aysun Yakut</b></div></li><li><div><b>Ziya İmanov</b></div></li><li><div><b>İbrahim Volkan Şenkal</b></div></li><li><div><b>Zülal İstemihan</b></div></li><li><div><b>Kanan Nuriyev</b></div></li><li><div><b>Aynura Rustamzade</b></div></li><li><div><b>Sezen Genç Uluçeçen</b></div></li><li><div><b>Gizem Dağcı</b></div></li><li><div><a href="https://orcid.org/0000-0001-7613-0838" target="_blank" rel="noopener"><b>Mehmet Akif Yağlı</b></a></div></li><!--/pre:alumni--></ol>
+    <ol class="alumni-list" id="alumni"><!--pre:alumni--><li><div><b>Arif Acar</b></div></li><li><div><b>Levent Kamil Erdem</b></div></li><li><div><b>Dinç Dinçer</b></div></li><li><div><b>Çetin Karaca</b></div></li><li><div><b>Mehmet Derya Onuk</b></div></li><li><div><b>Ahmet Faruk Ağan</b></div></li><li><div><b>Ziyaettin Durakoğlu</b></div></li><li><div><b>Filiz Akyüz</b></div></li><li><div><b>Kürşad Türkdoğan</b></div></li><li><div><b>Selim Gürel</b></div></li><li><div><b>Ahmet Danalıoğlu</b></div></li><li><div><b>Nevzat Aksoy</b></div></li><li><div><b>Celal Ulaşoğlu</b></div></li><li><div><b>İlyas Tuncer</b></div></li><li><div><b>Şule Poturoğlu</b></div></li><li><div><b>Duygu İbrişim</b></div></li><li><div><b>Binnur Pınarbaşı</b></div></li><li><div><b>Emel Ahıshalı</b></div></li><li><div><b>Fatih Ermiş</b></div></li><li><div><b>Ahmet Uyanıkoğlu</b></div></li><li><div><b>Bülent Baran</b></div></li><li><div><b>Aslı Çifcibaşı Örmeci</b></div></li><li><div><b>Özlem Mutluay Soyer</b></div></li><li><div><b>Suut Göktürk</b></div></li><li><div><b>Sami Evirgen</b></div></li><li><div><b>Bilger Çavuş</b></div></li><li><div><b>Raim İliaz</b></div></li><li><div><b>Alp Atasoy</b></div></li><li><div><b>Aysun Yakut</b></div></li><li><div><b>Ziya İmanov</b></div></li><li><div><b>İbrahim Volkan Şenkal</b></div></li><li><div><b>Zülal İstemihan</b></div></li><li><div><b>Kanan Nuriyev</b></div></li><li><div><b>Aynura Rustamzade</b></div></li><li><div><b>Sezen Genç Uluçeçen</b></div></li><li><div><b>Gizem Dağcı</b></div></li><li><div><a href="https://orcid.org/0000-0001-7613-0838" target="_blank" rel="noopener"><b>Mehmet Akif Yağlı</b></a></div></li><li><div><b>Asım Gurbanov</b></div></li><!--/pre:alumni--></ol>
     <div class="alumni-cta">
       <p data-en="Did you train in Çapa? Send us your name, your fellowship years and your current institution, and we will add you to the list.">Çapa'da yan dal eğitimi aldınız mı? Adınızı, eğitim yıllarınızı ve bugünkü kurumunuzu gönderin; sizi listeye ekleyelim.</p>
       <a class="btn solid" href="mailto:bfagargun@istanbul.edu.tr?subject=Mezun%20bilgisi&amp;body=Ad%20Soyad%3A%0AYan%20dal%20e%C4%9Fitimi%20(y%C4%B1llar)%3A%0ABug%C3%BCnk%C3%BC%20kurum%3A%0A" data-en="Send your details">Bilgilerinizi gönderin</a>
@@ -967,6 +970,46 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
           <li data-en="Intestinal ultrasound for IBD follow-up">İBH izleminde bağırsak ultrasonografisi</li>
           <li data-en="Biologic therapy unit: infusions and drug-level monitoring for IBD">Biyolojik tedavi ünitesi: İBH infüzyonları ve ilaç düzeyi izlemi</li>
         </ul>
+      </div>
+    </div>
+    <div class="unit-room" id="elastografi-odasi">
+      <figure>
+        <picture>
+          <source type="image/webp" srcset="img/unite/elastografi-odasi-640.webp 640w, img/unite/elastografi-odasi.webp 1200w" sizes="(max-width:820px) 92vw, 460px">
+          <img src="img/unite/elastografi-odasi-640.jpg" srcset="img/unite/elastografi-odasi-640.jpg 640w, img/unite/elastografi-odasi.jpg 1200w" sizes="(max-width:820px) 92vw, 460px" width="1200" height="1260" loading="lazy" decoding="async" alt="Elastografi ve ultrason odası: solda Samsung V8 ultrason sistemi, sağda FibroScan Expert 630 cihazı" data-en-alt="Elastography and ultrasound room: the Samsung V8 ultrasound system on the left and the FibroScan Expert 630 on the right">
+        </picture>
+      </figure>
+      <div>
+        <h3 data-en="Elastography and ultrasound room">Elastografi ve ultrason odası</h3>
+        <p data-en="Non-invasive liver assessment and intestinal ultrasound are performed in a dedicated room within the unit. Examinations need no sedation and results are available the same day; the measurements also feed the division's elastography archive.">Karaciğerin girişimsel olmayan değerlendirmesi ve bağırsak ultrasonografisi ünite içindeki ayrı bir odada yapılır. İncelemeler sedasyon gerektirmez, sonuç aynı gün verilir; ölçümler bilim dalının elastografi arşivini de besler.</p>
+        <dl>
+          <dt>FibroScan Expert 630</dt>
+          <dd data-en="Transient elastography (liver stiffness, kPa) and controlled attenuation parameter (CAP, dB/m)">Transient elastografi (karaciğer sertliği, kPa) ve kontrollü atenüasyon parametresi (CAP, dB/m)</dd>
+          <dt>Samsung V8</dt>
+          <dd data-en="Abdominal and intestinal ultrasound; shear-wave elastography of the liver, spleen and bowel wall">Abdominal ve bağırsak ultrasonografisi; karaciğer, dalak ve bağırsak duvarı shear-wave elastografisi</dd>
+        </dl>
+        <p><a href="islemler.html#fibroscan" data-en="What to expect at a FibroScan">FibroScan öncesi bilmeniz gerekenler</a></p>
+      </div>
+    </div>
+    <div class="unit-room wide" id="ileri-endoskopi">
+      <figure>
+        <picture>
+          <source type="image/webp" srcset="img/unite/ileri-endoskopi-800.webp 800w, img/unite/ileri-endoskopi.webp 1600w" sizes="(max-width:820px) 92vw, 600px">
+          <img src="img/unite/ileri-endoskopi-800.jpg" srcset="img/unite/ileri-endoskopi-800.jpg 800w, img/unite/ileri-endoskopi.jpg 1600w" sizes="(max-width:820px) 92vw, 600px" width="1600" height="858" loading="lazy" decoding="async" alt="İleri endoskopi laboratuvarı: Fujifilm endoskopi kulesi, mobil C-kollu floroskopi, hasta monitörü ve işlem sedyesi" data-en-alt="Advanced endoscopy suite: Fujifilm endoscopy stack, mobile C-arm fluoroscopy, patient monitor and procedure trolley">
+        </picture>
+      </figure>
+      <div>
+        <h3 data-en="Advanced endoscopy suite">İleri endoskopi laboratuvarı</h3>
+        <p data-en="ERCP, endoscopic ultrasound, double-balloon enteroscopy and cholangioscopy are performed in a dedicated suite with fluoroscopy, under sedation or anaesthesia with continuous monitoring.">ERCP, endoskopik ultrasonografi, çift balon enteroskopi ve kolanjiyoskopi floroskopi donanımlı ayrı bir odada, sürekli monitörizasyon altında sedasyon veya anesteziyle yapılır.</p>
+        <dl>
+          <dt>Fujifilm</dt>
+          <dd data-en="Endoscopy and EUS processors, double-balloon enteroscopy system">Endoskopi ve EUS işlemcileri, çift balon enteroskopi sistemi</dd>
+          <dt data-en="Fluoroscopy">Floroskopi</dt>
+          <dd data-en="Mobile C-arm (Siemens Healthineers) for ERCP and stent placement">ERCP ve stent yerleştirme için mobil C-kollu cihaz (Siemens Healthineers)</dd>
+          <dt data-en="Cholangioscopy">Kolanjiyoskopi</dt>
+          <dd data-en="Single-operator cholangioscopy (SpyGlass) and lithotripsy">Tek operatörlü kolanjiyoskopi (SpyGlass) ve taş kırma</dd>
+        </dl>
+        <p><a href="islemler.html#ercp" data-en="What to expect at ERCP">ERCP öncesi bilmeniz gerekenler</a> · <a href="islemler.html#eus" data-en="EUS">EUS</a> · <a href="islemler.html#enteroskopi" data-en="Enteroscopy">Enteroskopi</a></p>
       </div>
     </div>
   </div>
@@ -1299,7 +1342,7 @@ const P = u => `https://profil.istanbul.edu.tr/tr/p/${u}`;
 const CDN = "https://cdn.istanbul.edu.tr/image/A0FB851BD9/";
 const TEAM = [
   { group: "Öğretim üyeleri", en: "Faculty", people: [
-    { name: "Prof. Dr. Filiz Akyüz", role: "Bilim Dalı Başkanı", en: "Head of Division", pi: true, user: "filiz.akyuz", photo: CDN + "6B932A9C7665423289A69048D043AF67", email: "bfagargun@istanbul.edu.tr", orcid: "0000-0001-7498-141X" },
+    { name: "Prof. Dr. Filiz Akyüz", role: "Bilim Dalı Başkanı", en: "Head of Division", pi: true, user: "filiz.akyuz", photo: "img/ekip/filiz-akyuz-240.jpg", email: "bfagargun@istanbul.edu.tr", orcid: "0000-0001-7498-141X" },
     { name: "Prof. Dr. Fatih Beşışık", role: "Öğretim üyesi", en: "Professor", user: "selman.besisik", photo: CDN + "DCEABC1F0BF7481D84FE0A960420CBD9", email: "selman.besisik@istanbul.edu.tr", orcid: "0000-0001-5184-376X" },
     { name: "Prof. Dr. Kadir Demir", role: "Öğretim üyesi", en: "Professor", user: "kadirdr", photo: CDN + "FEFAE7EC284C4D4FB6936877896CF45A", email: "kadirdr@istanbul.edu.tr", orcid: "0000-0002-5226-3705" },
     { name: "Doç. Dr. Bilger Çavuş", role: "Öğretim üyesi", en: "Associate Professor", user: "bilger.cavus", photo: CDN + "D9E07D7FC0E64A48BBE6D451BC7C2A3D", email: "bilger.cavus@istanbul.edu.tr", orcid: "0000-0003-2203-4255" },
@@ -1308,7 +1351,6 @@ const TEAM = [
     { name: "Dr. Besim Fazıl Ağargün", role: "Gastroenteroloji yan dal asistanı", en: "Gastroenterology fellow", user: "bfagargun", photo: CDN + "6C07025D5CB244E6AA7F1109EAA237DB", email: "bfagargun@istanbul.edu.tr", orcid: "0000-0002-3933-1881" },
     { name: "Dr. Ege Akcasu", role: "Gastroenteroloji yan dal asistanı", en: "Gastroenterology fellow", user: "ege.akcasu", photo: CDN + "4AA0B1B761F744DB9C455AE993B2C6B6", email: "ege.akcasu@istanbul.edu.tr" },
     { name: "Dr. Ersel Bilgin", role: "Gastroenteroloji yan dal asistanı", en: "Gastroenterology fellow", user: "erselbilgin", photo: CDN + "8E2CC656D4734597B3941AFC3E5F0D83", email: "erselbilgin@istanbul.edu.tr", orcid: "0000-0002-5057-2651" },
-    { name: "Dr. Asım Gurbanov", role: "Gastroenteroloji yan dal asistanı", en: "Gastroenterology fellow", avesis: 71674, profile: "https://avesis.istanbul.edu.tr/71674" },
     { name: "Dr. Nijat Nasirov", role: "Gastroenteroloji yan dal asistanı", en: "Gastroenterology fellow", user: "nijat.nasirov", photo: CDN + "744DF7DE02E54C01BD5C5C174547E99B", email: "nijat.nasirov@istanbul.edu.tr" },
     { name: "Dr. Sabuhi Mammadov", role: "Gastroenteroloji yan dal asistanı", en: "Gastroenterology fellow", user: "sabuhi.mammadov", photo: CDN + "10A450D8975C4302A5A74BB471572CE0", email: "sabuhi.mammadov@istanbul.edu.tr" },
     { name: "Dr. Pelin Telli", role: "Gastroenteroloji yan dal asistanı", en: "Gastroenterology fellow", user: "pelin.telli", photo: CDN + "BF839CDE3B3B49B1A76A8A8E154025F3", email: "pelin.telli@istanbul.edu.tr", orcid: "0000-0001-6927-717X" },
@@ -1360,6 +1402,7 @@ const ALUMNI = [
   { name: "Sezen Genç Uluçeçen", years: "" },
   { name: "Gizem Dağcı", years: "" },
   { name: "Mehmet Akif Yağlı", years: "", link: "https://orcid.org/0000-0001-7613-0838" },
+  { name: "Asım Gurbanov", years: "" },
 ];
 
 /* Sorumlu araştırmacının seçilmiş yayınları (DOI ile pubs.js içinden çekilir) */
@@ -1508,6 +1551,10 @@ function applyLang(l, persist) {
   document.querySelectorAll("[data-en-aria]").forEach(el => {
     if (el.dataset.trAria === undefined) el.dataset.trAria = el.getAttribute("aria-label") || "";
     el.setAttribute("aria-label", l === "en" ? el.dataset.enAria : el.dataset.trAria);
+  });
+  document.querySelectorAll("[data-en-alt]").forEach(el => {
+    if (el.dataset.trAlt === undefined) el.dataset.trAlt = el.getAttribute("alt") || "";
+    el.setAttribute("alt", l === "en" ? el.dataset.enAlt : el.dataset.trAlt);
   });
   document.querySelectorAll("[data-en-title]").forEach(el => {
     if (el.dataset.trTitle === undefined) el.dataset.trTitle = el.getAttribute("title") || "";

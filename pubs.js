@@ -295,7 +295,6 @@ const PUBS_ALL = [
 "year": 2025,
 "jif": 6.0,
 "members": [
-"Asım Gurbanov"
 ],
 "authors": "Gurbanov A, Genç Uluçeçen S, Çifçibaşi Örmeci A",
 "type": "Letter"
@@ -671,7 +670,6 @@ const PUBS_ALL = [
 "year": 2025,
 "jif": 3.8,
 "members": [
-"Asım Gurbanov",
 "Bilger Çavuş",
 "Fatih Beşışık",
 "Filiz Akyüz",

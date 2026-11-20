@@ -1,15 +1,21 @@
 #!/usr/bin/env node
-// index.html içindeki <!--pre:ad--> ... <!--/pre:ad--> statik kopyalarını, sayfayı tarayıcıda çizdirip yeniler.
+// index.html ve yayinlar.html içindeki <!--pre:ad--> ... <!--/pre:ad--> statik kopyalarını, sayfayı tarayıcıda çizdirip yeniler.
 // Kullanım: node tools/prerender.js   (gereksinim: npm i -g playwright && npx playwright install chromium)
-// Veri blokları (TEAM, ALUMNI, PROJECTS, PUBS_ALL, COLLAB, FACTS) değişince çalıştırın; JavaScript çalıştırmayan
+// Veri blokları (TEAM, ALUMNI, PROJECTS, PUBS_ALL / pubs.js, COLLAB, FACTS) değişince çalıştırın; JavaScript çalıştırmayan
 // okuyucular ve arama motorları bu kopyaları görür.
 const path = require("path");
 const fs = require("fs");
 const { chromium } = require("playwright");
-const FILE = path.join(__dirname, "..", "index.html");
-const IDS = ["facts", "pi-pubs", "projects", "team", "collab", "alumni", "pubs"];
+const PAGES = [
+  ["index.html", ["facts", "pi-pubs", "projects", "team", "collab", "alumni", "pubs"]],
+  ["yayinlar.html", ["stats", "who", "typ", "sort", "list"]],
+];
 (async () => {
   const browser = await chromium.launch();
+  let total = 0;
+  for (const [name, IDS] of PAGES) {
+  const FILE = path.join(__dirname, "..", name);
+  console.log(name);
   const page = await (await browser.newContext({ locale: "tr-TR" })).newPage();
   // Dış görseller (AVESİS fotoğrafları) yüklenemezse sayfa baş harflere düşer; statik kopyaya bu düşmüş hali yazmamak için görselleri 1x1 PNG ile karşılarız.
   const PNG = Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=", "base64");
@@ -17,7 +23,7 @@ const IDS = ["facts", "pi-pubs", "projects", "team", "collab", "alumni", "pubs"]
   await page.goto("file://" + FILE, { waitUntil: "load" });
   await page.waitForTimeout(800);
   const html = await page.evaluate(ids => Object.fromEntries(ids.map(id => [id, (document.getElementById(id) || { innerHTML: null }).innerHTML])), IDS);
-  await browser.close();
+  await page.close();
   let s = fs.readFileSync(FILE, "utf8"), changed = 0;
   for (const id of IDS) {
     if (html[id] == null) { console.log("bulunamadı:", id); continue; }
@@ -29,5 +35,8 @@ const IDS = ["facts", "pi-pubs", "projects", "team", "collab", "alumni", "pubs"]
     if (next !== s) { changed++; s = next; console.log("yenilendi:", id); } else console.log("aynı:", id);
   }
   fs.writeFileSync(FILE, s);
-  console.log(changed + " blok değişti.");
+  total += changed;
+  }
+  await browser.close();
+  console.log(total + " blok değişti.");
 })();

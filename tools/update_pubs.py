@@ -30,7 +30,6 @@ MEMBERS = {
     "Besim Fazıl Ağargün": ["Agargun BF", "Agargun B"],
     "Ege Akcasu": ["Akcasu E"],
     "Ersel Bilgin": ["Bilgin E"],
-    "Asım Gurbanov": ["Gurbanov A"],
     "Nijat Nasirov": ["Nasirov N"],
     "Sabuhi Mammadov": ["Mammadov S"],
     "Pelin Telli": ["Telli P"],
