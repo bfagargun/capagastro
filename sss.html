@@ -30,7 +30,7 @@
   try { s = localStorage.getItem("lang"); var t = localStorage.getItem("theme"); if (t) d.dataset.theme = t; if (localStorage.getItem("bigtext") === "1") d.classList.add("big"); } catch (e) {}
   if (q === "en" || q === "tr") { l = q; try { localStorage.setItem("lang", q); } catch (e) {} }
   else if (s === "en" || s === "tr") l = s;
-  else l = (/bot|crawl|spider|slurp/i.test(navigator.userAgent || "") ? "tr" : (navigator.language || "tr")).toLowerCase().indexOf("tr") === 0 ? "tr" : "en";
+  else l = "tr";
   window.__lang = l;
   if (l === "en") { d.classList.add("lang-pending"); setTimeout(function () { d.classList.remove("lang-pending"); }, 2000); }
 })();

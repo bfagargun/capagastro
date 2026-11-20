@@ -76,7 +76,7 @@ Sayfa alt bilgisindeki "Hazırlayan / Kaynak / Son gözden geçirme" satırı (`
 
 Alt sayfaların altbilgisinin üstündeki "site haritası" şeridi `tools/inject_sitenav.py` ile eklenir; yeni bir sayfa eklenince betikteki listeye yazıp betiği yeniden çalıştırın (işaretçiler arasındaki parça yenilenir).
 
-Sayfa, tarayıcı dili Türkçe ise Türkçe, değilse İngilizce açılır. `?lang=en` veya `?lang=tr` bu seçimi zorlar; ziyaretçinin düğmeyle yaptığı seçim tarayıcıda hatırlanır.
+Sayfa her zaman Türkçe açılır (tarayıcı dili kullanılmaz). `?lang=en` veya `?lang=tr` bu seçimi zorlar; ziyaretçinin düğmeyle yaptığı seçim tarayıcıda hatırlanır.
 
 ## Denetim
 
@@ -86,7 +86,7 @@ Değişiklikten sonra `python3 tools/check.py` çalıştırın: yasak karakterle
 
 20 Kasım 2026'dan beri sitemap'teki on iki sayfa dizine açıktır: `noindex` satırları ve `canonical` etiketleri kaldırıldı, `robots.txt` içindeki `Sitemap:` satırı etkin. Ünite içi ya da taslak sayfalarda (`protokoller.html`, `qr.html`, `veri-sozlesme.html`, `uzman-nobet/`, `onizleme/`) ve `404.html`, `cevrimdisi.html` içinde `noindex, nofollow` kalır. `robots.txt` ile engellemeyin: tarayıcı sayfayı okuyamazsa `noindex` etiketini de göremez.
 
-Dil: düz adres Türkçedir; İngilizce sürüm `?lang=en` ve `hreflang` ile bildirilir. Tarayıcı dili Türkçe değilse ziyaretçi İngilizce görür, ancak arama motoru botları (kullanıcı aracısında bot, crawl, spider, slurp) her zaman Türkçe görür; böylece düz adreste dizine giren içerik `hreflang="tr"` bildirimiyle uyumludur. İngilizce sürüm kopya sayılmasın diye `canonical` etiketi kullanılmaz.
+Dil: düz adres herkes için Türkçedir (tarayıcı dili kullanılmaz; 20 Kasım 2026). İngilizce yalnız EN düğmesi (tercih kaydedilir) ya da `?lang=en` ile açılır ve `hreflang` ile bildirilir. İngilizce sürüm kopya sayılmasın diye `canonical` etiketi kullanılmaz.
 
 Diğer parçalar:
 

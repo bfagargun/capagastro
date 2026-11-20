@@ -27,14 +27,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <script>
-/* Dil ve tema, sayfa çizilmeden önce belirlenir: ?lang=en > kayıtlı tercih > tarayıcı dili (arama motoru botları Türkçe görür) */
+/* Dil ve tema, sayfa çizilmeden önce belirlenir: ?lang=en > kayıtlı tercih > Türkçe (tarayıcı dili kullanılmaz) */
 (function () {
   var d = document.documentElement, q = null, s = null, l;
   try { q = new URLSearchParams(location.search).get("lang"); } catch (e) {}
   try { s = localStorage.getItem("lang"); var t = localStorage.getItem("theme"); if (t) d.dataset.theme = t; } catch (e) {}
   if (q === "en" || q === "tr") { l = q; try { localStorage.setItem("lang", q); } catch (e) {} }
   else if (s === "en" || s === "tr") l = s;
-  else l = (/bot|crawl|spider|slurp/i.test(navigator.userAgent || "") ? "tr" : (navigator.language || "tr")).toLowerCase().indexOf("tr") === 0 ? "tr" : "en";
+  else l = "tr";
   window.__lang = l;
   if (l === "en") { d.classList.add("lang-pending"); setTimeout(function () { d.classList.remove("lang-pending"); }, 2000); }
 })();
