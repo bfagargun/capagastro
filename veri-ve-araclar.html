@@ -5,10 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Veri setleri ve araçlar | Çapa Gastroenterohepatoloji</title>
 <meta name="description" content="Araştırma grubunun veri setleri (endoskopi raporu arşivi, patoloji eşleşmeli görüntü arşivi, elastografi arşivi, kohortlar) ile yazılım ve modelleri (NLP hattı, Mayo skoru modeli, Endobee) için veri ve model kartları; erişim koşulları.">
-<!-- TASLAK: yayına hazır olunca aşağıdaki iki robots satırını silin -->
-<meta name="robots" content="noindex, nofollow, noarchive">
-<meta name="googlebot" content="noindex, nofollow, noarchive">
-<link rel="canonical" href="https://capagastro.org/veri-ve-araclar.html">
 <link rel="alternate" hreflang="tr" href="https://capagastro.org/veri-ve-araclar.html">
 <link rel="alternate" hreflang="en" href="https://capagastro.org/veri-ve-araclar.html?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://capagastro.org/veri-ve-araclar.html">
@@ -34,7 +30,7 @@
   try { s = localStorage.getItem("lang"); var t = localStorage.getItem("theme"); if (t) d.dataset.theme = t; } catch (e) {}
   if (q === "en" || q === "tr") { l = q; try { localStorage.setItem("lang", q); } catch (e) {} }
   else if (s === "en" || s === "tr") l = s;
-  else l = (navigator.language || "tr").toLowerCase().indexOf("tr") === 0 ? "tr" : "en";
+  else l = (/bot|crawl|spider|slurp/i.test(navigator.userAgent || "") ? "tr" : (navigator.language || "tr")).toLowerCase().indexOf("tr") === 0 ? "tr" : "en";
   window.__lang = l;
   if (l === "en") { d.classList.add("lang-pending"); setTimeout(function () { d.classList.remove("lang-pending"); }, 2000); }
 })();

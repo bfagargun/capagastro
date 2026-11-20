@@ -5,10 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Çapa Gastroenterohepatoloji | İstanbul Tıp Fakültesi</title>
 <meta name="description" content="İstanbul Üniversitesi İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı: endoskopi ünitesi, klinik araştırma grubu, ekip, yayınlar ve hasta bilgilendirme. Sorumlu araştırmacı: Prof. Dr. Filiz Akyüz.">
-<!-- TASLAK: yayına hazır olunca aşağıdaki iki robots satırını silin -->
-<meta name="robots" content="noindex, nofollow, noarchive">
-<meta name="googlebot" content="noindex, nofollow, noarchive">
-<link rel="canonical" href="https://capagastro.org/">
 <link rel="alternate" hreflang="tr" href="https://capagastro.org/">
 <link rel="alternate" hreflang="en" href="https://capagastro.org/?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://capagastro.org/">
@@ -31,14 +27,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <script>
-/* Dil ve tema, sayfa çizilmeden önce belirlenir: ?lang=en > kayıtlı tercih > tarayıcı dili */
+/* Dil ve tema, sayfa çizilmeden önce belirlenir: ?lang=en > kayıtlı tercih > tarayıcı dili (arama motoru botları Türkçe görür) */
 (function () {
   var d = document.documentElement, q = null, s = null, l;
   try { q = new URLSearchParams(location.search).get("lang"); } catch (e) {}
   try { s = localStorage.getItem("lang"); var t = localStorage.getItem("theme"); if (t) d.dataset.theme = t; } catch (e) {}
   if (q === "en" || q === "tr") { l = q; try { localStorage.setItem("lang", q); } catch (e) {} }
   else if (s === "en" || s === "tr") l = s;
-  else l = (navigator.language || "tr").toLowerCase().indexOf("tr") === 0 ? "tr" : "en";
+  else l = (/bot|crawl|spider|slurp/i.test(navigator.userAgent || "") ? "tr" : (navigator.language || "tr")).toLowerCase().indexOf("tr") === 0 ? "tr" : "en";
   window.__lang = l;
   if (l === "en") { d.classList.add("lang-pending"); setTimeout(function () { d.classList.remove("lang-pending"); }, 2000); }
 })();

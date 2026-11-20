@@ -5,10 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Eğitim ve başvuru | Çapa Gastroenterohepatoloji</title>
 <meta name="description" content="Gastroenteroloji yan dal eğitimi, iç hastalıkları rotasyonu, tıp öğrencileri için araştırma ve gözlemci başvurusu. İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı.">
-<!-- TASLAK: yayına hazır olunca aşağıdaki iki robots satırını silin -->
-<meta name="robots" content="noindex, nofollow, noarchive">
-<meta name="googlebot" content="noindex, nofollow, noarchive">
-<link rel="canonical" href="https://capagastro.org/egitim.html">
 <link rel="alternate" hreflang="tr" href="https://capagastro.org/egitim.html">
 <link rel="alternate" hreflang="en" href="https://capagastro.org/egitim.html?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://capagastro.org/egitim.html">
@@ -71,7 +67,7 @@
   try { s = localStorage.getItem("lang"); var t = localStorage.getItem("theme"); if (t) d.dataset.theme = t; } catch (e) {}
   if (q === "en" || q === "tr") { l = q; try { localStorage.setItem("lang", q); } catch (e) {} }
   else if (s === "en" || s === "tr") l = s;
-  else l = (navigator.language || "tr").toLowerCase().indexOf("tr") === 0 ? "tr" : "en";
+  else l = (/bot|crawl|spider|slurp/i.test(navigator.userAgent || "") ? "tr" : (navigator.language || "tr")).toLowerCase().indexOf("tr") === 0 ? "tr" : "en";
   window.__lang = l;
   if (l === "en") { d.classList.add("lang-pending"); setTimeout(function () { d.classList.remove("lang-pending"); }, 2000); }
 })();

@@ -2,7 +2,7 @@
 
 İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı'nın sitesi. Derleme veya paket gerektirmez; dosyalar olduğu gibi GitHub Pages'te yayınlanır.
 
-Canlı adres: https://capagastro.org/ (İngilizce için `?lang=en` ekleyin). Site taslak olduğu için arama motorlarına kapalıdır (aşağıda "Arama motorları").
+Canlı adres: https://capagastro.org/ (İngilizce için `?lang=en` ekleyin). Herkese açık sayfalar arama motorlarına açıktır (20 Kasım 2026; aşağıda "Arama motorları").
 
 ## Dosyalar
 
@@ -84,12 +84,14 @@ Değişiklikten sonra `python3 tools/check.py` çalıştırın: yasak karakterle
 
 ## Arama motorları
 
-Site taslak olduğu için `index.html`, `yayinlar.html`, `hazirlik.html`, `islemler.html`, `hatirlatici.html`, `egitim.html`, `sevk.html`, `protokoller.html`, `izlem.html`, `sss.html`, `veri-yonetisimi.html`, `veri-ve-araclar.html`, `veri-sozlesme.html` ve `kimlik.html` başında `noindex, nofollow` etiketleri var; Google ve diğer arama motorları sayfaları dizine eklemez, bağlantıyı bilen herkes ise açabilir. Yayına hazır olunca bu dosyalardaki "TASLAK" yorumunun altındaki iki `robots`/`googlebot` satırını silin ve `robots.txt` içindeki `Sitemap:` satırının başındaki `#` işaretini kaldırın. `robots.txt` ile engellemeyin: tarayıcı sayfayı okuyamazsa `noindex` etiketini de göremez.
+20 Kasım 2026'dan beri sitemap'teki on iki sayfa dizine açıktır: `noindex` satırları ve `canonical` etiketleri kaldırıldı, `robots.txt` içindeki `Sitemap:` satırı etkin. Ünite içi ya da taslak sayfalarda (`protokoller.html`, `qr.html`, `veri-sozlesme.html`, `uzman-nobet/`, `onizleme/`) ve `404.html`, `cevrimdisi.html` içinde `noindex, nofollow` kalır. `robots.txt` ile engellemeyin: tarayıcı sayfayı okuyamazsa `noindex` etiketini de göremez.
 
-Yayına hazırlık için diğer parçalar hazır:
+Dil: düz adres Türkçedir; İngilizce sürüm `?lang=en` ve `hreflang` ile bildirilir. Tarayıcı dili Türkçe değilse ziyaretçi İngilizce görür, ancak arama motoru botları (kullanıcı aracısında bot, crawl, spider, slurp) her zaman Türkçe görür; böylece düz adreste dizine giren içerik `hreflang="tr"` bildirimiyle uyumludur. İngilizce sürüm kopya sayılmasın diye `canonical` etiketi kullanılmaz.
 
-- `sitemap.xml`: herkese açık on iki sayfa; `python3 tools/make_sitemap.py` ile üretilir (lastmod git tarihinden). Yayın sonrası Google Search Console ve Bing Webmaster Tools'a bu dosyayı bildirin. `protokoller.html` ve `qr.html` ünite içi olduğundan haritada yoktur.
-- `robots.txt`: site alan adının kökünden sunulduğu için tarayıcılar okur. Tarama serbesttir (sayfalardaki `noindex` görülsün diye); taslak süresince `Sitemap:` satırı yorum olarak durur, site haritası duyurulmaz.
+Diğer parçalar:
+
+- `sitemap.xml`: herkese açık on iki sayfa; `python3 tools/make_sitemap.py` ile üretilir (lastmod git tarihinden). Google Search Console ve Bing Webmaster Tools'a bu dosyayı bildirin. `protokoller.html` ve `qr.html` ünite içi olduğundan haritada yoktur.
+- `robots.txt`: site alan adının kökünden sunulduğu için tarayıcılar okur. Tarama serbesttir; `Sitemap:` satırı etkindir.
 - Her sayfada `hreflang` bağlantıları (`tr`, `en`, `x-default`) ve schema.org yapılandırılmış verisi vardır: ana sayfada kuruluş, kişi ve site; `islemler.html` sayfasında işlemler ve sık sorulan sorular (`FAQPage`, sayfa dilinde JavaScript ile üretilir); `veri-ve-araclar.html` sayfasında veri kataloğu ve veri setleri (`DataCatalog`, `Dataset`; Google Dataset Search için); diğer sayfalarda `MedicalWebPage` veya `WebPage`. Yayın sonrası https://validator.schema.org ve Search Console "Zengin sonuçlar" testinden geçirin.
 
 ## Çevrimdışı kullanım ve telefona ekleme

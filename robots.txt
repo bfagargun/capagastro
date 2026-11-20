@@ -1,9 +1,7 @@
-# capagastro.org kökünden sunulur. Site taslak: tüm sayfalarda noindex, nofollow etiketi var,
-# arama motorları sayfaları dizine eklemez. Sayfaları burada engellemeyin (Disallow kullanmayın):
-# tarayıcı sayfayı okuyamazsa noindex etiketini de göremez (README, "Arama motorları").
+# capagastro.org kökünden sunulur. Herkese açık sayfalar arama motorlarına açıktır (20 Kasım 2026).
+# Ünite içi sayfalarda (protokoller, qr, veri-sozlesme, uzman-nobet, onizleme) noindex etiketi var.
+# Sayfaları burada engellemeyin (Disallow kullanmayın): tarayıcı sayfayı okuyamazsa noindex etiketini de göremez.
 User-agent: *
 Allow: /
 
-# Site haritası taslak aşamasında duyurulmuyor. Yayına alınınca (noindex satırları silinince)
-# aşağıdaki satırın başındaki # işaretini kaldırın.
-# Sitemap: https://capagastro.org/sitemap.xml
+Sitemap: https://capagastro.org/sitemap.xml

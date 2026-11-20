@@ -54,7 +54,7 @@ for f, prio, freq, has_en in PAGES:
     lines.append(f"    <changefreq>{freq}</changefreq>")
     lines.append(f"    <priority>{prio}</priority>")
     if has_en:
-        # Dil sürümleri aynı adreste ?lang ile sunulur; canonical Türkçe adrestir, İngilizce sürüm hreflang ile bildirilir.
+        # Dil sürümleri aynı adreste ?lang ile sunulur; düz adres Türkçedir (botlar Türkçe görür), İngilizce sürüm hreflang ile bildirilir.
         lines.append(f'    <xhtml:link rel="alternate" hreflang="tr" href="{loc}"/>')
         lines.append(f'    <xhtml:link rel="alternate" hreflang="en" href="{loc}?lang=en"/>')
         lines.append(f'    <xhtml:link rel="alternate" hreflang="x-default" href="{loc}"/>')

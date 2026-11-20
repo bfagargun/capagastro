@@ -6,7 +6,7 @@ Denetlenenler, her HTML dosyası için:
 - HTML etiket dengesi
 - satır içi <script> bloklarının sözdizimi (node ile) ve JSON-LD bloklarının geçerliliği
 - yerel bağlantıların (href/src) var olan dosyalara gitmesi
-- noindex ve canonical varlığı (yayın öncesi hatırlatma olarak yalnızca bildirilir)
+- noindex bildirimi; dizine açık sayfalarda hreflang varlığı
 Ayrıca sw.js, manifest.webmanifest ve sitemap.xml denetlenir. Hata varsa çıkış kodu 1.
 Gereksinim: node (script sözdizimi için; yoksa o adım atlanır).
 """
@@ -76,9 +76,11 @@ def check_html(path):
         if not os.path.exists(os.path.join(os.path.dirname(path), h)):
             err(f, f"yerel bağlantı yok: {h}")
     if 'name="robots"' in s and "noindex" in s:
-        notes.append(f"{f}: noindex (taslak)")
-    if f not in ("404.html", "cevrimdisi.html", "qr.html") and 'rel="canonical"' not in s:
-        err(f, "canonical yok")
+        notes.append(f"{f}: noindex (dizin dışı)")
+    # Dil sürümleri aynı adreste ?lang ile sunulur; canonical etiketi kullanılmaz (İngilizce sürümü kopya saydırmamak için),
+    # dizine açık sayfalarda hreflang zorunludur.
+    if 'name="robots"' not in s and f not in ("404.html", "cevrimdisi.html") and 'hreflang="en"' not in s:
+        err(f, "hreflang yok")
 
 
 notes = []
