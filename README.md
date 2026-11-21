@@ -12,14 +12,15 @@ Canlı adres: https://capagastro.org/ (İngilizce için `?lang=en` ekleyin). Her
 | `yayinlar.html` | Tüm yayınlar; kişiye, türe ve metne göre filtre; OpenAlex atıfları; görüntülenen listeyi BibTeX, RIS veya CSV olarak indirme |
 | `hazirlik.html` | Kolonoskopi hazırlık planlayıcı: randevu saati ve solüsyona göre saat saat plan; takvim (.ics), WhatsApp, yazdırma (çıktıda ürüne özel QR); hafta sonu ve resmi tatil uyarısı (`HOLIDAYS_DATED` listesine yeni yılın bayram tarihlerini ekleyin) |
 | `islemler.html` | Her işlem için hasta bilgilendirme (hazırlık, işlem günü, sonrası, ne zaman aramalı, SSS); bölüm bazında yazdırma ve paylaşım |
-| `egitim.html` | Eğitim ve başvuru: yan dal programı, haftalık akademik program, rotasyon, öğrenci projeleri, gözlemci başvurusu |
+| `egitim.html` | Eğitim ve başvuru: yan dal programı, amaç ve yetkinlikler, haftalık akademik program, Zoom toplantıları (pazartesi nakil ve medikoşirürji), eğitim süreci ve değerlendirme, mezun geri bildirim formu, ulusal standartlarla (GASYEK 2026) eşleşme tablosu, rotasyon, öğrenci projeleri, gözlemci başvurusu |
+| `secmeler.html` | Literatürden seçmeler (aylık, alana göre süzülebilir; `LIT` dizisi) ve endoskopi odasından seçmeler (`ENDO` dizisi; boşken görünmez) |
 | `sevk.html` | Sevk eden hekimler için: kimleri yönlendirmeli, aciliyet şeritleri (acil / öncelikli / rutin), gönderilecekler, tek sayfa yazdırılan sevk formu (kimlik bilgisi e-postaya girmez), iletişim |
 | `protokoller.html` | Asistanlar için klinik protokol özetleri (`PROTOCOLS` dizisi: id, title, lead, version, approved, body HTML, src); protokol bazında yazdırma; Türkçe |
 | `veri-yonetisimi.html` | Araştırma grubunun veri yönetişimi ve sorumlu yapay zeka ilke belgesi (veri sınıfları, kimliksizleştirme akışı, LLM kuralları, güvenlik, paylaşım, roller) |
 | `veri-ve-araclar.html` | Veri seti ve araç kataloğu: her veri seti ve yazılım/model için bir kart (kaynak, dönem, etiketler, erişim sınıfı, kullanım amacı, doğrulama, sınırlar); erişim akışı |
 | `veri-sozlesme.html` | Veri kullanım sözleşmesi şablonu (Türkçe): doldurulabilir alanlar, yazdırma/PDF, örnek değerler; hukuk müşavirliği incelemesi bekleyen taslak |
 | `kimlik.html`, `img/logo*` | Kurumsal kimlik ve basın kiti: logo dosyaları (SVG ve PNG, `tools/make_logo.py` ve `tools/make_logo_png.js` ile üretilir), renkler, yazı tipleri, ad yazımları, tanıtım metinleri, sunum ve poster şablonları, e-posta imzası; `img/capagastro-kimlik.zip` tüm set |
-| `img/og-*.png` | Sayfa başına sosyal medya kartı (WhatsApp, X, LinkedIn önizlemesi); `node tools/make_og.js` ile üretilir |
+| `img/og-*.png` | Sayfa başına sosyal medya kartı (WhatsApp, X, LinkedIn önizlemesi); `node tools/make_og.js` ile üretilir (`--only secmeler` yalnız o kartı, `--fontcss <css>` npm'deki @fontsource-variable dosyalarıyla gerçek yazı tiplerini kullanır) |
 | `sablon/capagastro-sunum.pptx` | Sekiz slaytlık PowerPoint şablonu (kimlik kitinden); `node tools/make_pptx.js` ile üretilir (pptxgenjs) |
 | `hatirlatici.html` | Takip hatırlatıcıları: HCC taraması, ilaç raporu yenileme, biyolojik tedavi dozları, kontrol kolonoskopisi, yıllık grip aşısı için .ics takvim dosyası |
 | `izlem.html` | Uzun süreli izlem rehberleri: İBH, siroz, karaciğer nakli adayları, Wilson; bizde nasıl işler, ne zaman aramalı |
@@ -56,6 +57,22 @@ Sabit metinlerde (başlıklar, paragraflar, sorumlu araştırmacı özgeçmişi)
 
 Yeni yayınları bulmak için `python3 tools/update_pubs.py` çalıştırın: ekip üyelerinin adı ve İstanbul adresiyle PubMed'i tarar (varsayılan olarak listedeki son yıldan bir yıl öncesinden itibaren; `--since 2020` ile değiştirilir), `pubs.js`'de olmayan kayıtları adres özetiyle `pubs-candidates.json` dosyasına yazar. Dosyada adaş yazarları ayıklayıp uygun kayıtlarda `"keep": true` bırakın, eksik `jif` değerlerini doldurun, sonra `python3 tools/update_pubs.py --apply` ile `pubs.js`'ye ekleyin. Üye listesi betiğin başındaki `MEMBERS` sözlüğündedir; yeni üye gelince oraya PubMed yazar biçimiyle ekleyin. Ana sayfadaki yayın sayısı ve ekip kartlarındaki "Yayınlar (n)" değerleri tarayıcıda `pubs.js`'den hesaplanır; `<!--pre:...-->` işaretleri arasındaki statik kopyaları yenilemek için `node tools/prerender.js` çalıştırın (Playwright gerekir).
 
+## Eğitim sayfası ve ulusal standartlar
+
+`egitim.html` Gastroenteroloji Tıpta Uzmanlık Ulusal Standartları 2026'ya (Yeterlik Yürütme Kurulu ve Program Değerlendirme Çalışma Grubu; 8 başlıkta 31 temel, 7 gelişim standardı) göre düzenlendi. `#yetkinlikler` (TS 1.1: klinik ve girişimsel yetkinlik, altı rol), `#program` (TS 3.3), `#zoom` (TS 3.8, 5.4), `#surec` (uyum programı, görevler, danışman, temsilci, eğitim dosyası, ölçme-değerlendirme, geri bildirim, sınavlar, literatür) ve `#standartlar` (standart kodu, konu ve sitedeki karşılığı) bölümleri kamuya açık tanımdır; görev tanımı, karne ve tutanak gibi dayanak belgeler sitede değil bilim dalında tutulur. Standartlara göre yazılan uygulama ayrıntıları (uyum programı, danışman eşleştirmesi, temsilci seçimi, geri bildirim sıklığı) bilim dalı onayı bekleyen taslaktır; sayfa altındaki damgada yazılıdır.
+
+Zoom toplantıları (her pazartesi nakil toplantısı ve medikoşirürji toplantısı): bağlantı ve parola sitede yayımlanmaz, çünkü toplantılarda hasta bilgisi konuşulur. "Katılım isteği" düğmesi bilim dalı başkanına e-posta açar. Saatler kesinleşince `#program` tablosundaki "Pazartesi" satırlarına ve `#zoom` kartlarındaki "Her pazartesi" satırına yazılabilir.
+
+Mezun geri bildirim formu (GS 6.1) sunucusuz çalışır: düğme, sayfanın dilinde soruları içeren bir e-posta taslağı açar (`FEEDBACK` nesnesi, `egitim.html` sonundaki script).
+
+## Literatürden seçmeler ve endoskopi odasından seçmeler
+
+`secmeler.html` içeriği dosya sonundaki `LIT` ve `ENDO` dizilerindedir; sayfa her ay için bir grup ("Kasım 2026 seçkisi") çizer ve alana göre süzme düğmeleri (`AREAS`: endo, ibh, hep, pank, ai) kendiliğinden oluşur.
+
+- `LIT` kaydı: `id` (bağlantı çapası, ör. `secmeler.html#epos-ii`), `month` (`"2026-11"`), `area`, `short` (çalışma adı, isteğe bağlı), `title` (özgün başlık), `journal`, `cite` (`"2026;395:1051-1061"`), `doi`, `pmid`; `tr` ve `en` altında `type` (çalışma tipi), `what` (ne yapıldı), `found` (ne bulundu), `why` (pratiğe etkisi). Sayılar makalenin özetinden doğrulanarak yazılır; metin özetten kopyalanmaz, kendi cümlelerimizle yazılır. Kasım 2026 seçkisi PubMed kayıtlarından (PMID'ler kayıtlarda) hazırlandı.
+- `ENDO` kaydı: `id`, `month`, `img` (`img/secmeler/` altında; 1200 piksel genişlik yeterli), `w`, `h`, `by` (isteğe bağlı); `tr` ve `en` altında `title`, `alt`, `text`, `lesson`. Dizi boşken bölüm, içindekiler düğmesi ve giriş cümlesi görünmez. Görüntü yalnızca hastanın onamıyla eklenir; ad, protokol numarası, tarih ve cihaz yazıları kırpılır, EXIF silinir (`python3 -c "from PIL import Image; im=Image.open('a.jpg'); im.save('b.jpg', quality=85)"` EXIF'i atar).
+- Sayfa dizine açıktır (sitemap'te). Yeni ay eklenince alttaki "Son güncelleme" damgası güncellenir.
+
 ## Kolonoskopi hazırlık planlayıcı
 
 `hazirlik.html` sunucusuz çalışır: hasta randevu tarihini, saatini, solüsyonu ve kendisiyle ilgili durumları seçer; plan tarayıcıda hesaplanır, hiçbir veri kaydedilmez veya gönderilmez. Seçimler adres çubuğuna yazılır (`?t=2026-10-08T09:30&s=pegdin&f=sed,ac`), böylece "Bağlantıyı kopyala" ile aynı plan başka bir cihazda açılabilir. Ünite randevu kağıdına ürüne özel bir bağlantı ya da QR kod basabilir; örneğin `hazirlik.html?s=xm` sayfayı X-M Diet seçili açar (`s=pegdin`, `s=xm`, `s=pico`).
@@ -84,13 +101,13 @@ Değişiklikten sonra `python3 tools/check.py` çalıştırın: yasak karakterle
 
 ## Arama motorları
 
-20 Kasım 2026'dan beri sitemap'teki on iki sayfa dizine açıktır: `noindex` satırları ve `canonical` etiketleri kaldırıldı, `robots.txt` içindeki `Sitemap:` satırı etkin. Ünite içi ya da taslak sayfalarda (`protokoller.html`, `qr.html`, `veri-sozlesme.html`, `uzman-nobet/`, `onizleme/`) ve `404.html`, `cevrimdisi.html` içinde `noindex, nofollow` kalır. `robots.txt` ile engellemeyin: tarayıcı sayfayı okuyamazsa `noindex` etiketini de göremez.
+20 Kasım 2026'dan beri sitemap'teki sayfalar (şu an on üç) dizine açıktır: `noindex` satırları ve `canonical` etiketleri kaldırıldı, `robots.txt` içindeki `Sitemap:` satırı etkin. Ünite içi ya da taslak sayfalarda (`protokoller.html`, `qr.html`, `veri-sozlesme.html`, `uzman-nobet/`, `onizleme/`) ve `404.html`, `cevrimdisi.html` içinde `noindex, nofollow` kalır. `robots.txt` ile engellemeyin: tarayıcı sayfayı okuyamazsa `noindex` etiketini de göremez.
 
 Dil: düz adres herkes için Türkçedir (tarayıcı dili kullanılmaz; 20 Kasım 2026). İngilizce yalnız EN düğmesi (tercih kaydedilir) ya da `?lang=en` ile açılır ve `hreflang` ile bildirilir. İngilizce sürüm kopya sayılmasın diye `canonical` etiketi kullanılmaz.
 
 Diğer parçalar:
 
-- `sitemap.xml`: herkese açık on iki sayfa; `python3 tools/make_sitemap.py` ile üretilir (lastmod git tarihinden). Google Search Console ve Bing Webmaster Tools'a bu dosyayı bildirin. `protokoller.html` ve `qr.html` ünite içi olduğundan haritada yoktur.
+- `sitemap.xml`: herkese açık on üç sayfa; `python3 tools/make_sitemap.py` ile üretilir (lastmod git tarihinden). Google Search Console ve Bing Webmaster Tools'a bu dosyayı bildirin. `protokoller.html` ve `qr.html` ünite içi olduğundan haritada yoktur.
 - `robots.txt`: site alan adının kökünden sunulduğu için tarayıcılar okur. Tarama serbesttir; `Sitemap:` satırı etkindir.
 - Her sayfada `hreflang` bağlantıları (`tr`, `en`, `x-default`) ve schema.org yapılandırılmış verisi vardır: ana sayfada kuruluş, kişi ve site; `islemler.html` sayfasında işlemler ve sık sorulan sorular (`FAQPage`, sayfa dilinde JavaScript ile üretilir); `veri-ve-araclar.html` sayfasında veri kataloğu ve veri setleri (`DataCatalog`, `Dataset`; Google Dataset Search için); diğer sayfalarda `MedicalWebPage` veya `WebPage`. Yayın sonrası https://validator.schema.org ve Search Console "Zengin sonuçlar" testinden geçirin.
 

@@ -172,6 +172,7 @@ nav a:hover,nav a.active{color:var(--teal)}
   .tools{grid-column:2;grid-row:2;border-top:1px solid var(--line);padding-left:1rem;justify-content:flex-end;align-items:center}
   .menu-btn{display:none}
 }
+@media (min-width:1200px) and (max-width:1320px){nav ul{gap:.95rem}nav a{font-size:.86rem}}
 
 /* Hero */
 .hero{padding:5rem 0 4rem;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
@@ -213,6 +214,8 @@ section.alt{background:var(--paper-2)}
 .block h3{margin-top:0}
 .block ul{padding-left:1.1rem;margin:0}
 .block li{margin-bottom:.35rem}
+.block .when{font-family:var(--font-display);font-style:italic;color:var(--claret);margin:-.2rem 0 .5rem}
+.block p.small{font-size:.92rem;color:var(--ink-2);margin:.8rem 0}
 .unit-room{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:2.2rem;align-items:center;margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--line)}
 .unit-room figure{margin:0}
 .unit-room img{width:100%;height:auto;aspect-ratio:1200/1260;object-fit:cover;border-radius:10px;border:1px solid var(--line);background:var(--paper);display:block}
@@ -416,6 +419,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
         <li><a href="#sorumlu-arastirmaci" data-en="Principal investigator">Sorumlu araştırmacı</a></li>
         <li><a href="#hakkimizda" data-en="About">Hakkımızda</a></li>
         <li><a href="#haberler" data-en="News">Haberler</a></li>
+        <li><a href="#egitim" data-en="Training">Eğitim</a></li>
         <li><a href="#arastirma" data-en="Research">Araştırma</a></li>
         <li><a href="#ekip" data-en="People">Ekip</a></li>
         <li><a href="#mezunlar" data-en="Alumni">Mezunlar</a></li>
@@ -544,7 +548,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
           <li data-en="Liver transplant clinic: assessment before transplantation and follow-up afterwards">Karaciğer nakli polikliniği: nakil öncesi değerlendirme ve nakil sonrası izlem</li>
           <li data-en="Wilson disease and rare diseases clinic">Wilson hastalığı ve nadir hastalıklar polikliniği</li>
           <li data-en="Pancreaticobiliary, luminal and motility disorders">Pankreatikobiliyer, lüminal ve motilite hastalıkları</li>
-          <li data-en="Weekly multidisciplinary GI tumour board">Haftalık multidisipliner GİS tümör konseyi</li>
+          <li data-en="Weekly multidisciplinary GI tumour board; transplant and medical-surgical meetings every Monday">Haftalık multidisipliner GİS tümör konseyi; her pazartesi nakil ve medikoşirürji toplantıları</li>
         </ul>
       </div>
       <div class="block">
@@ -591,6 +595,40 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
     </div>
     <div class="news" id="news"></div>
     <div class="news-more" id="news-more" hidden><button class="btn" type="button" id="news-btn" data-en="Older news">Daha eski haberler</button></div>
+  </div>
+</section>
+
+<!-- EĞİTİM -->
+<section id="egitim" class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-en="Training and meetings">Eğitim ve toplantılar</h2>
+      <p data-en="The fellowship follows the National Standards for Gastroenterology Training 2026. Our Monday meetings can be joined on Zoom, and every month we summarise a few new studies from the literature.">
+        Yan dal eğitimi Gastroenteroloji Tıpta Uzmanlık Ulusal Standartları 2026'ya göre yürütülür. Pazartesi toplantılarımıza Zoom üzerinden katılınabilir; her ay literatürden birkaç yeni çalışmayı kısa özetlerle paylaşıyoruz.
+      </p>
+    </div>
+    <div class="cols">
+      <div class="block">
+        <h3 data-en="Zoom meetings">Zoom toplantıları</h3>
+        <p class="when" data-en="Every Monday">Her pazartesi</p>
+        <ul>
+          <li data-en="Transplant meeting: liver transplant candidates and recipients">Nakil toplantısı: karaciğer nakli adayları ve nakil sonrası hastalar</li>
+          <li data-en="Medical-surgical meeting: joint decisions with general surgery">Medikoşirürji toplantısı: genel cerrahiyle ortak karar</li>
+        </ul>
+        <p class="small" data-en="The link is shared within the team and with invited participants, not on this site.">Bağlantı ekip içinde ve davetli katılımcılarla paylaşılır, sitede yayımlanmaz.</p>
+        <a class="chip" href="egitim.html#zoom" data-en="How to join">Nasıl katılırım?</a>
+      </div>
+      <div class="block">
+        <h3 data-en="Selections from the literature">Literatürden seçmeler</h3>
+        <p data-en="Studies from endoscopy, IBD, hepatology, the pancreas and artificial intelligence that may change practice: what was done, what was found and what it means.">Endoskopi, İBH, hepatoloji, pankreas ve yapay zekadan pratiği değiştirebilecek çalışmalar: ne yapıldı, ne bulundu, pratiğe etkisi ne.</p>
+        <a class="chip" href="secmeler.html" data-en="Read the selections">Seçmeleri okuyun</a>
+      </div>
+      <div class="block">
+        <h3 data-en="Fellowship programme">Yan dal eğitimi</h3>
+        <p data-en="Three years: competencies and roles, the weekly programme, advisers, assessment and feedback, with a table matching each national standard.">Üç yıllık program: yetkinlikler ve roller, haftalık program, danışmanlık, ölçme-değerlendirme ve geri bildirim; her ulusal standardın karşılığını gösteren tabloyla.</p>
+        <a class="chip" href="egitim.html" data-en="Training programme">Eğitim programı</a> <a class="chip" href="egitim.html#standartlar" data-en="National standards">Ulusal standartlar</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1234,6 +1272,8 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
         <li><a href="yayinlar.html" data-en="All publications">Tüm yayınlar</a></li>
         <li><a href="#mezunlar" data-en="Alumni">Mezunlarımız</a></li>
         <li><a href="egitim.html" data-en="Training and applications">Eğitim ve başvuru</a></li>
+        <li><a href="egitim.html#zoom" data-en="Zoom meetings">Zoom toplantıları</a></li>
+        <li><a href="secmeler.html" data-en="Selections from the literature">Literatürden seçmeler</a></li>
         <li><a href="protokoller.html" data-en="Clinical protocols (Turkish)">Klinik protokoller</a></li>
         <li><a href="veri-yonetisimi.html" data-en="Data governance">Veri yönetişimi</a></li>
         <li><a href="veri-ve-araclar.html" data-en="Data sets and tools">Veri setleri ve araçlar</a></li>
@@ -1259,7 +1299,6 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
         <li><a href="islemler.html" data-en="Procedures and preparation">İşlemler ve hazırlık</a></li>
         <li><a href="hatirlatici.html" data-en="Follow-up reminders">Takip hatırlatıcıları</a></li>
         <li><a href="izlem.html" data-en="Long-term follow-up">Uzun süreli izlem</a></li>
-        <li><a href="sss.html" data-en="Frequently asked questions">Sık sorulan sorular</a></li>
         <li><a href="sss.html" data-en="Frequently asked questions">Sık sorulan sorular</a></li>
         <li><a href="#iletisim" data-en="Directions">Ulaşım</a></li>
       </ul>

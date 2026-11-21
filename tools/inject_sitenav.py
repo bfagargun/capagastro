@@ -10,7 +10,7 @@ import os, re, json
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGES = ["hazirlik.html", "islemler.html", "hatirlatici.html", "izlem.html", "sss.html", "yayinlar.html", "egitim.html",
-         "sevk.html", "protokoller.html", "veri-yonetisimi.html", "veri-ve-araclar.html", "veri-sozlesme.html", "kimlik.html"]
+         "secmeler.html", "sevk.html", "protokoller.html", "veri-yonetisimi.html", "veri-ve-araclar.html", "veri-sozlesme.html", "kimlik.html"]
 
 NAV = {
     "groups": [
@@ -25,6 +25,7 @@ NAV = {
             ["index.html#arastirma", "Araştırma", "Research"],
             ["yayinlar.html", "Yayınlar", "Publications"],
             ["egitim.html", "Eğitim ve başvuru", "Training"],
+            ["secmeler.html", "Literatürden seçmeler", "Literature selections"],
             ["sevk.html", "Sevk eden hekimler", "Referring physicians"],
             ["protokoller.html", "Protokoller", "Protocols (TR)"],
             ["veri-yonetisimi.html", "Veri yönetişimi", "Data governance"],

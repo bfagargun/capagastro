@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 // Sayfa başına sosyal medya kartı (og:image, 1200x630) üretir: img/og-<sayfa>.png
-// Kullanım: node tools/make_og.js [--fraunces <ttf>] [--publicsans <ttf>]
+// Kullanım: node tools/make_og.js [--fraunces <ttf>] [--publicsans <ttf>] [--fontcss <css>] [--only ad1,ad2]
+// --fontcss: @font-face kuralları içeren bir CSS dosyası (ör. @fontsource-variable paketlerinden, file:// adresleriyle).
+// --only: yalnızca adı verilen kartları üretir (ör. --only secmeler); verilmezse hepsi yeniden üretilir.
 // Yazı tipleri verilmezse sistemdeki Georgia/Arial yedekleri kullanılır; kimlik.html'deki kaynaklar (GitHub) ile aynı dosyalar önerilir.
 // Gereksinim: npm i -g playwright && npx playwright install chromium
 const path = require("path");
@@ -9,7 +11,8 @@ const { chromium } = require("playwright");
 const ROOT = path.join(__dirname, "..");
 const args = process.argv.slice(2);
 const opt = k => { const i = args.indexOf(k); return i >= 0 ? args[i + 1] : ""; };
-const fraunces = opt("--fraunces"), publicsans = opt("--publicsans");
+const fraunces = opt("--fraunces"), publicsans = opt("--publicsans"), fontcss = opt("--fontcss");
+const only = opt("--only") ? opt("--only").split(",") : null;
 
 // (dosya adı, üst etiket, başlık TR, başlık EN)
 const CARDS = [
@@ -21,6 +24,7 @@ const CARDS = [
   ["sevk", "Meslektaşlar için", "Sevk eden hekimler için", "For referring physicians"],
   ["yayinlar", "Araştırma", "Yayınlar", "Publications"],
   ["egitim", "Bilim dalı", "Eğitim ve başvuru", "Training and applications"],
+  ["secmeler", "Eğitim", "Literatürden seçmeler", "Selections from the literature"],
   ["veri-ve-araclar", "Araştırma grubu", "Veri setleri ve araçlar", "Data sets and tools"],
   ["veri-yonetisimi", "Araştırma grubu", "Veri yönetişimi ve sorumlu yapay zeka", "Data governance and responsible AI"],
   ["kimlik", "Bilim dalı", "Kurumsal kimlik ve basın kiti", "Brand identity and press kit"],
@@ -38,7 +42,8 @@ const art = `<svg viewBox="0 0 320 380" style="position:absolute;right:70px;top:
 <circle cx="60" cy="300" r="4"/><circle cx="200" cy="350" r="4"/></svg>`;
 
 const fontCss = (fraunces ? `@font-face{font-family:"Fraunces";src:url("file://${fraunces}");font-weight:100 900}` : "") +
-  (publicsans ? `@font-face{font-family:"Public Sans";src:url("file://${publicsans}")}` : "");
+  (publicsans ? `@font-face{font-family:"Public Sans";src:url("file://${publicsans}")}` : "") +
+  (fontcss ? fs.readFileSync(fontcss, "utf8") : "");
 
 function html(kicker, tr, en) {
   return `<!doctype html><html><head><meta charset="utf-8"><style>${fontCss}
@@ -62,6 +67,7 @@ function html(kicker, tr, en) {
   const os = require("os");
   const tmp = path.join(os.tmpdir(), "capagastro-og.html");
   for (const [name, kicker, tr, en] of CARDS) {
+    if (only && !only.includes(name)) continue;
     fs.writeFileSync(tmp, html(kicker, tr, en));
     await page.goto("file://" + tmp, { waitUntil: "load" });
     await page.evaluate(() => document.fonts.ready);

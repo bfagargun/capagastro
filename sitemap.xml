@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://capagastro.org/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="tr" href="https://capagastro.org/"/>
@@ -11,7 +11,7 @@
   </url>
   <url>
     <loc>https://capagastro.org/hazirlik.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="tr" href="https://capagastro.org/hazirlik.html"/>
@@ -20,7 +20,7 @@
   </url>
   <url>
     <loc>https://capagastro.org/islemler.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="tr" href="https://capagastro.org/islemler.html"/>
@@ -29,7 +29,7 @@
   </url>
   <url>
     <loc>https://capagastro.org/izlem.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="tr" href="https://capagastro.org/izlem.html"/>
@@ -38,7 +38,7 @@
   </url>
   <url>
     <loc>https://capagastro.org/sss.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="tr" href="https://capagastro.org/sss.html"/>
@@ -47,7 +47,7 @@
   </url>
   <url>
     <loc>https://capagastro.org/hatirlatici.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="tr" href="https://capagastro.org/hatirlatici.html"/>
@@ -56,7 +56,7 @@
   </url>
   <url>
     <loc>https://capagastro.org/yayinlar.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="tr" href="https://capagastro.org/yayinlar.html"/>
@@ -65,7 +65,7 @@
   </url>
   <url>
     <loc>https://capagastro.org/egitim.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="tr" href="https://capagastro.org/egitim.html"/>
@@ -73,8 +73,17 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://capagastro.org/egitim.html"/>
   </url>
   <url>
+    <loc>https://capagastro.org/secmeler.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://capagastro.org/secmeler.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://capagastro.org/secmeler.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://capagastro.org/secmeler.html"/>
+  </url>
+  <url>
     <loc>https://capagastro.org/sevk.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="tr" href="https://capagastro.org/sevk.html"/>
@@ -83,7 +92,7 @@
   </url>
   <url>
     <loc>https://capagastro.org/veri-yonetisimi.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="tr" href="https://capagastro.org/veri-yonetisimi.html"/>
@@ -92,7 +101,7 @@
   </url>
   <url>
     <loc>https://capagastro.org/veri-ve-araclar.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="tr" href="https://capagastro.org/veri-ve-araclar.html"/>
@@ -101,7 +110,7 @@
   </url>
   <url>
     <loc>https://capagastro.org/kimlik.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="tr" href="https://capagastro.org/kimlik.html"/>
