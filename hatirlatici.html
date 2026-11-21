@@ -104,6 +104,8 @@ header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper
 .btn[disabled]{opacity:.45;cursor:not-allowed}
 .btn svg{width:16px;height:16px;flex-shrink:0}
 @media (max-width:560px){.brand small{display:none}.bar .home{display:none}}
+@media (max-width:400px){.bar{gap:.3rem}.brand{font-size:.9rem;gap:.45rem}.brand svg{width:22px;height:22px}.bar .btn{padding:.3rem .6rem}.bar .btn.icon{min-width:2rem;padding:.3rem .45rem}}
+@media (max-width:340px){.brand svg{display:none}}
 
 .intro{padding:3rem 0 2rem;border-bottom:1px solid var(--line)}
 .intro .est{font-family:var(--font-display);font-style:italic;color:var(--claret);font-size:1.05rem;margin-bottom:.6rem}
@@ -246,7 +248,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 <footer><div class="wrap">
   <span>© <span id="year"></span> <span data-i="foot">İstanbul Üniversitesi İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı</span></span>
   <span data-i="disc">Bu sayfa genel bilgilendirme amaçlıdır; kendi hekiminizin talimatları her zaman önceliklidir.</span>
-  <span class="stamp" data-i="stamp">Hazırlayan: Gastroenterohepatoloji Bilim Dalı. Son gözden geçirme: Eylül 2026 (taslak; bilim dalı onayı bekliyor).</span>
+  <span class="stamp" data-i="stamp">Hazırlayan: Gastroenterohepatoloji Bilim Dalı. Son gözden geçirme: Eylül 2026.</span>
 </div></footer>
 <div class="toast" id="toast" role="status"></div>
 
@@ -263,7 +265,7 @@ const T = {
     dozH: "Biyolojik tedavi dozları", dozP: "İnfüzyon veya kalem enjeksiyon dozlarınız için takvim. Bir sonraki doz tarihini ve hekiminizin belirlediği aralığı girin; isterseniz yükleme dozlarını (0, 2 ve 6. hafta) da ekleyin.", dozDate: "Bir sonraki (veya ilk) doz tarihi", dozInt: "Doz aralığı", w1: "Her hafta", w2: "2 haftada bir", w4: "4 haftada bir", w6: "6 haftada bir", w8: "8 haftada bir", w12: "12 haftada bir", dozN: "Kaç doz", dozKind: "Uygulama", dozInf: "Ünitede infüzyon", dozSc: "Evde enjeksiyon", dozLoad: "İlk üç doz yükleme (0, 2 ve 6. hafta), sonra seçilen aralık", dozHint: "İnfüzyonlar için 3 gün önce, evde enjeksiyon için aynı gün hatırlatma.",
     colH: "Kontrol kolonoskopisi", colP: "Polip çıkarıldıysa veya ülseratif kolit, Crohn hastalığı, ailesel risk gibi nedenlerle izlemdeyseniz, raporunuzda bir sonraki kolonoskopi için önerilen süre yazar. O süreyi seçin; randevu almanız için önceden hatırlatalım.", colDate: "Son kolonoskopi tarihi", colInt: "Önerilen süre", y1: "1 yıl", y2: "2 yıl", y3: "3 yıl", y5: "5 yıl", y10: "10 yıl", colHint: "Kontrol ayından 2 ay önce randevu hatırlatması ve kontrol ayı kaydı.",
     notice: "Buradaki aralıklar örnektir; sizin için geçerli olan hekiminizin raporunuza yazdığı süredir. Hatırlatıcı bir randevunun yerine geçmez: tarama, tahlil ve kolonoskopi için kontrolünüzün zamanında planlandığından emin olun.",
-    foot: "İstanbul Üniversitesi İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı", disc: "Bu sayfa genel bilgilendirme amaçlıdır; kendi hekiminizin talimatları her zaman önceliklidir.", stamp: "Hazırlayan: Gastroenterohepatoloji Bilim Dalı. Son gözden geçirme: Eylül 2026 (taslak; bilim dalı onayı bekliyor).",
+    foot: "İstanbul Üniversitesi İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı", disc: "Bu sayfa genel bilgilendirme amaçlıdır; kendi hekiminizin talimatları her zaman önceliklidir.", stamp: "Hazırlayan: Gastroenterohepatoloji Bilim Dalı. Son gözden geçirme: Eylül 2026.",
     skip: "İçeriğe geç", langBtn: "EN", langAria: "Switch to English", theme: "Açık veya koyu tema", big: "Yazıyı büyüt", done: "Takvim dosyası indirildi; açınca kayıtlar takviminize eklenir",
     asiH: "Yıllık grip aşısı", asiP: "Biyolojik veya bağışıklık baskılayıcı tedavi alıyorsanız ya da siroz, kronik karaciğer hastalığı gibi bir nedenle risk grubundaysanız her sonbahar grip aşısı önerilir. Aşı aile hekiminizde veya eczanede yapılabilir; hangi aşıların size uygun olduğunu hekiminize sorun.", asiMonth: "Aşı ayı", asiYears: "Kaç yıl", oct: "Ekim", sep: "Eylül", nov: "Kasım", asiHint: "Her yıl seçtiğiniz ayın 1'inde hatırlatma; yıl seçimi gerekmez.",
     ev: {
@@ -286,7 +288,7 @@ const T = {
     dozH: "Biologic therapy doses", dozP: "A calendar for your infusion or pen injection doses. Enter the next dose date and the interval your physician set; add the loading doses (weeks 0, 2 and 6) if you like.", dozDate: "Next (or first) dose date", dozInt: "Dose interval", w1: "Every week", w2: "Every 2 weeks", w4: "Every 4 weeks", w6: "Every 6 weeks", w8: "Every 8 weeks", w12: "Every 12 weeks", dozN: "Number of doses", dozKind: "Route", dozInf: "Infusion in the unit", dozSc: "Injection at home", dozLoad: "First three doses as loading (weeks 0, 2 and 6), then the chosen interval", dozHint: "Reminder 3 days before an infusion, on the day for a home injection.",
     colH: "Surveillance colonoscopy", colP: "If polyps were removed, or you are under surveillance for ulcerative colitis, Crohn's disease or family risk, your report states when the next colonoscopy is due. Choose that interval and we will remind you to book in time.", colDate: "Date of the last colonoscopy", colInt: "Recommended interval", y1: "1 year", y2: "2 years", y3: "3 years", y5: "5 years", y10: "10 years", colHint: "A booking reminder 2 months before the due month, plus the due month.",
     notice: "The intervals here are examples; the one that applies to you is what your physician wrote in your report. A reminder does not replace an appointment: make sure your visit for the scan, blood test or colonoscopy is planned in time.",
-    foot: "Division of Gastroenterohepatology, Istanbul Faculty of Medicine, Istanbul University", disc: "This page is general information; your own physician's instructions always take precedence.", stamp: "Prepared by the Division of Gastroenterohepatology. Last reviewed September 2026 (draft; awaiting divisional approval).",
+    foot: "Division of Gastroenterohepatology, Istanbul Faculty of Medicine, Istanbul University", disc: "This page is general information; your own physician's instructions always take precedence.", stamp: "Prepared by the Division of Gastroenterohepatology. Last reviewed September 2026.",
     skip: "Skip to content", langBtn: "TR", langAria: "Türkçeye geç", theme: "Light or dark theme", big: "Larger text", done: "Calendar file downloaded; open it to add the entries to your calendar",
     asiH: "Yearly flu vaccine", asiP: "If you take a biologic or immunosuppressive treatment, or are in a risk group because of cirrhosis or chronic liver disease, a flu vaccine is recommended every autumn. It is given by your family physician or at a pharmacy; ask your physician which other vaccines suit you.", asiMonth: "Vaccine month", asiYears: "For how many years", oct: "October", sep: "September", nov: "November", asiHint: "A reminder on the 1st of the chosen month every year; no year needed.",
     ev: {

@@ -106,6 +106,8 @@ header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper
 .btn[hidden],[hidden]{display:none !important}
 .btn svg{width:16px;height:16px;flex-shrink:0}
 @media (max-width:560px){.brand small{display:none}.bar .home{display:none}}
+@media (max-width:400px){.bar{gap:.3rem}.brand{font-size:.9rem;gap:.45rem}.brand svg{width:22px;height:22px}.bar .btn{padding:.3rem .6rem}.bar .btn.icon{min-width:2rem;padding:.3rem .45rem}}
+@media (max-width:340px){.brand svg{display:none}}
 
 .intro{padding:3rem 0 2rem;border-bottom:1px solid var(--line)}
 .intro .est{font-family:var(--font-display);font-style:italic;color:var(--claret);font-size:1.05rem;margin-bottom:.6rem}
@@ -114,7 +116,7 @@ header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper
 .privacy svg{width:18px;height:18px;flex-shrink:0;color:var(--teal);margin-top:.15rem}
 
 .layout{display:grid;grid-template-columns:minmax(300px,380px) 1fr;gap:3rem;padding:2.5rem 0 4rem;align-items:start}
-@media (max-width:900px){.layout{grid-template-columns:1fr;gap:2rem;padding:1.6rem 0 3rem}}
+@media (max-width:900px){.layout{grid-template-columns:minmax(0,1fr);gap:2rem;padding:1.6rem 0 3rem}}
 
 /* Form */
 .form{background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:1.4rem 1.4rem 1.2rem;position:sticky;top:76px}
@@ -124,8 +126,9 @@ fieldset:last-of-type{margin-bottom:.4rem}
 legend{font-weight:600;padding:0;margin-bottom:.6rem;display:flex;align-items:baseline;gap:.5rem}
 legend .n{font-family:var(--font-display);color:var(--claret);font-size:1.25rem;line-height:1}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+@media (max-width:420px){.row2{grid-template-columns:1fr}.form{padding:1.1rem 1rem 1rem}}
 label.f{display:block;font-size:.85rem;color:var(--ink-2);margin-bottom:.25rem}
-input[type=date],input[type=time]{width:100%;font:inherit;font-size:1rem;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:.55rem .7rem;min-height:2.8rem}
+input[type=date],input[type=time]{width:100%;min-width:0;font:inherit;font-size:1rem;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:.55rem .7rem;min-height:2.8rem}
 input[type=date]:focus,input[type=time]:focus{border-color:var(--teal)}
 .opt{display:flex;gap:.7rem;align-items:flex-start;padding:.6rem .7rem;border:1px solid var(--line);border-radius:8px;margin-bottom:.45rem;background:var(--paper);cursor:pointer}
 .opt:has(input:checked){border-color:var(--teal);box-shadow:inset 0 0 0 1px var(--teal)}
@@ -326,7 +329,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 <footer><div class="wrap">
   <span>© <span id="year"></span> <span data-i="foot">İstanbul Üniversitesi İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı</span></span>
   <span data-i="disc">Bu sayfa genel bilgilendirme amaçlıdır; kendi hekiminizin talimatları her zaman önceliklidir.</span>
-  <span class="stamp" style="width:100%" data-i="stamp">Hazırlayan: Gastroenterohepatoloji Bilim Dalı endoskopi ünitesi. Kaynak: ESGE bağırsak hazırlığı rehberi (2019 güncellemesi) ve ürün prospektüsleri. Son gözden geçirme: Eylül 2026 (taslak; bilim dalı onayı bekliyor).</span>
+  <span class="stamp" style="width:100%" data-i="stamp">Hazırlayan: Gastroenterohepatoloji Bilim Dalı endoskopi ünitesi. Kaynak: ESGE bağırsak hazırlığı rehberi (2019 güncellemesi) ve ürün prospektüsleri. Son gözden geçirme: Eylül 2026.</span>
 </div></footer>
 <div class="toast" id="toast" role="status"></div>
 
@@ -453,7 +456,7 @@ const T = {
     ext: "dahili 30960", hours: "hafta içi 08.30-16.30", faqH: "Sık sorulan sorular",
     foot: "İstanbul Üniversitesi İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı",
     disc: "Bu sayfa genel bilgilendirme amaçlıdır; kendi hekiminizin talimatları her zaman önceliklidir.",
-    stamp: "Hazırlayan: Gastroenterohepatoloji Bilim Dalı endoskopi ünitesi. Kaynak: ESGE bağırsak hazırlığı rehberi (2019 güncellemesi) ve ürün prospektüsleri. Son gözden geçirme: Eylül 2026 (taslak; bilim dalı onayı bekliyor).",
+    stamp: "Hazırlayan: Gastroenterohepatoloji Bilim Dalı endoskopi ünitesi. Kaynak: ESGE bağırsak hazırlığı rehberi (2019 güncellemesi) ve ürün prospektüsleri. Son gözden geçirme: Eylül 2026.",
     shareTitle: "Kolonoskopi hazırlık planım", shareUnit: "Çapa Gastroenterohepatoloji, İstanbul Tıp Fakültesi", shareLink: "Planı tarayıcıda aç:",
     calSummary: "Kolonoskopi hazırlığı", calProc: "Kolonoskopi, Çapa Gastroenterohepatoloji",
     printTitle: "Kolonoskopi hazırlık planı", printQr: "Kendi randevu saatinize göre saat saat plan ve telefon takvimi için bu kodu okutun; adres:", printUnit: "Çapa Gastroenterohepatoloji, İstanbul Tıp Fakültesi Ek Poliklinikler Binası. Endoskopi ünitesi: 0212 414 20 00, dahili 30960.",
@@ -527,7 +530,7 @@ const T = {
     ext: "ext. 30960", hours: "weekdays 08:30-16:30", faqH: "Frequently asked questions",
     foot: "Division of Gastroenterohepatology, Istanbul Faculty of Medicine, Istanbul University",
     disc: "This page is general information; your own physician's instructions always take precedence.",
-    stamp: "Prepared by the endoscopy unit of the Division of Gastroenterohepatology. Sources: ESGE bowel preparation guideline (2019 update) and product leaflets. Last reviewed September 2026 (draft; awaiting divisional approval).",
+    stamp: "Prepared by the endoscopy unit of the Division of Gastroenterohepatology. Sources: ESGE bowel preparation guideline (2019 update) and product leaflets. Last reviewed September 2026.",
     shareTitle: "My colonoscopy preparation plan", shareUnit: "Çapa Gastroenterohepatology, Istanbul Faculty of Medicine", shareLink: "Open the plan in a browser:",
     calSummary: "Colonoscopy preparation", calProc: "Colonoscopy, Çapa Gastroenterohepatology",
     printTitle: "Colonoscopy preparation plan", printQr: "Scan for an hour-by-hour plan for your own appointment time and a phone calendar; address:", printUnit: "Çapa Gastroenterohepatology, Istanbul Faculty of Medicine, Outpatient Annex Building. Endoscopy unit: +90 212 414 20 00, ext. 30960.",

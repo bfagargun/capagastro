@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Veri kullanım sözleşmesi şablonu | Çapa Gastroenterohepatoloji</title>
 <meta name="description" content="Kimliksizleştirilmiş araştırma verisinin paylaşımı için veri kullanım sözleşmesi şablonu: taraflar, amaç, veri tanımı, izin verilen kullanım, güvenlik, KVKK, yayın, süre ve imha.">
-<!-- TASLAK: yayına hazır olunca aşağıdaki iki robots satırını silin -->
+<!-- Ünite içi şablon: dizin dışı (noindex) -->
 <meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="googlebot" content="noindex, nofollow, noarchive">
 <link rel="canonical" href="https://capagastro.org/veri-sozlesme.html">
@@ -47,6 +47,8 @@ header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper
 .btn.solid{background:var(--teal);color:var(--paper)}
 .btn.icon{padding:.35rem .6rem;min-width:2.3rem;justify-content:center}
 @media (max-width:560px){.brand small{display:none}.bar .home{display:none}}
+@media (max-width:400px){.bar{gap:.3rem}.brand{font-size:.9rem;gap:.45rem}.brand svg{width:22px;height:22px}.bar .btn{padding:.3rem .6rem}.bar .btn.icon{min-width:2rem;padding:.3rem .45rem}}
+@media (max-width:340px){.brand svg{display:none}}
 .intro{padding:2.5rem 0 1.5rem}
 .intro .est{font-family:var(--font-display);font-style:italic;color:var(--claret);font-size:1.05rem;margin-bottom:.6rem}
 .intro p{color:var(--ink-2);font-size:1.05rem;max-width:70ch}
@@ -123,13 +125,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
     <div class="est">Araştırma grubu, şablon</div>
     <h1>Veri kullanım sözleşmesi şablonu</h1>
     <p>Kimliksizleştirilmiş bir veri setinin (C sınıfı) başka bir kurumdaki araştırmacıya verilmesinden önce imzalanan sözleşmenin şablonu. Noktalı alanlara tıklayıp doldurun, yazdırın veya PDF olarak kaydedin; sayfa hiçbir şeyi kaydetmez ve göndermez. Veri sınıfları ve erişim akışı <a href="veri-yonetisimi.html#paylasim">veri yönetişimi</a> sayfasında, veri setleri <a href="veri-ve-araclar.html">katalogda</a> tanımlıdır.</p>
-    <div class="en-note" id="en-note" lang="en" hidden><p><b>In English.</b> This is the division's template data use agreement. It is in Turkish because it is signed under Turkish law (KVKK, the personal data protection law) by Turkish institutions; the principles behind it are set out in English on the <a href="veri-yonetisimi.html">data governance</a> page.</p><p>It covers the release of one de-identified data set (class C) to a researcher at another institution for a single ethics-approved project. In short: the linkage key stays with the division; only named people may work with the data, on institution-managed, encrypted systems with multi-factor authentication; re-identification, onward sharing, commercial use, contacting patients and transfer outside Türkiye without a separate arrangement are prohibited; large language models and other external AI tools may be used only if the service is contracted by the institution, does not train on the data and is named in the project protocol; breaches are reported within 24 hours; manuscripts reach the division 30 days before submission for a check on re-identification risk and data interpretation, with no right to alter the findings; all copies are deleted within 30 days of the end of the agreement.</p><p>Draft, pending review by the university's legal counsel and data protection officer.</p></div><script>(function(){var q=null,s=null,l;try{q=new URLSearchParams(location.search).get("lang")}catch(e){}try{s=localStorage.getItem("lang")}catch(e){}if(q==="en"||q==="tr"){l=q;try{localStorage.setItem("lang",q)}catch(e){}}else if(s==="en"||s==="tr")l=s;else l="tr";if(l==="en")document.getElementById("en-note").hidden=false})();</script>
-    <div class="warnbox screen"><p><b>Taslak şablondur.</b> İstanbul Üniversitesi Hukuk Müşavirliği ve KVKK sorumlusunun incelemesinden geçmeden imzalanmaz; kurumun kendi sözleşme biçimi varsa o esas alınır. Etik kurul onayı ve gerekiyorsa veri sağlayıcı kurumun izni sözleşmenin ön koşuludur.</p></div>
-    <div class="tools"><button class="btn solid" type="button" id="print">Yazdır veya PDF kaydet</button><button class="btn" type="button" id="clear">Alanları temizle</button><button class="btn" type="button" id="sample">Örnek değerlerle doldur</button></div>
+    <div class="en-note" id="en-note" lang="en" hidden><p><b>In English.</b> This is the division's template data use agreement. It is in Turkish because it is signed under Turkish law (KVKK, the personal data protection law) by Turkish institutions; the principles behind it are set out in English on the <a href="veri-yonetisimi.html">data governance</a> page.</p><p>It covers the release of one de-identified data set (class C) to a researcher at another institution for a single ethics-approved project. In short: the linkage key stays with the division; only named people may work with the data, on institution-managed, encrypted systems with multi-factor authentication; re-identification, onward sharing, commercial use, contacting patients and transfer outside Türkiye without a separate arrangement are prohibited; large language models and other external AI tools may be used only if the service is contracted by the institution, does not train on the data and is named in the project protocol; breaches are reported within 24 hours; manuscripts reach the division 30 days before submission for a check on re-identification risk and data interpretation, with no right to alter the findings; all copies are deleted within 30 days of the end of the agreement.</p><p>It must be reviewed by the university's legal counsel and data protection officer before it is signed.</p></div><script>(function(){var q=null,s=null,l;try{q=new URLSearchParams(location.search).get("lang")}catch(e){}try{s=localStorage.getItem("lang")}catch(e){}if(q==="en"||q==="tr"){l=q;try{localStorage.setItem("lang",q)}catch(e){}}else if(s==="en"||s==="tr")l=s;else l="tr";if(l==="en")document.getElementById("en-note").hidden=false})();</script>
+    <div class="warnbox screen"><p><b>İmzadan önce</b> İstanbul Üniversitesi Hukuk Müşavirliği ve KVKK sorumlusunun incelemesi gerekir; kurumun kendi sözleşme biçimi varsa o esas alınır. Etik kurul onayı ve gerekiyorsa veri sağlayıcı kurumun izni sözleşmenin ön koşuludur.</p></div>
+    <div class="tools"><button class="btn solid" type="button" id="print">Yazdır veya PDF kaydet</button><button class="btn" type="button" id="clear">Alanları temizle</button></div>
   </div></div>
 
   <div class="wrap"><article class="doc" id="doc">
-    <div class="print-warn">TASLAK ŞABLON: hukuk müşavirliği ve KVKK sorumlusu incelemesi olmadan geçerli değildir.</div>
+    <div class="print-warn">Hukuk müşavirliği ve KVKK sorumlusu incelemesi olmadan geçerli değildir.</div>
     <div class="title">
       <h1>Veri Kullanım Sözleşmesi</h1>
       <p>Kimliksizleştirilmiş araştırma verisinin paylaşımına ilişkin</p>
@@ -294,7 +296,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 <footer><div class="wrap">
   <span>© <span id="year"></span> İstanbul Üniversitesi İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı</span>
   <a href="veri-ve-araclar.html">Veri seti kataloğu</a>
-  <span style="width:100%;font-size:.8rem">Şablon sürüm 0.1, Eylül 2026 (taslak; hukuk müşavirliği ve KVKK sorumlusu incelemesi bekliyor).</span>
+  <span style="width:100%;font-size:.8rem">Şablon sürüm 0.1, Eylül 2026.</span>
 </div></footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -304,9 +306,6 @@ let toastTimer;
 function toast(msg) { const el = $("toast"); el.textContent = msg; el.classList.add("show"); clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove("show"), 2000); }
 $("print").addEventListener("click", () => window.print());
 $("clear").addEventListener("click", () => { document.querySelectorAll(".f").forEach(f => f.textContent = ""); toast("Alanlar temizlendi"); });
-// Örnek değerler: şablonun nasıl göründüğünü görmek için; gerçek değerler değildir
-const SAMPLE = ["VKS-2026-001", "01.10.2026", "Prof. Dr. Filiz Akyüz, bilim dalı başkanı", "Dr. Besim Fazıl Ağargün, veri yöneticisi, bfagargun@istanbul.edu.tr", "Örnek Üniversitesi Tıp Fakültesi, Gastroenteroloji BD", "Örnek Mah. Örnek Cad. No 1, Ankara", "Doç. Dr. Örnek Örnek, ornek@ornek.edu.tr", "Örnek Kurum KVKK Sorumlusu, kvkk@ornek.edu.tr", "Türkçe kolonoskopi raporlarından adenom saptama oranının otomatik çıkarımı: dış doğrulama", "İstanbul Tıp Fakültesi Klinik Araştırmalar Etik Kurulu", "2026/123", "15.09.2026", "Ünitede geliştirilen NLP hattının başka bir merkezin raporlarında doğrulanması; model kodu ve kimliksizleştirilmiş 2.000 rapor paylaşılır.", "Endoskopi raporu arşivi, kimliksizleştirilmiş alt küme", "C (kimliksizleştirilmiş, araştırma)", "2020-2025 arası kolonoskopi raporları", "2.000 rapor, yaklaşık 1.800 hasta", "CSV (UTF-8), JSON etiket dosyası", "Kurum SFTP sunucusu, uçtan uca şifreli", "VKS-2026-001", "30.09.2027"];
-$("sample").addEventListener("click", () => { const fs = [...document.querySelectorAll("#doc .f")].filter(f => !f.closest(".annex")); fs.forEach((f, i) => { if (SAMPLE[i]) f.textContent = SAMPLE[i]; }); toast("Örnek değerler yazıldı"); });
 // Yapıştırmada biçimi at, düz metin yapıştır
 document.addEventListener("paste", e => { const f = e.target.closest && e.target.closest(".f"); if (!f) return; e.preventDefault(); const t = (e.clipboardData || window.clipboardData).getData("text"); document.execCommand("insertText", false, t); });
 const themeBtn = $("theme");

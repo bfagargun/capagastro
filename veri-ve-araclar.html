@@ -61,6 +61,8 @@ header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper
 .btn.solid{background:var(--teal);color:var(--paper)}
 .btn.icon{padding:.35rem .6rem;min-width:2.3rem;justify-content:center}
 @media (max-width:560px){.brand small{display:none}.bar .home{display:none}}
+@media (max-width:400px){.bar{gap:.3rem}.brand{font-size:.9rem;gap:.45rem}.brand svg{width:22px;height:22px}.bar .btn{padding:.3rem .6rem}.bar .btn.icon{min-width:2rem;padding:.3rem .45rem}}
+@media (max-width:340px){.brand svg{display:none}}
 .intro{padding:3rem 0 2rem;border-bottom:1px solid var(--line)}
 .intro .est{font-family:var(--font-display);font-style:italic;color:var(--claret);font-size:1.05rem;margin-bottom:.6rem}
 .intro p{color:var(--ink-2);font-size:1.08rem}
@@ -121,7 +123,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
   <div class="intro"><div class="wrap">
     <div class="est" data-en="Research group, catalogue">Araştırma grubu, katalog</div>
     <h1 data-en="Data sets and tools">Veri setleri ve araçlar</h1>
-    <p data-en="What the research group holds and builds, described the way we would want a collaborator to see it: one card per data set (source, period, structure, labels, ethics, access class) and one card per piece of software or model (intended use, inputs and outputs, validation, limits, status). Counts are given only where they have been audited; where a figure is missing we prefer no number to a guess.">Araştırma grubunun elindekiler ve geliştirdikleri, bir iş birliği ortağının görmesini istediğimiz biçimde: her veri seti için bir kart (kaynak, dönem, yapı, etiketler, etik, erişim sınıfı) ve her yazılım veya model için bir kart (kullanım amacı, girdi ve çıktılar, doğrulama, sınırlar, durum). Sayılar yalnızca denetlenmişse verilir; eksik rakam yerine tahmin yazmayız.</p>
+    <p data-en="The research group's data sets and software. Each card gives the source, structure, ethics, access class and limits; counts are given only where they have been audited.">Araştırma grubunun veri setleri ve geliştirdiği yazılımlar. Her kartta kaynak, yapı, etik, erişim sınıfı ve sınırlar yer alır; sayılar yalnızca denetlenmişse verilir.</p>
     <nav class="toc" aria-label="Bölümler"><a href="#veri" data-en="Data sets">Veri setleri</a><a href="#araclar" data-en="Software and models">Yazılım ve modeller</a><a href="#erisim" data-en="Access">Erişim</a></nav>
   </div></div>
 
@@ -184,16 +186,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
             <dt data-en="Outputs">Çıktılar</dt><dd data-en="Aggregate national and regional estimates (class D) will be published">Toplu ulusal ve bölgesel kestirimler (D sınıfı) yayımlanacak</dd>
           </dl>
           <div class="tags"><span data-en="Epidemiology">Epidemiyoloji</span><span data-en="Real-world data">Gerçek yaşam verisi</span><span class="cls" data-en="Not shareable">Paylaşılamaz</span></div>
-        </article>
-
-        <article class="card">
-          <h3 data-en="GI tumour board decision records (planned)">GİS tümör konseyi karar kayıtları (planlanan)</h3>
-          <p class="sum" data-en="Structured records of the weekly multidisciplinary tumour board (about 100 decisions a month), to be compared retrospectively with large language model recommendations after ethics approval.">Haftalık multidisipliner tümör konseyinin yapılandırılmış karar kayıtları (ayda yaklaşık 100 karar); etik kurul onayı sonrasında büyük dil modeli önerileriyle retrospektif olarak karşılaştırılacak.</p>
-          <dl>
-            <dt data-en="Status">Durum</dt><dd data-en="Protocol in preparation; no data extracted yet">Protokol hazırlanıyor; henüz veri çıkarılmadı</dd>
-            <dt data-en="Principle">İlke</dt><dd data-en="The board decides first; the model is compared afterwards and never influences care">Önce konsey karar verir; model sonra karşılaştırılır ve bakımı hiçbir zaman etkilemez</dd>
-          </dl>
-          <div class="tags"><span data-en="Large language models">Büyük dil modelleri</span><span data-en="Oncology">Onkoloji</span><span class="st" data-en="Planning">Planlama</span></div>
         </article>
       </div>
     </div>
@@ -294,7 +286,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 <footer><div class="wrap">
   <span>© <span id="year"></span> <span data-en="Division of Gastroenterohepatology, Istanbul Faculty of Medicine, Istanbul University">İstanbul Üniversitesi İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı</span></span>
   <a href="index.html#arastirma" data-en="Research laboratory">Araştırma laboratuvarı</a>
-  <span class="stamp" data-en="Catalogue maintained by the data steward; record counts and periods are added as each data set is audited. Last review: September 2026 (draft).">Katalog veri yöneticisince tutulur; kayıt sayıları ve dönemler her veri seti denetlendikçe eklenir. Son gözden geçirme: Eylül 2026 (taslak).</span>
+  <span class="stamp" data-en="Catalogue maintained by the data steward. Last review: September 2026.">Katalog veri yöneticisince tutulur. Son gözden geçirme: Eylül 2026.</span>
 </div></footer>
 
 <script>

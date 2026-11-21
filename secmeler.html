@@ -86,6 +86,8 @@ header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper
 .btn:hover{background:var(--teal);color:var(--paper)}
 .btn.icon{padding:.35rem .6rem;min-width:2.3rem;justify-content:center}
 @media (max-width:560px){.brand small{display:none}.bar .home{display:none}}
+@media (max-width:400px){.bar{gap:.3rem}.brand{font-size:.9rem;gap:.45rem}.brand svg{width:22px;height:22px}.bar .btn{padding:.3rem .6rem}.bar .btn.icon{min-width:2rem;padding:.3rem .45rem}}
+@media (max-width:340px){.brand svg{display:none}}
 .intro{padding:3rem 0 2rem;border-bottom:1px solid var(--line)}
 .intro .est{font-family:var(--font-display);font-style:italic;color:var(--claret);font-size:1.05rem;margin-bottom:.6rem}
 .intro p{color:var(--ink-2);font-size:1.08rem}
@@ -157,10 +159,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
   <div class="intro"><div class="wrap">
     <div class="est" data-en="Selections">Seçmeler</div>
     <h1 data-en="Selections from the literature">Literatürden seçmeler</h1>
-    <p data-en="Every month we pick a few studies from endoscopy, inflammatory bowel disease, hepatology, the pancreas and artificial intelligence that may change practice, and write briefly what was done, what was found and what it may mean in practice. The summaries are based on the published abstracts and are for information only; for patient care, read the full paper and the current guidelines.">Her ay endoskopi, inflamatuvar bağırsak hastalıkları, hepatoloji, pankreas ve yapay zeka alanlarından pratiği etkileyebilecek birkaç çalışma seçiyor; ne yapıldığını, ne bulunduğunu ve pratiğe olası etkisini kısaca yazıyoruz. Özetler makalelerin yayımlanmış özetlerine dayanır ve bilgilendirme amaçlıdır; hasta bakımında makalenin tamamına ve güncel kılavuzlara başvurun.</p>
+    <p data-en="A few new studies every month from endoscopy, IBD, hepatology, the pancreas and AI: what was done, what was found and what it means for practice. The summaries are based on the published abstracts; for patient care, read the full paper and the current guidelines.">Endoskopi, İBH, hepatoloji, pankreas ve yapay zekadan her ay birkaç yeni çalışma: ne yapıldı, ne bulundu, pratiğe etkisi. Özetler makalelerin yayımlanmış özetlerine dayanır; hasta bakımında makalenin tamamına ve güncel kılavuzlara başvurun.</p>
     <p id="endo-intro" hidden data-en="In the selections from the endoscopy room we share teaching images from our own unit.">Endoskopi odasından seçmelerde ünitemizden öğretici görüntüleri paylaşıyoruz.</p>
     <nav class="toc" aria-label="Bölümler" data-en-aria="Sections">
-      <a href="#literatur" data-en="Selections from the literature">Literatürden seçmeler</a><a href="#endoskopi-odasi" id="toc-endo" hidden data-en="Selections from the endoscopy room">Endoskopi odasından seçmeler</a><a href="egitim.html#program" data-en="Weekly programme and journal club">Haftalık program ve journal club</a><a href="egitim.html#zoom" data-en="Zoom meetings">Zoom toplantıları</a>
+      <a href="#literatur" data-en="Selections from the literature">Literatürden seçmeler</a><a href="#endoskopi-odasi" id="toc-endo" hidden data-en="Selections from the endoscopy room">Endoskopi odasından seçmeler</a><a href="egitim.html#program" data-en="Weekly programme and journal club">Haftalık program ve dergi kulübü</a><a href="egitim.html#zoom" data-en="Zoom meetings">Zoom toplantıları</a>
     </nav>
   </div></div>
 
@@ -187,7 +189,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 <footer><div class="wrap">
   <span>© <span id="year"></span> <span data-en="Division of Gastroenterohepatology, Istanbul Faculty of Medicine, Istanbul University">İstanbul Üniversitesi İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı</span></span>
   <a href="egitim.html" data-en="Training and applications">Eğitim ve başvuru</a>
-  <span class="stamp" data-en="Draft selection prepared for the approval of the division. The summaries are based on the published abstracts, are for information only and do not replace the full paper or the guidelines. Last update: November 2026.">Bilim dalının onayına sunulmak üzere hazırlanmış taslak seçki. Özetler makalelerin yayımlanmış özetlerine dayanır; bilgilendirme amaçlıdır, makalenin tamamının ve kılavuzların yerini tutmaz. Son güncelleme: Kasım 2026.</span>
+  <span class="stamp" data-en="Last update: November 2026.">Son güncelleme: Kasım 2026.</span>
 </div></footer>
 
 <script>

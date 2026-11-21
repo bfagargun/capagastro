@@ -214,7 +214,10 @@ section.alt{background:var(--paper-2)}
 .block h3{margin-top:0}
 .block ul{padding-left:1.1rem;margin:0}
 .block li{margin-bottom:.35rem}
-.block .when{font-family:var(--font-display);font-style:italic;color:var(--claret);margin:-.2rem 0 .5rem}
+.block ul.sched{list-style:none;padding:0}
+.sched li{display:grid;grid-template-columns:5.9rem 1fr;gap:.5rem;margin-bottom:.4rem}
+.sched .t{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sched .z{font-size:.72rem;border:1px solid var(--teal);color:var(--teal);border-radius:999px;padding:0 .45rem;margin-left:.25rem;vertical-align:1px}
 .block p.small{font-size:.92rem;color:var(--ink-2);margin:.8rem 0}
 .unit-room{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:2.2rem;align-items:center;margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--line)}
 .unit-room figure{margin:0}
@@ -548,7 +551,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
           <li data-en="Liver transplant clinic: assessment before transplantation and follow-up afterwards">Karaciğer nakli polikliniği: nakil öncesi değerlendirme ve nakil sonrası izlem</li>
           <li data-en="Wilson disease and rare diseases clinic">Wilson hastalığı ve nadir hastalıklar polikliniği</li>
           <li data-en="Pancreaticobiliary, luminal and motility disorders">Pankreatikobiliyer, lüminal ve motilite hastalıkları</li>
-          <li data-en="Weekly multidisciplinary GI tumour board; transplant and medical-surgical meetings every Monday">Haftalık multidisipliner GİS tümör konseyi; her pazartesi nakil ve medikoşirürji toplantıları</li>
+          <li data-en="Weekly boards: transplant, medical-surgical and GI tumour boards">Haftalık konseyler: nakil, medikoşirürji ve GİS tümör konseyi</li>
         </ul>
       </div>
       <div class="block">
@@ -556,7 +559,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
         <ul>
           <li data-en="Gastroenterology fellowship (3 years)">Gastroenteroloji yan dal uzmanlık eğitimi (3 yıl)</li>
           <li data-en="Internal medicine residency rotations">İç hastalıkları uzmanlık rotasyonları</li>
-          <li data-en="Undergraduate teaching, weekly journal club and case conferences">Tıp fakültesi öğrenci eğitimi, haftalık journal club ve olgu toplantıları</li>
+          <li data-en="Undergraduate teaching; weekly journal club, guideline hour and faculty lectures">Tıp fakültesi öğrenci eğitimi; haftalık dergi kulübü, guideline saati ve öğretim üyesi dersleri</li>
           <li data-en="Hands-on endoscopy training on Fujifilm systems">Fujifilm sistemlerinde uygulamalı endoskopi eğitimi</li>
         </ul>
         <p style="margin:.9rem 0 0"><a class="chip" href="egitim.html" data-en="Training programme and applications">Eğitim programı ve başvuru</a> <a class="chip" href="protokoller.html" data-en="Clinical protocols (Turkish)">Klinik protokoller</a></p>
@@ -591,7 +594,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
   <div class="wrap">
     <div class="section-head">
       <h2 data-en="News and announcements">Haberler ve duyurular</h2>
-      <p data-en="Publications, meetings, grants and unit news from the division; newest first.">Bilim dalından yayınlar, toplantılar, projeler ve ünite haberleri; en yeniden eskiye.</p>
+      <p data-en="Publications, meetings, grants and unit news from the division.">Bilim dalından yayınlar, toplantılar, projeler ve ünite haberleri.</p>
     </div>
     <div class="news" id="news"></div>
     <div class="news-more" id="news-more" hidden><button class="btn" type="button" id="news-btn" data-en="Older news">Daha eski haberler</button></div>
@@ -603,29 +606,31 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
   <div class="wrap">
     <div class="section-head">
       <h2 data-en="Training and meetings">Eğitim ve toplantılar</h2>
-      <p data-en="The fellowship follows the National Standards for Gastroenterology Training 2026. Our Monday meetings can be joined on Zoom, and every month we summarise a few new studies from the literature.">
-        Yan dal eğitimi Gastroenteroloji Tıpta Uzmanlık Ulusal Standartları 2026'ya göre yürütülür. Pazartesi toplantılarımıza Zoom üzerinden katılınabilir; her ay literatürden birkaç yeni çalışmayı kısa özetlerle paylaşıyoruz.
+      <p data-en="The fellowship follows the National Standards for Gastroenterology Training 2026. The Monday boards can be joined on Zoom, and every month we summarise a few new studies from the literature.">
+        Yan dal eğitimi Gastroenteroloji Tıpta Uzmanlık Ulusal Standartları 2026'ya göre yürütülür. Pazartesi konseylerine Zoom üzerinden katılınabilir; her ay literatürden birkaç yeni çalışmayı kısa özetlerle paylaşıyoruz.
       </p>
     </div>
     <div class="cols">
       <div class="block">
-        <h3 data-en="Zoom meetings">Zoom toplantıları</h3>
-        <p class="when" data-en="Every Monday">Her pazartesi</p>
-        <ul>
-          <li data-en="Transplant meeting: liver transplant candidates and recipients">Nakil toplantısı: karaciğer nakli adayları ve nakil sonrası hastalar</li>
-          <li data-en="Medical-surgical meeting: joint decisions with general surgery">Medikoşirürji toplantısı: genel cerrahiyle ortak karar</li>
+        <h3 data-en="Weekly programme">Haftalık program</h3>
+        <ul class="sched">
+          <li><span class="t" data-en="Mon 08:00">Pzt 08.00</span><span data-en="Transplant board &lt;span class=&quot;z&quot;&gt;Zoom&lt;/span&gt;">Nakil konseyi <span class="z">Zoom</span></span></li>
+          <li><span class="t" data-en="Mon 12:00">Pzt 12.00</span><span data-en="Medical-surgical board &lt;span class=&quot;z&quot;&gt;Zoom&lt;/span&gt;">Medikoşirürji konseyi <span class="z">Zoom</span></span></li>
+          <li><span class="t" data-en="Mon 20:00">Pzt 20.00</span><span data-en="Guideline hour">Guideline saati</span></li>
+          <li><span class="t" data-en="Thu 12:00">Per 12.00</span><span data-en="Journal club">Dergi kulübü</span></li>
+          <li><span class="t" data-en="Fri 11:30">Cum 11.30</span><span data-en="Faculty lecture">Öğretim üyesi dersi</span></li>
         </ul>
-        <p class="small" data-en="The link is shared within the team and with invited participants, not on this site.">Bağlantı ekip içinde ve davetli katılımcılarla paylaşılır, sitede yayımlanmaz.</p>
-        <a class="chip" href="egitim.html#zoom" data-en="How to join">Nasıl katılırım?</a>
+        <p class="small" data-en="The Zoom link is shared within the team and with invited participants.">Zoom bağlantısı ekip içinde ve davetli katılımcılarla paylaşılır.</p>
+        <a class="chip" href="egitim.html#program" data-en="Programme">Program</a> <a class="chip" href="egitim.html#zoom" data-en="Joining on Zoom">Zoom ile katılım</a>
       </div>
       <div class="block">
         <h3 data-en="Selections from the literature">Literatürden seçmeler</h3>
-        <p data-en="Studies from endoscopy, IBD, hepatology, the pancreas and artificial intelligence that may change practice: what was done, what was found and what it means.">Endoskopi, İBH, hepatoloji, pankreas ve yapay zekadan pratiği değiştirebilecek çalışmalar: ne yapıldı, ne bulundu, pratiğe etkisi ne.</p>
+        <p data-en="New studies in endoscopy, IBD, hepatology, the pancreas and AI that may change practice, briefly summarised.">Endoskopi, İBH, hepatoloji, pankreas ve yapay zekadan pratiği değiştirebilecek yeni çalışmalar, kısa özetleriyle.</p>
         <a class="chip" href="secmeler.html" data-en="Read the selections">Seçmeleri okuyun</a>
       </div>
       <div class="block">
         <h3 data-en="Fellowship programme">Yan dal eğitimi</h3>
-        <p data-en="Three years: competencies and roles, the weekly programme, advisers, assessment and feedback, with a table matching each national standard.">Üç yıllık program: yetkinlikler ve roller, haftalık program, danışmanlık, ölçme-değerlendirme ve geri bildirim; her ulusal standardın karşılığını gösteren tabloyla.</p>
+        <p data-en="The three-year programme: competencies, assessment and feedback, and how it meets the national standards.">Üç yıllık program; yetkinlikler, değerlendirme ve geri bildirim düzeni, ulusal standartlarla karşılaştırması.</p>
         <a class="chip" href="egitim.html" data-en="Training programme">Eğitim programı</a> <a class="chip" href="egitim.html#standartlar" data-en="National standards">Ulusal standartlar</a>
       </div>
     </div>
@@ -770,18 +775,6 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
         <span data-en="IBD">İBH</span><span data-en="Randomised trial">Randomize çalışma</span>
         <span class="status " data-en="Published">Yayımlandı</span>
         <a href="https://doi.org/10.1002/ueg2.70049" target="_blank" rel="noopener" data-en="Publication">Yayın</a>
-      </div>
-    </div>
-  </article>
-  <article class="project plan">
-    <div class="code">TB</div>
-    <div>
-      <h3 data-en="Tumour board and AI concordance">Tümör konseyi ve yapay zeka uyumu</h3>
-      <p data-en="Comparing GI tumour board decisions (about 100 a month, including hepatocellular carcinoma cases) with large language model recommendations; to run on de-identified data after ethics approval.">GİS tümör konseyi kararlarının (ayda yaklaşık 100 karar, HCC olguları dahil) büyük dil modeli önerileriyle karşılaştırılması; etik kurul onayı sonrasında kimliksizleştirilmiş veriyle yürütülecek.</p>
-      <div class="tags">
-        <span data-en="Large language models">Büyük dil modelleri</span><span data-en="Oncology">Onkoloji</span>
-        <span class="status " data-en="Planning">Planlama</span>
-        
       </div>
     </div>
   </article><!--/pre:projects--></div>
@@ -1110,7 +1103,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
       <a href="sss.html">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .8-1 1.5v.2"/><circle cx="12" cy="17" r=".6" fill="currentColor"/></svg>
         <b data-en="Frequently asked questions">Sık sorulan sorular</b>
-        <span data-en="Appointments, reports, companions, results and getting here: short answers, with search.">Randevu, rapor, refakatçi, sonuçlar ve ulaşım: kısa yanıtlar, arama ile.</span>
+        <span data-en="Referral, reports, companions, results and getting here: short answers, with search.">Başvuru, rapor, refakatçi, sonuçlar ve ulaşım: kısa yanıtlar, arama ile.</span>
       </a>
     </div>
     <div class="cols cols-2">
@@ -1119,8 +1112,8 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
         <ol class="steps">
           <li><b data-en="3 days before">3 gün önce</b><span data-en="Switch to a low-residue diet: no seeds, nuts, raw vegetables, whole grains, red fruit or vegetables.">Posasız diyete geçin: çekirdekli meyve, kuruyemiş, çiğ sebze, tam tahıl, kırmızı renkli meyve-sebze tüketmeyin.</span></li>
           <li><b data-en="1 day before">1 gün önce</b><span data-en="Clear liquids only after breakfast: water, clear broth, tea, apple juice. No milk, no red or purple drinks.">Kahvaltıdan sonra yalnızca berrak sıvılar: su, süzülmüş çorba suyu, çay, elma suyu. Süt ve kırmızı-mor renkli içecek yok.</span></li>
-          <li><b data-en="Evening before">Önceki akşam</b><span data-en="Drink the first half of the bowel-cleansing solution as prescribed, one glass every 15 minutes.">Reçete edilen bağırsak temizleyici solüsyonun ilk yarısını, her 15 dakikada bir bardak olacak şekilde için.</span></li>
-          <li><b data-en="Morning of the procedure">İşlem sabahı</b><span data-en="Take the second half 4-6 hours before your appointment and stop all intake 2 hours before.">İkinci yarıyı randevunuzdan 4-6 saat önce için; işlemden 2 saat önce her türlü alımı kesin.</span></li>
+          <li><b data-en="Evening before">Önceki akşam</b><span data-en="Take both doses of the solution the evening before, at the times you were given (usually 17:00 and 20:00), with plenty of clear fluid after each.">Solüsyonun iki dozunu da bir gün önce akşam, size verilen saatlerde için (genellikle 17.00 ve 20.00); her dozdan sonra bol berrak sıvı alın.</span></li>
+          <li><b data-en="Morning of the procedure">İşlem sabahı</b><span data-en="Clear fluids only; stop all intake 2 hours before your appointment. With X-M Diet, use the two enemas 3 and 2 hours before the appointment.">Yalnızca berrak sıvı; randevudan 2 saat önce her türlü alımı kesin. X-M Diet kullanıyorsanız lavmanları randevudan 3 ve 2 saat önce yapın.</span></li>
           <li><b data-en="Medication">İlaçlar</b><span data-en="Take blood-pressure and heart medication with a sip of water. Tell us in advance if you use blood thinners, insulin or iron tablets.">Tansiyon ve kalp ilaçlarınızı bir yudum suyla alın. Kan sulandırıcı, insülin veya demir hapı kullanıyorsanız önceden bildirin.</span></li>
         </ol>
         <div class="print-row"><a class="btn solid" href="hazirlik.html" data-en="Build my personal preparation plan">Kişisel hazırlık planımı oluştur</a> <button class="btn" id="print" type="button" data-en="Print these instructions">Bu talimatı yazdır</button></div>
@@ -1130,7 +1123,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
         <details open>
           <summary data-en="Upper endoscopy (gastroscopy)">Üst endoskopi (gastroskopi)</summary>
           <ul>
-            <li data-en="No food for 8 hours; water allowed until 2 hours before.">8 saat katı gıda almayın; su işlemden 2 saat öncesine kadar serbesttir.</li>
+            <li data-en="No solid food for 6-8 hours; water allowed until 2 hours before.">6-8 saat katı gıda almayın; su işlemden 2 saat öncesine kadar serbesttir.</li>
             <li data-en="Remove dentures and inform us of any allergy to sedatives.">Takma dişlerinizi çıkarın; sedatif ilaç alerjiniz varsa bildirin.</li>
             <li data-en="If you receive sedation, bring a companion and do not drive for 24 hours.">Sedasyon uygulanacaksa yanınızda refakatçi getirin; 24 saat araç kullanmayın.</li>
           </ul>
@@ -1169,7 +1162,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
         <div class="print-row"><a class="btn" href="islemler.html" data-en="All procedures">Tüm işlemler</a></div>
       </div>
     </div>
-    <p class="stamp" data-en="Patient information on this site is prepared by the division's endoscopy unit and reviewed by its faculty. Last review: September 2026 (draft; awaiting divisional approval). Sources: ESGE bowel preparation guideline (2019 update), ESGE and BSG patient information documents, product leaflets.">Bu sitedeki hasta bilgileri bilim dalı endoskopi ünitesi tarafından hazırlanır ve öğretim üyelerince gözden geçirilir. Son gözden geçirme: Eylül 2026 (taslak; bilim dalı onayı bekliyor). Kaynaklar: ESGE bağırsak hazırlığı rehberi (2019 güncellemesi), ESGE ve BSG hasta bilgilendirme belgeleri, ürün prospektüsleri.</p>
+    <p class="stamp" data-en="Patient information on this site is prepared by the division's endoscopy unit and reviewed by its faculty. Last review: September 2026. Sources: ESGE bowel preparation guideline (2019 update), ESGE and BSG patient information documents, product leaflets.">Bu sitedeki hasta bilgileri bilim dalı endoskopi ünitesi tarafından hazırlanır ve öğretim üyelerince gözden geçirilir. Son gözden geçirme: Eylül 2026. Kaynaklar: ESGE bağırsak hazırlığı rehberi (2019 güncellemesi), ESGE ve BSG hasta bilgilendirme belgeleri, ürün prospektüsleri.</p>
   </div>
 </section>
 
@@ -1178,8 +1171,8 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
   <div class="wrap">
     <div class="section-head">
       <h2 data-en="Çapa Gastroenterohepatology Days">Çapa Gastroenterohepatoloji Günleri</h2>
-      <p data-en="Every year the division hosts a national meeting that walks from pathophysiology to the clinic: basic science recalled from the first years of medical school, worked into the cases seen yesterday. The 25th meeting was held in Istanbul on 9-11 April 2026.">
-        Bilim dalı her yıl patofizyolojiden kliniğe uzanan ulusal bir toplantı düzenler: tıp fakültesinin ilk yıllarında öğrenilen temel bilimler, dün görülen olgularla yoğrulur. 25. toplantı 9-11 Nisan 2026'da İstanbul'da yapıldı.
+      <p data-en="The division's annual national meeting, linking basic science with current cases. The 25th meeting was held in Istanbul on 9-11 April 2026.">
+        Bilim dalının her yıl düzenlediği ulusal toplantı; temel bilimleri güncel olgularla birlikte ele alır. 25. toplantı 9-11 Nisan 2026'da İstanbul'da yapıldı.
       </p>
     </div>
     <div class="cols">
@@ -1192,10 +1185,6 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem
         <h3 data-en="Follow us">Bizi takip edin</h3>
         <p data-en="Meeting announcements, unit news and case highlights are shared on Instagram.">Toplantı duyuruları, ünite haberleri ve olgu paylaşımları Instagram hesabımızda.</p>
         <a class="btn" href="https://www.instagram.com/capagastro" target="_blank" rel="noopener">@capagastro</a>
-      </div>
-      <div class="block">
-        <h3 data-en="Past meetings">Önceki toplantılar</h3>
-        <p data-en="Twenty-five meetings since the first Çapa Days. Programme archives will be added here.">İlk Çapa Günleri'nden bu yana yirmi beş toplantı. Program arşivi buraya eklenecek.</p>
       </div>
     </div>
   </div>
@@ -1365,10 +1354,6 @@ const PROJECTS = [
     tr: "Özel enteral beslenmeye bağlı ishalde pankreas enzim replasman tedavisinin etkisini inceleyen prospektif randomize çalışma (United European Gastroenterology Journal 2025).",
     en: "A prospective randomised trial of pancreatic enzyme replacement for diarrhoea related to exclusive enteral nutrition (United European Gastroenterology Journal 2025).",
     tags: [["İBH","IBD"],["Randomize çalışma","Randomised trial"]] },
-  { code: "TB", title: "Tümör konseyi ve yapay zeka uyumu", titleEn: "Tumour board and AI concordance", status: "plan",
-    tr: "GİS tümör konseyi kararlarının (ayda yaklaşık 100 karar, HCC olguları dahil) büyük dil modeli önerileriyle karşılaştırılması; etik kurul onayı sonrasında kimliksizleştirilmiş veriyle yürütülecek.",
-    en: "Comparing GI tumour board decisions (about 100 a month, including hepatocellular carcinoma cases) with large language model recommendations; to run on de-identified data after ethics approval.",
-    tags: [["Büyük dil modelleri","Large language models"],["Onkoloji","Oncology"]] },
 ];
 
 /* Ekip. photo: fotoğraf adresi; avesis: AVESİS numarası (photo yoksa fotoğraf buradan gelir).

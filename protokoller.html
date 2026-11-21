@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Klinik protokoller | Çapa Gastroenterohepatoloji</title>
 <meta name="description" content="Bilim dalı asistanları ve rotasyoncular için klinik protokol özetleri: antitrombotik yönetimi, sedasyon ve açlık, HCC sürveyansı, biyolojik tedavi öncesi tarama, Wilson izlemi, akut üst GİS kanaması, ERCP kontrol listesi.">
-<!-- TASLAK: yayına hazır olunca aşağıdaki iki robots satırını silin -->
+<!-- Ünite içi sayfa: dizin dışı (noindex) -->
 <meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="googlebot" content="noindex, nofollow, noarchive">
 <link rel="canonical" href="https://capagastro.org/protokoller.html">
 <meta property="og:title" content="Klinik protokoller | Çapa Gastroenterohepatoloji">
-<meta property="og:description" content="Asistanlar için klinik protokol özetleri; kılavuz kaynaklı, bilim dalı onaylı.">
+<meta property="og:description" content="Asistanlar için kılavuz kaynaklı klinik protokol özetleri.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://capagastro.org/protokoller.html">
 <meta property="og:image" content="https://capagastro.org/og.png">
@@ -53,6 +53,8 @@ header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper
 .btn.icon{padding:.35rem .6rem;min-width:2.3rem;justify-content:center}
 .btn.small{padding:.3rem .8rem;font-size:.82rem}
 @media (max-width:560px){.brand small{display:none}.bar .home{display:none}}
+@media (max-width:400px){.bar{gap:.3rem}.brand{font-size:.9rem;gap:.45rem}.brand svg{width:22px;height:22px}.bar .btn{padding:.3rem .6rem}.bar .btn.icon{min-width:2rem;padding:.3rem .45rem}}
+@media (max-width:340px){.brand svg{display:none}}
 .intro{padding:3rem 0 2rem;border-bottom:1px solid var(--line)}
 .intro .est{font-family:var(--font-display);font-style:italic;color:var(--claret);font-size:1.05rem;margin-bottom:.6rem}
 .intro p{color:var(--ink-2);font-size:1.05rem}
@@ -119,10 +121,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
   <div class="intro"><div class="wrap">
     <div class="est">Asistanlar ve rotasyoncular için</div>
     <h1>Klinik protokoller</h1>
-    <p>Bilim dalında sık karşılaşılan durumlar için kılavuz kaynaklı, tek sayfalık protokol özetleri. Amaç nöbette ve poliklinikte hızlı, tutarlı karar; ayrıntı ve istisnalar için kaynak kılavuza ve sorumlu öğretim üyesine başvurulur. Her protokolün sürümü, kaynağı ve onay durumu altında yazılıdır.</p>
-    <div class="en-note" id="en-note" lang="en" hidden><p><b>In English.</b> One-page clinical protocol summaries for the division's fellows and rotating residents: antithrombotic management before endoscopy; fasting, sedation and antibiotic prophylaxis; hepatocellular carcinoma surveillance; screening, vaccination and monitoring before biologic and small-molecule therapy in IBD; Wilson disease diagnosis and follow-up; initial management of acute upper GI bleeding; and an ERCP checklist with post-ERCP pancreatitis prophylaxis.</p><p>They are kept in Turkish because they are working documents for the unit's staff on call and in clinic. Each summary is drawn from the international guidelines cited beneath it and remains a draft until the faculty approve it.</p></div><script>(function(){var q=null,s=null,l;try{q=new URLSearchParams(location.search).get("lang")}catch(e){}try{s=localStorage.getItem("lang")}catch(e){}if(q==="en"||q==="tr"){l=q;try{localStorage.setItem("lang",q)}catch(e){}}else if(s==="en"||s==="tr")l=s;else l="tr";if(l==="en")document.getElementById("en-note").hidden=false})();</script>
+    <p>Bilim dalında sık karşılaşılan durumlar için kılavuz kaynaklı, tek sayfalık protokol özetleri. Amaç nöbette ve poliklinikte hızlı, tutarlı karar; ayrıntı ve istisnalar için kaynak kılavuza ve sorumlu öğretim üyesine başvurulur. Her protokolün sürümü ve kaynağı altında yazılıdır.</p>
+    <div class="en-note" id="en-note" lang="en" hidden><p><b>In English.</b> One-page clinical protocol summaries for the division's fellows and rotating residents: antithrombotic management before endoscopy; fasting, sedation and antibiotic prophylaxis; hepatocellular carcinoma surveillance; screening, vaccination and monitoring before biologic and small-molecule therapy in IBD; Wilson disease diagnosis and follow-up; initial management of acute upper GI bleeding; and an ERCP checklist with post-ERCP pancreatitis prophylaxis.</p><p>They are kept in Turkish because they are working documents for the unit's staff on call and in clinic. Each summary is drawn from the international guidelines cited beneath it; a protocol approved by the faculty shows its approval date.</p></div><script>(function(){var q=null,s=null,l;try{q=new URLSearchParams(location.search).get("lang")}catch(e){}try{s=localStorage.getItem("lang")}catch(e){}if(q==="en"||q==="tr"){l=q;try{localStorage.setItem("lang",q)}catch(e){}}else if(s==="en"||s==="tr")l=s;else l="tr";if(l==="en")document.getElementById("en-note").hidden=false})();</script>
     <nav class="toc" aria-label="Protokoller" id="toc"></nav>
-    <div class="warnbox"><b>Taslak.</b> Bu özetler uluslararası kılavuzlardan hazırlanmıştır ve bilim dalı öğretim üyelerince onaylanana kadar ünitenin resmi protokolü değildir. Onay verildikçe her protokolün "Onay" satırı güncellenecektir. Hasta bakımında son karar hastayı gören hekimindir.</div>
+    <div class="warnbox">Bu özetler uluslararası kılavuzlardan hazırlanmıştır; öğretim üyelerince onaylanan protokolün altında onay tarihi yazar. Hasta bakımında son karar hastayı gören hekimindir.</div>
   </div></div>
   <div id="protos"></div>
 </main>
@@ -135,11 +137,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 <footer><div class="wrap">
   <span>© <span id="year"></span> İstanbul Üniversitesi İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı</span>
   <a href="egitim.html">Eğitim ve başvuru</a>
-  <span class="stamp">Hazırlayan: Dr. Besim Fazıl Ağargün (taslak). Kaynaklar her protokolün altında. Yılda bir ve kılavuz güncellemelerinde gözden geçirilir.</span>
+  <span class="stamp">Hazırlayan: Dr. Besim Fazıl Ağargün. Kaynaklar her protokolün altında. Yılda bir ve kılavuz güncellemelerinde gözden geçirilir.</span>
 </div></footer>
 
 <script>
-/* Protokoller. Her kayıt: id, title, lead, version, approved (boş ise "onay bekliyor"), body (HTML), src (HTML). */
+/* Protokoller. Her kayıt: id, title, lead, version, approved (onay tarihi ve onaylayan; boşsa satır gösterilmez), body (HTML), src (HTML). */
 const PROTOCOLS = [
 { id: "antitrombotik", title: "Endoskopi öncesi antitrombotik yönetimi", version: "0.1, Eylül 2026", approved: "",
   lead: "Kanama riski işleme, tromboz riski hastaya göre sınıflanır; karar ikisinin kesişimidir. Kardiyoloji veya nöroloji ile görüşülmesi gereken hastalar önceden belirlenir; hiçbir antitrombotik hasta tarafından kendi kararıyla kesilmez.",
@@ -381,7 +383,7 @@ $("protos").innerHTML = PROTOCOLS.map((p, i) => `
     <div class="wrap">
       <div class="proto-head">
         <div><h2>${i + 1}. ${p.title}</h2><p class="lead">${p.lead}</p>
-          <div class="meta"><span><b>Sürüm</b> ${p.version}</span><span><b>Onay</b> ${p.approved || "bilim dalı onayı bekliyor"}${p.approved ? "" : '<span class="tag">taslak</span>'}</span></div></div>
+          <div class="meta"><span><b>Sürüm</b> ${p.version}</span>${p.approved ? '<span><b>Onay</b> ' + p.approved + '</span>' : ''}</div></div>
         <button class="btn small" type="button" data-print="${p.id}">Bu protokolü yazdır</button>
       </div>
       ${p.body}

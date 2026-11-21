@@ -98,6 +98,8 @@ header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper
 .btn.solid{background:var(--teal);color:var(--paper)}
 .btn.icon{padding:.35rem .6rem;min-width:2.3rem;justify-content:center}
 @media (max-width:560px){.brand small{display:none}.bar .home{display:none}}
+@media (max-width:400px){.bar{gap:.3rem}.brand{font-size:.9rem;gap:.45rem}.brand svg{width:22px;height:22px}.bar .btn{padding:.3rem .6rem}.bar .btn.icon{min-width:2rem;padding:.3rem .45rem}}
+@media (max-width:340px){.brand svg{display:none}}
 .intro{padding:3rem 0 2rem;border-bottom:1px solid var(--line)}
 .intro .est{font-family:var(--font-display);font-style:italic;color:var(--claret);font-size:1.05rem;margin-bottom:.6rem}
 .intro p{color:var(--ink-2);font-size:1.08rem}
@@ -130,12 +132,15 @@ section.alt{background:var(--paper-2)}
 .callout{border-left:4px solid var(--teal);padding:.9rem 1.2rem;background:var(--paper-2);margin-top:1.6rem}
 .callout p{margin:0;max-width:none}
 .cta{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.2rem}
-.week small{display:block;color:var(--ink-2);font-size:.84rem;margin-top:.15rem}
+.week small{display:block;color:var(--ink-2);font-size:.86rem;margin-top:.15rem;font-weight:400}
+.week td.t{white-space:nowrap;font-weight:600;font-variant-numeric:tabular-nums}
+.week td b{font-weight:600}
 .std td:first-child{white-space:nowrap;font-weight:600;color:var(--teal-2)}
 @media (max-width:640px){.std td:first-child{white-space:normal}}
 .sub{font-family:var(--font-display);font-weight:500;font-size:1.35rem;margin:2.4rem 0 1rem}
-.meet .when{font-family:var(--font-display);font-style:italic;color:var(--claret);margin:0 0 .25rem;font-size:1.02rem}
 .note{font-size:.88rem;color:var(--ink-2);margin-top:1.2rem;max-width:none}
+.stdbox summary{cursor:pointer;font-weight:600;color:var(--teal);margin-bottom:1rem;width:fit-content}
+.stdbox[open] summary{margin-bottom:1.2rem}
 footer{padding:2rem 0;color:var(--ink-2);font-size:.85rem}
 footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 .stamp{font-size:.8rem;color:var(--ink-2);width:100%}
@@ -162,7 +167,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
   <div class="intro"><div class="wrap">
     <div class="est" data-en="Training and applications">Eğitim ve başvuru</div>
     <h1 data-en="Learning gastroenterology at Çapa">Çapa'da gastroenteroloji eğitimi</h1>
-    <p data-en="Since 1963 the division has trained the gastroenterologists who went on to found and lead units across the country: 38 fellowship graduates so far. This page describes the fellowship programme and how it meets the national standards, the weekly meetings, the internal medicine rotation, what medical students can do with us and how to apply for an observership.">Bilim dalı 1963'ten bu yana ülkenin dört bir yanında birim kuran ve yöneten gastroenterologları yetiştirdi: bugüne kadar 38 yan dal mezunu. Bu sayfa yan dal programını ve ulusal standartları nasıl karşıladığını, haftalık toplantıları, iç hastalıkları rotasyonunu, tıp öğrencilerinin bizimle neler yapabileceğini ve gözlemci başvurusunu anlatır.</p>
+    <p data-en="Since 1963 the division has trained the gastroenterologists who went on to found and lead units across the country: 38 fellowship graduates so far.">Bilim dalı 1963'ten bu yana ülkenin dört bir yanında birim kuran ve yöneten gastroenterologları yetiştirdi: bugüne kadar 38 yan dal mezunu.</p>
     <nav class="toc" aria-label="Bölümler" data-en-aria="Sections">
       <a href="#yandal" data-en="Fellowship">Yan dal eğitimi</a><a href="#yetkinlikler" data-en="Aims and competencies">Amaç ve yetkinlikler</a><a href="#program" data-en="Weekly programme">Haftalık program</a><a href="#zoom" data-en="Zoom meetings">Zoom toplantıları</a><a href="#surec" data-en="Training process and assessment">Eğitim süreci ve değerlendirme</a><a href="#standartlar" data-en="National standards">Ulusal standartlar</a><a href="#rotasyon" data-en="Internal medicine rotation">İç hastalıkları rotasyonu</a><a href="#ogrenci" data-en="Medical students">Tıp öğrencileri</a><a href="#gozlemci" data-en="Observers and visiting fellows">Gözlemci ve misafir hekimler</a>
     </nav>
@@ -181,20 +186,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
           <li data-en="High-volume endoscopy on Fujifilm systems, every weekday, with image-enhanced endoscopy as routine">Fujifilm sistemlerinde hafta içi her gün yüksek hacimli endoskopi; görüntü iyileştirmeli endoskopi rutin</li>
           <li data-en="Tertiary hepatology: viral hepatitis, MASLD, autoimmune and metabolic liver disease, cirrhosis and its complications, HCC, transplant assessment and follow-up">Üçüncü basamak hepatoloji: viral hepatit, MASLD, otoimmün ve metabolik karaciğer hastalıkları, siroz ve komplikasyonları, HCC, nakil değerlendirmesi ve izlemi</li>
           <li data-en="IBD from first diagnosis to biologic therapy and surgery decisions, with intestinal ultrasound and the biologic therapy unit">İlk tanıdan biyolojik tedaviye ve cerrahi kararına İBH; bağırsak ultrasonografisi ve biyolojik tedavi ünitesiyle</li>
-          <li data-en="Weekly multidisciplinary meetings: the GI tumour board, the transplant meeting and the medical-surgical meeting">Haftalık multidisipliner toplantılar: GİS tümör konseyi, nakil toplantısı ve medikoşirürji toplantısı</li>
+          <li data-en="Weekly boards: the transplant board, the medical-surgical board and the GI tumour board">Haftalık konseyler: nakil konseyi, medikoşirürji konseyi ve GİS tümör konseyi</li>
         </ul></div>
         <div class="card"><h3 data-en="Research expectations">Araştırma beklentisi</h3><ul>
-          <li data-en="As the national standards require, every fellow plans, runs, reports and submits at least one study; the topic and the supervisor are set in the first half of training">Ulusal standartların gereği olarak her asistan en az bir araştırmayı planlar, yürütür, raporlar ve yayına gönderir; konu ve danışman eğitimin ilk yarısında belirlenir</li>
-          <li data-en="A thesis with a written protocol and ethics approval in the first year; the aim is a publishable study, not a formality">İlk yıl yazılı protokol ve etik kurul onaylı bir tez; hedef formalite değil yayımlanabilir bir çalışma</li>
+          <li data-en="A thesis with a written protocol and ethics approval: topic and supervisor are set in the first half of training, and the study is completed, reported and submitted for publication">Yazılı protokollü ve etik kurul onaylı bir tez: konu ve danışman eğitimin ilk yarısında belirlenir; çalışma tamamlanır, raporlanır ve yayına gönderilir</li>
           <li data-en="At least one first-author abstract at a national or European meeting (UEG Week, ECCO, EASL) during training">Eğitim boyunca ulusal veya Avrupa toplantısında (UEG Week, ECCO, EASL) en az bir ilk isim bildiri</li>
           <li data-en="Participation in one of the group's data or AI projects, with training in de-identification and responsible AI use">Grubun veri veya yapay zeka projelerinden birine katılım; kimliksizleştirme ve sorumlu yapay zeka kullanımı eğitimi</li>
-          <li data-en="Help with study design and statistics from the clinical trials methodology side of the group">Grubun klinik araştırma metodolojisi tarafından çalışma tasarımı ve istatistik desteği</li>
+          <li data-en="Support with study design and statistics from the group's clinical research methodology team">Çalışma tasarımı ve istatistikte grubun klinik araştırma metodolojisi desteği</li>
         </ul></div>
         <div class="card"><h3 data-en="Curriculum and assessment">Müfredat ve değerlendirme</h3><ul>
           <li data-en="National curriculum (TUKMOS Gastroenterology 2025, the GASYEK curriculum) with procedure logbooks; procedure targets are those of the national curriculum, and the ESGE curricula are used as reference for advanced endoscopy">Ulusal müfredat (TUKMOS Gastroenteroloji 2025, GASYEK müfredatı) ve işlem kayıt defterleri; hedef işlem sayıları ulusal müfredattaki gibidir, ileri endoskopide ESGE müfredatları referans</li>
           <li data-en="Yearly progress review with the head of division; competence in each procedure is signed off by a faculty member">Bilim dalı başkanıyla yıllık gelişim görüşmesi; her işlemde yetkinlik bir öğretim üyesince onaylanır</li>
           <li data-en="Fellows are encouraged to join ESGE, UEG and ECCO as trainee members and to apply for their fellowships and schools">Asistanların ESGE, UEG ve ECCO'ya eğitim üyesi olarak katılması ve burs ile okullarına başvurması teşvik edilir</li>
-          <li data-en="Assessment methods, the training file and feedback: &lt;a href=&quot;#surec&quot;&gt;Training process and assessment&lt;/a&gt;">Ölçme yöntemleri, eğitim dosyası ve geri bildirim: <a href="#surec">Eğitim süreci ve değerlendirme</a></li>
         </ul></div>
       </div>
     </div>
@@ -202,7 +205,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 
   <section id="yetkinlikler" class="alt">
     <div class="wrap">
-      <div class="head"><h2 data-en="Aims and competencies">Amaç ve yetkinlikler</h2><p data-en="The aim is a gastroenterologist who can practise independently at the end of training. The national curriculum describes this as clinical competence (using knowledge and skills in medical decisions) and procedural competence (using them in medical procedures); competence levels, assessment methods and procedure targets are those of the national curriculum.">Amaç, eğitimini tamamlayan hekimin gastroenteroloji ve hepatolojide bağımsız hizmet sunabilmesidir. Ulusal müfredat bunu klinik yetkinlik (bilgi ve becerileri tıbbi kararlarda kullanabilmek) ve girişimsel yetkinlik (aynısını tıbbi girişimlerde yapabilmek) olarak tanımlar; yetkinlik düzeyleri, ölçme yöntemleri ve hedef işlem sayıları ulusal müfredattaki gibidir.</p></div>
+      <div class="head"><h2 data-en="Aims and competencies">Amaç ve yetkinlikler</h2><p data-en="The aim is a gastroenterologist who can practise independently: someone who uses knowledge and skills in medical decisions (clinical competence) and in procedures (procedural competence).">Amaç, gastroenteroloji ve hepatolojide bağımsız hizmet sunabilen bir hekimdir: bilgi ve becerisini tıbbi kararlarda (klinik yetkinlik) ve girişimlerde (girişimsel yetkinlik) kullanabilen.</p></div>
       <div class="grid grid-2">
         <div class="card"><h3 data-en="Clinical competence">Klinik yetkinlik</h3><ul>
           <li data-en="Diagnosis and treatment decisions in gastrointestinal bleeding, jaundice, liver failure, IBD, pancreatitis and GI tumours">GİS kanaması, sarılık, karaciğer yetmezliği, İBH, pankreatit ve GİS tümörlerinde tanı ve tedavi kararı</li>
@@ -215,7 +218,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
           <li data-en="Paracentesis, liver biopsy, FibroScan, abdominal and intestinal ultrasound">Parasentez, karaciğer biyopsisi, FibroScan, batın ve bağırsak ultrasonografisi</li>
         </ul></div>
       </div>
-      <h3 class="sub" data-en="Six roles acquired alongside">Bunlarla birlikte kazanılan altı rol</h3>
+      <h3 class="sub" data-en="Six roles">Altı rol</h3>
       <div class="grid">
         <div class="card"><h3 data-en="Manager">Yönetici</h3><p data-en="Organises the ward, the endoscopy list and on-call work, uses resources carefully and leads the team on duty.">Servisi, endoskopi listesini ve nöbeti düzenler; kaynakları özenle kullanır, nöbetteki ekibi yönlendirir.</p></div>
         <div class="card"><h3 data-en="Team member">Ekip üyesi</h3><p data-en="Decides together with nurses, surgeons, radiologists, pathologists and other specialties, and presents at boards and meetings.">Hemşire, cerrah, radyolog, patolog ve diğer bölümlerle birlikte karar verir; konsey ve toplantılarda sunum yapar.</p></div>
@@ -229,17 +232,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 
   <section id="program">
     <div class="wrap">
-      <div class="head"><h2 data-en="Weekly academic programme">Haftalık akademik program</h2><p data-en="Protected teaching time every week, within working hours; days and hours are announced each term and may change, and attendance is recorded. The two Monday meetings can also be joined on &lt;a href=&quot;#zoom&quot;&gt;Zoom&lt;/a&gt;. Residents on rotation and students are welcome at all of it.">Her hafta çalışma saatleri içinde korunmuş eğitim zamanı; gün ve saatler her dönem duyurulur, değişebilir; katılım kaydedilir. Pazartesi günkü iki toplantıya <a href="#zoom">Zoom</a> üzerinden de katılınabilir. Rotasyondaki asistanlar ve öğrenciler hepsine davetlidir.</p></div>
+      <div class="head"><h2 data-en="Weekly academic programme">Haftalık akademik program</h2><p data-en="Held on the same days and times every week; changes are announced in advance and attendance is recorded. The Monday boards can also be joined on &lt;a href=&quot;#zoom&quot;&gt;Zoom&lt;/a&gt;. Residents on rotation and students are welcome.">Her hafta aynı gün ve saatlerde yapılır; değişiklikler önceden duyurulur, katılım kaydedilir. Pazartesi konseylerine <a href="#zoom">Zoom</a> üzerinden de katılınabilir. Rotasyondaki asistanlar ve öğrenciler davetlidir.</p></div>
       <table class="week" tabindex="0" aria-label="Haftalık akademik program" data-en-aria="Weekly academic programme">
-        <thead><tr><th data-en="Activity">Etkinlik</th><th data-en="Format">Biçim</th><th data-en="Who presents">Kim sunar</th></tr></thead>
+        <thead><tr><th data-en="Day and time">Gün ve saat</th><th data-en="Session">Etkinlik</th><th data-en="Who presents">Kim sunar</th></tr></thead>
         <tbody>
-          <tr><td><span data-en="Transplant meeting">Nakil toplantısı</span><small data-en="Mondays, also on Zoom">Pazartesi, Zoom ile de</small></td><td data-en="Liver transplant candidates and recipients in follow-up, discussed with transplant surgery and the other specialties involved">Karaciğer nakli adayları ve nakil sonrası izlenen hastalar; nakil cerrahisi ve ilgili bölümlerle</td><td data-en="The fellow following the patient; faculty">Hastayı izleyen yan dal asistanı; öğretim üyeleri</td></tr>
-          <tr><td><span data-en="Medical-surgical meeting">Medikoşirürji toplantısı</span><small data-en="Mondays, also on Zoom">Pazartesi, Zoom ile de</small></td><td data-en="Joint decisions with general surgery for the patients the two teams follow together">Gastroenteroloji ve genel cerrahinin birlikte izlediği hastalarda ortak karar</td><td data-en="The fellow following the patient; faculty">Hastayı izleyen yan dal asistanı; öğretim üyeleri</td></tr>
-          <tr><td data-en="Journal club">Journal club</td><td data-en="One recent paper read critically: design, analysis, what it changes in practice">Yakın tarihli bir makalenin eleştirel okunması: tasarım, analiz, pratikte neyi değiştirdiği</td><td data-en="Fellows in turn, a faculty member moderates">Sırayla yan dal asistanları; bir öğretim üyesi yönetir</td></tr>
-          <tr><td data-en="Case meeting">Olgu toplantısı</td><td data-en="Difficult inpatients and outpatients of the week, with endoscopy images and pathology">Haftanın zor yatan ve ayaktan hastaları; endoskopi görüntüleri ve patolojiyle</td><td data-en="The fellow following the patient">Hastayı izleyen asistan</td></tr>
-          <tr><td data-en="GI tumour board">GİS tümör konseyi</td><td data-en="Multidisciplinary decisions with surgery, oncology, radiology, pathology and nuclear medicine">Cerrahi, onkoloji, radyoloji, patoloji ve nükleer tıpla multidisipliner karar</td><td data-en="Faculty of all disciplines">Tüm disiplinlerin öğretim üyeleri</td></tr>
-          <tr><td data-en="Endoscopy review">Endoskopi değerlendirmesi</td><td data-en="Teaching cases and complications from the unit, quality indicators of the month">Üniteden eğitici olgular ve komplikasyonlar, ayın kalite göstergeleri</td><td data-en="Endoscopy faculty">Endoskopi öğretim üyeleri</td></tr>
-          <tr><td data-en="Research meeting">Araştırma toplantısı</td><td data-en="Progress of ongoing projects, new proposals, statistics and AI questions">Süren projelerin ilerlemesi, yeni öneriler, istatistik ve yapay zeka soruları</td><td data-en="Research group">Araştırma grubu</td></tr>
+          <tr><td class="t"><span data-en="Monday 08:00">Pazartesi 08.00</span><small>Zoom</small></td><td><b data-en="Transplant board">Nakil konseyi</b><small data-en="Liver transplant candidates and recipients in follow-up, with transplant surgery and the other specialties involved">Karaciğer nakli adayları ve nakil sonrası izlenen hastalar; nakil cerrahisi ve ilgili bölümlerle</small></td><td data-en="The fellow following the patient; faculty">Hastayı izleyen yan dal asistanı; öğretim üyeleri</td></tr>
+          <tr><td class="t"><span data-en="Monday 12:00">Pazartesi 12.00</span><small>Zoom</small></td><td><b data-en="Medical-surgical board">Medikoşirürji konseyi</b><small data-en="Joint decisions with general surgery for the patients the two teams follow together">Gastroenteroloji ve genel cerrahinin birlikte izlediği hastalarda ortak karar</small></td><td data-en="The fellow following the patient; faculty">Hastayı izleyen yan dal asistanı; öğretim üyeleri</td></tr>
+          <tr><td class="t"><span data-en="Monday 20:00">Pazartesi 20.00</span></td><td><b data-en="Guideline hour">Guideline saati</b><small data-en="The recommendations of a current guideline (ESGE, ECCO, EASL and others) reviewed and discussed section by section">Güncel bir kılavuzun (ESGE, ECCO, EASL ve diğerleri) önerilerinin bölüm bölüm gözden geçirilip tartışılması</small></td><td data-en="Fellows and faculty">Yan dal asistanları ve öğretim üyeleri</td></tr>
+          <tr><td class="t"><span data-en="Thursday 12:00">Perşembe 12.00</span></td><td><b data-en="Journal club">Dergi kulübü</b><small data-en="One recent paper read critically: design, analysis, what it changes in practice">Yakın tarihli bir makalenin eleştirel okunması: tasarım, analiz, pratikte neyi değiştirdiği</small></td><td data-en="Fellows in turn; a faculty member moderates">Sırayla yan dal asistanları; bir öğretim üyesi yönetir</td></tr>
+          <tr><td class="t"><span data-en="Friday 11:30">Cuma 11.30</span></td><td><b data-en="Faculty lecture">Öğretim üyesi dersi</b><small data-en="A faculty member teaches a topic from the national curriculum">Bir öğretim üyesinin ulusal müfredattan bir konuyu anlattığı ders</small></td><td data-en="Faculty in turn">Sırayla öğretim üyeleri</td></tr>
         </tbody>
       </table>
     </div>
@@ -247,20 +248,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 
   <section id="zoom" class="alt">
     <div class="wrap">
-      <div class="head"><h2 data-en="Zoom meetings">Zoom toplantıları</h2><p data-en="Two multidisciplinary meetings are held every Monday, and both can be joined on Zoom. Residents on rotation are welcome; physicians from other centres, for example a colleague who referred a patient, can ask to join.">Her pazartesi iki multidisipliner toplantı yapılır; ikisine de Zoom üzerinden katılınabilir. Rotasyondaki asistanlar davetlidir; başka merkezlerden hekimler, örneğin hastasını sevk eden meslektaşlarımız, katılmak için yazabilir.</p></div>
+      <div class="head"><h2 data-en="Zoom meetings">Zoom toplantıları</h2><p data-en="The transplant board (Mondays 08:00) and the medical-surgical board (Mondays 12:00) can be joined on Zoom. Residents on rotation are welcome; physicians from other centres, for example a colleague who referred a patient, can ask to join.">Nakil konseyine (pazartesi 08.00) ve medikoşirürji konseyine (pazartesi 12.00) Zoom üzerinden katılınabilir. Rotasyondaki asistanlar davetlidir; başka merkezlerden hekimler, örneğin hastasını sevk eden meslektaşlarımız, katılmak için yazabilir.</p></div>
       <div class="grid grid-2">
-        <div class="card meet"><p class="when" data-en="Every Monday">Her pazartesi</p><h3 data-en="Transplant meeting">Nakil toplantısı</h3><p data-en="Liver transplant candidates and recipients in follow-up are reviewed with transplant surgery and the other specialties involved: when to list, how to prepare for transplantation and the problems that follow it.">Karaciğer nakli adayları ve nakil sonrası izlenen hastalar nakil cerrahisi ve ilgili bölümlerle birlikte değerlendirilir: listeleme zamanı, nakle hazırlık ve nakil sonrası sorunlar.</p></div>
-        <div class="card meet"><p class="when" data-en="Every Monday">Her pazartesi</p><h3 data-en="Medical-surgical meeting">Medikoşirürji toplantısı</h3><p data-en="Patients followed jointly by gastroenterology and general surgery are discussed together: whether and when to operate, and the endoscopic or medical alternatives.">Gastroenteroloji ve genel cerrahinin birlikte izlediği hastalar ortak değerlendirilir: cerrahinin gerekip gerekmediği, zamanlaması ve endoskopik veya medikal seçenekler.</p></div>
-      </div>
-      <div class="grid grid-2" style="margin-top:2rem">
         <div class="card"><h3 data-en="How to join">Nasıl katılırım?</h3><ul>
-          <li data-en="The Zoom link is shared within the team and with invited participants; because patient information is discussed, it is not published here.">Zoom bağlantısı ekip içinde ve davetli katılımcılarla paylaşılır; toplantılarda hasta bilgisi konuşulduğu için burada yayımlanmaz.</li>
+          <li data-en="The Zoom link is shared within the team and with invited participants; because patient information is discussed, it is not published here.">Zoom bağlantısı ekip içinde ve davetli katılımcılarla paylaşılır; konseylerde hasta bilgisi konuşulduğu için burada yayımlanmaz.</li>
           <li data-en="To be added to the list, write to the head of division with your name, institution and role.">Katılımcı listesine eklenmek için adınızı, kurumunuzu ve görevinizi bilim dalı başkanına yazın.</li>
         </ul><div class="cta"><a class="btn solid" href="mailto:filiz.akyuz@istanbul.edu.tr?subject=Zoom%20toplant%C4%B1lar%C4%B1%3A%20kat%C4%B1l%C4%B1m%20iste%C4%9Fi" data-en="Ask to join">Katılım isteği gönderin</a></div></div>
         <div class="card"><h3 data-en="Rules for participants">Katılım kuralları</h3><ul>
           <li data-en="Join with your full name and do not pass the link on.">Ad ve soyadınızla bağlanın; bağlantıyı başkasına iletmeyin.</li>
-          <li data-en="Do not record the meeting or take screenshots.">Toplantıyı kaydetmeyin, ekran görüntüsü almayın.</li>
-          <li data-en="Patient information discussed in the meeting stays in the meeting (Turkish data protection law, KVKK).">Toplantıda konuşulan hasta bilgilerini dışarıya taşımayın (KVKK).</li>
+          <li data-en="Do not record the meeting or take screenshots.">Konseyi kaydetmeyin, ekran görüntüsü almayın.</li>
+          <li data-en="Patient information discussed in the meeting stays in the meeting (Turkish data protection law, KVKK).">Konseyde konuşulan hasta bilgilerini dışarıya taşımayın (KVKK).</li>
         </ul></div>
       </div>
     </div>
@@ -268,7 +265,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 
   <section id="surec">
     <div class="wrap">
-      <div class="head"><h2 data-en="Training process and assessment">Eğitim süreci ve değerlendirme</h2><p data-en="How the programme runs from day to day: orientation, job descriptions, advisers, fellow representation, assessment and feedback. The written documents behind it (job descriptions, logbooks, minutes of meetings) are kept by the division.">Programın gündelik işleyişi: uyum programı, görev tanımları, danışmanlık, asistan temsilciliği, ölçme-değerlendirme ve geri bildirim. Bunların yazılı belgeleri (görev tanımları, karneler, toplantı tutanakları) bilim dalında tutulur.</p></div>
+      <div class="head"><h2 data-en="Training process and assessment">Eğitim süreci ve değerlendirme</h2><p data-en="The written records behind these (job descriptions, logbooks, minutes of meetings) are kept by the division.">Bunların yazılı belgeleri (görev tanımları, karneler, toplantı tutanakları) bilim dalında tutulur.</p></div>
       <div class="grid">
         <div class="card"><h3 data-en="Orientation">Uyum programı</h3><p data-en="In their first week new fellows are taken through the aims of the programme, job descriptions, the on-call system, unit rules and personal biosafety; common situations are discussed with worked examples, and the session is minuted.">Eğitime başlayan asistana ilk hafta programın amaç ve hedefleri, görev tanımları, nöbet düzeni, ünite kuralları ve bireysel biyogüvenlik anlatılır; sık karşılaşılan durumlar örnek olaylarla konuşulur, toplantı tutanağa geçer.</p></div>
         <div class="card"><h3 data-en="Duties and responsibilities">Görev ve sorumluluklar</h3><p data-en="Ward, outpatient, consultation, endoscopy and on-call responsibilities are written down by year of training. Every fellow reports to a named faculty member, and the job descriptions are reviewed together when needed.">Servis, poliklinik, konsültasyon, endoskopi ve nöbet sorumlulukları kıdeme göre yazılı olarak tanımlanır. Her asistan adı belli bir öğretim üyesine karşı sorumludur; görev tanımları gerektiğinde birlikte gözden geçirilir.</p></div>
@@ -278,21 +275,22 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
         <div class="card"><h3 data-en="Assessment">Ölçme ve değerlendirme</h3><p data-en="Methods and pass criteria are explained at the start: the procedure logbook with faculty sign-off, direct observation during procedures, the training logbook and a yearly progress review; where possible, more than one assessor and a written examination.">Yöntemler ve başarı ölçütleri eğitimin başında açıklanır: işlem kayıt defteri ve öğretim üyesi onayı, işlem sırasında doğrudan gözlem, karne ve yıllık gelişim görüşmesi; olanaklı olduğunda birden çok değerlendirici ve yazılı sınav.</p></div>
         <div class="card"><h3 data-en="Feedback">Geri bildirim</h3><p data-en="Fellows receive regular, constructive feedback on procedures and cases, and protected time is set aside for self-directed study. In turn they rate the programme on a structured form after each rotation and once a year; with the views of faculty and alumni, the programme is reviewed at least once a year.">Asistan, işlem ve olgular üzerinden düzenli ve yapıcı geri bildirim alır; kendi gelişimi için serbest çalışma zamanı ayrılır. Asistanlar da her rotasyon sonunda ve yılda bir programı yapılandırılmış formla değerlendirir; öğretim üyelerinin ve mezunların görüşleriyle birlikte program yılda en az bir kez gözden geçirilir.</p></div>
         <div class="card"><h3 data-en="Examinations and societies">Sınavlar ve dernekler</h3><p data-en="Fellows are encouraged to sit the national board examination and the European Specialty Examination in Gastroenterology and Hepatology (ESEGH), and are supported in joining the working groups and activities of the Turkish Society of Gastroenterology and the European societies.">Ulusal yeterlik sınavına ve Avrupa Gastroenteroloji ve Hepatoloji Uzmanlık Sınavına (ESEGH) girmek teşvik edilir; Türk Gastroenteroloji Derneği ve Avrupa derneklerinin çalışma grupları ile etkinliklerine katılım desteklenir.</p></div>
-        <div class="card"><h3 data-en="Literature and e-learning">Literatür ve e-öğrenme</h3><p data-en="The electronic journals and databases of the Istanbul University library are open to fellows. The &lt;a href=&quot;#zoom&quot;&gt;Zoom meetings&lt;/a&gt; and the &lt;a href=&quot;secmeler.html&quot;&gt;literature selections&lt;/a&gt; page are part of the training.">İstanbul Üniversitesi kütüphanesinin elektronik dergi ve veri tabanları asistanların kullanımına açıktır. <a href="#zoom">Zoom toplantıları</a> ve <a href="secmeler.html">Literatürden seçmeler</a> sayfası da eğitimin parçasıdır.</p></div>
+        <div class="card"><h3 data-en="Literature and e-learning">Literatür ve e-öğrenme</h3><p data-en="The electronic journals and databases of the Istanbul University library are open to fellows; see also the &lt;a href=&quot;secmeler.html&quot;&gt;literature selections&lt;/a&gt;.">İstanbul Üniversitesi kütüphanesinin elektronik dergi ve veri tabanları asistanların kullanımına açıktır; ayrıca <a href="secmeler.html">Literatürden seçmeler</a>.</p></div>
       </div>
-      <div class="callout" id="mezun-gb"><p data-en="&lt;b&gt;Alumni:&lt;/b&gt; we also update the programme with the views of our graduates. The button opens a short feedback form as an e-mail draft; it takes about five minutes."><b>Mezunlarımıza:</b> Eğitim programını mezunlarımızın görüşleriyle de güncelliyoruz. Düğme kısa bir geri bildirim formunu e-posta taslağı olarak açar; yaklaşık beş dakika sürer.</p><div class="cta"><a class="btn solid" id="alumni-fb" href="mailto:filiz.akyuz@istanbul.edu.tr" data-en="Alumni feedback form">Mezun geri bildirim formu</a></div></div>
+      <div class="callout" id="mezun-gb"><p data-en="&lt;b&gt;Alumni:&lt;/b&gt; we also update the programme with the views of our graduates. The button opens a short feedback form as an e-mail."><b>Mezunlarımıza:</b> Eğitim programını mezunlarımızın görüşleriyle de güncelliyoruz. Düğme kısa bir geri bildirim formunu e-posta olarak açar.</p><div class="cta"><a class="btn solid" id="alumni-fb" href="mailto:filiz.akyuz@istanbul.edu.tr" data-en="Alumni feedback form">Mezun geri bildirim formu</a></div></div>
     </div>
   </section>
 
   <section id="standartlar" class="alt">
     <div class="wrap">
-      <div class="head"><h2 data-en="National standards">Ulusal standartlar</h2><p data-en="The fellowship follows the National Standards for Gastroenterology Training 2026 prepared by the Gastroenterology Board (GASYEK): 31 core and 7 development standards under eight headings. The table shows where each standard is addressed on this site; the supporting documents (job descriptions, logbooks, minutes of meetings) are kept by the division.">Yan dal eğitimi, Gastroenteroloji Tıpta Uzmanlık Yeterlik Kurulunun (GASYEK) hazırladığı Gastroenteroloji Tıpta Uzmanlık Ulusal Standartları 2026'ya göre yürütülür: sekiz başlık altında 31 temel ve 7 gelişim standardı. Tablo, standartların bu sitede nerede karşılandığını gösterir; dayanak belgeler (görev tanımları, karneler, toplantı tutanakları) bilim dalında tutulur.</p></div>
+      <div class="head"><h2 data-en="National standards">Ulusal standartlar</h2><p data-en="The fellowship follows the National Standards for Gastroenterology Training 2026 of the Gastroenterology Board (GASYEK): 31 core and 7 development standards. The supporting documents are kept by the division.">Yan dal eğitimi, Gastroenteroloji Tıpta Uzmanlık Yeterlik Kurulunun (GASYEK) Ulusal Standartları 2026'ya göre yürütülür: 31 temel ve 7 gelişim standardı. Dayanak belgeler bilim dalında tutulur.</p></div>
+      <details class="stdbox"><summary data-en="Where each standard is met on this site">Standartların bu sitedeki karşılıkları</summary>
       <table class="week std">
         <thead><tr><th data-en="Standard">Standart</th><th data-en="Subject">Konu</th><th data-en="On this site">Bu sitede</th></tr></thead>
         <tbody>
           <tr><td>TS 1.1, GS 2.2</td><td data-en="Aims, objectives and competencies defined and announced">Amaç, hedef ve yetkinliklerin tanımlanması ve duyurulması</td><td><a href="#yetkinlikler" data-en="Aims and competencies">Amaç ve yetkinlikler</a></td></tr>
           <tr><td>TS 1.2, TS 2.1</td><td data-en="Written programme by year of training">Yıllara göre yazılı eğitim programı</td><td><a href="#yandal" data-en="Fellowship, years 1-3">Yan dal eğitimi, 1.-3. yıl</a></td></tr>
-          <tr><td>TS 2.2, TS 2.3, TS 3.3</td><td data-en="Duties and responsibilities; teaching within working hours">Görev ve sorumluluklar; çalışma saatleri içinde eğitim</td><td><a href="#surec" data-en="Training process">Eğitim süreci</a>; <a href="#program" data-en="Weekly programme">Haftalık program</a></td></tr>
+          <tr><td>TS 2.2, TS 2.3, TS 3.3</td><td data-en="Duties and responsibilities; a weekly programme with days and times">Görev ve sorumluluklar; gün ve saatiyle haftalık eğitim programı</td><td><a href="#surec" data-en="Training process">Eğitim süreci</a>; <a href="#program" data-en="Weekly programme">Haftalık program</a></td></tr>
           <tr><td>GS 2.1</td><td data-en="Orientation programme">Uyum programı</td><td><a href="#surec" data-en="Training process">Eğitim süreci</a></td></tr>
           <tr><td>TS 2.5, TS 4.2</td><td data-en="Who is responsible for what; faculty and their CVs">Sorumluluklar; eğiticiler ve özgeçmişleri</td><td><a href="index.html#ekip" data-en="People">Ekip</a></td></tr>
           <tr><td>TS 3.2, TS 3.7</td><td data-en="Training file, assessment methods and pass criteria">Eğitim dosyası, ölçme yöntemleri ve başarı ölçütleri</td><td><a href="#surec" data-en="Training process and assessment">Eğitim süreci ve değerlendirme</a></td></tr>
@@ -302,18 +300,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
           <tr><td>TS 5.5</td><td data-en="Professional leadership">Mesleki liderlik</td><td><a href="#yetkinlikler" data-en="Six roles">Altı rol</a></td></tr>
           <tr><td>GS 3.1, GS 3.2</td><td data-en="Society activities; board examinations">Dernek etkinlikleri; yeterlik sınavları</td><td><a href="#surec" data-en="Training process">Eğitim süreci</a></td></tr>
           <tr><td>TS 5.1, TS 5.2</td><td data-en="Case volume and mix; equipment and facilities">Hasta sayısı ve çeşitliliği; donanım ve altyapı</td><td><a href="index.html#endoskopi" data-en="Endoscopy unit">Endoskopi ünitesi</a></td></tr>
-          <tr><td>TS 5.3</td><td data-en="Access to the literature and e-learning">Literatüre erişim ve e-öğrenme</td><td><a href="secmeler.html" data-en="Literature selections">Literatürden seçmeler</a>; <a href="#zoom" data-en="Zoom meetings">Zoom toplantıları</a></td></tr>
+          <tr><td>TS 5.3</td><td data-en="Access to the literature and e-learning">Literatüre erişim ve e-öğrenme</td><td><a href="#program" data-en="Journal club, guideline hour">Dergi kulübü, guideline saati</a>; <a href="secmeler.html" data-en="Literature selections">Literatürden seçmeler</a>; <a href="#zoom" data-en="Zoom meetings">Zoom toplantıları</a></td></tr>
           <tr><td>TS 5.6</td><td data-en="At least one study planned, run and published by each fellow">Her asistanın en az bir araştırmayı planlayıp yürütmesi ve yayımlaması</td><td><a href="#yandal" data-en="Research expectations">Araştırma beklentisi</a>; <a href="yayinlar.html" data-en="Publications">Yayınlar</a></td></tr>
           <tr><td>TS 6.2, TS 8.1, GS 6.1</td><td data-en="Transparent evaluation, regular review, alumni feedback">Şeffaf değerlendirme, düzenli gözden geçirme, mezun geri bildirimi</td><td><a href="#surec" data-en="Feedback">Geri bildirim</a>; <a href="#mezun-gb" data-en="Alumni feedback form">Mezun geri bildirim formu</a></td></tr>
         </tbody>
       </table>
-      <p class="note" data-en="TS: core standard (must be met). GS: development standard (desirable). Accreditation also asks for documents that are not public, such as job descriptions, logbooks and minutes; this page is the public description of the programme.">TS: temel standart (karşılanması zorunlu). GS: gelişim standardı (karşılanması önerilir). Akreditasyonda görev tanımları, karneler ve tutanaklar gibi herkese açık olmayan belgeler de istenir; bu sayfa programın kamuya açık tanımıdır.</p>
+      <p class="note" data-en="TS: core standard. GS: development standard.">TS: temel standart. GS: gelişim standardı.</p>
+      </details>
     </div>
   </section>
 
   <section id="rotasyon">
     <div class="wrap">
-      <div class="head"><h2 data-en="Internal medicine rotation">İç hastalıkları rotasyonu</h2><p data-en="Internal medicine residents spend their gastroenterology rotation with us. What we expect and what you will take away.">İç hastalıkları asistanları gastroenteroloji rotasyonunu bizde yapar. Beklediklerimiz ve kazanacaklarınız.</p></div>
+      <div class="head"><h2 data-en="Internal medicine rotation">İç hastalıkları rotasyonu</h2><p data-en="Internal medicine residents spend their gastroenterology rotation with us.">İç hastalıkları asistanları gastroenteroloji rotasyonunu bizde yapar.</p></div>
       <div class="grid">
         <div class="card"><h3 data-en="You will learn">Öğreneceksiniz</h3><ul>
           <li data-en="Approach to GI bleeding, jaundice, abnormal liver tests, chronic diarrhoea and dysphagia">GİS kanaması, sarılık, karaciğer testi bozukluğu, kronik ishal ve disfajiye yaklaşım</li>
@@ -322,11 +321,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
           <li data-en="Reading an endoscopy or FibroScan report critically">Bir endoskopi veya FibroScan raporunu eleştirel okumak</li>
         </ul></div>
         <div class="card"><h3 data-en="Your week">Haftanız</h3><ul>
-          <li data-en="Ward rounds and consultations with the fellow on duty; presenting at the case meeting">Nöbetçi yan dal asistanıyla vizit ve konsültasyonlar; olgu toplantısında sunum</li>
+          <li data-en="Ward rounds and consultations with the fellow on duty; attending the boards and the journal club">Nöbetçi yan dal asistanıyla vizit ve konsültasyonlar; konseylere ve dergi kulübüne katılım</li>
           <li data-en="Observation days in the endoscopy unit and the biologic therapy unit">Endoskopi ünitesinde ve biyolojik tedavi ünitesinde gözlem günleri</li>
           <li data-en="Outpatient clinics: general gastroenterology, hepatology, IBD">Poliklinikler: genel gastroenteroloji, hepatoloji, İBH</li>
         </ul></div>
-        <div class="card"><h3 data-en="Considering the fellowship?">Yan dalı düşünüyor musunuz?</h3><p data-en="Tell us during the rotation. A small research task during the rotation, such as a case report or a data extraction, is the best way to see how the group works and to be remembered when applications open.">Rotasyon sırasında söyleyin. Rotasyonda küçük bir araştırma görevi (bir olgu sunumu, bir veri çıkarımı) grubun nasıl çalıştığını görmenin ve başvurular açıldığında hatırlanmanın en iyi yoludur.</p></div>
+        <div class="card"><h3 data-en="Considering the fellowship?">Yan dalı düşünüyor musunuz?</h3><p data-en="Tell us during the rotation. A small research task, such as a case report or a data extraction, is a good way to see how the group works.">Rotasyon sırasında söyleyin. Küçük bir araştırma görevi (bir olgu sunumu, bir veri çıkarımı) grubun nasıl çalıştığını görmenin iyi bir yoludur.</p></div>
       </div>
     </div>
   </section>
@@ -344,7 +343,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
         <div class="card"><h3 data-en="What we ask">Beklediklerimiz</h3><ul>
           <li data-en="A commitment of at least one term and a few hours a week">En az bir dönem ve haftada birkaç saat taahhüt</li>
           <li data-en="Completion of the group's data protection briefing before any data access">Veriye erişmeden önce grubun veri koruma bilgilendirmesini tamamlamak</li>
-          <li data-en="Authorship follows contribution: real work on a paper earns a place on it">Yazarlık katkıya göre: bir makalede gerçek emek o makalede yer kazandırır</li>
+          <li data-en="Authorship follows contribution (ICMJE criteria)">Yazarlık katkıya göre belirlenir (ICMJE ölçütleri)</li>
         </ul></div>
         <div class="card"><h3 data-en="How to apply">Nasıl başvurulur</h3><p data-en="Write to the research group with a few lines on your year, interests and available time. Projects are matched at the start of each term.">Araştırma grubuna sınıfınızı, ilgi alanlarınızı ve ayırabileceğiniz zamanı anlatan birkaç satır yazın. Projeler her dönem başında eşleştirilir.</p><div class="cta"><a class="btn solid" href="mailto:filiz.akyuz@istanbul.edu.tr?subject=%C3%96%C4%9Frenci%20ara%C5%9Ft%C4%B1rma%20ba%C5%9Fvurusu" data-en="Write to the research group">Araştırma grubuna yazın</a></div></div>
       </div>
@@ -381,7 +380,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 <footer><div class="wrap">
   <span>© <span id="year"></span> <span data-en="Division of Gastroenterohepatology, Istanbul Faculty of Medicine, Istanbul University">İstanbul Üniversitesi İstanbul Tıp Fakültesi Gastroenterohepatoloji Bilim Dalı</span></span>
   <a href="index.html#mezunlar" data-en="Alumni">Mezunlarımız</a>
-  <span class="stamp" data-en="Draft prepared for the approval of the head of division. Programme details (rotation lengths, meeting days and hours, procedure targets) and the sections written to the national standards (orientation, advisers, fellow representative, assessment and feedback) are to be confirmed by the faculty. Source: National Standards for Gastroenterology Training 2026. Last review: November 2026.">Bilim dalı başkanının onayına sunulmak üzere hazırlanmış taslak. Program ayrıntıları (rotasyon süreleri, toplantı gün ve saatleri, işlem hedefleri) ile ulusal standartlara göre yazılan bölümler (uyum programı, danışman, asistan temsilcisi, ölçme-değerlendirme ve geri bildirim) öğretim üyelerince teyit edilecektir. Kaynak: Gastroenteroloji Tıpta Uzmanlık Ulusal Standartları 2026. Son gözden geçirme: Kasım 2026.</span>
+  <span class="stamp" data-en="Source: National Standards for Gastroenterology Training 2026. Last review: November 2026.">Kaynak: Gastroenteroloji Tıpta Uzmanlık Ulusal Standartları 2026. Son gözden geçirme: Kasım 2026.</span>
 </div></footer>
 
 <script>

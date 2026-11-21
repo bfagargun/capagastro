@@ -83,6 +83,8 @@ header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper
 .btn:hover{background:var(--teal);color:var(--paper)}
 .btn.icon{padding:.35rem .6rem;min-width:2.3rem;text-align:center}
 @media (max-width:560px){.brand small{display:none}.bar .home{display:none}}
+@media (max-width:400px){.bar{gap:.3rem}.brand{font-size:.9rem;gap:.45rem}.brand svg{width:22px;height:22px}.bar .btn{padding:.3rem .6rem}.bar .btn.icon{min-width:2rem;padding:.3rem .45rem}}
+@media (max-width:340px){.brand svg{display:none}}
 .intro{padding:3rem 0 2rem;border-bottom:1px solid var(--line)}
 .intro p{color:var(--ink-2);max-width:70ch;margin:0 0 .6em}
 .stats{display:flex;gap:2.2rem;flex-wrap:wrap;margin-top:1.4rem}
@@ -152,7 +154,7 @@ footer{padding:2rem 0;color:var(--ink-2);font-size:.85rem;border-top:1px solid v
   <div class="intro"><div class="wrap">
     <h1 data-i="h1">Yayınlar</h1>
     <p data-i="intro">Bilim dalı öğretim üyeleri ve yan dal asistanlarının PubMed'de dizinlenen yayınları. Liste dergi etki faktörüne, eşitlikte yıla göre sıralanır; kişiye, türe veya metne göre filtreleyebilirsiniz.</p>
-    <div class="stats" id="stats"><!--pre:stats--><div><b>241</b><span>yayın</span></div><div><b>1995-2026</b><span>yıl aralığı</span></div><div><b>13</b><span>etki faktörü 10 ve üzeri dergide</span></div><div><b>8</b><span>ekip üyesi</span></div><!--/pre:stats--></div>
+    <div class="stats" id="stats"><!--pre:stats--><div><b>241</b><span>yayın</span></div><div><b>1995-2026</b><span>yıl aralığı</span></div><div><b>13</b><span>etki faktörü 10 ve üzeri dergide</span></div><div><b>8</b><span>yayını olan ekip üyesi</span></div><!--/pre:stats--></div>
     <div class="chart" id="chart"></div>
   </div></div>
   <div class="controls"><div class="wrap">
@@ -1627,7 +1629,7 @@ const T = {
   tr: {
     title: "Yayınlar | Çapa Gastroenterohepatoloji", sub: "İstanbul Tıp Fakültesi, İstanbul Üniversitesi", home: "Ana sayfa", h1: "Yayınlar",
     intro: "Bilim dalı öğretim üyeleri ve yan dal asistanlarının PubMed'de dizinlenen yayınları. Liste dergi etki faktörüne, eşitlikte yıla göre sıralanır; kişiye, türe veya metne göre filtreleyebilirsiniz.",
-    pubs: "yayın", span: "yıl aralığı", hi: "etki faktörü 10 ve üzeri dergide", members: "ekip üyesi",
+    pubs: "yayın", span: "yıl aralığı", hi: "etki faktörü 10 ve üzeri dergide", members: "yayını olan ekip üyesi",
     q: "Başlık, dergi veya yazar ara", all: "Tüm ekip", types: "Tüm türler",
     type: { Article: "Araştırma makalesi", Review: "Derleme", Letter: "Editöre mektup", Case: "Olgu sunumu" },
     chip: { Article: "Makale", Review: "Derleme", Letter: "Mektup", Case: "Olgu" },
@@ -1643,7 +1645,7 @@ const T = {
   en: {
     title: "Publications | Çapa Gastroenterohepatology", sub: "Istanbul Faculty of Medicine, Istanbul University", home: "Home", h1: "Publications",
     intro: "PubMed-indexed publications by the division's faculty and fellows. The list is ranked by journal impact factor, then by year; filter by person, type or text.",
-    pubs: "publications", span: "years covered", hi: "in journals with an impact factor of 10 or more", members: "team members",
+    pubs: "publications", span: "years covered", hi: "in journals with an impact factor of 10 or more", members: "team members with publications",
     q: "Search title, journal or author", all: "All members", types: "All types",
     type: { Article: "Research article", Review: "Review", Letter: "Letter", Case: "Case report" },
     chip: { Article: "Article", Review: "Review", Letter: "Letter", Case: "Case" },
